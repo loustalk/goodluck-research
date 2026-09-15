@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>好運研究所｜占卜・風水・財運分析・生活好運</title>
+
+    <meta name="description" content="好運研究所｜由小盧老師主持，分享占卜、風水、財運分析，以及生活裡關於好運的故事與觀察。">
+
+    <style>
+        /* =========================
+           好運研究所｜第一版網站
+           ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                "Noto Sans TC",
+                "Microsoft JhengHei",
+                "PingFang TC",
+                Arial,
+                sans-serif;
+
+            background: #faf8f3;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           導覽列
+           ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(250, 248, 243, 0.96);
+            border-bottom: 1px solid #e8e0d2;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 16px 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #7a5735;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #a08a70;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: #5d554c;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: #a66f32;
+        }
+
+        /* =========================
+           首頁主視覺
+           ========================= */
+
+        .hero {
+            min-height: 680px;
+            padding: 90px 24px 100px;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at 80% 20%, rgba(210, 174, 112, 0.22), transparent 28%),
+                radial-gradient(circle at 20% 80%, rgba(184, 148, 91, 0.10), transparent 30%),
+                #faf8f3;
+        }
+
+        .hero-inner {
+            max-width: 1180px;
+            width: 100%;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-text .eyebrow {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 6px 15px;
+
+            border: 1px solid #d9c4a4;
+            border-radius: 30px;
+
+            color: #987044;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: clamp(44px, 7vw, 78px);
+            line-height: 1.15;
+            letter-spacing: 7px;
+            color: #68482d;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: clamp(21px, 3vw, 30px);
+            font-weight: 500;
+            color: #51473e;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #70685f;
+            font-size: 16px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .btn-primary {
+            background: #87613b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #68482d;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #cbb99e;
+            color: #755839;
+            background: rgba(255,255,255,0.45);
+        }
+
+        .btn-outline:hover {
+            background: white;
+        }
+
+        /* =========================
+           主視覺右側
+           ========================= */
+
+        .hero-card {
+            position: relative;
+            min-height: 390px;
+
+            border-radius: 28px;
+            padding: 45px;
+
+            background:
+                linear-gradient(145deg, #eee2cf, #f8f4ec);
+
+            border: 1px solid #dfd0b9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 20px 50px rgba(80, 57, 34, 0.08);
+        }
+
+        .hero-symbol {
+            text-align: center;
+        }
+
+        .hero-symbol .circle {
+            width: 190px;
+            height: 190px;
+
+            margin: auto auto 25px;
+
+            border: 1px solid #b99463;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 72px;
+
+            background: rgba(255,255,255,0.35);
+        }
+
+        .hero-symbol h3 {
+            color: #765332;
+            font-size: 22px;
+            letter-spacing: 4px;
+        }
+
+        .hero-symbol p {
+            margin-top: 5px;
+            font-size: 13px;
+            color: #97836d;
+        }
+
+        /* =========================
+           Facebook 最新訊息區
+           ========================= */
+
+        .facebook-section {
+            background: #f0ebe2;
+            padding: 70px 24px;
+        }
+
+        .section-inner {
+            max-width: 1080px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title small {
+            display: block;
+            color: #a07b50;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #62472f;
+            letter-spacing: 3px;
+        }
+
+        .facebook-box {
+            min-height: 220px;
+            padding: 45px;
+
+            background: white;
+            border: 1px solid #e2d7c8;
+            border-radius: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .facebook-box p {
+            color: #81786e;
+        }
+
+        .facebook-box strong {
+            display: block;
+            margin-bottom: 10px;
+            color: #735437;
+            font-size: 18px;
+        }
+
+        /* =========================
+           六大入口
+           ========================= */
+
+        .rooms {
+            padding: 100px 24px;
+            background: #faf8f3;
+        }
+
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .room-card {
+            min-height: 245px;
+            padding: 32px;
+
+            background: white;
+            border: 1px solid #e7ddd0;
+            border-radius: 20px;
+
+            transition: 0.3s;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .room-card::after {
+            content: "";
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            right: -40px;
+            bottom: -40px;
+
+            border-radius: 50%;
+            background: #f1e6d5;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(75, 54, 33, 0.09);
+        }
+
+        .room-icon {
+            font-size: 35px;
+            margin-bottom: 14px;
+        }
+
+        .room-card h3 {
+            font-size: 21px;
+            color: #694b31;
+            margin-bottom: 10px;
+        }
+
+        .room-card p {
+            font-size: 14px;
+            color: #81776d;
+        }
+
+        .room-card .arrow {
+            position: absolute;
+            right: 25px;
+            bottom: 20px;
+            color: #b18b5d;
+            font-size: 20px;
+        }
+
+        /* =========================
+           關於小盧老師
+           ========================= */
+
+        .about {
+            padding: 100px 24px;
+            background: #eee7dc;
+        }
+
+        .about-inner {
+            max-width: 1050px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 65px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 390px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(145deg, #d9c5a7, #eee6d8);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #d2bea1;
+        }
+
+        .about-image div {
+            text-align: center;
+            color: #7b5a39;
+        }
+
+        .about-image .placeholder {
+            font-size: 58px;
+            margin-bottom: 15px;
+        }
+
+        .about-image p {
+            font-size: 13px;
+        }
+
+        .about-text small {
+            color: #a07748;
+            letter-spacing: 3px;
+        }
+
+        .about-text h2 {
+            font-size: 34px;
+            color: #61452e;
+            margin: 10px 0 22px;
+        }
+
+        .about-text p {
+            color: #6f665d;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           好運研究所內容
+           ========================= */
+
+        .content-section {
+            padding: 100px 24px;
+            background: #faf8f3;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #e5dbce;
+        }
+
+        .content-image {
+            height: 175px;
+
+            background:
+                linear-gradient(135deg, #e8dac3, #f5f0e8);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 45px;
+        }
+
+        .content-body {
+            padding: 24px;
+        }
+
+        .content-body small {
+            color: #a47b4d;
+        }
+
+        .content-body h3 {
+            margin: 7px 0 10px;
+            color: #674a31;
+            font-size: 19px;
+        }
+
+        .content-body p {
+            color: #817970;
+            font-size: 14px;
+        }
+
+        /* =========================
+           未來品牌
+           ========================= */
+
+        .future {
+            padding: 90px 24px;
+            background: #4d4034;
+            color: white;
+        }
+
+        .future-inner {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .future h2 {
+            font-size: 32px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .future p {
+            max-width: 700px;
+            margin: auto;
+            color: #ddd2c5;
+        }
+
+        .future-list {
+            margin-top: 40px;
+
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .future-item {
+            padding: 12px 22px;
+
+            border: 1px solid #887968;
+            border-radius: 30px;
+
+            color: #f2e7d8;
+            font-size: 14px;
+        }
+
+        /* =========================
+           聯絡區
+           ========================= */
+
+        .contact {
+            padding: 90px 24px;
+            background: #f5f0e8;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: #65482f;
+            font-size: 31px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            color: #776e65;
+            margin-bottom: 28px;
+        }
+
+        /* =========================
+           Footer
+           ========================= */
+
+        footer {
+            padding: 35px 24px;
+            background: #342b24;
+            color: #cfc3b5;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        footer strong {
+            display: block;
+            color: #eee4d7;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        /* =========================
+           手機版
+           ========================= */
+
+        @media (max-width: 850px) {
+
+            .nav {
+                padding: 13px 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 70px 20px 80px;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .hero h1 {
+                letter-spacing: 4px;
+            }
+
+            .hero-card {
+                min-height: 300px;
+            }
+
+            .hero-symbol .circle {
+                width: 150px;
+                height: 150px;
+                font-size: 55px;
+            }
+
+            .room-grid,
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .about-image {
+                min-height: 300px;
+            }
+
+            .section-title h2 {
+                font-size: 27px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .facebook-box {
+                padding: 30px 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         導覽列
+         ========================= -->
+
+    <header>
+        <nav class="nav">
+
+            <a href="#" class="logo">
+                好運研究所
+                <span>GOOD LUCK RESEARCH</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#rooms">研究室</a>
+                <a href="#about">關於小盧老師</a>
+                <a href="#content">最新內容</a>
+                <a href="#contact">聯絡</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         首頁主視覺
+         ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-inner">
+
+            <div class="hero-text">
+
+                <span class="eyebrow">
+                    GOOD LUCK RESEARCH
+                </span>
+
+                <h1>好運研究所</h1>
+
+                <h2>
+                    找到生活裡的好運，<br>
+                    也找到自己的答案。
+                </h2>
+
+                <p>
+                    歡迎來到好運研究所。
+                    這裡談占卜、風水、財運，
+                    也談生活裡那些關於選擇、機會、
+                    人與人生的故事。
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#rooms" class="btn btn-primary">
+                        探索好運研究所
+                    </a>
+
+                    <a href="#about" class="btn btn-outline">
+                        認識小盧老師
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <div class="hero-symbol">
+
+                    <div class="circle">
+                        🔮
+                    </div>
+
+                    <h3>看見更多可能</h3>
+
+                    <p>
+                        不急著替你決定答案
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Facebook 最新訊息
+         ========================= -->
+
+    <section class="facebook-section">
+
+        <div class="section-inner">
+
+            <div class="section-title">
+
+                <small>FROM FACEBOOK</small>
+
+                <h2>好運研究所最新消息</h2>
+
+            </div>
+
+
+            <div class="facebook-box">
+
+                <div>
+
+                    <strong>
+                        Facebook 粉專最新／置頂訊息
+                    </strong>
+
+                    <p>
+                        這裡將放置好運研究所 Facebook 粉專的最新內容。
+                        <br>
+                        等網站正式上線後，我們會把這裡改成 Facebook 貼文嵌入區。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         六大研究室
+         ========================= -->
+
+    <section class="rooms" id="rooms">
+
+        <div class="section-inner">
+
+            <div class="section-title">
+
+                <small>EXPLORE</small>
+
+                <h2>好運研究所的世界</h2>
+
+            </div>
+
+
+            <div class="room-grid">
+
+
+                <a href="#" class="room-card">
+
+                    <div class="room-icon">🔮</div>
+
+                    <h3>占卜研究室</h3>
+
+                    <p>
+                        從占卜桌上的故事，
+                        看見選擇、關係與人生裡不同的可能。
+                    </p>
+
+                    <span class="arrow">→</span>
+
+                </a>
+
+
+                <a href="#" class="room-card">
+
+                    <div class="room-icon">🧭</div>
+
+                    <h3>風水研究室</h3>
+
+                    <p>
+                        從環境、空間與生活方式，
+                        探討人與居住環境之間的關係。
+                    </p>
+
+                    <span class="arrow">→</span>
+
+                </a>
+
+
+                <a href="#" class="room-card">
+
+                    <div class="room-icon">💰</div>
+
+                    <h3>財運分析</h3>
+
+                    <p>
+                        從個人條件與人生階段，
+                        思考財運、機會與選擇。
+                    </p>
+
+                    <span class="arrow">→</span>
+
+                </a>
+
+
+                <a href="#" class="room-card">
+
+                    <div class="room-icon">📚</div>
+
+                    <h3>好運研究所</h3>
+
+                    <p>
+                        文章、故事、觀察與生活裡，
+                        那些值得慢慢研究的事情。
+                    </p>
+
+                    <span class="arrow">→</span>
+
+                </a>
+
+
+                <a href="#" class="room-card">
+
+                    <div class="room-icon">🟠</div>
+
+                    <h3>好運琥珀</h3>
+
+                    <p>
+                        從琥珀開始，
+                        延伸出屬於好運研究所的生活選物與品牌。
+                    </p>
+
+                    <span class="arrow">→</span>
+
+                </a>
+
+
+                <a href="#" class="room-card">
+
+                    <div class="room-icon">🎪</div>
+
+                    <h3>好運生活日</h3>
+
+                    <p>
+                        把好運從研究所帶進生活，
+                        與更多人一起交流、體驗與分享。
+                    </p>
+
+                    <span class="arrow">→</span>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         關於小盧老師
+         ========================= -->
+
+    <section class="about" id="about">
+
+        <div class="about-inner">
+
+
+            <div class="about-image">
+
+                <div>
+
+                    <div class="placeholder">
+                        👤
+                    </div>
+
+                    <p>
+                        未來放置小盧老師照片
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-text">
+
+                <small>ABOUT THE HOST</small>
+
+                <h2>我是小盧老師</h2>
+
+                <p>
+                    歡迎來到好運研究所。
+                </p>
+
+                <p>
+                    我從占卜開始，
+                    一路走進風水、財運分析，
+                    也在一次次與人交流的過程裡，
+                    看見許多人面對人生時的選擇與困惑。
+                </p>
+
+                <p>
+                    好運研究所不是要替你決定人生，
+                    而是希望陪你多看見一點可能。
+                </p>
+
+                <p>
+                    有時候答案不是「會不會發生」，
+                    而是當你看見更多選項之後，
+                    你想怎麼走。
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         最新內容
+         ========================= -->
+
+    <section class="content-section" id="content">
+
+        <div class="section-inner">
+
+            <div class="section-title">
+
+                <small>GOOD LUCK RESEARCH</small>
+
+                <h2>最近在研究什麼？</h2>
+
+            </div>
+
+
+            <div class="content-grid">
+
+
+                <article class="content-card">
+
+                    <div class="content-image">
+                        🔮
+                    </div>
+
+                    <div class="content-body">
+
+                        <small>占卜桌上的故事</small>
+
+                        <h3>
+                            真相，輸給一句話
+                        </h3>
+
+                        <p>
+                            有時候，我們以為自己是在幫助一個人，
+                            卻可能在無意間成為他的壓力。
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="content-card">
+
+                    <div class="content-image">
+                        🧭
+                    </div>
+
+                    <div class="content-body">
+
+                        <small>風水研究</small>
+
+                        <h3>
+                            空間，真的會影響我們嗎？
+                        </h3>
+
+                        <p>
+                            從生活裡的空間與環境開始，
+                            慢慢研究人與地方之間的關係。
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="content-card">
+
+                    <div class="content-image">
+                        🎙
+                    </div>
+
+                    <div class="content-body">
+
+                        <small>Podcast</small>
+
+                        <h3>
+                            好運研究所 Podcast
+                        </h3>
+
+                        <p>
+                            把故事說給你聽。
+                            在占卜、諮詢與人生裡，
+                            一起想想更多可能。
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         未來發展
+         ========================= -->
+
+    <section class="future">
+
+        <div class="future-inner">
+
+            <h2>這個研究所，還會繼續長大。</h2>
+
+            <p>
+                好運研究所不只是一個網站。
+                它會隨著生活慢慢增加新的故事、新的內容，
+                也可能有一天，從網路走進真正的生活。
+            </p>
+
+
+            <div class="future-list">
+
+                <span class="future-item">🟠 好運琥珀</span>
+
+                <span class="future-item">🎪 好運生活日</span>
+
+                <span class="future-item">🎙 Podcast</span>
+
+                <span class="future-item">🎬 YouTube</span>
+
+                <span class="future-item">☕ 好運咖啡・未來</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         聯絡
+         ========================= -->
+
+    <section class="contact" id="contact">
+
+        <h2>想來好運研究所坐坐嗎？</h2>
+
+        <p>
+            如果你有問題、想了解服務，
+            或只是想聊聊最近的人生，
+            歡迎來找小盧老師。
+        </p>
+
+        <a href="#" class="btn btn-primary">
+            聯絡／預約
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         Footer
+         ========================= -->
+
+    <footer>
+
+        <strong>好運研究所</strong>
+
+        GOOD LUCK RESEARCH
+
+        <br><br>
+
+        © 2026 好運研究所｜小盧老師
+
+    </footer>
+
+
+</body>
+</html>
