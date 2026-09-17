@@ -6,9 +6,6 @@ backend:
 media_folder: "uploads"
 public_folder: "/uploads"
 
-media_library:
-  name: default
-
 collections:
   - name: "articles"
     label: "文章"
