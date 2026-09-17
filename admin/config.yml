@@ -4,7 +4,7 @@ backend:
   branch: main
 
 media_folder: "uploads"
-public_folder: "/goodluck-research/uploads"
+7  public_folder: "/uploads"
 
 collections:
   - name: "articles"
