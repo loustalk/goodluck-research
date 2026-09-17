@@ -2,3 +2,28 @@ backend:
   name: turbo-github
   turbo_site_id: dcb06326-3e52-4098-8d82-3121bc69ed86
   branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+media_library:
+  name: default
+
+collections:
+  - name: "articles"
+    label: "文章"
+    folder: "content/articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "標題"
+        name: "title"
+        widget: "string"
+
+      - label: "發布日期"
+        name: "date"
+        widget: "datetime"
+
+      - label: "文章內容"
+        name: "body"
+        widget: "markdown"
