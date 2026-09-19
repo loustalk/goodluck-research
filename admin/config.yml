@@ -23,4 +23,4 @@ collections:
 
       - label: "文章內容"
         name: "body"
-        widget: "richtext"
+        widget: "markdown"
