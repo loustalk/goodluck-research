@@ -28,3 +28,4 @@ collections:
         editor_components:
           - "image"
           - "code-block"
+          - "resizable-image"
