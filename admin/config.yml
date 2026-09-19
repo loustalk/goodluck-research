@@ -26,6 +26,5 @@ collections:
         name: "body"
         widget: "richtext"
         editor_components:
-          - "image"
           - "code-block"
           - "resizable-image"
