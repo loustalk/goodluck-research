@@ -5,6 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>好運研究所｜文章後台</title>
+
+  <style>
+    .resize-image-box {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      margin: 8px 0;
+      user-select: none;
+    }
+
+    .resize-image-box img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .resize-handle {
+      position: absolute;
+      right: -6px;
+      bottom: -6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #333;
+      border: 2px solid #fff;
+      cursor: nwse-resize;
+      z-index: 20;
+      box-sizing: border-box;
+    }
+
+    .resize-image-box.resizing {
+      outline: 2px dashed #666;
+    }
+  </style>
 </head>
 
 <body>
@@ -12,6 +46,7 @@
 <script src="https://unpkg.com/decap-cms@3.17.0-beta.1/dist/decap-cms.js"></script>
 
 <script>
+
 CMS.registerEditorComponent({
   id: "resizable-image",
   label: "可調整圖片",
@@ -90,6 +125,7 @@ CMS.registerEditorComponent({
     );
   }
 });
+
 </script>
 
 </body>
