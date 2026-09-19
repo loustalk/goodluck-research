@@ -65,21 +65,8 @@ CMS.registerEditorComponent({
   toBlock: function(data) {
     var width = parseInt(data.width, 10) || 100;
 
-    return '<img src="' +
-      (data.image || '') +
-      '" alt="' +
-      (data.alt || '') +
-      '" title="' +
-      (data.title || '') +
-      '" style="width:' +
-      width +
-      '%;height:auto;">';
-  },
-
-  toPreview: function(data) {
-    var width = parseInt(data.width, 10) || 100;
-
     return (
+      "\n\n" +
       '<img src="' +
       (data.image || '') +
       '" alt="' +
@@ -88,7 +75,26 @@ CMS.registerEditorComponent({
       (data.title || '') +
       '" style="width:' +
       width +
-      '%;height:auto;">'
+      '%;height:auto;">' +
+      "\n\n"
+    );
+  },
+
+  toPreview: function(data) {
+    var width = parseInt(data.width, 10) || 100;
+
+    return (
+      '<div style="margin:16px 0;">' +
+      '<img src="' +
+      (data.image || '') +
+      '" alt="' +
+      (data.alt || '') +
+      '" title="' +
+      (data.title || '') +
+      '" style="width:' +
+      width +
+      '%;height:auto;">' +
+      '</div>'
     );
   }
 });
