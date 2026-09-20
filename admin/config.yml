@@ -12,6 +12,7 @@ collections:
     folder: "content/articles"
     create: true
     slug: "{{slug}}"
+
     fields:
       - label: "標題"
         name: "title"
@@ -23,4 +24,7 @@ collections:
 
       - label: "文章內容"
         name: "body"
-        widget: "markdown"
+        widget: "richtext"
+        editor_components:
+          - "code-block"
+          - "resizable-image"
