@@ -3,11 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>好運研究所｜好運研究所</title>
+    <title>好運研究所｜研究文章</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC",
+                         "Microsoft JhengHei", sans-serif;
+            background: #f7f5f0;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        header {
+            padding: 40px 20px 30px;
+            text-align: center;
+            background: #fff;
+            border-bottom: 1px solid #e5e0d8;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 0;
+            color: #777;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .back {
+            margin-bottom: 30px;
+        }
+
+        .back a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+
+        .article {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .article h2 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 26px;
+        }
+
+        .date {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .article-content h1,
+        .article-content h2,
+        .article-content h3 {
+            margin-top: 28px;
+        }
+
+        .article-content p {
+            margin: 12px 0;
+        }
+
+        .article-content strong {
+            font-weight: 700;
+        }
+
+        .article-content code {
+            background: #f1f1f1;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .loading,
+        .empty,
+        .error {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .error {
+            color: #a33;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
 </head>
+
 <body>
+
+<header>
     <h1>好運研究所</h1>
-    <p>這裡是《好運研究所》的核心研究空間。</p>
-    <p>← <a href="index.html">回到好運研究所</a></p>
+    <p>探索好運、人生與各種未知的研究空間</p>
+</header>
+
+<main>
+
+    <div class="back">
+        ← <a href="index.html">回到好運研究所</a>
+    </div>
+
+    <div id="articles">
+        <div class="loading">正在載入研究文章……</div>
+    </div>
+
+</main>
+
+<footer>
+    © 好運研究所
+</footer>
+
+
+<script>
+const API_URL =
+    "https://api.github.com/repos/loustalk/goodluck-research/contents/content/articles?ref=main";
+
+const RAW_BASE =
+    "https://raw.githubusercontent.com/loustalk/goodluck-research/main/content/articles/";
+
+
+function escapeHtml(text) {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+function parseFrontMatter(markdown) {
+
+    const result = {
+        title: "未命名文章",
+        date: "",
+        body: markdown
+    };
+
+    if (!markdown.startsWith("---")) {
+        return result;
+    }
+
+    const match = markdown.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+
+    if (!match) {
+        return result;
+    }
+
+    const frontMatter = match[1];
+    result.body = match[2];
+
+    frontMatter.split("\n").forEach(line => {
+
+        const separator = line.indexOf(":");
+
+        if (separator === -1) {
+            return;
+        }
+
+        const key = line.slice(0, separator).trim();
+        let value = line.slice(separator + 1).trim();
+
+        value = value.replace(/^["']|["']$/g, "");
+
+        if (key === "title") {
+            result.title = value;
+        }
+
+        if (key === "date") {
+            result.date = value;
+        }
+    });
+
+    return result;
+}
+
+
+function formatDate(dateString) {
+
+    if (!dateString) {
+        return "";
+    }
+
+    const date = new Date(dateString);
+
+    if (isNaN(date.getTime())) {
+        return dateString;
+    }
+
+    return date.toLocaleDateString("zh-TW", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    });
+}
+
+
+function markdownToHtml(markdown) {
+
+    let text = escapeHtml(markdown);
+
+    // 圖片
+    text = text.replace(
+        /!\[([^\]]*)\]\(([^)]+)\)/g,
+        '<img src="$2" alt="$1">'
+    );
+
+    // 標題
+    text = text.replace(/^### (.*)$/gm, "<h3>$1</h3>");
+    text = text.replace(/^## (.*)$/gm, "<h2>$1</h2>");
+    text = text.replace(/^# (.*)$/gm, "<h1>$1</h1>");
+
+    // 粗體
+    text = text.replace(
+        /\*\*(.*?)\*\*/g,
+        "<strong>$1</strong>"
+    );
+
+    // 行內程式碼
+    text = text.replace(
+        /`([^`]+)`/g,
+        "<code>$1</code>"
+    );
+
+    // 段落
+    const blocks = text
+        .split(/\n\s*\n/)
+        .map(block => block.trim())
+        .filter(block => block !== "");
+
+    return blocks.map(block => {
+
+        if (
+            block.startsWith("<h1>") ||
+            block.startsWith("<h2>") ||
+            block.startsWith("<h3>") ||
+            block.startsWith("<img")
+        ) {
+            return block;
+        }
+
+        return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
+
+    }).join("\n");
+}
+
+
+async function loadArticles() {
+
+    const container = document.getElementById("articles");
+
+    try {
+
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error("無法取得文章列表");
+        }
+
+        const files = await response.json();
+
+        const markdownFiles = files.filter(file =>
+            file.type === "file" &&
+            file.name.toLowerCase().endsWith(".md")
+        );
+
+        if (markdownFiles.length === 0) {
+
+            container.innerHTML = `
+                <div class="empty">
+                    目前還沒有研究文章。
+                </div>
+            `;
+
+            return;
+        }
+
+        const articles = [];
+
+        for (const file of markdownFiles) {
+
+            const articleResponse = await fetch(
+                RAW_BASE + encodeURIComponent(file.name)
+            );
+
+            if (!articleResponse.ok) {
+                continue;
+            }
+
+            const markdown = await articleResponse.text();
+
+            const article = parseFrontMatter(markdown);
+
+            articles.push({
+                ...article,
+                filename: file.name
+            });
+        }
+
+        articles.sort((a, b) => {
+
+            const dateA = new Date(a.date || 0);
+            const dateB = new Date(b.date || 0);
+
+            return dateB - dateA;
+        });
+
+
+        container.innerHTML = articles.map(article => {
+
+            return `
+                <article class="article">
+
+                    <h2>${escapeHtml(article.title)}</h2>
+
+                    ${
+                        article.date
+                        ? `<div class="date">${formatDate(article.date)}</div>`
+                        : ""
+                    }
+
+                    <div class="article-content">
+                        ${markdownToHtml(article.body)}
+                    </div>
+
+                </article>
+            `;
+
+        }).join("");
+
+    } catch (error) {
+
+        console.error(error);
+
+        container.innerHTML = `
+            <div class="error">
+                目前無法載入研究文章。<br>
+                請稍後再試。
+            </div>
+        `;
+    }
+}
+
+
+loadArticles();
+</script>
+
 </body>
 </html>
