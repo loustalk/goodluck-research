@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>好運研究所｜研究文章</title>
+
+    <title>好運研究所｜占卜桌上的故事</title>
 
     <style>
         body {
@@ -118,14 +119,39 @@
             color: #888;
             font-size: 14px;
         }
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 30px 16px 25px;
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+
+            main {
+                margin: 25px auto;
+                padding: 0 15px;
+            }
+
+            .article {
+                padding: 22px 18px;
+                border-radius: 10px;
+            }
+
+            .article h2 {
+                font-size: 23px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
 <header>
-    <h1>好運研究所</h1>
-    <p>探索好運、人生與各種未知的研究空間</p>
+    <h1>📖 占卜桌上的故事</h1>
+    <p>在占卜桌上，我們遇見的人、故事與那些值得留下來研究的片段</p>
 </header>
 
 <main>
@@ -135,7 +161,7 @@
     </div>
 
     <div id="articles">
-        <div class="loading">正在載入研究文章……</div>
+        <div class="loading">正在載入故事……</div>
     </div>
 
 </main>
@@ -146,6 +172,7 @@
 
 
 <script>
+
 const API_URL =
     "https://api.github.com/repos/loustalk/goodluck-research/contents/content/articles?ref=main";
 
@@ -154,12 +181,14 @@ const RAW_BASE =
 
 
 function escapeHtml(text) {
+
     return text
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
 }
 
 
@@ -168,6 +197,7 @@ function parseFrontMatter(markdown) {
     const result = {
         title: "未命名文章",
         date: "",
+        category: "",
         body: markdown
     };
 
@@ -175,13 +205,16 @@ function parseFrontMatter(markdown) {
         return result;
     }
 
-    const match = markdown.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+    const match = markdown.match(
+        /^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/
+    );
 
     if (!match) {
         return result;
     }
 
     const frontMatter = match[1];
+
     result.body = match[2];
 
     frontMatter.split("\n").forEach(line => {
@@ -193,6 +226,7 @@ function parseFrontMatter(markdown) {
         }
 
         const key = line.slice(0, separator).trim();
+
         let value = line.slice(separator + 1).trim();
 
         value = value.replace(/^["']|["']$/g, "");
@@ -204,6 +238,11 @@ function parseFrontMatter(markdown) {
         if (key === "date") {
             result.date = value;
         }
+
+        if (key === "category") {
+            result.category = value;
+        }
+
     });
 
     return result;
@@ -227,6 +266,7 @@ function formatDate(dateString) {
         month: "2-digit",
         day: "2-digit"
     });
+
 }
 
 
@@ -234,30 +274,36 @@ function markdownToHtml(markdown) {
 
     let text = escapeHtml(markdown);
 
-    // 圖片
     text = text.replace(
         /!\[([^\]]*)\]\(([^)]+)\)/g,
         '<img src="$2" alt="$1">'
     );
 
-    // 標題
-    text = text.replace(/^### (.*)$/gm, "<h3>$1</h3>");
-    text = text.replace(/^## (.*)$/gm, "<h2>$1</h2>");
-    text = text.replace(/^# (.*)$/gm, "<h1>$1</h1>");
+    text = text.replace(
+        /^### (.*)$/gm,
+        "<h3>$1</h3>"
+    );
 
-    // 粗體
+    text = text.replace(
+        /^## (.*)$/gm,
+        "<h2>$1</h2>"
+    );
+
+    text = text.replace(
+        /^# (.*)$/gm,
+        "<h1>$1</h1>"
+    );
+
     text = text.replace(
         /\*\*(.*?)\*\*/g,
         "<strong>$1</strong>"
     );
 
-    // 行內程式碼
     text = text.replace(
         /`([^`]+)`/g,
         "<code>$1</code>"
     );
 
-    // 段落
     const blocks = text
         .split(/\n\s*\n/)
         .map(block => block.trim())
@@ -277,6 +323,7 @@ function markdownToHtml(markdown) {
         return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
 
     }).join("\n");
+
 }
 
 
@@ -303,7 +350,7 @@ async function loadArticles() {
 
             container.innerHTML = `
                 <div class="empty">
-                    目前還沒有研究文章。
+                    目前還沒有故事。
                 </div>
             `;
 
@@ -326,10 +373,20 @@ async function loadArticles() {
 
             const article = parseFrontMatter(markdown);
 
+            /*
+             * 只顯示：
+             * category: story
+             */
+
+            if (article.category !== "story") {
+                continue;
+            }
+
             articles.push({
                 ...article,
                 filename: file.name
             });
+
         }
 
         articles.sort((a, b) => {
@@ -338,7 +395,20 @@ async function loadArticles() {
             const dateB = new Date(b.date || 0);
 
             return dateB - dateA;
+
         });
+
+
+        if (articles.length === 0) {
+
+            container.innerHTML = `
+                <div class="empty">
+                    目前還沒有占卜桌上的故事。
+                </div>
+            `;
+
+            return;
+        }
 
 
         container.innerHTML = articles.map(article => {
@@ -363,21 +433,25 @@ async function loadArticles() {
 
         }).join("");
 
+
     } catch (error) {
 
         console.error(error);
 
         container.innerHTML = `
             <div class="error">
-                目前無法載入研究文章。<br>
+                目前無法載入占卜桌上的故事。<br>
                 請稍後再試。
             </div>
         `;
+
     }
+
 }
 
 
 loadArticles();
+
 </script>
 
 </body>
