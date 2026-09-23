@@ -22,6 +22,19 @@ collections:
         name: "date"
         widget: "datetime"
 
+      - label: "發布區域"
+        name: "category"
+        widget: "select"
+        options:
+          - label: "📖 占卜桌上的故事"
+            value: "story"
+
+          - label: "🟠 好運琥珀"
+            value: "amber"
+
+          - label: "🎪 好運生活日"
+            value: "life-day"
+
       - label: "文章內容"
         name: "body"
         widget: "richtext"
