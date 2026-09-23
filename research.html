@@ -96,7 +96,7 @@
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 20px auto;
+            margin: 25px auto;
             border-radius: 8px;
         }
 
@@ -143,6 +143,11 @@
             .article h2 {
                 font-size: 23px;
             }
+
+            .article-content img {
+                max-width: 100%;
+                height: auto;
+            }
         }
     </style>
 </head>
@@ -182,7 +187,7 @@ const RAW_BASE =
 
 function escapeHtml(text) {
 
-    return text
+    return String(text)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
@@ -246,7 +251,6 @@ function parseFrontMatter(markdown) {
     });
 
     return result;
-
 }
 
 
@@ -274,24 +278,32 @@ function formatDate(dateString) {
 /*
  * Markdown → HTML
  *
- * 特別處理：
- * CMS 的 richtext 會直接產生 <img ...> HTML。
- * 如果先 escapeHtml()，圖片就會變成文字。
+ * 這裡特別處理 CMS 產生的 <img>。
  *
- * 所以先把真正的 img 標籤暫存，
- * 其他文字再正常 escape。
+ * 做法：
+ * 1. 先把所有圖片標籤抓出來
+ * 2. 用安全代號暫存
+ * 3. 其他文字正常 escape
+ * 4. 最後把圖片 HTML 放回原位
  */
 
 function markdownToHtml(markdown) {
 
-    const imageBlocks = [];
+    const images = [];
 
-    let workingText = markdown.replace(
+    const IMAGE_TOKEN = "___GOODLUCK_IMAGE_";
+
+
+    /*
+     * 先抓 CMS 產生的 img
+     */
+
+    let text = markdown.replace(
         /<img\b([^>]*)>/gi,
         function(match, attributes) {
 
             const srcMatch = attributes.match(
-                /\bsrc\s*=\s*["']([^"']*)["']/i
+                /\bsrc\s*=\s*["']([^"']+)["']/i
             );
 
             if (!srcMatch) {
@@ -310,40 +322,47 @@ function markdownToHtml(markdown) {
                 /\bstyle\s*=\s*["']([^"']*)["']/i
             );
 
-            const src = escapeHtml(srcMatch[1]);
-            const alt = escapeHtml(
-                altMatch ? altMatch[1] : ""
-            );
-            const title = escapeHtml(
-                titleMatch ? titleMatch[1] : ""
-            );
-            const style = escapeHtml(
+
+            const src = srcMatch[1];
+
+            const alt =
+                altMatch
+                ? altMatch[1]
+                : "";
+
+            const title =
+                titleMatch
+                ? titleMatch[1]
+                : "";
+
+            const style =
                 styleMatch
-                    ? styleMatch[1]
-                    : "max-width:100%;height:auto;"
-            );
+                ? styleMatch[1]
+                : "max-width:100%;height:auto;";
 
-            const index = imageBlocks.length;
 
-            imageBlocks.push(
-                '<img src="' +
-                src +
-                '" alt="' +
-                alt +
-                '" title="' +
-                title +
-                '" style="' +
-                style +
-                '">'
-            );
+            const index = images.length;
 
-            return "\n\n@@IMAGE_" + index + "@@\n\n";
+
+            images.push({
+                src: src,
+                alt: alt,
+                title: title,
+                style: style
+            });
+
+
+            return IMAGE_TOKEN + index + "___";
 
         }
     );
 
 
-    let text = escapeHtml(workingText);
+    /*
+     * 現在才 escape 一般文字
+     */
+
+    text = escapeHtml(text);
 
 
     /*
@@ -406,35 +425,7 @@ function markdownToHtml(markdown) {
         .filter(block => block !== "");
 
 
-    return blocks.map(block => {
-
-        /*
-         * 還原 CMS 的圖片
-         */
-
-        const imageMatch = block.match(
-            /^@@IMAGE_(\d+)@@$/
-        );
-
-        if (imageMatch) {
-
-            const index = parseInt(
-                imageMatch[1],
-                10
-            );
-
-            if (
-                imageBlocks[index]
-            ) {
-                return imageBlocks[index];
-            }
-
-        }
-
-
-        /*
-         * 已經是 HTML 區塊的內容
-         */
+    let html = blocks.map(block => {
 
         if (
             block.startsWith("<h1>") ||
@@ -445,7 +436,6 @@ function markdownToHtml(markdown) {
             return block;
         }
 
-
         return (
             "<p>" +
             block.replace(/\n/g, "<br>") +
@@ -453,6 +443,42 @@ function markdownToHtml(markdown) {
         );
 
     }).join("\n");
+
+
+    /*
+     * 最後才把 CMS 圖片放回去
+     */
+
+    images.forEach((image, index) => {
+
+        const safeSrc = escapeHtml(image.src);
+        const safeAlt = escapeHtml(image.alt);
+        const safeTitle = escapeHtml(image.title);
+        const safeStyle = escapeHtml(image.style);
+
+
+        const imageHtml =
+            '<img src="' +
+            safeSrc +
+            '" alt="' +
+            safeAlt +
+            '" title="' +
+            safeTitle +
+            '" style="' +
+            safeStyle +
+            '">';
+
+
+        const token =
+            IMAGE_TOKEN + index + "___";
+
+
+        html = html.split(token).join(imageHtml);
+
+    });
+
+
+    return html;
 
 }
 
@@ -524,13 +550,10 @@ async function loadArticles() {
 
 
             /*
-             * 只顯示：
-             * category: story
+             * 只顯示 category: story
              */
 
-            if (
-                article.category !== "story"
-            ) {
+            if (article.category !== "story") {
                 continue;
             }
 
