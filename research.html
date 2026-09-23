@@ -246,6 +246,7 @@ function parseFrontMatter(markdown) {
     });
 
     return result;
+
 }
 
 
@@ -270,14 +271,94 @@ function formatDate(dateString) {
 }
 
 
+/*
+ * Markdown → HTML
+ *
+ * 特別處理：
+ * CMS 的 richtext 會直接產生 <img ...> HTML。
+ * 如果先 escapeHtml()，圖片就會變成文字。
+ *
+ * 所以先把真正的 img 標籤暫存，
+ * 其他文字再正常 escape。
+ */
+
 function markdownToHtml(markdown) {
 
-    let text = escapeHtml(markdown);
+    const imageBlocks = [];
+
+    let workingText = markdown.replace(
+        /<img\b([^>]*)>/gi,
+        function(match, attributes) {
+
+            const srcMatch = attributes.match(
+                /\bsrc\s*=\s*["']([^"']*)["']/i
+            );
+
+            if (!srcMatch) {
+                return match;
+            }
+
+            const altMatch = attributes.match(
+                /\balt\s*=\s*["']([^"']*)["']/i
+            );
+
+            const titleMatch = attributes.match(
+                /\btitle\s*=\s*["']([^"']*)["']/i
+            );
+
+            const styleMatch = attributes.match(
+                /\bstyle\s*=\s*["']([^"']*)["']/i
+            );
+
+            const src = escapeHtml(srcMatch[1]);
+            const alt = escapeHtml(
+                altMatch ? altMatch[1] : ""
+            );
+            const title = escapeHtml(
+                titleMatch ? titleMatch[1] : ""
+            );
+            const style = escapeHtml(
+                styleMatch
+                    ? styleMatch[1]
+                    : "max-width:100%;height:auto;"
+            );
+
+            const index = imageBlocks.length;
+
+            imageBlocks.push(
+                '<img src="' +
+                src +
+                '" alt="' +
+                alt +
+                '" title="' +
+                title +
+                '" style="' +
+                style +
+                '">'
+            );
+
+            return "\n\n@@IMAGE_" + index + "@@\n\n";
+
+        }
+    );
+
+
+    let text = escapeHtml(workingText);
+
+
+    /*
+     * Markdown 圖片
+     */
 
     text = text.replace(
         /!\[([^\]]*)\]\(([^)]+)\)/g,
         '<img src="$2" alt="$1">'
     );
+
+
+    /*
+     * 標題
+     */
 
     text = text.replace(
         /^### (.*)$/gm,
@@ -294,22 +375,66 @@ function markdownToHtml(markdown) {
         "<h1>$1</h1>"
     );
 
+
+    /*
+     * 粗體
+     */
+
     text = text.replace(
         /\*\*(.*?)\*\*/g,
         "<strong>$1</strong>"
     );
+
+
+    /*
+     * 行內程式碼
+     */
 
     text = text.replace(
         /`([^`]+)`/g,
         "<code>$1</code>"
     );
 
+
+    /*
+     * 分段
+     */
+
     const blocks = text
         .split(/\n\s*\n/)
         .map(block => block.trim())
         .filter(block => block !== "");
 
+
     return blocks.map(block => {
+
+        /*
+         * 還原 CMS 的圖片
+         */
+
+        const imageMatch = block.match(
+            /^@@IMAGE_(\d+)@@$/
+        );
+
+        if (imageMatch) {
+
+            const index = parseInt(
+                imageMatch[1],
+                10
+            );
+
+            if (
+                imageBlocks[index]
+            ) {
+                return imageBlocks[index];
+            }
+
+        }
+
+
+        /*
+         * 已經是 HTML 區塊的內容
+         */
 
         if (
             block.startsWith("<h1>") ||
@@ -320,7 +445,12 @@ function markdownToHtml(markdown) {
             return block;
         }
 
-        return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
+
+        return (
+            "<p>" +
+            block.replace(/\n/g, "<br>") +
+            "</p>"
+        );
 
     }).join("\n");
 
@@ -329,22 +459,32 @@ function markdownToHtml(markdown) {
 
 async function loadArticles() {
 
-    const container = document.getElementById("articles");
+    const container =
+        document.getElementById("articles");
 
     try {
 
-        const response = await fetch(API_URL);
+        const response =
+            await fetch(API_URL);
 
         if (!response.ok) {
-            throw new Error("無法取得文章列表");
+            throw new Error(
+                "無法取得文章列表"
+            );
         }
 
-        const files = await response.json();
+        const files =
+            await response.json();
 
-        const markdownFiles = files.filter(file =>
-            file.type === "file" &&
-            file.name.toLowerCase().endsWith(".md")
-        );
+
+        const markdownFiles =
+            files.filter(file =>
+                file.type === "file" &&
+                file.name
+                    .toLowerCase()
+                    .endsWith(".md")
+            );
+
 
         if (markdownFiles.length === 0) {
 
@@ -357,30 +497,43 @@ async function loadArticles() {
             return;
         }
 
+
         const articles = [];
+
 
         for (const file of markdownFiles) {
 
-            const articleResponse = await fetch(
-                RAW_BASE + encodeURIComponent(file.name)
-            );
+            const articleResponse =
+                await fetch(
+                    RAW_BASE +
+                    encodeURIComponent(file.name)
+                );
+
 
             if (!articleResponse.ok) {
                 continue;
             }
 
-            const markdown = await articleResponse.text();
 
-            const article = parseFrontMatter(markdown);
+            const markdown =
+                await articleResponse.text();
+
+
+            const article =
+                parseFrontMatter(markdown);
+
 
             /*
              * 只顯示：
              * category: story
              */
 
-            if (article.category !== "story") {
+            if (
+                article.category !== "story"
+            ) {
                 continue;
             }
+
 
             articles.push({
                 ...article,
@@ -389,10 +542,14 @@ async function loadArticles() {
 
         }
 
+
         articles.sort((a, b) => {
 
-            const dateA = new Date(a.date || 0);
-            const dateB = new Date(b.date || 0);
+            const dateA =
+                new Date(a.date || 0);
+
+            const dateB =
+                new Date(b.date || 0);
 
             return dateB - dateA;
 
@@ -411,27 +568,34 @@ async function loadArticles() {
         }
 
 
-        container.innerHTML = articles.map(article => {
+        container.innerHTML =
+            articles.map(article => {
 
-            return `
-                <article class="article">
+                return `
+                    <article class="article">
 
-                    <h2>${escapeHtml(article.title)}</h2>
+                        <h2>
+                            ${escapeHtml(article.title)}
+                        </h2>
 
-                    ${
-                        article.date
-                        ? `<div class="date">${formatDate(article.date)}</div>`
-                        : ""
-                    }
+                        ${
+                            article.date
+                            ? `
+                                <div class="date">
+                                    ${formatDate(article.date)}
+                                </div>
+                              `
+                            : ""
+                        }
 
-                    <div class="article-content">
-                        ${markdownToHtml(article.body)}
-                    </div>
+                        <div class="article-content">
+                            ${markdownToHtml(article.body)}
+                        </div>
 
-                </article>
-            `;
+                    </article>
+                `;
 
-        }).join("");
+            }).join("");
 
 
     } catch (error) {
