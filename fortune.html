@@ -13,6 +13,27 @@
             --text: #3f3933;
             --muted: #81776d;
             --line: #e7ded2;
+
+            --purple-bg: #f3eff8;
+            --purple-line: #ddd2ea;
+            --purple-accent: #80679b;
+
+            --blue-bg: #eef4f7;
+            --blue-line: #d5e2e8;
+            --blue-accent: #658798;
+
+            --gold-bg: #faf4e7;
+            --gold-line: #eadcbd;
+            --gold-accent: #a1844d;
+
+            --green-bg: #eef5ef;
+            --green-line: #d5e4d7;
+            --green-accent: #68856d;
+
+            --orange-bg: #faf0e8;
+            --orange-line: #ead8c8;
+            --orange-accent: #a8754f;
+
             --accent: #8c6b4d;
         }
 
@@ -72,8 +93,12 @@
         }
 
         .hero-message {
-            background: var(--card);
-            border: 1px solid var(--line);
+            background: linear-gradient(
+                135deg,
+                #f5f0fa 0%,
+                #fffdf9 100%
+            );
+            border: 1px solid var(--purple-line);
             border-radius: 20px;
             padding: 42px 46px;
             margin-bottom: 24px;
@@ -84,21 +109,21 @@
         .hero-message h2 {
             margin: 0 0 20px;
             font-size: 30px;
+            color: #4b4054;
         }
 
         .hero-message p {
             margin: 0;
-            color: #62594f;
+            color: #6f6376;
             font-size: 17px;
         }
 
         .section {
-            background: var(--card);
-            border: 1px solid var(--line);
             border-radius: 20px;
             padding: 42px 46px;
             margin-bottom: 24px;
             box-shadow: 0 6px 20px rgba(70, 55, 40, 0.04);
+            border: 1px solid var(--line);
         }
 
         .section h2 {
@@ -121,15 +146,77 @@
             margin-bottom: 0;
         }
 
+        /* 科學與未知 */
+
+        .section-blue {
+            background: var(--blue-bg);
+            border-color: var(--blue-line);
+        }
+
+        .section-blue h2 {
+            color: #526f7d;
+        }
+
+        /* 占卜工具 */
+
+        .section-gold {
+            background: var(--gold-bg);
+            border-color: var(--gold-line);
+        }
+
+        .section-gold h2 {
+            color: #8d7441;
+        }
+
+        /* 求證 */
+
+        .section-green {
+            background: var(--green-bg);
+            border-color: var(--green-line);
+        }
+
+        .section-green h2 {
+            color: #58735d;
+        }
+
+        /* 不追求二元答案 */
+
+        .section-orange {
+            background: var(--orange-bg);
+            border-color: var(--orange-line);
+        }
+
+        .section-orange h2 {
+            color: #916746;
+        }
+
         .highlight {
             margin: 26px 0;
             padding: 24px 28px;
-            background: #f4eee5;
             border-radius: 14px;
             text-align: center;
-            color: #5d5146;
             font-size: 21px;
             font-weight: 600;
+        }
+
+        .section-blue .highlight {
+            background: rgba(255, 255, 255, 0.58);
+            color: #536f7c;
+        }
+
+        .section-gold .highlight {
+            background: rgba(255, 255, 255, 0.58);
+            color: #806b3e;
+        }
+
+        .section-green .highlight {
+            background: rgba(255, 255, 255, 0.58);
+            color: #59715d;
+        }
+
+        .section-orange .highlight {
+            background: rgba(255, 255, 255, 0.58);
+            color: #8b6346;
         }
 
         .questions {
@@ -141,8 +228,8 @@
 
         .question {
             padding: 22px 24px;
-            background: #faf6f0;
-            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.62);
+            border: 1px solid rgba(120, 105, 90, 0.13);
             border-radius: 14px;
             color: #62594f;
             font-size: 16px;
@@ -164,8 +251,8 @@
         .step {
             text-align: center;
             padding: 24px 16px;
-            background: #faf6f0;
-            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.62);
+            border: 1px solid rgba(105, 125, 110, 0.16);
             border-radius: 14px;
         }
 
@@ -190,12 +277,13 @@
             margin-top: 24px;
             padding: 34px 38px;
             border-left: 4px solid var(--accent);
-            background: rgba(255, 253, 249, 0.75);
+            background: rgba(255, 253, 249, 0.85);
             border-radius: 0 16px 16px 0;
             color: #5d5146;
             font-size: 22px;
             font-weight: 600;
             text-align: center;
+            box-shadow: 0 6px 18px rgba(70, 55, 40, 0.03);
         }
 
         .ending {
@@ -207,6 +295,7 @@
             color: #62594f;
             font-size: 17px;
             text-align: center;
+            box-shadow: 0 6px 20px rgba(70, 55, 40, 0.04);
         }
 
         .ending strong {
@@ -282,11 +371,12 @@
 
 <main>
 
-    <!-- 核心理念 -->
-
     <section class="hero-message">
 
-        <h2>我們不是要你相信玄學，<br>我們想和你一起研究玄學。</h2>
+        <h2>
+            我們不是要你相信玄學，<br>
+            我們想和你一起研究玄學。
+        </h2>
 
         <p>
             占卜不是替你決定答案，
@@ -296,9 +386,7 @@
     </section>
 
 
-    <!-- 科學與未知 -->
-
-    <section class="section">
+    <section class="section section-blue">
 
         <h2>科學的盡頭，是玄學？</h2>
 
@@ -351,9 +439,7 @@
     </section>
 
 
-    <!-- 占卜到底是什麼 -->
-
-    <section class="section">
+    <section class="section section-gold">
 
         <h2>占卜，到底是在做什麼？</h2>
 
@@ -422,9 +508,7 @@
     </section>
 
 
-    <!-- 求證 -->
-
-    <section class="section">
+    <section class="section section-green">
 
         <h2>🔎 我們的占卜，講究「求證」</h2>
 
@@ -512,9 +596,7 @@
     </section>
 
 
-    <!-- 不追求二元答案 -->
-
-    <section class="section">
+    <section class="section section-orange">
 
         <h2>我們不追求「好不好」的答案</h2>
 
@@ -589,8 +671,6 @@
 
     </section>
 
-
-    <!-- 結尾 -->
 
     <div class="quote">
         占卜最大的意義，是看見更多選擇。
