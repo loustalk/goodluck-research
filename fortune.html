@@ -10,31 +10,34 @@
         :root {
             --bg: #f7f3ec;
             --card: #fffdf9;
-            --text: #3f3933;
-            --muted: #81776d;
+            --text: #4a4038;
+            --subtext: #70665d;
             --line: #e7ded2;
 
-            --purple-bg: #f3eff8;
-            --purple-line: #ddd2ea;
-            --purple-accent: #80679b;
+            --purple-bg: #f7f1fb;
+            --purple-line: #dfd0ec;
+            --purple-icon: #eee4f6;
+            --purple-text: #8060a0;
 
-            --blue-bg: #eef4f7;
-            --blue-line: #d5e2e8;
-            --blue-accent: #658798;
+            --blue-bg: #f0f6fa;
+            --blue-line: #d4e2ea;
+            --blue-icon: #e1edf3;
+            --blue-text: #587d91;
 
-            --gold-bg: #faf4e7;
-            --gold-line: #eadcbd;
-            --gold-accent: #a1844d;
+            --gold-bg: #fcf6e9;
+            --gold-line: #eadbb9;
+            --gold-icon: #f6e9c9;
+            --gold-text: #a17d3e;
 
-            --green-bg: #eef5ef;
+            --green-bg: #f0f7f1;
             --green-line: #d5e4d7;
-            --green-accent: #68856d;
+            --green-icon: #dfede1;
+            --green-text: #5f8067;
 
-            --orange-bg: #faf0e8;
+            --orange-bg: #faf1e9;
             --orange-line: #ead8c8;
-            --orange-accent: #a8754f;
-
-            --accent: #8c6b4d;
+            --orange-icon: #f4e1d1;
+            --orange-text: #a8754f;
         }
 
         * {
@@ -43,203 +46,333 @@
 
         body {
             margin: 0;
+            background: var(--bg);
+            color: var(--text);
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
                 "Noto Sans TC",
                 "Microsoft JhengHei",
                 sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.9;
+            line-height: 1.8;
         }
 
-        header {
-            padding: 72px 20px 58px;
-            text-align: center;
+        a {
+            color: inherit;
         }
 
-        header h1 {
-            margin: 0 0 14px;
-            font-size: 42px;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 18px;
-        }
-
-        .back {
-            max-width: 1080px;
-            margin: 0 auto 28px;
-            padding: 0 24px;
-        }
-
-        .back a {
-            color: #6f6257;
-            text-decoration: none;
-        }
-
-        .back a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            max-width: 1080px;
+        .page {
+            width: min(1100px, calc(100% - 36px));
             margin: 0 auto;
-            padding: 0 24px 70px;
+            padding: 50px 0 80px;
+        }
+
+        /* =========================
+           Hero
+        ========================= */
+
+        .hero {
+            position: relative;
+            padding: 62px 50px;
+            margin-bottom: 28px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 8px 28px rgba(70, 55, 40, 0.045);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "🔮";
+            display: block;
+            margin-bottom: 12px;
+            font-size: 42px;
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(32px, 5vw, 48px);
+            letter-spacing: 0.04em;
+        }
+
+        .hero .subtitle {
+            margin: 0;
+            color: var(--subtext);
+            font-size: 17px;
         }
 
         .hero-message {
-            background: linear-gradient(
-                135deg,
-                #f5f0fa 0%,
-                #fffdf9 100%
-            );
+            max-width: 780px;
+            margin: 34px auto 0;
+            padding: 28px 32px;
+            background: var(--purple-bg);
             border: 1px solid var(--purple-line);
             border-radius: 20px;
-            padding: 42px 46px;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 24px rgba(70, 55, 40, 0.05);
-            text-align: center;
         }
 
-        .hero-message h2 {
-            margin: 0 0 20px;
-            font-size: 30px;
-            color: #4b4054;
+        .hero-message strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--purple-text);
+            font-size: clamp(22px, 3vw, 30px);
         }
 
-        .hero-message p {
-            margin: 0;
-            color: #6f6376;
-            font-size: 17px;
+        .hero-message span {
+            color: var(--subtext);
+            font-size: 16px;
         }
 
-        .section {
-            border-radius: 20px;
-            padding: 42px 46px;
-            margin-bottom: 24px;
-            box-shadow: 0 6px 20px rgba(70, 55, 40, 0.04);
+        /* =========================
+           Section
+        ========================= */
+
+        section {
+            margin-bottom: 28px;
+            padding: 42px 42px;
+            background: var(--card);
             border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 6px 22px rgba(70, 55, 40, 0.035);
         }
 
-        .section h2 {
-            margin: 0 0 20px;
-            font-size: 28px;
+        section h2 {
+            margin: 0 0 24px;
+            font-size: clamp(25px, 4vw, 32px);
+            letter-spacing: 0.02em;
         }
 
-        .section h3 {
-            margin: 30px 0 12px;
-            font-size: 22px;
+        section h2::first-letter {
+            font-size: 1.05em;
         }
 
-        .section p {
+        section p {
             margin: 0 0 18px;
-            color: #62594f;
-            font-size: 17px;
+            color: var(--subtext);
+            font-size: 16px;
         }
 
-        .section p:last-child {
+        section p:last-child {
             margin-bottom: 0;
         }
 
-        /* 科學與未知 */
-
-        .section-blue {
-            background: var(--blue-bg);
-            border-color: var(--blue-line);
+        .intro {
+            font-size: 18px;
+            color: var(--text);
         }
 
-        .section-blue h2 {
-            color: #526f7d;
-        }
-
-        /* 占卜工具 */
-
-        .section-gold {
-            background: var(--gold-bg);
-            border-color: var(--gold-line);
-        }
-
-        .section-gold h2 {
-            color: #8d7441;
-        }
-
-        /* 求證 */
-
-        .section-green {
-            background: var(--green-bg);
-            border-color: var(--green-line);
-        }
-
-        .section-green h2 {
-            color: #58735d;
-        }
-
-        /* 不追求二元答案 */
-
-        .section-orange {
-            background: var(--orange-bg);
-            border-color: var(--orange-line);
-        }
-
-        .section-orange h2 {
-            color: #916746;
-        }
+        /* =========================
+           Highlight
+        ========================= */
 
         .highlight {
-            margin: 26px 0;
-            padding: 24px 28px;
-            border-radius: 14px;
+            position: relative;
+            margin: 28px 0;
+            padding: 28px 52px;
+            border-radius: 20px;
             text-align: center;
-            font-size: 21px;
+            font-size: 20px;
             font-weight: 600;
+            overflow: hidden;
         }
 
-        .section-blue .highlight {
-            background: rgba(255, 255, 255, 0.58);
-            color: #536f7c;
+        .highlight::before {
+            content: "✦";
+            position: absolute;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            opacity: 0.45;
         }
 
-        .section-gold .highlight {
-            background: rgba(255, 255, 255, 0.58);
-            color: #806b3e;
+        .highlight::after {
+            content: "✦";
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            opacity: 0.35;
         }
 
-        .section-green .highlight {
-            background: rgba(255, 255, 255, 0.58);
-            color: #59715d;
+        .highlight-purple {
+            background: var(--purple-bg);
+            border: 1px solid var(--purple-line);
+            color: var(--purple-text);
         }
 
-        .section-orange .highlight {
-            background: rgba(255, 255, 255, 0.58);
-            color: #8b6346;
+        .highlight-blue {
+            background: var(--blue-bg);
+            border: 1px solid var(--blue-line);
+            color: var(--blue-text);
         }
+
+        .highlight-gold {
+            background: var(--gold-bg);
+            border: 1px solid var(--gold-line);
+            color: var(--gold-text);
+        }
+
+        .highlight-green {
+            background: var(--green-bg);
+            border: 1px solid var(--green-line);
+            color: var(--green-text);
+        }
+
+        .highlight-orange {
+            background: var(--orange-bg);
+            border: 1px solid var(--orange-line);
+            color: var(--orange-text);
+        }
+
+        /* =========================
+           Question Cards
+        ========================= */
 
         .questions {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            gap: 18px;
             margin-top: 24px;
         }
 
         .question {
-            padding: 22px 24px;
-            background: rgba(255, 255, 255, 0.62);
-            border: 1px solid rgba(120, 105, 90, 0.13);
-            border-radius: 14px;
-            color: #62594f;
-            font-size: 16px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 132px;
+            padding: 24px 26px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 9px 22px rgba(70, 55, 40, 0.08);
+        }
+
+        .question::after {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            right: -28px;
+            bottom: -35px;
+            border-radius: 50%;
+            opacity: 0.38;
+        }
+
+        .question-icon {
+            position: relative;
+            z-index: 2;
+            flex: 0 0 60px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            border-radius: 50%;
+            font-size: 28px;
+        }
+
+        .question-content {
+            position: relative;
+            z-index: 2;
         }
 
         .question strong {
             display: block;
             margin-bottom: 6px;
             color: var(--text);
+            font-size: 19px;
         }
+
+        .question span {
+            display: block;
+            color: #62594f;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .question-purple {
+            background: var(--purple-bg);
+            border-color: var(--purple-line);
+        }
+
+        .question-purple .question-icon {
+            background: var(--purple-icon);
+            color: var(--purple-text);
+        }
+
+        .question-purple::after {
+            background: #e7d8f2;
+        }
+
+        .question-blue {
+            background: var(--blue-bg);
+            border-color: var(--blue-line);
+        }
+
+        .question-blue .question-icon {
+            background: var(--blue-icon);
+            color: var(--blue-text);
+        }
+
+        .question-blue::after {
+            background: #d7e8f0;
+        }
+
+        .question-gold {
+            background: var(--gold-bg);
+            border-color: var(--gold-line);
+        }
+
+        .question-gold .question-icon {
+            background: var(--gold-icon);
+            color: var(--gold-text);
+        }
+
+        .question-gold::after {
+            background: #f1dfb5;
+        }
+
+        .question-green {
+            background: var(--green-bg);
+            border-color: var(--green-line);
+        }
+
+        .question-green .question-icon {
+            background: var(--green-icon);
+            color: var(--green-text);
+        }
+
+        .question-green::after {
+            background: #d6e8d9;
+        }
+
+        .question-orange {
+            background: var(--orange-bg);
+            border-color: var(--orange-line);
+        }
+
+        .question-orange .question-icon {
+            background: var(--orange-icon);
+            color: var(--orange-text);
+        }
+
+        .question-orange::after {
+            background: #eed4bf;
+        }
+
+        /* =========================
+           Process
+        ========================= */
 
         .process {
             display: grid;
@@ -249,16 +382,32 @@
         }
 
         .step {
+            position: relative;
+            padding: 26px 18px;
             text-align: center;
-            padding: 24px 16px;
-            background: rgba(255, 255, 255, 0.62);
-            border: 1px solid rgba(105, 125, 110, 0.16);
-            border-radius: 14px;
+            border-radius: 18px;
+            border: 1px solid;
+            overflow: hidden;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(70, 55, 40, 0.07);
         }
 
         .step .number {
-            font-size: 26px;
-            margin-bottom: 8px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            font-size: 21px;
+            font-weight: 600;
         }
 
         .step h3 {
@@ -268,80 +417,208 @@
 
         .step p {
             margin: 0;
-            color: var(--muted);
             font-size: 14px;
             line-height: 1.7;
         }
 
+        .step-purple {
+            background: var(--purple-bg);
+            border-color: var(--purple-line);
+        }
+
+        .step-purple .number {
+            background: var(--purple-icon);
+            color: var(--purple-text);
+        }
+
+        .step-blue {
+            background: var(--blue-bg);
+            border-color: var(--blue-line);
+        }
+
+        .step-blue .number {
+            background: var(--blue-icon);
+            color: var(--blue-text);
+        }
+
+        .step-gold {
+            background: var(--gold-bg);
+            border-color: var(--gold-line);
+        }
+
+        .step-gold .number {
+            background: var(--gold-icon);
+            color: var(--gold-text);
+        }
+
+        .step-green {
+            background: var(--green-bg);
+            border-color: var(--green-line);
+        }
+
+        .step-green .number {
+            background: var(--green-icon);
+            color: var(--green-text);
+        }
+
+        /* =========================
+           Quote
+        ========================= */
+
         .quote {
-            margin-top: 24px;
-            padding: 34px 38px;
-            border-left: 4px solid var(--accent);
-            background: rgba(255, 253, 249, 0.85);
-            border-radius: 0 16px 16px 0;
+            position: relative;
+            margin-top: 26px;
+            padding: 36px 44px;
+            background: #faf6ee;
+            border: 1px solid #e6d9c6;
+            border-left: 5px solid #9a7652;
+            border-radius: 18px;
             color: #5d5146;
             font-size: 22px;
             font-weight: 600;
             text-align: center;
-            box-shadow: 0 6px 18px rgba(70, 55, 40, 0.03);
+            box-shadow: 0 6px 18px rgba(70, 55, 40, 0.04);
         }
 
+        .quote::before {
+            content: "✦";
+            display: block;
+            margin-bottom: 5px;
+            color: #a1845f;
+            font-size: 20px;
+        }
+
+        /* =========================
+           Ending
+        ========================= */
+
         .ending {
-            margin-top: 24px;
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 36px 42px;
+            position: relative;
+            margin-top: 26px;
+            padding: 38px 42px;
+            background: #fffaf2;
+            border: 1px solid #eadcc7;
+            border-radius: 20px;
             color: #62594f;
             font-size: 17px;
             text-align: center;
             box-shadow: 0 6px 20px rgba(70, 55, 40, 0.04);
         }
 
-        .ending strong {
-            color: var(--text);
+        .ending::before {
+            content: "🔮";
+            display: block;
+            margin-bottom: 12px;
+            font-size: 30px;
         }
 
-        footer {
-            text-align: center;
-            padding: 35px 20px 55px;
-            color: #978b7e;
-            font-size: 14px;
+        .ending strong {
+            color: #4a4038;
         }
+
+        .ending-main {
+            display: block;
+            margin: 22px 0;
+            color: var(--purple-text);
+            font-size: 23px;
+        }
+
+        /* =========================
+           Footer
+        ========================= */
+
+        .back {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            text-decoration: none;
+            color: var(--subtext);
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .back a:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           Mobile
+        ========================= */
 
         @media (max-width: 760px) {
 
-            header {
-                padding: 52px 18px 42px;
+            .page {
+                width: min(100% - 22px, 1100px);
+                padding: 28px 0 50px;
             }
 
-            header h1 {
-                font-size: 32px;
+            .hero {
+                padding: 42px 22px;
+                border-radius: 22px;
             }
 
-            header p {
-                font-size: 16px;
+            .hero-message {
+                padding: 22px 18px;
             }
 
-            .back,
-            main {
-                padding-left: 16px;
-                padding-right: 16px;
+            section {
+                padding: 30px 20px;
+                border-radius: 20px;
             }
 
-            .hero-message,
-            .section {
-                padding: 30px 24px;
+            .questions {
+                grid-template-columns: 1fr;
             }
 
-            .questions,
+            .question {
+                min-height: 118px;
+                padding: 20px;
+            }
+
+            .question-icon {
+                flex-basis: 54px;
+                width: 54px;
+                height: 54px;
+                margin-right: 16px;
+                font-size: 25px;
+            }
+
+            .question strong {
+                font-size: 18px;
+            }
+
+            .question span {
+                font-size: 14px;
+            }
+
             .process {
                 grid-template-columns: 1fr;
             }
 
+            .step {
+                padding: 22px 18px;
+            }
+
             .highlight {
-                padding: 22px 20px;
-                font-size: 19px;
+                padding: 22px 42px;
+                font-size: 18px;
+            }
+
+            .highlight::before {
+                left: 14px;
+            }
+
+            .highlight::after {
+                right: 14px;
             }
 
             .quote {
@@ -350,7 +627,11 @@
             }
 
             .ending {
-                padding: 28px 24px;
+                padding: 30px 24px;
+            }
+
+            .ending-main {
+                font-size: 20px;
             }
         }
     </style>
@@ -358,94 +639,88 @@
 
 <body>
 
-<header>
-    <h1>🔮 占卜研究室</h1>
-    <p>從未知出發，透過工具、分析與求證，看見更多可能。</p>
-</header>
+<div class="page">
 
+    <!-- =========================
+         Hero
+    ========================= -->
 
-<div class="back">
-    <a href="index.html">← 回到好運研究所</a>
-</div>
+    <header class="hero">
 
+        <h1>占卜研究室</h1>
 
-<main>
-
-    <section class="hero-message">
-
-        <h2>
-            我們不是要你相信玄學，<br>
-            我們想和你一起研究玄學。
-        </h2>
-
-        <p>
-            占卜不是替你決定答案，
-            而是幫助你看見答案之外，還有哪些可能。
+        <p class="subtitle">
+            從未知出發，透過工具、分析與求證，看見更多可能。
         </p>
 
-    </section>
+        <div class="hero-message">
+            <strong>我們不是要你相信玄學，<br>我們想和你一起研究玄學。</strong>
+
+            <span>
+                占卜不是替你決定答案，而是幫助你看見答案之外，還有哪些可能。
+            </span>
+        </div>
+
+    </header>
 
 
-    <section class="section section-blue">
+    <!-- =========================
+         科學的盡頭，是玄學？
+    ========================= -->
 
-        <h2>科學的盡頭，是玄學？</h2>
+    <section>
+
+        <h2>🔬 科學的盡頭，是玄學？</h2>
 
         <p>
-            「科學的盡頭，是玄學。」
-            這句話，在現代社會經常被人提起。
+            「科學的盡頭，是玄學。」這句話，在現代社會經常被人提起。
         </p>
 
         <p>
-            但在好運研究所，我們所理解的玄學，
-            並不是用來解釋科學尚未證明的答案，
-            也不是拿玄學取代科學。
+            但在好運研究所，我們所理解的玄學，並不是用來解釋科學尚未證明的答案，也不是拿玄學取代科學。
         </p>
 
         <p>
             我們更想研究的是另一個問題：
         </p>
 
-        <div class="highlight">
-            如果人類目前稱為「玄學」的現象，
-            其實只是尚未被我們真正理解的未知領域呢？
+        <div class="highlight highlight-purple">
+            如果人類目前稱為「玄學」的現象，其實只是尚未被我們真正理解的未知領域呢？
         </div>
 
         <p>
-            當科學不斷往前發展，
-            我們也會逐漸碰到許多目前仍然無法完整解釋的現象。
+            當科學不斷往前發展，我們也會逐漸碰到許多目前仍然無法完整解釋的現象。
         </p>
 
         <p>
-            這些未知，不代表它們不存在；
-            同樣地，也不能因為我們目前無法解釋，
-            就直接把它們當成真理。
+            這些未知，不代表它們不存在；同樣地，也不能因為我們目前無法解釋，就直接把它們當成真理。
         </p>
+
+        <div class="highlight highlight-blue">
+            <strong>我們認為，玄學可能是人類尚待開發與研究的一個新科學領域。</strong>
+        </div>
 
         <p>
-            <strong>
-                我們認為，玄學可能是人類尚待開發與研究的一個新科學領域。
-            </strong>
+            因此，我們不是要用玄學去解釋科學。我們想做的，是反過來：
         </p>
 
-        <p>
-            因此，我們不是要用玄學去解釋科學。
-            我們想做的，是反過來：
-        </p>
-
-        <div class="highlight">
+        <div class="highlight highlight-purple">
             把玄學當成一個值得研究的未知領域。
         </div>
 
     </section>
 
 
-    <section class="section section-gold">
+    <!-- =========================
+         占卜到底在做什麼
+    ========================= -->
 
-        <h2>占卜，到底是在做什麼？</h2>
+    <section>
+
+        <h2>🔮 占卜，到底是在做什麼？</h2>
 
         <p>
-            占卜真正的用意，是透過不同的工具，
-            與我們所相信的高等靈性或能量進行溝通與學習。
+            占卜真正的用意，是透過不同的工具，與我們所相信的高等靈性或能量進行溝通與學習。
         </p>
 
         <p>
@@ -453,62 +728,69 @@
         </p>
 
         <p>
-            可能是牌卡、龜甲、樹枝、易經，
-            也可能是其他不同文化與傳承所留下來的工具。
+            可能是牌卡、龜甲、樹枝、易經，也可能是其他不同文化與傳承所留下來的工具。
         </p>
+
+        <div class="highlight highlight-gold">
+            工具本身只是媒介。
+        </div>
 
         <p>
-            <strong>工具本身只是媒介。</strong>
+            真正重要的，是我們透過工具取得資訊之後，如何理解這些資訊。
         </p>
 
-        <p>
-            真正重要的，是我們透過工具取得資訊之後，
-            如何理解這些資訊。
-        </p>
-
-        <div class="highlight">
+        <div class="highlight highlight-blue">
             真正的占卜，不是叫你盲目相信自己所看到的內容。
         </div>
 
-        <p>
-            相反地，我們更重視的是：
-        </p>
-
         <div class="questions">
 
-            <div class="question">
-                <strong>這個答案合理嗎？</strong>
-                它是否符合目前的實際狀況？
+            <div class="question question-purple">
+                <div class="question-icon">🔍</div>
+                <div class="question-content">
+                    <strong>這個答案合理嗎？</strong>
+                    <span>它是否符合目前的實際狀況？</span>
+                </div>
             </div>
 
-            <div class="question">
-                <strong>它有邏輯嗎？</strong>
-                前後的因果關係是否能夠成立？
+            <div class="question question-blue">
+                <div class="question-icon">🧠</div>
+                <div class="question-content">
+                    <strong>它有邏輯嗎？</strong>
+                    <span>前後的因果關係是否能夠成立？</span>
+                </div>
             </div>
 
-            <div class="question">
-                <strong>它真的可行嗎？</strong>
-                得到的方向是否能夠實際執行？
+            <div class="question question-gold">
+                <div class="question-icon">🎯</div>
+                <div class="question-content">
+                    <strong>它真的可行嗎？</strong>
+                    <span>得到的方向是否能夠實際執行？</span>
+                </div>
             </div>
 
-            <div class="question">
-                <strong>有什麼需要注意？</strong>
-                過程中是否存在容易忽略的問題？
+            <div class="question question-green">
+                <div class="question-icon">⚠️</div>
+                <div class="question-content">
+                    <strong>有什麼需要注意？</strong>
+                    <span>過程中是否存在容易忽略的問題？</span>
+                </div>
             </div>
 
         </div>
 
-        <p style="margin-top: 26px;">
-            我們希望透過理性、邏輯與實際狀況的分析，
-            去理解占卜得到的資訊，
-            而不是因為「牌這樣說了」，
-            就直接把它當成最後答案。
+        <p style="margin-top: 24px;">
+            我們希望透過理性、邏輯與實際狀況的分析，去理解占卜得到的資訊，而不是因為「牌這樣說了」，就直接把它當成最後答案。
         </p>
 
     </section>
 
 
-    <section class="section section-green">
+    <!-- =========================
+         求證
+    ========================= -->
+
+    <section>
 
         <h2>🔎 我們的占卜，講究「求證」</h2>
 
@@ -517,88 +799,95 @@
         </p>
 
         <p>
-            每一次抽出牌卡、得到答案之後，
-            我們都需要透過不斷地與當事人交互詢問，
-            去研判這個答案是否符合他的實際狀況。
+            每一次抽出牌卡、得到答案之後，我們都需要透過不斷地與當事人交互詢問，去研判這個答案是否符合他的實際狀況。
         </p>
 
         <p>
-            有時候，一張牌看起來有一個很明確的意思。
-            但真正放進一個人的人生裡，
-            事情可能完全不是那麼簡單。
+            有時候，一張牌看起來有一個很明確的意思。但真正放進一個人的人生裡，事情可能完全不是那麼簡單。
         </p>
 
         <div class="process">
 
-            <div class="step">
+            <div class="step step-purple">
                 <div class="number">①</div>
                 <h3>取得資訊</h3>
-                <p>
-                    透過占卜工具取得訊息。
-                </p>
+                <p>透過占卜工具取得訊息。</p>
             </div>
 
-            <div class="step">
+            <div class="step step-blue">
                 <div class="number">②</div>
                 <h3>觀察分析</h3>
-                <p>
-                    分析訊息與問題之間的關係。
-                </p>
+                <p>分析訊息與問題之間的關係。</p>
             </div>
 
-            <div class="step">
+            <div class="step step-gold">
                 <div class="number">③</div>
                 <h3>交互確認</h3>
-                <p>
-                    與當事人持續詢問與確認。
-                </p>
+                <p>與當事人持續詢問與確認。</p>
             </div>
 
-            <div class="step">
+            <div class="step step-green">
                 <div class="number">④</div>
                 <h3>重新理解</h3>
-                <p>
-                    找出可能的方向與需要注意的地方。
-                </p>
+                <p>找出可能的方向與需要注意的地方。</p>
             </div>
 
         </div>
 
-        <p style="margin-top: 28px;">
+        <p style="margin-top: 30px;">
             因此，我們會不斷確認：
         </p>
 
         <div class="questions">
 
-            <div class="question">
-                <strong>這個訊息，真的符合現在的狀況嗎？</strong>
+            <div class="question question-purple">
+                <div class="question-icon">✓</div>
+                <div class="question-content">
+                    <strong>真的符合嗎？</strong>
+                    <span>這個訊息，真的符合現在的狀況嗎？</span>
+                </div>
             </div>
 
-            <div class="question">
-                <strong>我們是不是漏掉了什麼？</strong>
+            <div class="question question-blue">
+                <div class="question-icon">🧩</div>
+                <div class="question-content">
+                    <strong>是不是漏掉什麼？</strong>
+                    <span>我們是不是漏掉了什麼重要資訊？</span>
+                </div>
             </div>
 
-            <div class="question">
-                <strong>還有沒有其他可能？</strong>
+            <div class="question question-gold">
+                <div class="question-icon">💡</div>
+                <div class="question-content">
+                    <strong>還有其他可能嗎？</strong>
+                    <span>除了眼前的答案，還有沒有其他可能？</span>
+                </div>
             </div>
 
-            <div class="question">
-                <strong>這個答案對當事人真的有幫助嗎？</strong>
+            <div class="question question-green">
+                <div class="question-icon">🤝</div>
+                <div class="question-content">
+                    <strong>真的有幫助嗎？</strong>
+                    <span>這個答案對當事人真的有幫助嗎？</span>
+                </div>
             </div>
 
         </div>
 
-        <p style="margin-top: 26px;">
-            如果答案經不起這些檢驗，
-            我們就不應該急著把它當成真相。
-        </p>
+        <div class="highlight highlight-green">
+            如果答案經不起這些檢驗，我們就不應該急著把它當成真相。
+        </div>
 
     </section>
 
 
-    <section class="section section-orange">
+    <!-- =========================
+         不追求二元答案
+    ========================= -->
 
-        <h2>我們不追求「好不好」的答案</h2>
+    <section>
+
+        <h2>🧭 我們不追求「好不好」的答案</h2>
 
         <p>
             很多人來占卜，會希望得到一個很簡單的答案：
@@ -606,123 +895,155 @@
 
         <div class="questions">
 
-            <div class="question">
-                <strong>「這件事情好不好？」</strong>
+            <div class="question question-purple">
+                <div class="question-icon">❓</div>
+                <div class="question-content">
+                    <strong>這件事情好不好？</strong>
+                    <span>希望得到一個簡單明確的答案。</span>
+                </div>
             </div>
 
-            <div class="question">
-                <strong>「這個人適不適合我？」</strong>
+            <div class="question question-blue">
+                <div class="question-icon">💞</div>
+                <div class="question-content">
+                    <strong>這個人適不適合我？</strong>
+                    <span>希望快速判斷一段關係。</span>
+                </div>
             </div>
 
-            <div class="question">
-                <strong>「我要不要做？」</strong>
+            <div class="question question-gold">
+                <div class="question-icon">🚪</div>
+                <div class="question-content">
+                    <strong>我要不要做？</strong>
+                    <span>希望有人替自己做出選擇。</span>
+                </div>
             </div>
 
-            <div class="question">
-                <strong>「會不會成功？」</strong>
-            </div>
-
-        </div>
-
-        <p style="margin-top: 26px;">
-            但人生往往沒有這麼簡單。
-        </p>
-
-        <p>
-            因此，我們的占卜，不研究單純的
-            「好不好」、「適不適合」這種二元結論。
-        </p>
-
-        <div class="highlight">
-            我們更想知道的是：
-        </div>
-
-        <div class="questions">
-
-            <div class="question">
-                <strong>如果我想完成這件事情，我需要注意什麼？</strong>
-            </div>
-
-            <div class="question">
-                <strong>目前最大的問題在哪裡？</strong>
-            </div>
-
-            <div class="question">
-                <strong>我還有哪些選擇？</strong>
-            </div>
-
-            <div class="question">
-                <strong>我可以怎麼調整，讓事情有更好的機會發展？</strong>
+            <div class="question question-green">
+                <div class="question-icon">🌱</div>
+                <div class="question-content">
+                    <strong>會不會成功？</strong>
+                    <span>希望提前知道最後的結果。</span>
+                </div>
             </div>
 
         </div>
 
         <p style="margin-top: 28px;">
-            因為占卜真正能帶來的價值，
-            不應該只是告訴你一個結果。
+            但人生往往沒有這麼簡單。
         </p>
 
         <p>
-            而是幫助你看見：
-            <strong>
-                結果背後的原因、目前的狀況，以及你還能做出的選擇。
-            </strong>
+            因此，我們的占卜，不研究單純的「好不好」、「適不適合」這種二元結論。
         </p>
+
+        <div class="highlight highlight-orange">
+            我們更想知道的是：
+        </div>
+
+        <div class="questions">
+
+            <div class="question question-purple">
+                <div class="question-icon">👀</div>
+                <div class="question-content">
+                    <strong>我需要注意什麼？</strong>
+                    <span>如果我想完成這件事情，我需要注意什麼？</span>
+                </div>
+            </div>
+
+            <div class="question question-blue">
+                <div class="question-icon">🔎</div>
+                <div class="question-content">
+                    <strong>最大的問題在哪裡？</strong>
+                    <span>目前最大的問題與阻礙在哪裡？</span>
+                </div>
+            </div>
+
+            <div class="question question-gold">
+                <div class="question-icon">🧭</div>
+                <div class="question-content">
+                    <strong>我還有哪些選擇？</strong>
+                    <span>除了現在的道路，還有哪些可能？</span>
+                </div>
+            </div>
+
+            <div class="question question-green">
+                <div class="question-icon">🔧</div>
+                <div class="question-content">
+                    <strong>我可以怎麼調整？</strong>
+                    <span>如何調整，讓事情有更好的機會發展？</span>
+                </div>
+            </div>
+
+        </div>
+
+        <p style="margin-top: 28px;">
+            因為占卜真正能帶來的價值，不應該只是告訴你一個結果。
+        </p>
+
+        <p>
+            而是幫助你看見：結果背後的原因、目前的狀況，以及你還能做出的選擇。
+        </p>
+
+        <div class="quote">
+            占卜最大的意義，是看見更多選擇。
+        </div>
 
     </section>
 
 
-    <div class="quote">
-        占卜最大的意義，是看見更多選擇。
+    <!-- =========================
+         Ending
+    ========================= -->
+
+    <section>
+
+        <div class="ending">
+
+            <p>
+                我們不認為占卜可以代替一個人做決定。
+            </p>
+
+            <p>
+                相反地，我們希望占卜能讓一個人在做決定之前，看見更多自己原本沒有注意到的事情。
+            </p>
+
+            <p>
+                當你看見更多資訊，你就有機會做出不同的選擇。
+            </p>
+
+            <p>
+                當你理解事情的原因，你就有機會調整自己的方法。
+            </p>
+
+            <p>
+                而當你願意面對真相，也就有機會真正改變事情的結果。
+            </p>
+
+            <strong class="ending-main">
+                我們不是要你相信玄學，<br>
+                我們想和你一起研究玄學。
+            </strong>
+
+            <p>
+                真正值得研究的，不只是「答案準不準」。
+                而是這些未知，究竟能不能幫助我們更理解自己、理解世界，也看見更多人生的可能性。
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Back
+    ========================= -->
+
+    <div class="back">
+        <a href="index.html">← 回到好運研究所</a>
     </div>
 
-
-    <div class="ending">
-
-        <p>
-            我們不認為占卜可以代替一個人做決定。
-        </p>
-
-        <p>
-            相反地，我們希望占卜能讓一個人在做決定之前，
-            看見更多自己原本沒有注意到的事情。
-        </p>
-
-        <p>
-            當你看見更多資訊，你就有機會做出不同的選擇。
-        </p>
-
-        <p>
-            當你理解事情的原因，你就有機會調整自己的方法。
-        </p>
-
-        <p>
-            而當你願意面對真相，也就有機會真正改變事情的結果。
-        </p>
-
-        <br>
-
-        <strong>
-            我們不是要你相信玄學，<br>
-            我們想和你一起研究玄學。
-        </strong>
-
-        <br><br>
-
-        真正值得研究的，不只是「答案準不準」。
-        <br>
-        而是這些未知，究竟能不能幫助我們更理解自己、
-        理解世界，也看見更多人生的可能性。
-
-    </div>
-
-</main>
-
-
-<footer>
-    © 好運研究所｜占卜研究室
-</footer>
-
+</div>
 
 </body>
 </html>
