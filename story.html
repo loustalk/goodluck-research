@@ -1,13 +1,1006 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>占卜桌上的故事｜好運研究所</title>
+
+    <title>好運研究所｜占卜桌上的故事</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Noto Sans TC",
+                "Microsoft JhengHei",
+                sans-serif;
+
+            background: #f7f5f0;
+            color: #333;
+            line-height: 1.8;
+        }
+
+
+        header {
+            padding: 40px 20px 30px;
+            text-align: center;
+
+            background: #fff;
+            border-bottom: 1px solid #e5e0d8;
+        }
+
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 32px;
+            color: #694b31;
+        }
+
+
+        header p {
+            margin: 0;
+            color: #777;
+        }
+
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+
+        .back {
+            margin-bottom: 30px;
+        }
+
+
+        .back a {
+            color: #555;
+            text-decoration: none;
+        }
+
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+
+
+        .article {
+            background: #fff;
+
+            padding: 30px;
+            margin-bottom: 30px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.05);
+        }
+
+
+        .article h2 {
+            margin-top: 0;
+            margin-bottom: 5px;
+
+            font-size: 26px;
+            color: #694b31;
+        }
+
+
+        .date {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+
+        .article-content {
+            color: #444;
+        }
+
+
+        .article-content h1,
+        .article-content h2,
+        .article-content h3 {
+            margin-top: 28px;
+            color: #694b31;
+        }
+
+
+        .article-content p {
+            margin: 12px 0;
+        }
+
+
+        .article-content strong {
+            font-weight: 700;
+        }
+
+
+        .article-content code {
+            background: #f1f1f1;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+
+        /*
+         * CMS 圖片
+         */
+
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+
+            display: block;
+
+            margin: 25px auto;
+
+            border-radius: 8px;
+        }
+
+
+        .loading,
+        .empty,
+        .error {
+            background: #fff;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            text-align: center;
+        }
+
+
+        .error {
+            color: #a33;
+        }
+
+
+        footer {
+            text-align: center;
+
+            padding: 40px 20px;
+
+            color: #888;
+
+            font-size: 14px;
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 30px 16px 25px;
+            }
+
+
+            header h1 {
+                font-size: 26px;
+            }
+
+
+            main {
+                margin: 25px auto;
+                padding: 0 15px;
+            }
+
+
+            .article {
+                padding: 22px 18px;
+                border-radius: 10px;
+            }
+
+
+            .article h2 {
+                font-size: 23px;
+            }
+
+
+            .article-content img {
+                max-width: 100%;
+                height: auto;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
-    <h1>占卜桌上的故事</h1>
-    <p>這裡是《好運研究所》的占卜桌上的故事。</p>
-    <p>← <a href="index.html">回到好運研究所</a></p>
+
+
+<header>
+
+    <h1>📖 占卜桌上的故事</h1>
+
+    <p>
+        在占卜桌上，我們遇見的人、故事與那些值得留下來研究的片段
+    </p>
+
+</header>
+
+
+<main>
+
+
+    <div class="back">
+
+        ←
+        <a href="index.html">
+            回到好運研究所
+        </a>
+
+    </div>
+
+
+    <div id="articles">
+
+        <div class="loading">
+            正在載入故事……
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<footer>
+
+    © 2026 好運研究所｜小盧老師
+
+</footer>
+
+
+
+<script>
+
+
+/*
+ * GitHub 文章資料夾
+ */
+
+const API_URL =
+    "https://api.github.com/repos/loustalk/goodluck-research/contents/content/articles?ref=main";
+
+
+const RAW_BASE =
+    "https://raw.githubusercontent.com/loustalk/goodluck-research/main/content/articles/";
+
+
+
+/*
+ * HTML 安全處理
+ */
+
+function escapeHtml(text) {
+
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/*
+ * 讀取文章 Front Matter
+ */
+
+function parseFrontMatter(markdown) {
+
+    const result = {
+
+        title: "未命名文章",
+
+        date: "",
+
+        category: "",
+
+        body: markdown
+
+    };
+
+
+    if (!markdown.startsWith("---")) {
+
+        return result;
+
+    }
+
+
+    const match = markdown.match(
+        /^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/
+    );
+
+
+    if (!match) {
+
+        return result;
+
+    }
+
+
+    const frontMatter = match[1];
+
+    result.body = match[2];
+
+
+    frontMatter.split("\n").forEach(line => {
+
+        const separator =
+            line.indexOf(":");
+
+
+        if (separator === -1) {
+
+            return;
+
+        }
+
+
+        const key =
+            line.slice(0, separator).trim();
+
+
+        let value =
+            line.slice(separator + 1).trim();
+
+
+        value =
+            value.replace(
+                /^["']|["']$/g,
+                ""
+            );
+
+
+        if (key === "title") {
+
+            result.title = value;
+
+        }
+
+
+        if (key === "date") {
+
+            result.date = value;
+
+        }
+
+
+        if (key === "category") {
+
+            result.category = value;
+
+        }
+
+    });
+
+
+    return result;
+
+}
+
+
+
+/*
+ * 日期格式
+ */
+
+function formatDate(dateString) {
+
+    if (!dateString) {
+
+        return "";
+
+    }
+
+
+    const date =
+        new Date(dateString);
+
+
+    if (isNaN(date.getTime())) {
+
+        return dateString;
+
+    }
+
+
+    return date.toLocaleDateString(
+        "zh-TW",
+        {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit"
+        }
+    );
+
+}
+
+
+
+/*
+ * Markdown → HTML
+ *
+ * 特別處理 CMS 的 <img>
+ */
+
+function markdownToHtml(markdown) {
+
+
+    const images = [];
+
+    const IMAGE_TOKEN =
+        "___GOODLUCK_IMAGE_";
+
+
+    /*
+     * 先把 CMS 圖片抓出來
+     */
+
+    let text = markdown.replace(
+
+        /<img\b([^>]*)>/gi,
+
+        function(match, attributes) {
+
+
+            const srcMatch =
+                attributes.match(
+                    /\bsrc\s*=\s*["']([^"']+)["']/i
+                );
+
+
+            if (!srcMatch) {
+
+                return match;
+
+            }
+
+
+            const altMatch =
+                attributes.match(
+                    /\balt\s*=\s*["']([^"']*)["']/i
+                );
+
+
+            const titleMatch =
+                attributes.match(
+                    /\btitle\s*=\s*["']([^"']*)["']/i
+                );
+
+
+            const styleMatch =
+                attributes.match(
+                    /\bstyle\s*=\s*["']([^"']*)["']/i
+                );
+
+
+            const src =
+                srcMatch[1];
+
+
+            const alt =
+                altMatch
+                ? altMatch[1]
+                : "";
+
+
+            const title =
+                titleMatch
+                ? titleMatch[1]
+                : "";
+
+
+            const style =
+                styleMatch
+                ? styleMatch[1]
+                : "max-width:100%;height:auto;";
+
+
+            const index =
+                images.length;
+
+
+            images.push({
+
+                src: src,
+
+                alt: alt,
+
+                title: title,
+
+                style: style
+
+            });
+
+
+            return (
+                IMAGE_TOKEN +
+                index +
+                "___"
+            );
+
+        }
+
+    );
+
+
+
+    /*
+     * 一般文字才進行 escape
+     */
+
+    text =
+        escapeHtml(text);
+
+
+
+    /*
+     * Markdown 圖片
+     */
+
+    text =
+        text.replace(
+
+            /!\[([^\]]*)\]\(([^)]+)\)/g,
+
+            '<img src="$2" alt="$1">'
+
+        );
+
+
+
+    /*
+     * 標題
+     */
+
+    text =
+        text.replace(
+            /^### (.*)$/gm,
+            "<h3>$1</h3>"
+        );
+
+
+    text =
+        text.replace(
+            /^## (.*)$/gm,
+            "<h2>$1</h2>"
+        );
+
+
+    text =
+        text.replace(
+            /^# (.*)$/gm,
+            "<h1>$1</h1>"
+        );
+
+
+
+    /*
+     * 粗體
+     */
+
+    text =
+        text.replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+
+
+    /*
+     * 行內程式碼
+     */
+
+    text =
+        text.replace(
+            /`([^`]+)`/g,
+            "<code>$1</code>"
+        );
+
+
+
+    /*
+     * 分段
+     */
+
+    const blocks =
+        text
+            .split(/\n\s*\n/)
+            .map(block => block.trim())
+            .filter(block => block !== "");
+
+
+
+    let html =
+        blocks
+            .map(block => {
+
+
+                if (
+
+                    block.startsWith("<h1>") ||
+
+                    block.startsWith("<h2>") ||
+
+                    block.startsWith("<h3>") ||
+
+                    block.startsWith("<img")
+
+                ) {
+
+                    return block;
+
+                }
+
+
+                return (
+
+                    "<p>" +
+
+                    block.replace(
+                        /\n/g,
+                        "<br>"
+                    ) +
+
+                    "</p>"
+
+                );
+
+            })
+            .join("\n");
+
+
+
+    /*
+     * 把 CMS 圖片放回原來的位置
+     */
+
+    images.forEach(
+        (image, index) => {
+
+
+            const safeSrc =
+                escapeHtml(image.src);
+
+
+            const safeAlt =
+                escapeHtml(image.alt);
+
+
+            const safeTitle =
+                escapeHtml(image.title);
+
+
+            const safeStyle =
+                escapeHtml(image.style);
+
+
+            const imageHtml =
+
+                '<img src="' +
+                safeSrc +
+                '" alt="' +
+                safeAlt +
+                '" title="' +
+                safeTitle +
+                '" style="' +
+                safeStyle +
+                '">';
+
+
+            const token =
+                IMAGE_TOKEN +
+                index +
+                "___";
+
+
+            html =
+                html
+                    .split(token)
+                    .join(imageHtml);
+
+        }
+    );
+
+
+    return html;
+
+}
+
+
+
+/*
+ * 載入文章
+ */
+
+async function loadArticles() {
+
+
+    const container =
+        document.getElementById(
+            "articles"
+        );
+
+
+    try {
+
+
+        const response =
+            await fetch(API_URL);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "無法取得文章列表"
+            );
+
+        }
+
+
+        const files =
+            await response.json();
+
+
+
+        /*
+         * 只抓 Markdown
+         */
+
+        const markdownFiles =
+            files.filter(
+                file =>
+                    file.type === "file" &&
+                    file.name
+                        .toLowerCase()
+                        .endsWith(".md")
+            );
+
+
+
+        if (
+            markdownFiles.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <div class="empty">
+
+                    目前還沒有故事。
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        const articles = [];
+
+
+
+        /*
+         * 一篇一篇讀取
+         */
+
+        for (
+            const file of markdownFiles
+        ) {
+
+
+            const articleResponse =
+                await fetch(
+
+                    RAW_BASE +
+                    encodeURIComponent(
+                        file.name
+                    )
+
+                );
+
+
+            if (!articleResponse.ok) {
+
+                continue;
+
+            }
+
+
+            const markdown =
+                await articleResponse.text();
+
+
+            const article =
+                parseFrontMatter(
+                    markdown
+                );
+
+
+
+            /*
+             * 只顯示故事分類
+             */
+
+            if (
+                article.category !==
+                "story"
+            ) {
+
+                continue;
+
+            }
+
+
+            articles.push({
+
+                ...article,
+
+                filename: file.name
+
+            });
+
+        }
+
+
+
+        /*
+         * 最新文章在最上面
+         */
+
+        articles.sort(
+            (a, b) => {
+
+                const dateA =
+                    new Date(
+                        a.date || 0
+                    );
+
+
+                const dateB =
+                    new Date(
+                        b.date || 0
+                    );
+
+
+                return dateB - dateA;
+
+            }
+        );
+
+
+
+        /*
+         * 沒有故事
+         */
+
+        if (
+            articles.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <div class="empty">
+
+                    目前還沒有占卜桌上的故事。
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        /*
+         * 顯示文章
+         */
+
+        container.innerHTML =
+
+            articles
+                .map(article => {
+
+
+                    return `
+
+                        <article class="article">
+
+                            <h2>
+                                ${escapeHtml(
+                                    article.title
+                                )}
+                            </h2>
+
+
+                            ${
+                                article.date
+
+                                ? `
+
+                                    <div class="date">
+
+                                        ${formatDate(
+                                            article.date
+                                        )}
+
+                                    </div>
+
+                                  `
+
+                                : ""
+
+                            }
+
+
+                            <div class="article-content">
+
+                                ${markdownToHtml(
+                                    article.body
+                                )}
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                })
+                .join("");
+
+
+
+    } catch (error) {
+
+
+        console.error(error);
+
+
+        container.innerHTML = `
+
+            <div class="error">
+
+                目前無法載入占卜桌上的故事。<br>
+
+                請稍後再試。
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/*
+ * 啟動
+ */
+
+loadArticles();
+
+
+</script>
+
+
 </body>
 </html>
