@@ -3,23 +3,646 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>占卜研究室｜好運研究所</title>
+
+    <style>
+        :root {
+            --bg: #f7f3ec;
+            --card: #fffdf9;
+            --text: #3f3933;
+            --muted: #81776d;
+            --line: #e7ded2;
+            --accent: #8c6b4d;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Noto Sans TC",
+                "Microsoft JhengHei",
+                sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.9;
+        }
+
+        header {
+            padding: 72px 20px 58px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 14px;
+            font-size: 42px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 18px;
+        }
+
+        .back {
+            max-width: 1080px;
+            margin: 0 auto 28px;
+            padding: 0 24px;
+        }
+
+        .back a {
+            color: #6f6257;
+            text-decoration: none;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px 70px;
+        }
+
+        .hero-message {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 42px 46px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(70, 55, 40, 0.05);
+            text-align: center;
+        }
+
+        .hero-message h2 {
+            margin: 0 0 20px;
+            font-size: 30px;
+        }
+
+        .hero-message p {
+            margin: 0;
+            color: #62594f;
+            font-size: 17px;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 42px 46px;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 20px rgba(70, 55, 40, 0.04);
+        }
+
+        .section h2 {
+            margin: 0 0 20px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            margin: 30px 0 12px;
+            font-size: 22px;
+        }
+
+        .section p {
+            margin: 0 0 18px;
+            color: #62594f;
+            font-size: 17px;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            margin: 26px 0;
+            padding: 24px 28px;
+            background: #f4eee5;
+            border-radius: 14px;
+            text-align: center;
+            color: #5d5146;
+            font-size: 21px;
+            font-weight: 600;
+        }
+
+        .questions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .question {
+            padding: 22px 24px;
+            background: #faf6f0;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            color: #62594f;
+            font-size: 16px;
+        }
+
+        .question strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 24px 16px;
+            background: #faf6f0;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+        }
+
+        .step .number {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .step h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .step p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .quote {
+            margin-top: 24px;
+            padding: 34px 38px;
+            border-left: 4px solid var(--accent);
+            background: rgba(255, 253, 249, 0.75);
+            border-radius: 0 16px 16px 0;
+            color: #5d5146;
+            font-size: 22px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .ending {
+            margin-top: 24px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 36px 42px;
+            color: #62594f;
+            font-size: 17px;
+            text-align: center;
+        }
+
+        .ending strong {
+            color: var(--text);
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px 55px;
+            color: #978b7e;
+            font-size: 14px;
+        }
+
+        @media (max-width: 760px) {
+
+            header {
+                padding: 52px 18px 42px;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .back,
+            main {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .hero-message,
+            .section {
+                padding: 30px 24px;
+            }
+
+            .questions,
+            .process {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight {
+                padding: 22px 20px;
+                font-size: 19px;
+            }
+
+            .quote {
+                padding: 28px 24px;
+                font-size: 19px;
+            }
+
+            .ending {
+                padding: 28px 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>占卜研究室</h1>
+<header>
+    <h1>🔮 占卜研究室</h1>
+    <p>從未知出發，透過工具、分析與求證，看見更多可能。</p>
+</header>
 
-    <p>這裡是《好運研究所》的占卜研究室。</p>
 
-    <p>
-        從占卜、命理與人生問題出發，
-        用不同角度理解我們正在面對的人生。
-    </p>
+<div class="back">
+    <a href="index.html">← 回到好運研究所</a>
+</div>
 
-    <p>
-        <a href="index.html">← 回到好運研究所</a>
-    </p>
+
+<main>
+
+    <!-- 核心理念 -->
+
+    <section class="hero-message">
+
+        <h2>我們不是要你相信玄學，<br>我們想和你一起研究玄學。</h2>
+
+        <p>
+            占卜不是替你決定答案，
+            而是幫助你看見答案之外，還有哪些可能。
+        </p>
+
+    </section>
+
+
+    <!-- 科學與未知 -->
+
+    <section class="section">
+
+        <h2>科學的盡頭，是玄學？</h2>
+
+        <p>
+            「科學的盡頭，是玄學。」
+            這句話，在現代社會經常被人提起。
+        </p>
+
+        <p>
+            但在好運研究所，我們所理解的玄學，
+            並不是用來解釋科學尚未證明的答案，
+            也不是拿玄學取代科學。
+        </p>
+
+        <p>
+            我們更想研究的是另一個問題：
+        </p>
+
+        <div class="highlight">
+            如果人類目前稱為「玄學」的現象，
+            其實只是尚未被我們真正理解的未知領域呢？
+        </div>
+
+        <p>
+            當科學不斷往前發展，
+            我們也會逐漸碰到許多目前仍然無法完整解釋的現象。
+        </p>
+
+        <p>
+            這些未知，不代表它們不存在；
+            同樣地，也不能因為我們目前無法解釋，
+            就直接把它們當成真理。
+        </p>
+
+        <p>
+            <strong>
+                我們認為，玄學可能是人類尚待開發與研究的一個新科學領域。
+            </strong>
+        </p>
+
+        <p>
+            因此，我們不是要用玄學去解釋科學。
+            我們想做的，是反過來：
+        </p>
+
+        <div class="highlight">
+            把玄學當成一個值得研究的未知領域。
+        </div>
+
+    </section>
+
+
+    <!-- 占卜到底是什麼 -->
+
+    <section class="section">
+
+        <h2>占卜，到底是在做什麼？</h2>
+
+        <p>
+            占卜真正的用意，是透過不同的工具，
+            與我們所相信的高等靈性或能量進行溝通與學習。
+        </p>
+
+        <p>
+            這些工具可以有很多不同的樣貌。
+        </p>
+
+        <p>
+            可能是牌卡、龜甲、樹枝、易經，
+            也可能是其他不同文化與傳承所留下來的工具。
+        </p>
+
+        <p>
+            <strong>工具本身只是媒介。</strong>
+        </p>
+
+        <p>
+            真正重要的，是我們透過工具取得資訊之後，
+            如何理解這些資訊。
+        </p>
+
+        <div class="highlight">
+            真正的占卜，不是叫你盲目相信自己所看到的內容。
+        </div>
+
+        <p>
+            相反地，我們更重視的是：
+        </p>
+
+        <div class="questions">
+
+            <div class="question">
+                <strong>這個答案合理嗎？</strong>
+                它是否符合目前的實際狀況？
+            </div>
+
+            <div class="question">
+                <strong>它有邏輯嗎？</strong>
+                前後的因果關係是否能夠成立？
+            </div>
+
+            <div class="question">
+                <strong>它真的可行嗎？</strong>
+                得到的方向是否能夠實際執行？
+            </div>
+
+            <div class="question">
+                <strong>有什麼需要注意？</strong>
+                過程中是否存在容易忽略的問題？
+            </div>
+
+        </div>
+
+        <p style="margin-top: 26px;">
+            我們希望透過理性、邏輯與實際狀況的分析，
+            去理解占卜得到的資訊，
+            而不是因為「牌這樣說了」，
+            就直接把它當成最後答案。
+        </p>
+
+    </section>
+
+
+    <!-- 求證 -->
+
+    <section class="section">
+
+        <h2>🔎 我們的占卜，講究「求證」</h2>
+
+        <p>
+            這也是好運研究所與一般占卜最大的不同之一。
+        </p>
+
+        <p>
+            每一次抽出牌卡、得到答案之後，
+            我們都需要透過不斷地與當事人交互詢問，
+            去研判這個答案是否符合他的實際狀況。
+        </p>
+
+        <p>
+            有時候，一張牌看起來有一個很明確的意思。
+            但真正放進一個人的人生裡，
+            事情可能完全不是那麼簡單。
+        </p>
+
+        <div class="process">
+
+            <div class="step">
+                <div class="number">①</div>
+                <h3>取得資訊</h3>
+                <p>
+                    透過占卜工具取得訊息。
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="number">②</div>
+                <h3>觀察分析</h3>
+                <p>
+                    分析訊息與問題之間的關係。
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="number">③</div>
+                <h3>交互確認</h3>
+                <p>
+                    與當事人持續詢問與確認。
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="number">④</div>
+                <h3>重新理解</h3>
+                <p>
+                    找出可能的方向與需要注意的地方。
+                </p>
+            </div>
+
+        </div>
+
+        <p style="margin-top: 28px;">
+            因此，我們會不斷確認：
+        </p>
+
+        <div class="questions">
+
+            <div class="question">
+                <strong>這個訊息，真的符合現在的狀況嗎？</strong>
+            </div>
+
+            <div class="question">
+                <strong>我們是不是漏掉了什麼？</strong>
+            </div>
+
+            <div class="question">
+                <strong>還有沒有其他可能？</strong>
+            </div>
+
+            <div class="question">
+                <strong>這個答案對當事人真的有幫助嗎？</strong>
+            </div>
+
+        </div>
+
+        <p style="margin-top: 26px;">
+            如果答案經不起這些檢驗，
+            我們就不應該急著把它當成真相。
+        </p>
+
+    </section>
+
+
+    <!-- 不追求二元答案 -->
+
+    <section class="section">
+
+        <h2>我們不追求「好不好」的答案</h2>
+
+        <p>
+            很多人來占卜，會希望得到一個很簡單的答案：
+        </p>
+
+        <div class="questions">
+
+            <div class="question">
+                <strong>「這件事情好不好？」</strong>
+            </div>
+
+            <div class="question">
+                <strong>「這個人適不適合我？」</strong>
+            </div>
+
+            <div class="question">
+                <strong>「我要不要做？」</strong>
+            </div>
+
+            <div class="question">
+                <strong>「會不會成功？」</strong>
+            </div>
+
+        </div>
+
+        <p style="margin-top: 26px;">
+            但人生往往沒有這麼簡單。
+        </p>
+
+        <p>
+            因此，我們的占卜，不研究單純的
+            「好不好」、「適不適合」這種二元結論。
+        </p>
+
+        <div class="highlight">
+            我們更想知道的是：
+        </div>
+
+        <div class="questions">
+
+            <div class="question">
+                <strong>如果我想完成這件事情，我需要注意什麼？</strong>
+            </div>
+
+            <div class="question">
+                <strong>目前最大的問題在哪裡？</strong>
+            </div>
+
+            <div class="question">
+                <strong>我還有哪些選擇？</strong>
+            </div>
+
+            <div class="question">
+                <strong>我可以怎麼調整，讓事情有更好的機會發展？</strong>
+            </div>
+
+        </div>
+
+        <p style="margin-top: 28px;">
+            因為占卜真正能帶來的價值，
+            不應該只是告訴你一個結果。
+        </p>
+
+        <p>
+            而是幫助你看見：
+            <strong>
+                結果背後的原因、目前的狀況，以及你還能做出的選擇。
+            </strong>
+        </p>
+
+    </section>
+
+
+    <!-- 結尾 -->
+
+    <div class="quote">
+        占卜最大的意義，是看見更多選擇。
+    </div>
+
+
+    <div class="ending">
+
+        <p>
+            我們不認為占卜可以代替一個人做決定。
+        </p>
+
+        <p>
+            相反地，我們希望占卜能讓一個人在做決定之前，
+            看見更多自己原本沒有注意到的事情。
+        </p>
+
+        <p>
+            當你看見更多資訊，你就有機會做出不同的選擇。
+        </p>
+
+        <p>
+            當你理解事情的原因，你就有機會調整自己的方法。
+        </p>
+
+        <p>
+            而當你願意面對真相，也就有機會真正改變事情的結果。
+        </p>
+
+        <br>
+
+        <strong>
+            我們不是要你相信玄學，<br>
+            我們想和你一起研究玄學。
+        </strong>
+
+        <br><br>
+
+        真正值得研究的，不只是「答案準不準」。
+        <br>
+        而是這些未知，究竟能不能幫助我們更理解自己、
+        理解世界，也看見更多人生的可能性。
+
+    </div>
+
+</main>
+
+
+<footer>
+    © 好運研究所｜占卜研究室
+</footer>
+
 
 </body>
 </html>
