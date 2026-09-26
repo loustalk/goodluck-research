@@ -31,10 +31,6 @@
             margin: 0 auto;
         }
 
-        /* =========================
-           Header
-        ========================= */
-
         header {
             padding: 70px 20px 45px;
             text-align: center;
@@ -66,17 +62,9 @@
             text-decoration: underline;
         }
 
-        /* =========================
-           Main
-        ========================= */
-
         main {
             padding: 55px 0 80px;
         }
-
-        /* =========================
-           固定介紹文章
-        ========================= */
 
         .intro {
             background: #fff;
@@ -105,19 +93,11 @@
             margin-bottom: 0;
         }
 
-        /* =========================
-           分隔線
-        ========================= */
-
         .section-divider {
             margin: 55px 0 45px;
             border: 0;
             border-top: 1px solid #d8d0c5;
         }
-
-        /* =========================
-           畫廊標題
-        ========================= */
 
         .gallery-title {
             margin-bottom: 30px;
@@ -136,19 +116,11 @@
             font-size: 15px;
         }
 
-        /* =========================
-           琥珀畫廊
-        ========================= */
-
         .amber-gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 28px;
         }
-
-        /* =========================
-           琥珀卡片
-        ========================= */
 
         .amber-card {
             background: #fff;
@@ -170,28 +142,21 @@
                 0 8px 25px rgba(0, 0, 0, 0.08);
         }
 
-        /* =========================
-           圖片區
-           完整顯示，不裁切
-        ========================= */
-
         .amber-image {
             width: 100%;
             background: #eee8de;
             padding: 15px;
         }
 
+        /* 圖片完整顯示，縮小並置中 */
+
         .amber-image img {
-            width: 75%;
+            width: 55%;
             height: auto;
             display: block;
             margin: 0 auto;
             border-radius: 8px;
         }
-
-        /* =========================
-           商品文字
-        ========================= */
 
         .amber-content {
             padding: 22px 22px 25px;
@@ -218,10 +183,6 @@
             margin-bottom: 0;
         }
 
-        /* =========================
-           Loading / Empty / Error
-        ========================= */
-
         .loading,
         .empty,
         .error {
@@ -235,10 +196,6 @@
             color: #a55;
         }
 
-        /* =========================
-           平板
-        ========================= */
-
         @media (max-width: 800px) {
 
             .amber-gallery {
@@ -247,10 +204,6 @@
             }
 
         }
-
-        /* =========================
-           手機
-        ========================= */
 
         @media (max-width: 600px) {
 
@@ -297,7 +250,7 @@
             }
 
             .amber-image img {
-                width: 75%;
+                width: 55%;
             }
 
             .amber-content {
@@ -340,10 +293,6 @@
 
     <div class="container">
 
-
-        <!-- =========================
-             固定介紹
-        ========================= -->
 
         <section class="intro">
 
@@ -407,20 +356,12 @@
 
 <script>
 
-/* =========================
-   GitHub API
-========================= */
-
 const API_URL =
     "https://api.github.com/repos/loustalk/goodluck-research/contents/content/articles?ref=main";
 
 const RAW_BASE =
     "https://raw.githubusercontent.com/loustalk/goodluck-research/main/content/articles/";
 
-
-/* =========================
-   Front Matter
-========================= */
 
 function parseFrontMatter(text) {
 
@@ -489,10 +430,6 @@ function parseFrontMatter(text) {
 }
 
 
-/* =========================
-   HTML Escape
-========================= */
-
 function escapeHtml(text) {
 
     return text
@@ -504,10 +441,6 @@ function escapeHtml(text) {
 
 }
 
-
-/* =========================
-   取得圖片
-========================= */
 
 function extractImage(markdown) {
 
@@ -524,10 +457,6 @@ function extractImage(markdown) {
 }
 
 
-/* =========================
-   取得圖片 ALT
-========================= */
-
 function extractImageAlt(markdown) {
 
     const match =
@@ -543,35 +472,25 @@ function extractImageAlt(markdown) {
 }
 
 
-/* =========================
-   取得說明文字
-========================= */
-
 function createDescription(markdown) {
 
-    let text =
-        markdown
-            .replace(
-                /<img\s+[^>]*>/gi,
-                ""
-            )
-            .replace(
-                /[#*_]/g,
-                ""
-            )
-            .replace(
-                /\n+/g,
-                " "
-            )
-            .trim();
+    return markdown
+        .replace(
+            /<img\s+[^>]*>/gi,
+            ""
+        )
+        .replace(
+            /[#*_]/g,
+            ""
+        )
+        .replace(
+            /\n+/g,
+            " "
+        )
+        .trim();
 
-    return text;
 }
 
-
-/* =========================
-   載入琥珀
-========================= */
 
 async function loadAmber() {
 
@@ -677,16 +596,12 @@ async function loadAmber() {
         }
 
 
-        /* 最新發布排前面 */
-
         articles.sort(
             (a, b) =>
                 new Date(b.date) -
                 new Date(a.date)
         );
 
-
-        /* 沒有資料 */
 
         if (
             articles.length === 0
@@ -705,8 +620,6 @@ async function loadAmber() {
             return;
         }
 
-
-        /* 建立畫廊 */
 
         gallery.innerHTML =
 
@@ -812,10 +725,6 @@ async function loadAmber() {
 
 }
 
-
-/* =========================
-   啟動
-========================= */
 
 loadAmber();
 
