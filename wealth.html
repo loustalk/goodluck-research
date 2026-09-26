@@ -3,11 +3,1053 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>財運分析｜好運研究所</title>
+
+    <title>好運研究所｜財運分析</title>
+
+    <meta name="description" content="好運研究所｜從天地人三種運勢與數字能量出發，研究手機門號、住家門牌與身分證後四碼所帶來的影響。">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                "Noto Sans TC",
+                "Microsoft JhengHei",
+                "PingFang TC",
+                Arial,
+                sans-serif;
+
+            background: #f7f3ec;
+            color: #3b342d;
+            line-height: 1.9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           導覽列
+           ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(247, 243, 236, 0.96);
+            border-bottom: 1px solid #e5dccf;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 16px 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #7a5735;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #a08a70;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: #5d554c;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: #a66f32;
+        }
+
+        /* =========================
+           Hero
+           ========================= */
+
+        .hero {
+            min-height: 650px;
+            padding: 90px 24px 100px;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at 80% 20%, rgba(210, 174, 112, 0.24), transparent 28%),
+                radial-gradient(circle at 20% 80%, rgba(184, 148, 91, 0.11), transparent 30%),
+                #f7f3ec;
+        }
+
+        .hero-inner {
+            max-width: 1180px;
+            width: 100%;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 18px;
+
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #a66f32;
+            font-weight: 700;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1.2;
+            color: #49382a;
+            margin-bottom: 22px;
+        }
+
+        .hero-text h2 {
+            font-size: clamp(22px, 3vw, 32px);
+            line-height: 1.5;
+            font-weight: 600;
+            color: #765333;
+            margin-bottom: 25px;
+        }
+
+        .hero-text p {
+            max-width: 680px;
+            color: #655d55;
+            font-size: 17px;
+        }
+
+        .hero-card {
+            min-height: 390px;
+            border-radius: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(circle at center, rgba(214, 178, 111, 0.25), transparent 48%),
+                #efe5d5;
+
+            border: 1px solid #dfd0bc;
+            box-shadow: 0 18px 45px rgba(92, 68, 43, 0.08);
+        }
+
+        .hero-symbol {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .circle {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 28px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            background: #f8f1e5;
+            border: 1px solid #d9c4a4;
+
+            font-size: 72px;
+
+            box-shadow:
+                0 0 0 15px rgba(255, 255, 255, 0.28),
+                0 15px 35px rgba(90, 65, 38, 0.08);
+        }
+
+        .hero-symbol h3 {
+            font-size: 25px;
+            color: #60462f;
+            margin-bottom: 8px;
+        }
+
+        .hero-symbol p {
+            color: #8a7763;
+        }
+
+        /* =========================
+           共用區塊
+           ========================= */
+
+        section {
+            padding: 90px 24px;
+        }
+
+        .section-inner {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title small {
+            display: block;
+            margin-bottom: 8px;
+
+            color: #a66f32;
+            font-size: 12px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .section-title h2 {
+            font-size: clamp(30px, 4vw, 42px);
+            color: #4b392b;
+            line-height: 1.4;
+        }
+
+        .section-intro {
+            max-width: 820px;
+            margin: 0 auto 45px;
+            text-align: center;
+            color: #655d55;
+            font-size: 17px;
+        }
+
+        /* =========================
+           天地能量
+           ========================= */
+
+        .energy-section {
+            background: #fbf9f5;
+        }
+
+        .energy-box {
+            max-width: 900px;
+            margin: auto;
+
+            padding: 48px 55px;
+
+            background: #f3eadc;
+            border: 1px solid #e1d2bd;
+            border-radius: 24px;
+
+            text-align: center;
+        }
+
+        .energy-box h3 {
+            font-size: 27px;
+            color: #694d32;
+            margin-bottom: 22px;
+        }
+
+        .energy-box p {
+            color: #62584e;
+            margin-bottom: 18px;
+        }
+
+        .energy-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 12px;
+
+            color: #875b27;
+            font-weight: 700;
+            background: #ead9bf;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           數字能量
+           ========================= */
+
+        .number-section {
+            background: #f7f3ec;
+        }
+
+        .number-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .number-card {
+            padding: 38px;
+
+            background: #fffdf9;
+            border: 1px solid #e4d9ca;
+            border-radius: 22px;
+
+            box-shadow: 0 12px 30px rgba(90, 65, 38, 0.05);
+        }
+
+        .number-card .icon {
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .number-card h3 {
+            font-size: 23px;
+            color: #5d442e;
+            margin-bottom: 14px;
+        }
+
+        .number-card p {
+            color: #675f57;
+        }
+
+        /* =========================
+           天地人三運
+           ========================= */
+
+        .three-luck {
+            background: #fbf9f5;
+        }
+
+        .luck-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .luck-card {
+            padding: 36px 30px;
+
+            background: #fffdf9;
+            border: 1px solid #e2d7c8;
+            border-radius: 22px;
+
+            text-align: center;
+
+            box-shadow: 0 12px 28px rgba(90, 65, 38, 0.05);
+        }
+
+        .luck-icon {
+            font-size: 44px;
+            margin-bottom: 18px;
+        }
+
+        .luck-card h3 {
+            font-size: 24px;
+            color: #5c432d;
+            margin-bottom: 8px;
+        }
+
+        .luck-card .subtitle {
+            display: block;
+            margin-bottom: 18px;
+
+            color: #a17442;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .luck-card p {
+            color: #675f57;
+            text-align: left;
+        }
+
+        /* =========================
+           三運交織
+           ========================= */
+
+        .weave-section {
+            background: #f1e8da;
+        }
+
+        .weave-box {
+            max-width: 920px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .weave-box h3 {
+            font-size: 29px;
+            color: #65482f;
+            margin-bottom: 22px;
+        }
+
+        .weave-box p {
+            color: #62584e;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .weave-symbol {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            margin: 35px 0;
+            flex-wrap: wrap;
+        }
+
+        .weave-symbol span {
+            min-width: 105px;
+            padding: 14px 20px;
+
+            background: #fffaf2;
+            border: 1px solid #dbc9ae;
+            border-radius: 50px;
+
+            color: #684b30;
+            font-weight: 700;
+        }
+
+        .weave-symbol b {
+            color: #a8753e;
+            font-size: 22px;
+        }
+
+        /* =========================
+           研究方法
+           ========================= */
+
+        .research-section {
+            background: #f7f3ec;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .research-card {
+            padding: 35px 30px;
+
+            background: #fffdf9;
+            border: 1px solid #e4d9ca;
+            border-radius: 22px;
+
+            box-shadow: 0 12px 28px rgba(90, 65, 38, 0.05);
+        }
+
+        .research-card .number {
+            font-size: 13px;
+            color: #a66f32;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .research-card h3 {
+            margin: 10px 0 14px;
+            font-size: 22px;
+            color: #5c432d;
+        }
+
+        .research-card p {
+            color: #675f57;
+        }
+
+        /* =========================
+           CTA
+           ========================= */
+
+        .cta {
+            padding: 100px 24px;
+
+            background:
+                radial-gradient(circle at 50% 20%, rgba(214, 178, 111, 0.25), transparent 35%),
+                #eee3d2;
+
+            text-align: center;
+        }
+
+        .cta-inner {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .cta h2 {
+            font-size: clamp(30px, 4vw, 44px);
+            color: #513b29;
+            margin-bottom: 22px;
+        }
+
+        .cta p {
+            color: #65594e;
+            font-size: 17px;
+            margin-bottom: 32px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 30px;
+
+            border-radius: 999px;
+            background: #8b633b;
+            color: #fff;
+
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .cta-button:hover {
+            background: #6f4d2e;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           Footer
+           ========================= */
+
+        footer {
+            padding: 35px 24px;
+            text-align: center;
+
+            background: #4d4034;
+            color: #ddd1c1;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           RWD
+           ========================= */
+
+        @media (max-width: 850px) {
+
+            .nav {
+                padding: 14px 18px;
+            }
+
+            .nav-links {
+                gap: 14px;
+                font-size: 13px;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .hero-card {
+                min-height: 320px;
+            }
+
+            .number-content {
+                grid-template-columns: 1fr;
+            }
+
+            .luck-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: 8px;
+            }
+
+            .hero {
+                padding: 65px 20px 75px;
+            }
+
+            section {
+                padding: 70px 20px;
+            }
+
+            .energy-box {
+                padding: 34px 25px;
+            }
+
+            .number-card,
+            .luck-card,
+            .research-card {
+                padding: 30px 24px;
+            }
+
+            .weave-symbol {
+                gap: 8px;
+            }
+
+            .weave-symbol span {
+                min-width: 90px;
+                padding: 11px 14px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>財運分析</h1>
-    <p>這裡是《好運研究所》的財運分析。</p>
-    <p>← <a href="index.html">回到好運研究所</a></p>
+
+<header>
+    <nav class="nav">
+
+        <a href="index.html" class="logo">
+            好運研究所
+            <span>GOOD LUCK RESEARCH</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">首頁</a>
+            <a href="fortune.html">占卜</a>
+            <a href="fengshui.html">風水</a>
+            <a href="wealth.html">財運</a>
+            <a href="research.html">研究所</a>
+        </div>
+
+    </nav>
+</header>
+
+
+<!-- =========================
+     Hero
+     ========================= -->
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-text">
+
+            <span class="eyebrow">
+                WEALTH ANALYSIS
+            </span>
+
+            <h1>💰 財運分析</h1>
+
+            <h2>
+                從數字與環境出發，<br>
+                看見天地人三種運勢的影響。
+            </h2>
+
+            <p>
+                每個人活著，都會受到天地間能量的影響。
+                好的能量，讓我們思維清晰，運勢更好；
+                不好的能量，也可能影響我們的思維與選擇。
+                在人手一機的時代裡，手機門號所蘊含的數字能量，
+                也成為我們值得研究的一個方向。
+            </p>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="hero-symbol">
+
+                <div class="circle">
+                    🔢
+                </div>
+
+                <h3>研究你的數字能量</h3>
+
+                <p>
+                    從天地人三種運勢，看見自己的方向
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     天地能量
+     ========================= -->
+
+<section class="energy-section">
+
+    <div class="section-inner">
+
+        <div class="section-title">
+
+            <small>ENERGY</small>
+
+            <h2>🌌 每個人，都活在天地能量之中</h2>
+
+        </div>
+
+
+        <div class="energy-box">
+
+            <h3>天地間的每個東西，都帶有能量</h3>
+
+            <p>
+                每個人活著，會受到天地間能量的影響。
+                好的能量，讓你思維清晰，運勢更好。
+                不好的能量，可能讓你的磁場產生變化，
+                導致思維走鐘，達不到你想要的目標，
+                也讓你覺得運勢很背。
+            </p>
+
+            <p>
+                隨著我們身邊使用的東西越來越多，
+                它們所帶來的影響，也值得我們一一研究。
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     數字能量
+     ========================= -->
+
+<section class="number-section">
+
+    <div class="section-inner">
+
+        <div class="section-title">
+
+            <small>NUMBER ENERGY</small>
+
+            <h2>🔢 數字，也是一種能量</h2>
+
+        </div>
+
+
+        <p class="section-intro">
+            在這個人手一機的時代裡，
+            手機已經成為我們生活中不可或缺的一部分。
+            沒有手機門號，就無法使用網路瀏覽、玩遊戲、
+            找資訊，以及完成許多日常生活所需。
+        </p>
+
+
+        <div class="number-content">
+
+            <div class="number-card">
+
+                <div class="icon">📱</div>
+
+                <h3>手機門號，為什麼值得研究？</h3>
+
+                <p>
+                    手機每天都跟著我們。
+                    因此，我們開始研究手機啟動的門號，
+                    特別是門號「末四碼」所蘊含的數字能量，
+                    以及它可能帶來的思維影響。
+                </p>
+
+            </div>
+
+
+            <div class="number-card">
+
+                <div class="icon">🧩</div>
+
+                <h3>從一組數字，看見更多線索</h3>
+
+                <p>
+                    我們不是只看一組號碼好不好，
+                    而是把手機門號、住家或辦公室門牌，
+                    以及身分證最後四碼放在一起，
+                    進一步理解一個人的天地人三種運勢。
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     天地人三運
+     ========================= -->
+
+<section class="three-luck">
+
+    <div class="section-inner">
+
+        <div class="section-title">
+
+            <small>THREE LUCK</small>
+
+            <h2>☯️ 人的運勢，分為天、地、人三種</h2>
+
+        </div>
+
+
+        <p class="section-intro">
+            天、地、人三種運勢，分別來自不同的數字與環境。
+            我們透過三個面向一起分析，理解你現在所受到的影響。
+        </p>
+
+
+        <div class="luck-grid">
+
+            <div class="luck-card">
+
+                <div class="luck-icon">☀️</div>
+
+                <h3>天運</h3>
+
+                <span class="subtitle">
+                    身分證後四碼
+                </span>
+
+                <p>
+                    天運由你的身分證後四碼組成，
+                    每十年為一個單位轉變。
+                    它代表的是你在不同人生階段裡，
+                    所受到的天運影響。
+                </p>
+
+            </div>
+
+
+            <div class="luck-card">
+
+                <div class="luck-icon">🏠</div>
+
+                <h3>地運</h3>
+
+                <span class="subtitle">
+                    住家／辦公室門牌
+                </span>
+
+                <p>
+                    地運是住家門牌號碼帶來的影響。
+                    只要是住在這間屋子裡的人，
+                    都會受到這個環境所帶來的能量影響。
+                    辦公空間也同樣值得觀察。
+                </p>
+
+            </div>
+
+
+            <div class="luck-card">
+
+                <div class="luck-icon">📱</div>
+
+                <h3>人運</h3>
+
+                <span class="subtitle">
+                    手機門號後四碼
+                </span>
+
+                <p>
+                    人運，則是手機後四碼所帶來的影響。
+                    手機是現代人每天都會使用的工具，
+                    因此門號數字所蘊含的能量，
+                    成為我們重要的研究方向。
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     三運交織
+     ========================= -->
+
+<section class="weave-section">
+
+    <div class="section-inner">
+
+        <div class="weave-box">
+
+            <div class="section-title">
+
+                <small>HEAVEN · EARTH · HUMAN</small>
+
+                <h2>🧩 三種運勢，交織成你現在的人生</h2>
+
+            </div>
+
+
+            <p>
+                我們的手機數字分析學，來自於天地能量學的一環。
+                專門研究手機門號「末四碼」給我們的腦袋帶來的思維影響，
+                再輔以住家／辦公室的「門牌」號碼，
+                以及身分證最後四碼，
+                完整地將你的天、地、人三種運勢分析出來。
+            </p>
+
+
+            <div class="weave-symbol">
+
+                <span>☀️ 天運</span>
+
+                <b>＋</b>
+
+                <span>🏠 地運</span>
+
+                <b>＋</b>
+
+                <span>📱 人運</span>
+
+            </div>
+
+
+            <p>
+                透過三個面向，我們希望讓你知道自己正在受到什麼樣的影響，
+                也看見自己可以調整的方向。
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     研究方法
+     ========================= -->
+
+<section class="research-section">
+
+    <div class="section-inner">
+
+        <div class="section-title">
+
+            <small>WHAT WE STUDY</small>
+
+            <h2>🔬 我們研究的，不只是「號碼好不好」</h2>
+
+        </div>
+
+
+        <p class="section-intro">
+            數字分析的目的，不只是告訴你一組號碼好不好，
+            而是希望透過分析，看見你現在所受到的影響，
+            以及未來可以調整自己的方向。
+        </p>
+
+
+        <div class="research-grid">
+
+            <div class="research-card">
+
+                <span class="number">01</span>
+
+                <h3>看見影響</h3>
+
+                <p>
+                    從天、地、人三種運勢，
+                    理解目前生活環境與數字能量可能帶來的影響。
+                </p>
+
+            </div>
+
+
+            <div class="research-card">
+
+                <span class="number">02</span>
+
+                <h3>理解自己</h3>
+
+                <p>
+                    當我們知道自己正在受到什麼影響，
+                    就有機會重新理解自己的思維、選擇與行動。
+                </p>
+
+            </div>
+
+
+            <div class="research-card">
+
+                <span class="number">03</span>
+
+                <h3>調整方向</h3>
+
+                <p>
+                    找到可以調整的地方，
+                    幫助自己走出獨特的生活光芒，
+                    得到真正屬於自己的好運勢。
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+     ========================= -->
+
+<section class="cta">
+
+    <div class="cta-inner">
+
+        <h2>想知道你的天地人三種運勢嗎？</h2>
+
+        <p>
+            從你的數字開始，研究屬於你的好運。
+            想試試手機數字分析，歡迎與小盧老師聯絡。
+        </p>
+
+        <a href="index.html#contact" class="cta-button">
+            聯絡小盧老師
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 好運研究所｜GOOD LUCK RESEARCH
+</footer>
+
 </body>
 </html>
