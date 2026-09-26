@@ -172,7 +172,7 @@
         /* =========================
            固定圖片區
            420px 高
-           圖片完整顯示
+           圖片依比例自動放大
         ========================= */
 
         .amber-image {
@@ -189,10 +189,11 @@
         }
 
         .amber-image img {
-            width: 55%;
+            width: auto;
             height: auto;
 
-            max-height: 100%;
+            max-width: 85%;
+            max-height: 390px;
 
             display: block;
 
@@ -275,6 +276,11 @@
                 height: 360px;
             }
 
+            .amber-image img {
+                max-height: 330px;
+                max-width: 85%;
+            }
+
         }
 
         /* =========================
@@ -326,7 +332,9 @@
             }
 
             .amber-image img {
-                width: 55%;
+                width: auto;
+                max-width: 85%;
+                max-height: 390px;
             }
 
             .amber-content {
