@@ -26,12 +26,10 @@
             line-height: 1.9;
         }
 
-
         .container {
             width: min(1100px, 92%);
             margin: 0 auto;
         }
-
 
         /* =========================
            Header
@@ -43,7 +41,6 @@
             background: #eee8de;
         }
 
-
         header h1 {
             margin: 0 0 12px;
             font-size: 36px;
@@ -51,13 +48,11 @@
             color: #4b4036;
         }
 
-
         header p {
             margin: 0;
             color: #777;
             font-size: 16px;
         }
-
 
         .back {
             display: inline-block;
@@ -67,11 +62,9 @@
             font-size: 15px;
         }
 
-
         .back:hover {
             text-decoration: underline;
         }
-
 
         /* =========================
            Main
@@ -80,7 +73,6 @@
         main {
             padding: 55px 0 80px;
         }
-
 
         /* =========================
            固定介紹文章
@@ -95,29 +87,23 @@
                 0 4px 18px rgba(0, 0, 0, 0.05);
         }
 
-
         .intro h2 {
             margin-top: 0;
             margin-bottom: 20px;
-
             font-size: 30px;
             color: #4b4036;
         }
 
-
         .intro p {
             margin: 0 0 1.4em;
-
             font-size: 17px;
             line-height: 2;
             color: #555;
         }
 
-
         .intro p:last-child {
             margin-bottom: 0;
         }
-
 
         /* =========================
            分隔線
@@ -125,11 +111,9 @@
 
         .section-divider {
             margin: 55px 0 45px;
-
             border: 0;
             border-top: 1px solid #d8d0c5;
         }
-
 
         /* =========================
            畫廊標題
@@ -140,22 +124,17 @@
             text-align: center;
         }
 
-
         .gallery-title h2 {
             margin: 0 0 8px;
-
             font-size: 30px;
             color: #4b4036;
         }
 
-
         .gallery-title p {
             margin: 0;
-
             color: #888;
             font-size: 15px;
         }
-
 
         /* =========================
            琥珀畫廊
@@ -163,13 +142,9 @@
 
         .amber-gallery {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 28px;
         }
-
 
         /* =========================
            琥珀卡片
@@ -177,9 +152,7 @@
 
         .amber-card {
             background: #fff;
-
             border-radius: 14px;
-
             overflow: hidden;
 
             box-shadow:
@@ -190,7 +163,6 @@
                 box-shadow 0.2s ease;
         }
 
-
         .amber-card:hover {
             transform: translateY(-4px);
 
@@ -198,14 +170,9 @@
                 0 8px 25px rgba(0, 0, 0, 0.08);
         }
 
-
         /* =========================
            圖片區
-           
-           重要：
-           不固定高度
-           不使用 object-fit: cover
-           完整顯示原圖
+           完整顯示，不裁切
         ========================= */
 
         .amber-image {
@@ -214,18 +181,13 @@
             padding: 15px;
         }
 
-
         .amber-image img {
-            width: 100%;
+            width: 75%;
             height: auto;
-
             display: block;
-
             margin: 0 auto;
-
             border-radius: 8px;
         }
-
 
         /* =========================
            商品文字
@@ -235,35 +197,26 @@
             padding: 22px 22px 25px;
         }
 
-
         .amber-content h3 {
             margin: 0 0 10px;
-
             font-size: 21px;
             color: #4b4036;
         }
 
-
         .amber-description {
             color: #666;
-
             font-size: 15px;
-
             line-height: 1.9;
-
             white-space: normal;
         }
-
 
         .amber-description p {
             margin: 0 0 1em;
         }
 
-
         .amber-description p:last-child {
             margin-bottom: 0;
         }
-
 
         /* =========================
            Loading / Empty / Error
@@ -273,19 +226,14 @@
         .empty,
         .error {
             grid-column: 1 / -1;
-
             text-align: center;
-
             padding: 50px 20px;
-
             color: #888;
         }
-
 
         .error {
             color: #a55;
         }
-
 
         /* =========================
            平板
@@ -294,14 +242,11 @@
         @media (max-width: 800px) {
 
             .amber-gallery {
-                grid-template-columns:
-                    repeat(2, 1fr);
-
+                grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
 
         }
-
 
         /* =========================
            手機
@@ -313,54 +258,47 @@
                 padding: 50px 18px 35px;
             }
 
-
             header h1 {
                 font-size: 29px;
             }
-
 
             main {
                 padding: 35px 0 60px;
             }
 
-
             .intro {
                 padding: 28px 22px;
             }
 
-
             .intro h2 {
                 font-size: 25px;
             }
-
 
             .intro p {
                 font-size: 16px;
                 line-height: 1.9;
             }
 
-
             .section-divider {
                 margin: 40px 0 35px;
             }
-
 
             .gallery-title h2 {
                 font-size: 25px;
             }
 
-
             .amber-gallery {
                 grid-template-columns: 1fr;
-
                 gap: 24px;
             }
-
 
             .amber-image {
                 padding: 12px;
             }
 
+            .amber-image img {
+                width: 75%;
+            }
 
             .amber-content {
                 padding: 20px;
@@ -413,13 +351,11 @@
                 🟠 好運琥珀
             </h2>
 
-
             <p>
                 琥珀，是大自然留下來的一段時間。
                 它來自遠古樹脂，經過漫長歲月的變化，
                 最後成為我們今天所看到的琥珀。
             </p>
-
 
             <p>
                 每一塊琥珀都有自己的顏色、紋理與形狀，
@@ -427,7 +363,6 @@
                 對我們而言，琥珀不只是漂亮的飾品，
                 也是一種值得觀察與研究的自然材料。
             </p>
-
 
             <p>
                 好運琥珀，希望從琥珀本身出發，
@@ -437,16 +372,8 @@
         </section>
 
 
-        <!-- =========================
-             分隔線
-        ========================= -->
-
         <hr class="section-divider">
 
-
-        <!-- =========================
-             收藏標題
-        ========================= -->
 
         <section class="gallery-title">
 
@@ -454,17 +381,12 @@
                 ✨ 琥珀收藏
             </h2>
 
-
             <p>
                 每一塊琥珀，都有自己的樣子與故事。
             </p>
 
         </section>
 
-
-        <!-- =========================
-             動態內容
-        ========================= -->
 
         <section
             id="amberGallery"
@@ -485,7 +407,6 @@
 
 <script>
 
-
 /* =========================
    GitHub API
 ========================= */
@@ -493,10 +414,8 @@
 const API_URL =
     "https://api.github.com/repos/loustalk/goodluck-research/contents/content/articles?ref=main";
 
-
 const RAW_BASE =
     "https://raw.githubusercontent.com/loustalk/goodluck-research/main/content/articles/";
-
 
 
 /* =========================
@@ -506,43 +425,28 @@ const RAW_BASE =
 function parseFrontMatter(text) {
 
     const result = {
-
         title: "",
-
         date: "",
-
         category: "",
-
         body: text
-
     };
 
-
     if (!text.startsWith("---")) {
-
         return result;
-
     }
-
 
     const end =
         text.indexOf("\n---", 3);
 
-
     if (end === -1) {
-
         return result;
-
     }
-
 
     const frontMatter =
         text.substring(3, end).trim();
 
-
     result.body =
         text.substring(end + 4).trim();
-
 
     frontMatter
         .split("\n")
@@ -551,25 +455,15 @@ function parseFrontMatter(text) {
             const colon =
                 line.indexOf(":");
 
-
             if (colon === -1) {
-
                 return;
-
             }
 
-
             const key =
-                line
-                    .substring(0, colon)
-                    .trim();
-
+                line.substring(0, colon).trim();
 
             let value =
-                line
-                    .substring(colon + 1)
-                    .trim();
-
+                line.substring(colon + 1).trim();
 
             value =
                 value.replace(
@@ -577,34 +471,22 @@ function parseFrontMatter(text) {
                     ""
                 );
 
-
             if (key === "title") {
-
                 result.title = value;
-
             }
-
 
             if (key === "date") {
-
                 result.date = value;
-
             }
 
-
             if (key === "category") {
-
                 result.category = value;
-
             }
 
         });
 
-
     return result;
-
 }
-
 
 
 /* =========================
@@ -623,7 +505,6 @@ function escapeHtml(text) {
 }
 
 
-
 /* =========================
    取得圖片
 ========================= */
@@ -635,18 +516,12 @@ function extractImage(markdown) {
             /<img\s+[^>]*src="([^"]+)"[^>]*>/i
         );
 
-
     if (!match) {
-
         return "";
-
     }
 
-
     return match[1];
-
 }
-
 
 
 /* =========================
@@ -660,18 +535,12 @@ function extractImageAlt(markdown) {
             /<img\s+[^>]*alt="([^"]*)"[^>]*>/i
         );
 
-
     if (!match) {
-
         return "";
-
     }
 
-
     return match[1];
-
 }
-
 
 
 /* =========================
@@ -696,11 +565,8 @@ function createDescription(markdown) {
             )
             .trim();
 
-
     return text;
-
 }
-
 
 
 /* =========================
@@ -714,12 +580,10 @@ async function loadAmber() {
             "amberGallery"
         );
 
-
     try {
 
         const response =
             await fetch(API_URL);
-
 
         if (!response.ok) {
 
@@ -729,27 +593,18 @@ async function loadAmber() {
 
         }
 
-
         const files =
             await response.json();
 
-
         const markdownFiles =
             files.filter(file =>
-
                 file.name
                     .toLowerCase()
                     .endsWith(".md")
-
             );
-
 
         const articles = [];
 
-
-        /* =========================
-           逐篇讀取
-        ========================= */
 
         for (
             const file of markdownFiles
@@ -763,63 +618,47 @@ async function loadAmber() {
                         file.name
                     );
 
-
                 const articleResponse =
                     await fetch(rawUrl);
-
 
                 if (
                     !articleResponse.ok
                 ) {
-
                     continue;
-
                 }
-
 
                 const text =
                     await articleResponse.text();
-
 
                 const article =
                     parseFrontMatter(text);
 
 
-                /* =========================
-                   只抓 amber
-                ========================= */
-
                 if (
                     article.category !==
                     "amber"
                 ) {
-
                     continue;
-
                 }
 
 
                 article.filename =
                     file.name;
 
-
                 article.image =
                     extractImage(
                         article.body
                     );
-
 
                 article.imageAlt =
                     extractImageAlt(
                         article.body
                     );
 
-
                 article.description =
                     createDescription(
                         article.body
                     );
-
 
                 articles.push(article);
 
@@ -838,9 +677,7 @@ async function loadAmber() {
         }
 
 
-        /* =========================
-           最新文章在前
-        ========================= */
+        /* 最新發布排前面 */
 
         articles.sort(
             (a, b) =>
@@ -849,9 +686,7 @@ async function loadAmber() {
         );
 
 
-        /* =========================
-           沒有資料
-        ========================= */
+        /* 沒有資料 */
 
         if (
             articles.length === 0
@@ -868,13 +703,10 @@ async function loadAmber() {
             `;
 
             return;
-
         }
 
 
-        /* =========================
-           建立畫廊
-        ========================= */
+        /* 建立畫廊 */
 
         gallery.innerHTML =
 
@@ -936,20 +768,16 @@ async function loadAmber() {
 
                             ${image}
 
-
                             <div
                                 class="amber-content"
                             >
 
                                 <h3>
-
                                     ${escapeHtml(
                                         article.title ||
                                         "未命名琥珀"
                                     )}
-
                                 </h3>
-
 
                                 ${description}
 
@@ -969,7 +797,6 @@ async function loadAmber() {
 
         console.error(error);
 
-
         gallery.innerHTML = `
 
             <div class="error">
@@ -986,17 +813,14 @@ async function loadAmber() {
 }
 
 
-
 /* =========================
    啟動
 ========================= */
 
 loadAmber();
 
-
 </script>
 
 
 </body>
-
 </html>
