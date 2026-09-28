@@ -1,0 +1,171 @@
+name: 更新 YouTube 最新影片
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+
+  update-youtube:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: 取得網站程式
+        uses: actions/checkout@v4
+
+      - name: 設定 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: 安裝 yt-dlp
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -U yt-dlp
+
+      - name: 取得 YouTube 最新影片
+        shell: bash
+        run: |
+
+          mkdir -p data
+
+          python - <<'PY'
+          import json
+          import subprocess
+          import sys
+
+          url = "https://www.youtube.com/@artcoffee3360/videos"
+
+          command = [
+              sys.executable,
+              "-m",
+              "yt_dlp",
+              "--flat-playlist",
+              "--playlist-end",
+              "1",
+              "--dump-json",
+              "--skip-download",
+              "--no-warnings",
+              url,
+          ]
+
+          result = subprocess.run(
+              command,
+              capture_output=True,
+              text=True,
+              check=False,
+          )
+
+          if result.returncode != 0:
+              print(result.stderr)
+              raise SystemExit(
+                  "無法取得 YouTube 最新影片"
+              )
+
+          lines = [
+              line.strip()
+              for line in result.stdout.splitlines()
+              if line.strip()
+          ]
+
+          if not lines:
+              raise SystemExit(
+                  "YouTube 沒有回傳影片資料"
+              )
+
+          item = json.loads(lines[0])
+
+          video_id = item.get("id")
+
+          if not video_id:
+              raise SystemExit(
+                  "找不到最新影片 ID"
+              )
+
+          title = item.get("title") or "最新上傳影片"
+
+          published_at = None
+
+          timestamp = item.get("timestamp")
+
+          if timestamp:
+              from datetime import datetime, timezone
+
+              published_at = (
+                  datetime.fromtimestamp(
+                      timestamp,
+                      tz=timezone.utc
+                  )
+                  .isoformat()
+                  .replace("+00:00", "Z")
+              )
+
+          if not published_at:
+              upload_date = item.get("upload_date")
+
+              if upload_date and len(upload_date) == 8:
+                  published_at = (
+                      upload_date[0:4]
+                      + "-"
+                      + upload_date[4:6]
+                      + "-"
+                      + upload_date[6:8]
+                      + "T00:00:00Z"
+                  )
+
+          output = {
+              "videoId": video_id,
+              "title": title,
+              "publishedAt": published_at,
+              "channel": "好運研究所",
+              "handle": "@artcoffee3360"
+          }
+
+          with open(
+              "data/youtube-latest.json",
+              "w",
+              encoding="utf-8"
+          ) as f:
+              json.dump(
+                  output,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
+
+          print(
+              "最新影片：",
+              video_id,
+              title
+          )
+          PY
+
+      - name: 儲存最新影片資料
+        run: |
+
+          git config user.name "github-actions[bot]"
+
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/youtube-latest.json
+
+          if git diff --cached --quiet; then
+
+            echo "最新影片沒有變化，不需要提交。"
+
+          else
+
+            git commit \
+              -m "更新 YouTube 最新影片"
+
+            git push
+
+          fi
