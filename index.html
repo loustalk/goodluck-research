@@ -9,9 +9,6 @@
     <meta name="description" content="好運研究所｜由小盧老師主持，分享占卜、風水、財運分析，以及故事、Podcast、YouTube與生活裡關於好運的觀察。">
 
     <style>
-        /* =========================
-           好運研究所｜第一版網站
-           ========================= */
 
         * {
             box-sizing: border-box;
@@ -40,6 +37,7 @@
             text-decoration: none;
             color: inherit;
         }
+
 
         /* =========================
            導覽列
@@ -98,6 +96,7 @@
         .nav-links a:hover {
             color: #a66f32;
         }
+
 
         /* =========================
            首頁主視覺
@@ -197,6 +196,7 @@
             background: white;
         }
 
+
         /* =========================
            主視覺右側
            ========================= */
@@ -254,6 +254,7 @@
             color: #97836d;
         }
 
+
         /* =========================
            Facebook 最新訊息區
            ========================= */
@@ -288,30 +289,47 @@
         }
 
         .facebook-box {
-            min-height: 220px;
-            padding: 45px;
+            padding: 30px;
 
             background: white;
             border: 1px solid #e2d7c8;
             border-radius: 20px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
             text-align: center;
-        }
 
-        .facebook-box p {
-            color: #81786e;
+            box-shadow: 0 15px 35px rgba(75, 54, 33, 0.05);
         }
 
         .facebook-box strong {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #735437;
-            font-size: 18px;
+            font-size: 20px;
         }
+
+        .facebook-box > div:first-child p {
+            color: #81786e;
+            font-size: 14px;
+        }
+
+        .facebook-frame {
+            max-width: 700px;
+            margin: 25px auto 0;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .facebook-frame iframe {
+            display: block;
+            width: 100%;
+            height: 650px;
+            border: none;
+        }
+
+        .facebook-button {
+            margin-top: 20px;
+        }
+
 
         /* =========================
            六大入口
@@ -385,6 +403,7 @@
             font-size: 20px;
         }
 
+
         /* =========================
            關於小盧老師
            ========================= */
@@ -448,6 +467,7 @@
             color: #6f665d;
             margin-bottom: 15px;
         }
+
 
         /* =========================
            好運研究所內容
@@ -514,6 +534,7 @@
             font-size: 14px;
         }
 
+
         /* =========================
            未來品牌
            ========================= */
@@ -561,6 +582,7 @@
             font-size: 14px;
         }
 
+
         /* =========================
            聯絡／預約區
            ========================= */
@@ -598,6 +620,7 @@
             margin-bottom: 28px;
         }
 
+
         /* =========================
            Footer
            ========================= */
@@ -616,6 +639,7 @@
             font-size: 16px;
             margin-bottom: 5px;
         }
+
 
         /* =========================
            手機版
@@ -672,7 +696,12 @@
             .section-title h2 {
                 font-size: 27px;
             }
+
+            .facebook-frame iframe {
+                height: 620px;
+            }
         }
+
 
         @media (max-width: 480px) {
 
@@ -697,7 +726,11 @@
             }
 
             .facebook-box {
-                padding: 30px 20px;
+                padding: 25px 15px;
+            }
+
+            .facebook-frame iframe {
+                height: 600px;
             }
 
             .contact-box {
@@ -709,13 +742,16 @@
     </style>
 </head>
 
+
 <body>
+
 
     <!-- =========================
          導覽列
          ========================= -->
 
     <header>
+
         <nav class="nav">
 
             <a href="#" class="logo">
@@ -724,13 +760,21 @@
             </a>
 
             <div class="nav-links">
+
                 <a href="#rooms">研究室</a>
+
                 <a href="#about">關於小盧老師</a>
+
                 <a href="#content">內容／媒體</a>
+
+                <a href="#facebook">Facebook</a>
+
                 <a href="#contact">聯絡</a>
+
             </div>
 
         </nav>
+
     </header>
 
 
@@ -1004,8 +1048,6 @@
             <div class="content-grid">
 
 
-                <!-- 這裡已改成直接前往目前的故事文章頁 -->
-
                 <a href="story.html" class="content-card content-link">
 
                     <div class="content-image">
@@ -1093,18 +1135,18 @@
 
 
     <!-- =========================
-         Facebook 粉專
+         Facebook 最新貼文
          ========================= -->
 
-    <section class="facebook-section">
+    <section class="facebook-section" id="facebook">
 
         <div class="section-inner">
 
             <div class="section-title">
 
-                <small>FOLLOW US</small>
+                <small>FACEBOOK</small>
 
-                <h2>好運研究所 Facebook 粉專</h2>
+                <h2>最新 Facebook 貼文</h2>
 
             </div>
 
@@ -1114,25 +1156,41 @@
                 <div>
 
                     <strong>
-                        追蹤小盧老師的最新消息
+                        觀音之光神諭卡占卜工作室
                     </strong>
 
                     <p>
-                        活動公告、最新內容與好運研究所的日常，
-                        都會陸續在 Facebook 粉專分享。
+                        最新貼文會直接顯示在這裡。
                     </p>
 
-                    <a href="https://www.facebook.com/Loustalk789"
-                       class="btn btn-primary"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       style="margin-top:22px;">
+                </div>
+
+
+                <div class="facebook-frame">
+
+                    <iframe
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLoustalk789&tabs=timeline&width=700&height=650&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false"
+                        width="700"
+                        height="650"
+                        style="border:none;overflow:hidden"
+                        scrolling="no"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+
+                </div>
+
+
+                <div class="facebook-button">
+
+                    <a
+                        href="https://www.facebook.com/Loustalk789"
+                        class="btn btn-primary"
+                        target="_blank"
+                        rel="noopener noreferrer">
                         前往 Facebook 粉專
                     </a>
-
-                    <p style="margin-top:14px; font-size:13px; color:#9a9085;">
-                        觀音之光神諭卡占卜工作室
-                    </p>
 
                 </div>
 
