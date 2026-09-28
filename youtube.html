@@ -1,13 +1,768 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube｜好運研究所</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube｜好運研究所</title>
+
+<style>
+:root{
+    --bg:#f7f3ec;
+    --card:#fffdf9;
+    --text:#4a4038;
+    --sub:#70665d;
+    --line:#e7ded2;
+
+    --goldbg:#fcf6e9;
+    --goldline:#eadbb9;
+    --gold:#a17d3e;
+
+    --bluebg:#f0f6fa;
+    --blueline:#d4e2ea;
+    --blue:#587d91;
+
+    --purplebg:#f7f1fb;
+    --purpleline:#dfd0ec;
+    --purple:#8060a0;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        sans-serif;
+    line-height:1.8;
+}
+
+a{
+    color:inherit;
+}
+
+.page{
+    width:min(1100px,calc(100% - 36px));
+    margin:auto;
+    padding:50px 0 70px;
+}
+
+/* =========================
+   Hero
+========================= */
+
+.hero{
+    padding:58px 42px;
+    margin-bottom:28px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:28px;
+    text-align:center;
+    box-shadow:0 8px 28px rgba(70,55,40,.045);
+}
+
+.hero:before{
+    content:"🎬";
+    display:block;
+    margin-bottom:10px;
+    font-size:40px;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    font-size:clamp(32px,5vw,46px);
+    letter-spacing:.04em;
+}
+
+.hero p{
+    max-width:720px;
+    margin:auto;
+    color:var(--sub);
+    font-size:17px;
+}
+
+.channel-link{
+    display:inline-block;
+    margin-top:22px;
+    padding:11px 24px;
+    background:#4d4034;
+    color:#fffaf2;
+    border-radius:999px;
+    text-decoration:none;
+    transition:.2s;
+}
+
+.channel-link:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   Section
+========================= */
+
+section{
+    margin-bottom:28px;
+    padding:42px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:24px;
+    box-shadow:0 6px 22px rgba(70,55,40,.035);
+}
+
+section h2{
+    margin:0 0 24px;
+    font-size:clamp(25px,4vw,32px);
+}
+
+/* =========================
+   頻道身份
+========================= */
+
+.channel-card{
+    padding:22px;
+    background:var(--goldbg);
+    border:1px solid var(--goldline);
+    border-radius:20px;
+}
+
+.channel-card img{
+    display:block;
+    width:100%;
+    height:auto;
+    border-radius:14px;
+    border:1px solid rgba(161,125,62,.18);
+}
+
+.channel-info{
+    padding:22px 4px 2px;
+    text-align:center;
+}
+
+.channel-name{
+    font-size:25px;
+    font-weight:700;
+}
+
+.channel-handle{
+    color:var(--gold);
+    font-size:15px;
+}
+
+/* =========================
+   影片
+========================= */
+
+.video-intro{
+    margin:-8px 0 26px;
+    color:var(--sub);
+}
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px;
+}
+
+.video-card{
+    overflow:hidden;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:20px;
+    box-shadow:0 6px 18px rgba(70,55,40,.035);
+}
+
+.featured{
+    border-color:var(--purpleline);
+    background:var(--purplebg);
+}
+
+.latest{
+    border-color:var(--blueline);
+    background:var(--bluebg);
+}
+
+.video-heading{
+    padding:22px 22px 16px;
+}
+
+.video-heading small{
+    display:block;
+    margin-bottom:5px;
+    letter-spacing:.08em;
+    font-size:13px;
+}
+
+.featured small{
+    color:var(--purple);
+}
+
+.latest small{
+    color:var(--blue);
+}
+
+.video-heading h3{
+    margin:0;
+    font-size:21px;
+}
+
+.video-frame{
+    width:100%;
+    aspect-ratio:16/9;
+    background:#e9e2d8;
+}
+
+.video-frame iframe{
+    display:block;
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+.latest-status{
+    padding:18px 22px 22px;
+    color:var(--sub);
+    font-size:14px;
+}
+
+.latest-status.error{
+    color:#8a604e;
+}
+
+.video-note{
+    margin-top:24px;
+    padding:20px 24px;
+    background:#faf6ee;
+    border:1px solid #e6d9c6;
+    border-radius:18px;
+    color:#62594f;
+    text-align:center;
+    font-size:15px;
+}
+
+/* =========================
+   返回首頁
+========================= */
+
+.back{
+    text-align:center;
+}
+
+.back a{
+    display:inline-block;
+    padding:11px 24px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:999px;
+    text-decoration:none;
+    color:var(--sub);
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer{
+    padding:32px 20px;
+    background:#342b24;
+    color:#cfc3b5;
+    text-align:center;
+    font-size:12px;
+}
+
+footer strong{
+    display:block;
+    color:#eee4d7;
+    font-size:16px;
+    margin-bottom:5px;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media(max-width:760px){
+
+    .page{
+        width:min(100% - 22px,1100px);
+        padding:28px 0 50px;
+    }
+
+    .hero{
+        padding:42px 22px;
+        border-radius:22px;
+    }
+
+    section{
+        padding:30px 20px;
+        border-radius:20px;
+    }
+
+    .channel-card{
+        padding:14px;
+    }
+
+    .video-grid{
+        grid-template-columns:1fr;
+    }
+
+    .video-heading{
+        padding:19px 18px 14px;
+    }
+
+    .video-heading h3{
+        font-size:19px;
+    }
+}
+</style>
 </head>
+
 <body>
-    <h1>YouTube</h1>
-    <p>這裡是《好運研究所》的 YouTube。</p>
-    <p>← <a href="index.html">回到好運研究所</a></p>
+
+<div class="page">
+
+    <!-- =========================
+         Hero
+    ========================= -->
+
+    <header class="hero">
+
+        <h1>好運研究所 YouTube</h1>
+
+        <p>
+            把占卜、風水、人生故事與那些值得研究的好運問題，
+            用影片慢慢說給你聽。
+        </p>
+
+        <a
+            class="channel-link"
+            href="https://www.youtube.com/@artcoffee3360"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            前往好運研究所 YouTube 頻道 →
+        </a>
+
+    </header>
+
+
+    <!-- =========================
+         頻道身份
+    ========================= -->
+
+    <section>
+
+        <h2>🌞 好運研究所 🌙</h2>
+
+        <div class="channel-card">
+
+            <img
+                src="uploads/好運研究所YouTube頻道.png"
+                alt="好運研究所 YouTube 頻道"
+            >
+
+            <div class="channel-info">
+
+                <div class="channel-name">
+                    🌞 好運研究所 🌙
+                </div>
+
+                <div class="channel-handle">
+                    @artcoffee3360
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         兩支影片
+    ========================= -->
+
+    <section>
+
+        <h2>🎬 好運研究所影片</h2>
+
+        <p class="video-intro">
+            一支是小盧老師指定的精選影片，
+            另一支會自動抓取 YouTube 頻道最新上傳的影片。
+        </p>
+
+
+        <div class="video-grid">
+
+            <!-- 固定精選影片 -->
+
+            <article class="video-card featured">
+
+                <div class="video-heading">
+
+                    <small>FEATURED VIDEO</small>
+
+                    <h3>
+                        小盧老師精選影片
+                    </h3>
+
+                </div>
+
+                <div class="video-frame">
+
+                    <iframe
+                        src="https://www.youtube-nocookie.com/embed/vW1IIM4E0v8"
+                        title="好運研究所精選影片"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    ></iframe>
+
+                </div>
+
+            </article>
+
+
+            <!-- 最新影片 -->
+
+            <article class="video-card latest">
+
+                <div class="video-heading">
+
+                    <small>LATEST VIDEO</small>
+
+                    <h3 id="latest-title">
+                        最新上傳影片
+                    </h3>
+
+                </div>
+
+                <div class="video-frame">
+
+                    <iframe
+                        id="latest-video"
+                        title="好運研究所最新影片"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    ></iframe>
+
+                </div>
+
+                <div
+                    id="latest-status"
+                    class="latest-status"
+                    aria-live="polite"
+                >
+                    正在取得最新影片……
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <div class="video-note">
+
+            最新影片會從「好運研究所」YouTube 頻道自動取得，
+            上片後網站不需要重新修改影片網址。
+
+        </div>
+
+    </section>
+
+
+    <!-- 返回首頁 -->
+
+    <div class="back">
+
+        <a href="index.html">
+            ← 回到好運研究所首頁
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- Footer -->
+
+<footer>
+
+    <strong>好運研究所</strong>
+
+    GOOD LUCK RESEARCH
+
+    <div style="margin-top:14px">
+        © 2026 好運研究所｜小盧老師
+    </div>
+
+</footer>
+
+
+<script>
+
+/*
+ * ============================================================
+ * 好運研究所 YouTube 最新影片
+ * ============================================================
+ *
+ * 只有下面這一行需要貼入你的新 API Key。
+ *
+ * 不要把 API Key 再貼回聊天。
+ *
+ * API Key 必須限制：
+ *
+ * 1. 網站來源
+ * 2. YouTube Data API v3
+ */
+
+const YOUTUBE_API_KEY =
+    "請把你的新 YouTube Data API Key 貼在這裡";
+
+const YOUTUBE_HANDLE =
+    "@artcoffee3360";
+
+
+const latestVideo =
+    document.getElementById("latest-video");
+
+const latestTitle =
+    document.getElementById("latest-title");
+
+const latestStatus =
+    document.getElementById("latest-status");
+
+
+/* =========================
+   錯誤訊息
+========================= */
+
+function showError(message){
+
+    latestStatus.textContent = message;
+
+    latestStatus.classList.add("error");
+
+    latestVideo.removeAttribute("src");
+}
+
+
+/* =========================
+   顯示最新影片
+========================= */
+
+function showLatest(
+    videoId,
+    title,
+    publishedAt
+){
+
+    latestVideo.src =
+        `https://www.youtube-nocookie.com/embed/${videoId}`;
+
+    latestTitle.textContent =
+        title || "最新上傳影片";
+
+
+    if(publishedAt){
+
+        const d =
+            new Date(publishedAt);
+
+        if(!Number.isNaN(d.getTime())){
+
+            latestStatus.textContent =
+                `最新上傳｜${
+                    d.toLocaleDateString(
+                        "zh-TW",
+                        {
+                            year:"numeric",
+                            month:"long",
+                            day:"numeric"
+                        }
+                    )
+                }`;
+
+            return;
+        }
+    }
+
+
+    latestStatus.textContent =
+        "最新上傳影片";
+}
+
+
+/* =========================
+   取得 YouTube 最新影片
+========================= */
+
+async function loadLatestVideo(){
+
+    if(
+        !YOUTUBE_API_KEY ||
+        YOUTUBE_API_KEY ===
+        AIzaSyDepgNKCQB-I4AGSyhWhnfY2BJJaq84WgU"
+    ){
+
+        showError(
+            "尚未設定 YouTube API Key。"
+        );
+
+        return;
+    }
+
+
+    try{
+
+        /*
+         * 第一步：
+         *
+         * 用頻道 Handle 找到頻道的
+         * uploads playlist。
+         */
+
+        const channelUrl =
+            "https://www.googleapis.com/youtube/v3/channels" +
+            `?part=contentDetails` +
+            `&forHandle=${encodeURIComponent(
+                YOUTUBE_HANDLE
+            )}` +
+            `&key=${encodeURIComponent(
+                YOUTUBE_API_KEY
+            )}`;
+
+
+        const channelResponse =
+            await fetch(channelUrl);
+
+
+        const channelData =
+            await channelResponse.json();
+
+
+        if(!channelResponse.ok){
+
+            throw new Error(
+                channelData?.error?.message ||
+                "無法取得 YouTube 頻道資料。"
+            );
+        }
+
+
+        const uploadsPlaylistId =
+            channelData
+                ?.items?.[0]
+                ?.contentDetails
+                ?.relatedPlaylists
+                ?.uploads;
+
+
+        if(!uploadsPlaylistId){
+
+            throw new Error(
+                "找不到這個 YouTube 頻道的影片清單。"
+            );
+        }
+
+
+        /*
+         * 第二步：
+         *
+         * 從 uploads playlist
+         * 取得第一支影片。
+         */
+
+        const playlistUrl =
+            "https://www.googleapis.com/youtube/v3/playlistItems" +
+            `?part=snippet,contentDetails` +
+            `&playlistId=${encodeURIComponent(
+                uploadsPlaylistId
+            )}` +
+            `&maxResults=1` +
+            `&key=${encodeURIComponent(
+                YOUTUBE_API_KEY
+            )}`;
+
+
+        const playlistResponse =
+            await fetch(playlistUrl);
+
+
+        const playlistData =
+            await playlistResponse.json();
+
+
+        if(!playlistResponse.ok){
+
+            throw new Error(
+                playlistData?.error?.message ||
+                "無法取得最新影片。"
+            );
+        }
+
+
+        const item =
+            playlistData?.items?.[0];
+
+
+        const videoId =
+            item?.contentDetails?.videoId ||
+            item?.snippet?.resourceId?.videoId;
+
+
+        const title =
+            item?.snippet?.title;
+
+
+        const publishedAt =
+            item?.contentDetails?.videoPublishedAt ||
+            item?.snippet?.publishedAt;
+
+
+        if(!videoId){
+
+            throw new Error(
+                "目前找不到最新影片。"
+            );
+        }
+
+
+        showLatest(
+            videoId,
+            title,
+            publishedAt
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "YouTube 最新影片載入失敗：",
+            error
+        );
+
+
+        showError(
+            "目前無法取得最新影片，請直接前往好運研究所 YouTube 頻道觀看。"
+        );
+    }
+}
+
+
+/* =========================
+   啟動
+========================= */
+
+loadLatestVideo();
+
+</script>
+
 </body>
 </html>
