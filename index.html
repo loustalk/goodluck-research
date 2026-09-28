@@ -289,10 +289,10 @@
         }
 
 
-        /* Facebook 外層：
-           不再使用巨大白色卡片 */
+        /* Facebook 外層完全透明 */
 
         .facebook-box {
+            width: 100%;
             padding: 0;
 
             background: transparent;
@@ -318,11 +318,11 @@
         }
 
 
-        /* Facebook 文章本體置中 */
+        /* Facebook 本體固定寬度並真正置中 */
 
         .facebook-frame {
-            width: 100%;
-            max-width: 700px;
+            width: 500px;
+            max-width: 100%;
 
             margin: 25px auto 0;
 
@@ -333,7 +333,9 @@
         .facebook-frame iframe {
             display: block;
 
-            width: 100%;
+            width: 500px;
+            max-width: 100%;
+
             height: 650px;
 
             margin: 0 auto;
@@ -724,15 +726,16 @@
             }
 
             .facebook-frame {
-                width: 100%;
-                max-width: 700px;
+                width: 500px;
+                max-width: 100%;
 
                 margin-left: auto;
                 margin-right: auto;
             }
 
             .facebook-frame iframe {
-                width: 100%;
+                width: 500px;
+                max-width: 100%;
                 height: 620px;
             }
         }
@@ -770,12 +773,15 @@
 
             .facebook-frame {
                 width: 100%;
+                max-width: 500px;
+
                 margin-left: auto;
                 margin-right: auto;
             }
 
             .facebook-frame iframe {
                 width: 100%;
+                max-width: 500px;
                 height: 600px;
             }
 
@@ -1215,8 +1221,8 @@
                 <div class="facebook-frame">
 
                     <iframe
-                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLoustalk789&tabs=timeline&width=700&height=650&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false"
-                        width="700"
+                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLoustalk789&tabs=timeline&width=500&height=650&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false"
+                        width="500"
                         height="650"
                         style="border:none;overflow:hidden"
                         scrolling="no"
