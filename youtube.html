@@ -167,9 +167,12 @@ section h2{
     display:grid;
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:22px;
+    align-items:stretch;
 }
 
 .video-card{
+    display:flex;
+    flex-direction:column;
     overflow:hidden;
     background:#fff;
     border:1px solid var(--line);
@@ -187,8 +190,14 @@ section h2{
     background:var(--bluebg);
 }
 
+/*
+ * 兩張卡的標題區固定高度，
+ * 讓左右影片本體完全對齊。
+ */
 .video-heading{
+    height:136px;
     padding:22px 22px 16px;
+    flex-shrink:0;
 }
 
 .video-heading small{
@@ -209,11 +218,13 @@ section h2{
 .video-heading h3{
     margin:0;
     font-size:21px;
+    line-height:1.5;
 }
 
 .video-frame{
     width:100%;
     aspect-ratio:16/9;
+    flex-shrink:0;
     background:#e9e2d8;
 }
 
@@ -225,24 +236,16 @@ section h2{
 }
 
 .latest-status{
-    padding:18px 22px 22px;
+    min-height:58px;
+    padding:16px 22px 18px;
     color:var(--sub);
     font-size:14px;
+    display:flex;
+    align-items:center;
 }
 
 .latest-status.error{
     color:#8a604e;
-}
-
-.video-note{
-    margin-top:24px;
-    padding:20px 24px;
-    background:#faf6ee;
-    border:1px solid #e6d9c6;
-    border-radius:18px;
-    color:#62594f;
-    text-align:center;
-    font-size:15px;
 }
 
 /* =========================
@@ -312,11 +315,14 @@ footer strong{
     }
 
     .video-heading{
+        height:auto;
+        min-height:0;
         padding:19px 18px 14px;
     }
 
     .video-heading h3{
         font-size:19px;
+        line-height:1.6;
     }
 }
 </style>
@@ -419,6 +425,11 @@ footer strong{
 
                 </div>
 
+                <div
+                    class="latest-status"
+                    aria-hidden="true"
+                ></div>
+
             </article>
 
 
@@ -457,14 +468,6 @@ footer strong{
                 </div>
 
             </article>
-
-        </div>
-
-
-        <div class="video-note">
-
-            最新影片會從「好運研究所」YouTube 頻道自動取得，
-            上片後網站不需要重新修改影片網址。
 
         </div>
 
