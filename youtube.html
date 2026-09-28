@@ -326,9 +326,7 @@ footer strong{
 
 <div class="page">
 
-    <!-- =========================
-         Hero
-    ========================= -->
+    <!-- Hero -->
 
     <header class="hero">
 
@@ -351,9 +349,7 @@ footer strong{
     </header>
 
 
-    <!-- =========================
-         頻道身份
-    ========================= -->
+    <!-- 頻道身份 -->
 
     <section>
 
@@ -383,9 +379,7 @@ footer strong{
     </section>
 
 
-    <!-- =========================
-         兩支影片
-    ========================= -->
+    <!-- 兩支影片 -->
 
     <section>
 
@@ -512,22 +506,14 @@ footer strong{
  * 好運研究所 YouTube 最新影片
  * ============================================================
  *
- * 只有下面這一行需要貼入你的新 API Key。
+ * 現在不需要 Google API Key。
  *
- * 不要把 API Key 再貼回聊天。
+ * GitHub Actions 會定期更新：
  *
- * API Key 必須限制：
+ * data/youtube-latest.json
  *
- * 1. 網站來源
- * 2. YouTube Data API v3
+ * 本頁只讀取那個公開 JSON。
  */
-
-const YOUTUBE_API_KEY =
-    "請把你的新 YouTube Data API Key 貼在這裡";
-
-const YOUTUBE_HANDLE =
-    "@artcoffee3360";
-
 
 const latestVideo =
     document.getElementById("latest-video");
@@ -539,206 +525,84 @@ const latestStatus =
     document.getElementById("latest-status");
 
 
-/* =========================
-   錯誤訊息
-========================= */
+function showError(){
 
-function showError(message){
-
-    latestStatus.textContent = message;
+    latestStatus.textContent =
+        "目前無法取得最新影片，請直接前往好運研究所 YouTube 頻道觀看。";
 
     latestStatus.classList.add("error");
 
-    latestVideo.removeAttribute("src");
 }
 
-
-/* =========================
-   顯示最新影片
-========================= */
-
-function showLatest(
-    videoId,
-    title,
-    publishedAt
-){
-
-    latestVideo.src =
-        `https://www.youtube-nocookie.com/embed/${videoId}`;
-
-    latestTitle.textContent =
-        title || "最新上傳影片";
-
-
-    if(publishedAt){
-
-        const d =
-            new Date(publishedAt);
-
-        if(!Number.isNaN(d.getTime())){
-
-            latestStatus.textContent =
-                `最新上傳｜${
-                    d.toLocaleDateString(
-                        "zh-TW",
-                        {
-                            year:"numeric",
-                            month:"long",
-                            day:"numeric"
-                        }
-                    )
-                }`;
-
-            return;
-        }
-    }
-
-
-    latestStatus.textContent =
-        "最新上傳影片";
-}
-
-
-/* =========================
-   取得 YouTube 最新影片
-========================= */
 
 async function loadLatestVideo(){
 
-    if(
-        !YOUTUBE_API_KEY ||
-        YOUTUBE_API_KEY ===
-        AIzaSyDepgNKCQB-I4AGSyhWhnfY2BJJaq84WgU"
-    ){
-
-        showError(
-            "尚未設定 YouTube API Key。"
-        );
-
-        return;
-    }
-
-
     try{
 
-        /*
-         * 第一步：
-         *
-         * 用頻道 Handle 找到頻道的
-         * uploads playlist。
-         */
+        const response =
+            await fetch(
+                "data/youtube-latest.json?v=" +
+                Date.now(),
+                {
+                    cache:"no-store"
+                }
+            );
 
-        const channelUrl =
-            "https://www.googleapis.com/youtube/v3/channels" +
-            `?part=contentDetails` +
-            `&forHandle=${encodeURIComponent(
-                YOUTUBE_HANDLE
-            )}` +
-            `&key=${encodeURIComponent(
-                YOUTUBE_API_KEY
-            )}`;
-
-
-        const channelResponse =
-            await fetch(channelUrl);
-
-
-        const channelData =
-            await channelResponse.json();
-
-
-        if(!channelResponse.ok){
+        if(!response.ok){
 
             throw new Error(
-                channelData?.error?.message ||
-                "無法取得 YouTube 頻道資料。"
+                "latest video JSON not found"
             );
         }
 
 
-        const uploadsPlaylistId =
-            channelData
-                ?.items?.[0]
-                ?.contentDetails
-                ?.relatedPlaylists
-                ?.uploads;
+        const data =
+            await response.json();
 
 
-        if(!uploadsPlaylistId){
+        if(!data.videoId){
 
             throw new Error(
-                "找不到這個 YouTube 頻道的影片清單。"
+                "videoId missing"
             );
         }
 
 
-        /*
-         * 第二步：
-         *
-         * 從 uploads playlist
-         * 取得第一支影片。
-         */
-
-        const playlistUrl =
-            "https://www.googleapis.com/youtube/v3/playlistItems" +
-            `?part=snippet,contentDetails` +
-            `&playlistId=${encodeURIComponent(
-                uploadsPlaylistId
-            )}` +
-            `&maxResults=1` +
-            `&key=${encodeURIComponent(
-                YOUTUBE_API_KEY
-            )}`;
+        latestVideo.src =
+            `https://www.youtube-nocookie.com/embed/${data.videoId}`;
 
 
-        const playlistResponse =
-            await fetch(playlistUrl);
+        latestTitle.textContent =
+            data.title || "最新上傳影片";
 
 
-        const playlistData =
-            await playlistResponse.json();
+        if(data.publishedAt){
+
+            const d =
+                new Date(data.publishedAt);
 
 
-        if(!playlistResponse.ok){
+            if(!Number.isNaN(d.getTime())){
 
-            throw new Error(
-                playlistData?.error?.message ||
-                "無法取得最新影片。"
-            );
+                latestStatus.textContent =
+                    `最新上傳｜${
+                        d.toLocaleDateString(
+                            "zh-TW",
+                            {
+                                year:"numeric",
+                                month:"long",
+                                day:"numeric"
+                            }
+                        )
+                    }`;
+
+                return;
+            }
         }
 
 
-        const item =
-            playlistData?.items?.[0];
-
-
-        const videoId =
-            item?.contentDetails?.videoId ||
-            item?.snippet?.resourceId?.videoId;
-
-
-        const title =
-            item?.snippet?.title;
-
-
-        const publishedAt =
-            item?.contentDetails?.videoPublishedAt ||
-            item?.snippet?.publishedAt;
-
-
-        if(!videoId){
-
-            throw new Error(
-                "目前找不到最新影片。"
-            );
-        }
-
-
-        showLatest(
-            videoId,
-            title,
-            publishedAt
-        );
+        latestStatus.textContent =
+            "最新上傳影片";
 
 
     }catch(error){
@@ -748,17 +612,11 @@ async function loadLatestVideo(){
             error
         );
 
+        showError();
 
-        showError(
-            "目前無法取得最新影片，請直接前往好運研究所 YouTube 頻道觀看。"
-        );
     }
 }
 
-
-/* =========================
-   啟動
-========================= */
 
 loadLatestVideo();
 
