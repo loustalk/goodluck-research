@@ -26,7 +26,6 @@ jobs:
           import sys
           import urllib.parse
           import urllib.request
-          from datetime import datetime, timezone
 
           token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN")
 
@@ -60,7 +59,6 @@ jobs:
               "page": {
                   "name": "觀音之光神諭卡占卜工作室"
               },
-              "updatedAt": datetime.now(timezone.utc).isoformat(),
               "posts": posts
           }
 
@@ -85,12 +83,12 @@ jobs:
       - name: 檢查是否有變更
         id: changes
         run: |
-          if git diff --quiet -- data/facebook-latest.json; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "Facebook 貼文沒有變化"
-          else
+          if git status --porcelain -- data/facebook-latest.json | grep -q .; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Facebook 最新貼文已更新"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Facebook 貼文沒有變化"
           fi
 
       - name: 提交更新
