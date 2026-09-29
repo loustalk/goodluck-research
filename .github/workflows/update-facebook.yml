@@ -1,0 +1,104 @@
+name: 更新 Facebook 最新貼文
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "27 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-facebook:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 取得程式碼
+        uses: actions/checkout@v6
+
+      - name: 取得 Facebook 最新貼文
+        env:
+          FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.parse
+          import urllib.request
+          from datetime import datetime, timezone
+
+          token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN")
+
+          if not token:
+              print("找不到 FACEBOOK_PAGE_ACCESS_TOKEN")
+              sys.exit(1)
+
+          params = urllib.parse.urlencode({
+              "fields": "id,message,created_time,permalink_url",
+              "limit": "3",
+              "access_token": token
+          })
+
+          url = f"https://graph.facebook.com/v26.0/me/posts?{params}"
+
+          try:
+              with urllib.request.urlopen(url, timeout=30) as response:
+                  data = json.load(response)
+          except Exception as e:
+              print("Facebook API 呼叫失敗：", e)
+              sys.exit(1)
+
+          if "error" in data:
+              print("Facebook API 回傳錯誤：")
+              print(json.dumps(data["error"], ensure_ascii=False, indent=2))
+              sys.exit(1)
+
+          posts = data.get("data", [])
+
+          result = {
+              "page": {
+                  "name": "觀音之光神諭卡占卜工作室"
+              },
+              "updatedAt": datetime.now(timezone.utc).isoformat(),
+              "posts": posts
+          }
+
+          os.makedirs("data", exist_ok=True)
+
+          with open(
+              "data/facebook-latest.json",
+              "w",
+              encoding="utf-8"
+          ) as f:
+              json.dump(
+                  result,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
+              f.write("\n")
+
+          print(f"成功取得 {len(posts)} 篇 Facebook 貼文")
+          PY
+
+      - name: 檢查是否有變更
+        id: changes
+        run: |
+          if git diff --quiet -- data/facebook-latest.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Facebook 貼文沒有變化"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Facebook 最新貼文已更新"
+          fi
+
+      - name: 提交更新
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/facebook-latest.json
+          git commit -m "更新 Facebook 最新貼文"
+          git push
