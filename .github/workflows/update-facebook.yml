@@ -24,6 +24,8 @@ jobs:
           import json
           import os
           import sys
+          import time
+          import urllib.error
           import urllib.parse
           import urllib.request
 
@@ -41,19 +43,113 @@ jobs:
 
           url = f"https://graph.facebook.com/v26.0/me/posts?{params}"
 
-          try:
-              with urllib.request.urlopen(url, timeout=30) as response:
-                  data = json.load(response)
-          except Exception as e:
-              print("Facebook API 呼叫失敗：", e)
+          data = None
+
+          for attempt in range(1, 4):
+
+              print(f"Facebook API 第 {attempt}/3 次嘗試")
+
+              try:
+
+                  request = urllib.request.Request(
+                      url,
+                      headers={
+                          "User-Agent": "GoodLuckResearch/1.0"
+                      }
+                  )
+
+                  with urllib.request.urlopen(
+                      request,
+                      timeout=30
+                  ) as response:
+
+                      data = json.load(response)
+
+                  break
+
+              except urllib.error.HTTPError as e:
+
+                  print(
+                      f"Facebook API HTTP 錯誤：{e.code} {e.reason}"
+                  )
+
+                  try:
+                      error_body = e.read().decode(
+                          "utf-8",
+                          errors="replace"
+                      )
+
+                      print("Facebook API 原始回應：")
+                      print(error_body)
+
+                      try:
+                          error_json = json.loads(error_body)
+
+                          if "error" in error_json:
+                              print("Facebook API 錯誤詳細資訊：")
+                              print(
+                                  json.dumps(
+                                      error_json["error"],
+                                      ensure_ascii=False,
+                                      indent=2
+                                  )
+                              )
+
+                      except json.JSONDecodeError:
+                          pass
+
+                  except Exception as read_error:
+
+                      print(
+                          "讀取 Facebook 錯誤內容失敗：",
+                          read_error
+                      )
+
+                  if attempt < 3:
+                      print("5 秒後重試……")
+                      time.sleep(5)
+                  else:
+                      print("Facebook API 連續 3 次失敗")
+                      sys.exit(1)
+
+              except Exception as e:
+
+                  print(
+                      "Facebook API 呼叫失敗：",
+                      repr(e)
+                  )
+
+                  if attempt < 3:
+                      print("5 秒後重試……")
+                      time.sleep(5)
+                  else:
+                      sys.exit(1)
+
+
+          if data is None:
+              print("Facebook API 沒有取得資料")
               sys.exit(1)
+
 
           if "error" in data:
+
               print("Facebook API 回傳錯誤：")
-              print(json.dumps(data["error"], ensure_ascii=False, indent=2))
+
+              print(
+                  json.dumps(
+                      data["error"],
+                      ensure_ascii=False,
+                      indent=2
+                  )
+              )
+
               sys.exit(1)
 
+
           posts = data.get("data", [])
+
+          print(f"成功取得 {len(posts)} 篇 Facebook 貼文")
+
 
           result = {
               "page": {
@@ -62,22 +158,27 @@ jobs:
               "posts": posts
           }
 
+
           os.makedirs("data", exist_ok=True)
+
 
           with open(
               "data/facebook-latest.json",
               "w",
               encoding="utf-8"
           ) as f:
+
               json.dump(
                   result,
                   f,
                   ensure_ascii=False,
                   indent=2
               )
+
               f.write("\n")
 
-          print(f"成功取得 {len(posts)} 篇 Facebook 貼文")
+
+          print("facebook-latest.json 已產生")
           PY
 
       - name: 檢查是否有變更
