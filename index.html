@@ -1307,7 +1307,7 @@
 
     <!-- =========================
          Facebook 原生 Embedded Post
-         直接使用 post.php iframe
+         直接使用 post.php
          ========================= -->
 
     <script>
@@ -1355,7 +1355,10 @@
                  * Facebook 原生 Embedded Post
                  *
                  * 直接建立 Facebook 官方 post.php
-                 * iframe，不再透過 FB.XFBML.parse()
+                 * iframe。
+                 *
+                 * 優先使用 Graph API 回傳的 embed_url，
+                 * 沒有時才退回 permalink_url。
                  */
 
                 const iframe =
@@ -1380,8 +1383,23 @@
                     true;
 
 
+                /*
+                 * 這裡是本次唯一重要修改：
+                 *
+                 * 優先使用 post.embed_url
+                 *
+                 * EP11：
+                 * https://www.facebook.com/permalink.php?story_fbid=1648612863945068&id=1162786317464622
+                 *
+                 * EP07：
+                 * https://www.facebook.com/permalink.php?story_fbid=1617694093703612&id=1162786317464622
+                 *
+                 * EP06：
+                 * https://www.facebook.com/permalink.php?story_fbid=1611190214354000&id=1162786317464622
+                 */
+
                 const facebookUrl =
-                    post.permalink_url;
+                    post.embed_url || post.permalink_url;
 
 
                 const embedUrl =
