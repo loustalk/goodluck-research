@@ -320,8 +320,8 @@
 
         /* =========================
            Facebook 原生貼文
-           固定只顯示最新 3 篇
-           不使用 Timeline
+           直接使用 Facebook post.php
+           固定顯示最新 3 篇
            ========================= */
 
         .facebook-posts {
@@ -339,6 +339,18 @@
             width: 100%;
             max-width: 560px;
             min-height: 120px;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .facebook-post-frame {
+            display: block;
+            width: 560px;
+            max-width: 100%;
+            border: 0;
+            overflow: hidden;
+            background: transparent;
         }
 
         .facebook-loading,
@@ -762,6 +774,10 @@
 
             .facebook-box {
                 padding: 0;
+            }
+
+            .facebook-post-frame {
+                width: 100%;
             }
 
             .contact-box {
@@ -1290,20 +1306,9 @@
 
 
     <!-- =========================
-         Facebook SDK
-         只解析固定的 3 篇原生貼文
-         不使用 Facebook Timeline
+         Facebook 原生 Embedded Post
+         直接使用 post.php iframe
          ========================= -->
-
-    <div id="fb-root"></div>
-
-    <script
-        async
-        defer
-        crossorigin="anonymous"
-        src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v26.0">
-    </script>
-
 
     <script>
 
@@ -1346,79 +1351,57 @@
                     "facebook-post-item";
 
 
-                const embed =
-                    document.createElement("blockquote");
-
-                embed.className =
-                    "fb-post";
-
-
                 /*
                  * Facebook 原生 Embedded Post
                  *
-                 * 這裡直接使用 Graph API 回傳的
-                 * permalink_url，不再使用自行組出的 embed_url。
+                 * 直接建立 Facebook 官方 post.php
+                 * iframe，不再透過 FB.XFBML.parse()
                  */
 
-                embed.setAttribute(
-                    "data-href",
-                    post.permalink_url
-                );
+                const iframe =
+                    document.createElement("iframe");
 
-                embed.setAttribute(
-                    "data-width",
-                    "560"
-                );
+                iframe.className =
+                    "facebook-post-frame";
 
-                embed.setAttribute(
-                    "data-show-text",
-                    "true"
-                );
+                iframe.title =
+                    "Facebook 貼文";
+
+                iframe.loading =
+                    "lazy";
+
+                iframe.scrolling =
+                    "no";
+
+                iframe.frameBorder =
+                    "0";
+
+                iframe.allowFullscreen =
+                    true;
 
 
-                item.appendChild(embed);
+                const facebookUrl =
+                    post.permalink_url;
+
+
+                const embedUrl =
+                    "https://www.facebook.com/plugins/post.php"
+                    + "?href="
+                    + encodeURIComponent(facebookUrl)
+                    + "&width=560"
+                    + "&show_text=true"
+                    + "&height=700";
+
+
+                iframe.src =
+                    embedUrl;
+
+
+                item.appendChild(iframe);
 
                 container.appendChild(item);
 
             });
-
-
-            function parseFacebook() {
-
-                if (
-                    window.FB &&
-                    FB.XFBML
-                ) {
-
-                    FB.XFBML.parse(container);
-
-                    return true;
-                }
-
-                return false;
-            }
-
-
-            if (!parseFacebook()) {
-
-                let tries = 0;
-
-                const timer =
-                    setInterval(function () {
-
-                        tries++;
-
-                        if (
-                            parseFacebook() ||
-                            tries >= 30
-                        ) {
-
-                            clearInterval(timer);
-                        }
-
-                    }, 300);
-
-            }
 
         }
 
