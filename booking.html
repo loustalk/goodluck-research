@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -227,8 +228,12 @@
             justify-content: center;
 
             background: #f3eadc;
+        }
 
-            font-size: 35px;
+        .contact-icon svg {
+            width: 42px;
+            height: 42px;
+            display: block;
         }
 
         .contact-card h2 {
@@ -279,6 +284,34 @@
             background: white;
 
             padding: 8px;
+        }
+
+
+        /* =========================
+           Facebook Logo 大圖
+           ========================= */
+
+        .facebook-logo-box {
+            width: 220px;
+            height: 220px;
+            max-width: 100%;
+
+            margin: 10px auto 24px;
+
+            border-radius: 14px;
+
+            background: #f3eadc;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .facebook-logo-box svg {
+            width: 110px;
+            height: 110px;
+
+            display: block;
         }
 
 
@@ -452,6 +485,16 @@
                 width: 200px;
             }
 
+            .facebook-logo-box {
+                width: 200px;
+                height: 200px;
+            }
+
+            .facebook-logo-box svg {
+                width: 95px;
+                height: 95px;
+            }
+
             .note {
                 padding: 22px 20px;
             }
@@ -555,7 +598,23 @@
                 <div class="contact-card">
 
                     <div class="contact-icon">
-                        💬
+
+                        <!-- LINE -->
+                        <svg
+                            viewBox="0 0 64 64"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M32 8C18.7 8 8 16.9 8 27.9c0 9.7 8.1 17.8 19.1 19.4-.3 1.4-1.1 3.9-1.3 4.5-.2.8.3.8.7.6.3-.1 4.1-2.7 6.5-4.4C44.2 47.1 56 39.1 56 27.9 56 16.9 45.3 8 32 8Z"
+                                fill="#06C755"
+                            />
+                            <path
+                                d="M19 23h3v10h-3V23Zm6 0h3l4 6v-6h3v10h-3l-4-6v6h-3V23Zm13 0h7v2.7h-4v1.1h3.6v2.6H41v1h4V33h-7V23Z"
+                                fill="white"
+                            />
+                        </svg>
+
                     </div>
 
                     <h2>
@@ -565,140 +624,4 @@
                     <h3>
                         線上占卜／諮詢專用 LINE
                     </h3>
-
-                    <p>
-                        如果想直接與小盧老師聯絡，
-                        歡迎加入線上諮詢專用 LINE。
-                    </p>
-
-
-                    <img
-                        src="uploads/line-consultation-qr.jpg"
-                        alt="線上諮詢 LINE QR Code"
-                        class="line-qr"
-                    >
-
-
-                    <a
-                        href="https://line.me/ti/p/VPmctCadW3"
-                        class="btn btn-primary"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        立即加入 LINE
-                    </a>
-
-                </div>
-
-
-                <!-- =========================
-                     Facebook
-                     ========================= -->
-
-                <div class="contact-card">
-
-                    <div class="contact-icon">
-                        📘
-                    </div>
-
-                    <h2>
-                        Facebook
-                    </h2>
-
-                    <h3>
-                        觀音之光神諭卡占卜工作室
-                    </h3>
-
-                    <p>
-                        想看看最新消息、文章與活動，
-                        或直接透過 Facebook 私訊，
-                        歡迎前往粉絲專頁。
-                    </p>
-
-
-                    <div
-                        style="
-                            width:220px;
-                            height:220px;
-                            max-width:100%;
-                            margin:10px auto 24px;
-                            border-radius:14px;
-                            background:#f3eadc;
-                            display:flex;
-                            align-items:center;
-                            justify-content:center;
-                            font-size:70px;
-                        "
-                    >
-                        📘
-                    </div>
-
-
-                    <a
-                        href="https://www.facebook.com/"
-                        class="btn btn-facebook"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        前往 Facebook 粉專
-                    </a>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- =========================
-                 說明
-                 ========================= -->
-
-            <div class="note">
-
-                <p>
-                    好運研究所目前以 LINE 線上諮詢
-                    與 Facebook 粉絲專頁作為主要聯絡方式。
-                    歡迎透過你方便的方式與小盧老師聯絡。
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         返回首頁
-         ========================= -->
-
-    <div class="back-home">
-
-        <a href="index.html">
-            ← 回到好運研究所首頁
-        </a>
-
-    </div>
-
-
-    <!-- =========================
-         Footer
-         ========================= -->
-
-    <footer>
-
-        <strong>
-            好運研究所
-        </strong>
-
-        GOOD LUCK RESEARCH
-
-        <div style="margin-top:18px;">
-            © 2026 好運研究所｜小盧老師
-        </div>
-
-    </footer>
-
-
-</body>
-</html>
+```
