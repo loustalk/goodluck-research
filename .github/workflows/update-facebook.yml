@@ -25,7 +25,7 @@ jobs:
           PAGE_ID="1162786317464622"
 
           RESPONSE=$(curl -sS \
-            "https://graph.facebook.com/v26.0/me/posts?fields=id,message,created_time,permalink_url&limit=3&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}")
+            "https://graph.facebook.com/v26.0/me/posts?fields=id,message,created_time,permalink_url,from,target,parent_id,via,type,status_type,object_id,is_published,is_hidden,privacy&limit=3&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}")
 
           echo "$RESPONSE" > /tmp/facebook-response.json
 
@@ -47,6 +47,7 @@ jobs:
                   message: (.message // ""),
                   created_time: .created_time,
                   permalink_url: .permalink_url,
+
                   embed_url: (
                     "https://www.facebook.com/permalink.php?story_fbid="
                     + (
@@ -56,13 +57,29 @@ jobs:
                       )
                     + "&id="
                     + $page_id
-                  )
+                  ),
+
+                  diagnostics: {
+                    from: (.from // null),
+                    target: (.target // null),
+                    parent_id: (.parent_id // null),
+                    via: (.via // null),
+                    type: (.type // null),
+                    status_type: (.status_type // null),
+                    object_id: (.object_id // null),
+                    is_published: (.is_published // null),
+                    is_hidden: (.is_hidden // null),
+                    privacy: (.privacy // null)
+                  }
                 }
               ]
             }
           ' /tmp/facebook-response.json > data/facebook-latest.json
 
-          echo "Facebook 最新貼文資料："
+          echo "======================================"
+          echo "Facebook 最新貼文資料（含診斷欄位）"
+          echo "======================================"
+
           cat data/facebook-latest.json
 
       - name: Commit and Push
@@ -75,6 +92,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "沒有新的 Facebook 貼文資料需要更新"
           else
-            git commit -m "更新 Facebook 最新貼文"
+            git commit -m "更新 Facebook 最新貼文診斷資料"
             git push
           fi
