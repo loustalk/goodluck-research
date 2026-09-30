@@ -289,7 +289,7 @@
         }
 
 
-        /* Facebook 外層完全透明 */
+        /* Facebook 外層 */
 
         .facebook-box {
             width: 100%;
@@ -318,33 +318,40 @@
         }
 
 
-        /* Facebook 本體固定寬度並真正置中 */
+        /* =========================
+           Facebook 原生貼文
+           固定只顯示最新 3 篇
+           不使用 Timeline
+           ========================= */
 
-        .facebook-frame {
-            width: 500px;
-            max-width: 100%;
+        .facebook-posts {
+            width: 100%;
+            max-width: 760px;
+            margin: 30px auto 0;
 
-            margin: 25px auto 0;
-
-            overflow: hidden;
-            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
         }
 
-        .facebook-frame iframe {
-            display: block;
+        .facebook-post-item {
+            width: 100%;
+            max-width: 560px;
+            min-height: 120px;
+        }
 
-            width: 500px;
-            max-width: 100%;
-
-            height: 650px;
-
-            margin: 0 auto;
-
-            border: none;
+        .facebook-loading,
+        .facebook-empty,
+        .facebook-error {
+            padding: 24px;
+            color: #81786e;
+            font-size: 14px;
+            text-align: center;
         }
 
         .facebook-button {
-            margin-top: 20px;
+            margin-top: 24px;
             text-align: center;
         }
 
@@ -724,20 +731,6 @@
             .section-title h2 {
                 font-size: 27px;
             }
-
-            .facebook-frame {
-                width: 500px;
-                max-width: 100%;
-
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .facebook-frame iframe {
-                width: 500px;
-                max-width: 100%;
-                height: 620px;
-            }
         }
 
 
@@ -771,20 +764,6 @@
                 padding: 0;
             }
 
-            .facebook-frame {
-                width: 100%;
-                max-width: 500px;
-
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .facebook-frame iframe {
-                width: 100%;
-                max-width: 500px;
-                height: 600px;
-            }
-
             .contact-box {
                 min-height: 260px;
                 padding: 40px 24px;
@@ -815,11 +794,11 @@
 
                 <a href="#rooms">研究室</a>
 
-                <a href="services.html">服務方案</a>
-
                 <a href="#about">關於小盧老師</a>
 
                 <a href="#content">內容／媒體</a>
+
+                <a href="services.html">服務方案</a>
 
                 <a href="#facebook">Facebook</a>
 
@@ -866,12 +845,12 @@
                         探索好運研究所
                     </a>
 
-                    <a href="services.html" class="btn btn-outline">
-                        查看服務方案
-                    </a>
-
                     <a href="#about" class="btn btn-outline">
                         認識小盧老師
+                    </a>
+
+                    <a href="services.html" class="btn btn-outline">
+                        查看服務方案
                     </a>
 
                 </div>
@@ -1224,18 +1203,14 @@
                 </div>
 
 
-                <div class="facebook-frame">
+                <div
+                    id="facebook-posts"
+                    class="facebook-posts"
+                    aria-live="polite">
 
-                    <iframe
-                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLoustalk789&tabs=timeline&width=500&height=650&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false"
-                        width="500"
-                        height="650"
-                        style="border:none;overflow:hidden"
-                        scrolling="no"
-                        frameborder="0"
-                        allowfullscreen="true"
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                    </iframe>
+                    <div class="facebook-loading">
+                        正在載入最新 Facebook 貼文……
+                    </div>
 
                 </div>
 
@@ -1312,6 +1287,235 @@
         </div>
 
     </footer>
+
+
+    <!-- =========================
+         Facebook SDK
+         只解析固定的 3 篇原生貼文
+         不使用 Facebook Timeline
+         ========================= -->
+
+    <div id="fb-root"></div>
+
+    <script
+        async
+        defer
+        crossorigin="anonymous"
+        src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v26.0">
+    </script>
+
+
+    <script>
+
+    (function () {
+
+        const container =
+            document.getElementById("facebook-posts");
+
+        if (!container) return;
+
+
+        function renderFacebookPosts(posts) {
+
+            container.innerHTML = "";
+
+
+            if (!posts.length) {
+
+                const empty =
+                    document.createElement("div");
+
+                empty.className =
+                    "facebook-empty";
+
+                empty.textContent =
+                    "目前還沒有可顯示的 Facebook 貼文。";
+
+                container.appendChild(empty);
+
+                return;
+            }
+
+
+            posts.forEach(function (post) {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "facebook-post-item";
+
+
+                const embed =
+                    document.createElement("blockquote");
+
+                embed.className =
+                    "fb-post";
+
+                embed.setAttribute(
+                    "data-href",
+                    post.permalink_url
+                );
+
+                embed.setAttribute(
+                    "data-width",
+                    "560"
+                );
+
+                embed.setAttribute(
+                    "data-show-text",
+                    "true"
+                );
+
+
+                item.appendChild(embed);
+
+                container.appendChild(item);
+
+            });
+
+
+            function parseFacebook() {
+
+                if (
+                    window.FB &&
+                    FB.XFBML
+                ) {
+
+                    FB.XFBML.parse(container);
+
+                    return true;
+                }
+
+                return false;
+            }
+
+
+            if (!parseFacebook()) {
+
+                let tries = 0;
+
+                const timer =
+                    setInterval(function () {
+
+                        tries++;
+
+                        if (
+                            parseFacebook() ||
+                            tries >= 30
+                        ) {
+
+                            clearInterval(timer);
+                        }
+
+                    }, 300);
+
+            }
+
+        }
+
+
+        fetch(
+            "data/facebook-latest.json",
+            {
+                cache: "no-store"
+            }
+        )
+
+        .then(function (response) {
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Facebook 資料讀取失敗"
+                );
+            }
+
+            return response.json();
+
+        })
+
+
+        .then(function (data) {
+
+            const sourcePosts =
+                Array.isArray(data.posts)
+                    ? data.posts
+                    : [];
+
+
+            const seen =
+                new Set();
+
+
+            const posts =
+                sourcePosts
+
+                .filter(function (post) {
+
+                    if (
+                        !post ||
+                        !post.permalink_url
+                    ) {
+
+                        return false;
+                    }
+
+
+                    const key =
+                        post.id ||
+                        post.permalink_url;
+
+
+                    if (seen.has(key)) {
+
+                        return false;
+                    }
+
+
+                    seen.add(key);
+
+                    return true;
+
+                })
+
+                .slice(0, 3);
+
+
+            renderFacebookPosts(posts);
+
+        })
+
+
+        .catch(function (error) {
+
+            console.error(
+                "Facebook 最新貼文載入失敗：",
+                error
+            );
+
+
+            container.innerHTML = "";
+
+
+            const errorBox =
+                document.createElement("div");
+
+            errorBox.className =
+                "facebook-error";
+
+            errorBox.textContent =
+                "目前無法載入 Facebook 最新貼文，請稍後再試。";
+
+
+            container.appendChild(errorBox);
+
+        });
+
+
+    })();
+
+    </script>
 
 
 </body>
