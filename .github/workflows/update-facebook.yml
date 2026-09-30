@@ -1,9 +1,9 @@
 name: 更新 Facebook 最新貼文
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: "27 * * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,191 +13,68 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 取得程式碼
-        uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: 取得 Facebook 最新貼文
         env:
           FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
         run: |
-          python3 - <<'PY'
-          import json
-          import os
-          import sys
-          import time
-          import urllib.error
-          import urllib.parse
-          import urllib.request
+          set -e
 
-          token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN")
+          PAGE_ID="1162786317464622"
 
-          if not token:
-              print("找不到 FACEBOOK_PAGE_ACCESS_TOKEN")
-              sys.exit(1)
+          RESPONSE=$(curl -sS \
+            "https://graph.facebook.com/v26.0/me/posts?fields=id,message,created_time,permalink_url&limit=3&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}")
 
-          params = urllib.parse.urlencode({
-              "fields": "id,message,created_time,permalink_url",
-              "limit": "3",
-              "access_token": token
-          })
+          echo "$RESPONSE" > /tmp/facebook-response.json
 
-          url = f"https://graph.facebook.com/v26.0/me/posts?{params}"
-
-          data = None
-
-          for attempt in range(1, 4):
-
-              print(f"Facebook API 第 {attempt}/3 次嘗試")
-
-              try:
-
-                  request = urllib.request.Request(
-                      url,
-                      headers={
-                          "User-Agent": "GoodLuckResearch/1.0"
-                      }
-                  )
-
-                  with urllib.request.urlopen(
-                      request,
-                      timeout=30
-                  ) as response:
-
-                      data = json.load(response)
-
-                  break
-
-              except urllib.error.HTTPError as e:
-
-                  print(
-                      f"Facebook API HTTP 錯誤：{e.code} {e.reason}"
-                  )
-
-                  try:
-                      error_body = e.read().decode(
-                          "utf-8",
-                          errors="replace"
-                      )
-
-                      print("Facebook API 原始回應：")
-                      print(error_body)
-
-                      try:
-                          error_json = json.loads(error_body)
-
-                          if "error" in error_json:
-                              print("Facebook API 錯誤詳細資訊：")
-                              print(
-                                  json.dumps(
-                                      error_json["error"],
-                                      ensure_ascii=False,
-                                      indent=2
-                                  )
-                              )
-
-                      except json.JSONDecodeError:
-                          pass
-
-                  except Exception as read_error:
-
-                      print(
-                          "讀取 Facebook 錯誤內容失敗：",
-                          read_error
-                      )
-
-                  if attempt < 3:
-                      print("5 秒後重試……")
-                      time.sleep(5)
-                  else:
-                      print("Facebook API 連續 3 次失敗")
-                      sys.exit(1)
-
-              except Exception as e:
-
-                  print(
-                      "Facebook API 呼叫失敗：",
-                      repr(e)
-                  )
-
-                  if attempt < 3:
-                      print("5 秒後重試……")
-                      time.sleep(5)
-                  else:
-                      sys.exit(1)
-
-
-          if data is None:
-              print("Facebook API 沒有取得資料")
-              sys.exit(1)
-
-
-          if "error" in data:
-
-              print("Facebook API 回傳錯誤：")
-
-              print(
-                  json.dumps(
-                      data["error"],
-                      ensure_ascii=False,
-                      indent=2
-                  )
-              )
-
-              sys.exit(1)
-
-
-          posts = data.get("data", [])
-
-          print(f"成功取得 {len(posts)} 篇 Facebook 貼文")
-
-
-          result = {
-              "page": {
-                  "name": "觀音之光神諭卡占卜工作室"
-              },
-              "posts": posts
-          }
-
-
-          os.makedirs("data", exist_ok=True)
-
-
-          with open(
-              "data/facebook-latest.json",
-              "w",
-              encoding="utf-8"
-          ) as f:
-
-              json.dump(
-                  result,
-                  f,
-                  ensure_ascii=False,
-                  indent=2
-              )
-
-              f.write("\n")
-
-
-          print("facebook-latest.json 已產生")
-          PY
-
-      - name: 檢查是否有變更
-        id: changes
-        run: |
-          if git status --porcelain -- data/facebook-latest.json | grep -q .; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Facebook 最新貼文已更新"
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "Facebook 貼文沒有變化"
+          if ! echo "$RESPONSE" | jq -e '.data' > /dev/null; then
+            echo "Facebook API 回傳錯誤："
+            cat /tmp/facebook-response.json
+            exit 1
           fi
 
-      - name: 提交更新
-        if: steps.changes.outputs.changed == 'true'
+          jq --arg page_id "$PAGE_ID" '
+            {
+              page: {
+                name: "觀音之光神諭卡占卜工作室"
+              },
+              posts: [
+                .data[] |
+                {
+                  id: .id,
+                  message: (.message // ""),
+                  created_time: .created_time,
+                  permalink_url: .permalink_url,
+                  embed_url: (
+                    "https://www.facebook.com/permalink.php?story_fbid="
+                    + (
+                        .id
+                        | split("_")
+                        | .[1]
+                      )
+                    + "&id="
+                    + $page_id
+                  )
+                }
+              ]
+            }
+          ' /tmp/facebook-response.json > data/facebook-latest.json
+
+          echo "Facebook 最新貼文資料："
+          cat data/facebook-latest.json
+
+      - name: Commit and Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add data/facebook-latest.json
-          git commit -m "更新 Facebook 最新貼文"
-          git push
+
+          if git diff --cached --quiet; then
+            echo "沒有新的 Facebook 貼文資料需要更新"
+          else
+            git commit -m "更新 Facebook 最新貼文"
+            git push
+          fi
