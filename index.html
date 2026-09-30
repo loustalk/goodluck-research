@@ -1352,9 +1352,17 @@
                 embed.className =
                     "fb-post";
 
+
+                /*
+                 * Facebook 原生 Embedded Post
+                 *
+                 * 這裡直接使用 Graph API 回傳的
+                 * permalink_url，不再使用自行組出的 embed_url。
+                 */
+
                 embed.setAttribute(
                     "data-href",
-                    post.embed_url
+                    post.permalink_url
                 );
 
                 embed.setAttribute(
@@ -1455,7 +1463,7 @@
 
                     if (
                         !post ||
-                        !post.embed_url
+                        !post.permalink_url
                     ) {
 
                         return false;
@@ -1464,7 +1472,7 @@
 
                     const key =
                         post.id ||
-                        post.embed_url;
+                        post.permalink_url;
 
 
                     if (seen.has(key)) {
