@@ -1356,9 +1356,6 @@
                  *
                  * 直接建立 Facebook 官方 post.php
                  * iframe。
-                 *
-                 * 優先使用 Graph API 回傳的 embed_url，
-                 * 沒有時才退回 permalink_url。
                  */
 
                 const iframe =
@@ -1384,22 +1381,20 @@
 
 
                 /*
-                 * 這裡是本次唯一重要修改：
-                 *
-                 * 優先使用 post.embed_url
+                 * 使用 Graph API 回傳的 Facebook 貼文 permalink。
                  *
                  * EP11：
-                 * https://www.facebook.com/permalink.php?story_fbid=1648612863945068&id=1162786317464622
+                 * https://www.facebook.com/1648109553995399/posts/1648612863945068
                  *
                  * EP07：
-                 * https://www.facebook.com/permalink.php?story_fbid=1617694093703612&id=1162786317464622
+                 * https://www.facebook.com/1648109553995399/posts/1617694093703612
                  *
                  * EP06：
-                 * https://www.facebook.com/permalink.php?story_fbid=1611190214354000&id=1162786317464622
+                 * https://www.facebook.com/1648109553995399/posts/1611190214354000
                  */
 
                 const facebookUrl =
-                    post.embed_url || post.permalink_url;
+                    post.permalink_url;
 
 
                 const embedUrl =
