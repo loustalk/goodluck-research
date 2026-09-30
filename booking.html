@@ -3,11 +3,702 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>聯絡／預約｜好運研究所</title>
+
+    <meta
+        name="description"
+        content="好運研究所｜聯絡小盧老師，提供線上諮詢與 Facebook 聯絡入口。"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                "Noto Sans TC",
+                "Microsoft JhengHei",
+                "PingFang TC",
+                Arial,
+                sans-serif;
+
+            background: #faf8f3;
+            color: #4f4942;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           導覽列
+           ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(250, 248, 243, 0.96);
+            border-bottom: 1px solid #e8e0d2;
+
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 16px 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #7a5735;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            display: block;
+
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 3px;
+
+            color: #a08a70;
+
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: #5d554c;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: #a66f32;
+        }
+
+
+        /* =========================
+           Hero
+           ========================= */
+
+        .hero {
+            padding: 90px 24px 70px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at 50% 10%,
+                    rgba(210, 174, 112, 0.18),
+                    transparent 32%
+                ),
+                #faf8f3;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            padding: 6px 15px;
+            margin-bottom: 18px;
+
+            border: 1px solid #d9c4a4;
+            border-radius: 30px;
+
+            color: #987044;
+
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            color: #68482d;
+
+            font-size: clamp(40px, 6vw, 62px);
+            line-height: 1.2;
+
+            letter-spacing: 6px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #70685f;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           聯絡內容
+           ========================= */
+
+        .contact-section {
+            padding: 20px 24px 100px;
+        }
+
+        .contact-inner {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 28px;
+        }
+
+
+        /* =========================
+           聯絡卡片
+           ========================= */
+
+        .contact-card {
+            background: white;
+
+            border: 1px solid #e5dbce;
+            border-radius: 24px;
+
+            padding: 38px 32px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 35px
+                rgba(75, 54, 33, 0.06);
+
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 20px 42px
+                rgba(75, 54, 33, 0.10);
+        }
+
+        .contact-icon {
+            width: 76px;
+            height: 76px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f3eadc;
+
+            font-size: 35px;
+        }
+
+        .contact-card h2 {
+            color: #65482f;
+
+            font-size: 25px;
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            color: #8a6949;
+
+            font-size: 16px;
+            font-weight: 500;
+
+            margin-bottom: 16px;
+        }
+
+        .contact-card p {
+            color: #776e65;
+
+            font-size: 14px;
+            line-height: 1.9;
+
+            margin-bottom: 24px;
+        }
+
+
+        /* =========================
+           LINE QR
+           ========================= */
+
+        .line-qr {
+            width: 220px;
+            max-width: 100%;
+            height: auto;
+
+            display: block;
+
+            margin: 10px auto 24px;
+
+            border-radius: 14px;
+
+            border: 1px solid #e6ddd1;
+
+            background: white;
+
+            padding: 8px;
+        }
+
+
+        /* =========================
+           按鈕
+           ========================= */
+
+        .btn {
+            display: inline-block;
+
+            padding: 12px 26px;
+
+            border-radius: 30px;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            transition: 0.25s;
+        }
+
+        .btn-primary {
+            background: #87613b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #68482d;
+            transform: translateY(-2px);
+        }
+
+        .btn-facebook {
+            background: #87613b;
+            color: white;
+        }
+
+        .btn-facebook:hover {
+            background: #68482d;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           下方說明
+           ========================= */
+
+        .note {
+            max-width: 760px;
+
+            margin: 45px auto 0;
+
+            padding: 25px 30px;
+
+            background: #f1ebe2;
+
+            border: 1px solid #e2d7c8;
+            border-radius: 18px;
+
+            text-align: center;
+        }
+
+        .note p {
+            color: #776e65;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           返回首頁
+           ========================= */
+
+        .back-home {
+            padding: 0 24px 90px;
+
+            text-align: center;
+        }
+
+        .back-home a {
+            color: #8a6949;
+
+            font-size: 14px;
+
+            transition: 0.25s;
+        }
+
+        .back-home a:hover {
+            color: #68482d;
+        }
+
+
+        /* =========================
+           Footer
+           ========================= */
+
+        footer {
+            padding: 35px 24px;
+
+            background: #342b24;
+
+            color: #cfc3b5;
+
+            text-align: center;
+
+            font-size: 12px;
+        }
+
+        footer strong {
+            display: block;
+
+            color: #eee4d7;
+
+            font-size: 16px;
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================
+           平板／手機
+           ========================= */
+
+        @media (max-width: 850px) {
+
+            .nav {
+                padding: 13px 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 70px 20px 55px;
+            }
+
+            .contact-section {
+                padding: 10px 20px 75px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 35px 25px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+                letter-spacing: 4px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .contact-card h2 {
+                font-size: 22px;
+            }
+
+            .line-qr {
+                width: 200px;
+            }
+
+            .note {
+                padding: 22px 20px;
+            }
+
+        }
+
+    </style>
 </head>
+
+
 <body>
-    <h1>聯絡／預約</h1>
-    <p>這裡是《好運研究所》的聯絡與預約頁面。</p>
-    <p>← <a href="index.html">回到好運研究所</a></p>
+
+
+    <!-- =========================
+         導覽列
+         ========================= -->
+
+    <header>
+
+        <nav class="nav">
+
+            <a href="index.html" class="logo">
+
+                好運研究所
+
+                <span>
+                    GOOD LUCK RESEARCH
+                </span>
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="index.html#rooms">
+                    研究室
+                </a>
+
+                <a href="index.html#about">
+                    關於小盧老師
+                </a>
+
+                <a href="index.html#content">
+                    內容／媒體
+                </a>
+
+                <a href="services.html">
+                    服務方案
+                </a>
+
+                <a href="index.html#facebook">
+                    Facebook
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         Hero
+         ========================= -->
+
+    <section class="hero">
+
+        <span class="eyebrow">
+            CONTACT & APPOINTMENT
+        </span>
+
+        <h1>
+            聯絡／預約
+        </h1>
+
+        <p>
+            想了解服務、進行線上諮詢，
+            或想與小盧老師聊聊，
+            歡迎透過 LINE 或 Facebook 聯絡。
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         聯絡方式
+         ========================= -->
+
+    <section class="contact-section">
+
+        <div class="contact-inner">
+
+
+            <div class="contact-grid">
+
+
+                <!-- =========================
+                     LINE
+                     ========================= -->
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        💬
+                    </div>
+
+                    <h2>
+                        LINE 線上諮詢
+                    </h2>
+
+                    <h3>
+                        線上占卜／諮詢專用 LINE
+                    </h3>
+
+                    <p>
+                        如果想直接與小盧老師聯絡，
+                        歡迎加入線上諮詢專用 LINE。
+                    </p>
+
+
+                    <img
+                        src="uploads/line-consultation-qr.jpg"
+                        alt="線上諮詢 LINE QR Code"
+                        class="line-qr"
+                    >
+
+
+                    <a
+                        href="https://line.me/ti/p/VPmctCadW3"
+                        class="btn btn-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        立即加入 LINE
+                    </a>
+
+                </div>
+
+
+                <!-- =========================
+                     Facebook
+                     ========================= -->
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        📘
+                    </div>
+
+                    <h2>
+                        Facebook
+                    </h2>
+
+                    <h3>
+                        觀音之光神諭卡占卜工作室
+                    </h3>
+
+                    <p>
+                        想看看最新消息、文章與活動，
+                        或直接透過 Facebook 私訊，
+                        歡迎前往粉絲專頁。
+                    </p>
+
+
+                    <div
+                        style="
+                            width:220px;
+                            height:220px;
+                            max-width:100%;
+                            margin:10px auto 24px;
+                            border-radius:14px;
+                            background:#f3eadc;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            font-size:70px;
+                        "
+                    >
+                        📘
+                    </div>
+
+
+                    <a
+                        href="https://www.facebook.com/"
+                        class="btn btn-facebook"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        前往 Facebook 粉專
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =========================
+                 說明
+                 ========================= -->
+
+            <div class="note">
+
+                <p>
+                    好運研究所目前以 LINE 線上諮詢
+                    與 Facebook 粉絲專頁作為主要聯絡方式。
+                    歡迎透過你方便的方式與小盧老師聯絡。
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         返回首頁
+         ========================= -->
+
+    <div class="back-home">
+
+        <a href="index.html">
+            ← 回到好運研究所首頁
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         Footer
+         ========================= -->
+
+    <footer>
+
+        <strong>
+            好運研究所
+        </strong>
+
+        GOOD LUCK RESEARCH
+
+        <div style="margin-top:18px;">
+            © 2026 好運研究所｜小盧老師
+        </div>
+
+    </footer>
+
+
 </body>
 </html>
