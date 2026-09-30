@@ -1354,7 +1354,7 @@
 
                 embed.setAttribute(
                     "data-href",
-                    post.permalink_url
+                    post.embed_url
                 );
 
                 embed.setAttribute(
@@ -1455,7 +1455,7 @@
 
                     if (
                         !post ||
-                        !post.permalink_url
+                        !post.embed_url
                     ) {
 
                         return false;
@@ -1464,7 +1464,7 @@
 
                     const key =
                         post.id ||
-                        post.permalink_url;
+                        post.embed_url;
 
 
                     if (seen.has(key)) {
