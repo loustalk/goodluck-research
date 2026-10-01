@@ -1381,20 +1381,15 @@
 
 
                 /*
-                 * 使用 Graph API 回傳的 Facebook 貼文 permalink。
+                 * 優先使用 Graph API 回傳的 embed_url。
+                 * 如果沒有 embed_url，
+                 * 才退回 permalink_url。
                  *
-                 * EP11：
-                 * https://www.facebook.com/1648109553995399/posts/1648612863945068
-                 *
-                 * EP07：
-                 * https://www.facebook.com/1648109553995399/posts/1617694093703612
-                 *
-                 * EP06：
-                 * https://www.facebook.com/1648109553995399/posts/1611190214354000
+                 * 這次 Facebook 修正的核心就在這裡。
                  */
 
                 const facebookUrl =
-                    post.permalink_url;
+                    post.embed_url || post.permalink_url;
 
 
                 const embedUrl =
