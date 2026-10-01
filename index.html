@@ -318,7 +318,6 @@
             width: 560px;
             max-width: 100%;
             border: 0;
-            overflow: hidden;
             background: transparent;
         }
 
@@ -718,9 +717,7 @@
     </style>
 </head>
 
-
 <body>
-
 
     <header>
 
@@ -833,7 +830,6 @@
 
             <div class="room-grid">
 
-
                 <a href="fortune.html" class="room-card">
 
                     <div class="room-icon">🔮</div>
@@ -929,7 +925,6 @@
 
                 </a>
 
-
             </div>
 
         </div>
@@ -940,7 +935,6 @@
     <section class="about" id="about">
 
         <div class="about-inner">
-
 
             <div class="about-image">
 
@@ -1008,7 +1002,6 @@
 
 
             <div class="content-grid">
-
 
                 <a href="story.html" class="content-card content-link">
 
@@ -1087,7 +1080,6 @@
                     </div>
 
                 </a>
-
 
             </div>
 
@@ -1269,25 +1261,12 @@
                     post.embed_url || post.permalink_url;
 
 
-                const postHeight =
-                    post.height || 430;
-
-
-                iframe.height =
-                    postHeight;
-
-                iframe.style.height =
-                    postHeight + "px";
-
-
                 const embedUrl =
                     "https://www.facebook.com/plugins/post.php"
                     + "?href="
                     + encodeURIComponent(facebookUrl)
                     + "&width=560"
-                    + "&show_text=true"
-                    + "&height="
-                    + encodeURIComponent(postHeight);
+                    + "&show_text=true";
 
 
                 iframe.src =
