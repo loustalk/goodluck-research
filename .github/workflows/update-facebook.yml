@@ -35,6 +35,10 @@ jobs:
             exit 1
           fi
 
+          echo "======================================"
+          echo "開始取得 Facebook 每篇貼文的實際高度"
+          echo "======================================"
+
           jq --arg page_id "$PAGE_ID" '
             {
               page: {
@@ -72,13 +76,61 @@ jobs:
                 }
               ]
             }
-          ' /tmp/facebook-response.json > data/facebook-latest.json
+          ' /tmp/facebook-response.json > /tmp/facebook-base.json
 
+          jq -c '.posts[]' /tmp/facebook-base.json | while read -r POST; do
+
+            POST_ID=$(echo "$POST" | jq -r '.id')
+            POST_URL=$(echo "$POST" | jq -r '.permalink_url')
+
+            echo ""
+            echo "--------------------------------------"
+            echo "貼文：${POST_ID}"
+            echo "網址：${POST_URL}"
+
+            OEMBED=$(curl -sS \
+              --get \
+              --data-urlencode "url=${POST_URL}" \
+              --data-urlencode "access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}" \
+              "https://graph.facebook.com/v26.0/oembed_post")
+
+            echo "$OEMBED" > /tmp/facebook-oembed.json
+
+            HEIGHT=$(echo "$OEMBED" | jq -r '.height // empty' 2>/dev/null || true)
+
+            if [ -n "$HEIGHT" ] && [ "$HEIGHT" != "null" ]; then
+              echo "Facebook 回傳高度：${HEIGHT}px"
+            else
+              echo "Facebook 沒有回傳高度，使用預設高度 1200px"
+              HEIGHT="1200"
+            fi
+
+            jq \
+              --arg id "$POST_ID" \
+              --argjson height "$HEIGHT" \
+              '
+                .posts |= map(
+                  if .id == $id
+                  then . + {height: $height}
+                  else .
+                  end
+                )
+              ' \
+              /tmp/facebook-base.json > /tmp/facebook-updated.json
+
+            mv /tmp/facebook-updated.json /tmp/facebook-base.json
+
+          done
+
+          cp /tmp/facebook-base.json data/facebook-latest.json
+
+          echo ""
           echo "======================================"
-          echo "Facebook 最新貼文資料（含診斷欄位）"
+          echo "Facebook 最新貼文資料"
           echo "======================================"
 
           cat data/facebook-latest.json
+
 
       - name: Commit and Push
         run: |
@@ -90,6 +142,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "沒有新的 Facebook 貼文資料需要更新"
           else
-            git commit -m "更新 Facebook 最新貼文診斷資料"
+            git commit -m "更新 Facebook 貼文實際高度"
             git push
           fi
