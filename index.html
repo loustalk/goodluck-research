@@ -1381,15 +1381,21 @@
 
 
                 /*
-                 * 優先使用 Graph API 回傳的 embed_url。
-                 * 如果沒有 embed_url，
-                 * 才退回 permalink_url。
-                 *
-                 * 這次 Facebook 修正的核心就在這裡。
+                 * 使用 Graph API 建立的 Facebook embed_url。
                  */
 
                 const facebookUrl =
                     post.embed_url || post.permalink_url;
+
+
+                /*
+                 * 使用 GitHub Actions 透過 Facebook oEmbed
+                 * 取得的實際貼文高度。
+                 * 如果沒有高度，才使用 1200px。
+                 */
+
+                const postHeight =
+                    post.height || 1200;
 
 
                 const embedUrl =
@@ -1398,7 +1404,8 @@
                     + encodeURIComponent(facebookUrl)
                     + "&width=560"
                     + "&show_text=true"
-                    + "&height=1600";
+                    + "&height="
+                    + encodeURIComponent(postHeight);
 
 
                 iframe.src =
