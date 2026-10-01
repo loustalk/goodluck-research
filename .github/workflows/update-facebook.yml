@@ -25,7 +25,7 @@ jobs:
           PAGE_ID="1162786317464622"
           OUTPUT="data/facebook-latest.json"
 
-          RESPONSE=$(curl -sS --fail-with-body \
+          RESPONSE=$(curl --http1.1 -sS --fail-with-body \
             "https://graph.facebook.com/v26.0/me/posts?fields=id,message,created_time,permalink_url&limit=3&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}")
 
           echo "$RESPONSE" > /tmp/facebook-response.json
