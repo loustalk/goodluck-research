@@ -289,9 +289,7 @@
         }
 
 
-        /* =========================
-           Facebook 原生 Embedded Post
-           ========================= */
+        /* Facebook 外層完全透明 */
 
         .facebook-box {
             width: 100%;
@@ -319,6 +317,9 @@
             font-size: 14px;
         }
 
+
+        /* Facebook 原生貼文 */
+
         .facebook-posts {
             width: 100%;
             max-width: 560px;
@@ -327,46 +328,31 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-
-            gap: 28px;
+            gap: 24px;
         }
 
         .facebook-post-embed {
             width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
+            max-width: 560px;
             text-align: left;
         }
 
-        .facebook-post-embed .fb-post {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .facebook-post-embed .fb-post > span,
         .facebook-post-embed iframe {
-            max-width: 100%;
+            display: block;
+            width: 100%;
+            border: 0;
         }
 
         .facebook-empty,
         .facebook-error,
         .facebook-loading {
-            width: 100%;
-            max-width: 500px;
-
             padding: 24px;
-
             color: #81786e;
             font-size: 14px;
-
-            background: rgba(255,255,255,0.5);
-            border: 1px solid #e2d6c5;
-            border-radius: 18px;
         }
 
         .facebook-button {
-            margin-top: 28px;
+            margin-top: 24px;
             text-align: center;
         }
 
@@ -1229,7 +1215,6 @@
 
                 </div>
 
-
                 <div class="facebook-button">
 
                     <a
@@ -1304,19 +1289,15 @@
     </footer>
 
 
-    <!-- =========================
-         Facebook 原生 Embedded Post
-         ========================= -->
 
+    <!-- Facebook 最新 3 篇：原生貼文嵌入，不設定固定高度 -->
     <script>
     (function () {
-
         const container = document.getElementById("facebook-posts");
 
         if (!container) return;
 
-
-        function loadFacebookSDK() {
+        function loadSDK() {
 
             return new Promise(function (resolve, reject) {
 
@@ -1337,14 +1318,10 @@
 
                 };
 
-
-                const existing =
+                const old =
                     document.getElementById("facebook-jssdk");
 
-                if (existing) {
-                    return;
-                }
-
+                if (old) return;
 
                 const script =
                     document.createElement("script");
@@ -1357,15 +1334,11 @@
                 script.src =
                     "https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v26.0";
 
-
                 script.onerror = function () {
-
                     reject(
                         new Error("Facebook SDK 載入失敗")
                     );
-
                 };
-
 
                 document.head.appendChild(script);
 
@@ -1376,9 +1349,7 @@
 
         fetch(
             "data/facebook-latest.json",
-            {
-                cache: "no-store"
-            }
+            { cache: "no-store" }
         )
 
         .then(function (response) {
@@ -1393,7 +1364,6 @@
 
         })
 
-
         .then(function (data) {
 
             const sourcePosts =
@@ -1401,9 +1371,7 @@
                     ? data.posts
                     : [];
 
-
             const seen = new Set();
-
 
             const posts =
                 sourcePosts
@@ -1416,16 +1384,13 @@
                             return false;
                         }
 
-
                         const key =
                             post.id ||
                             post.permalink_url;
 
-
                         if (seen.has(key)) {
                             return false;
                         }
-
 
                         seen.add(key);
 
@@ -1438,20 +1403,14 @@
             container.innerHTML = "";
 
 
-            if (posts.length === 0) {
+            if (!posts.length) {
 
-                const empty =
-                    document.createElement("div");
+                container.innerHTML =
+                    '<div class="facebook-empty">' +
+                    '目前還沒有可顯示的 Facebook 貼文。' +
+                    '</div>';
 
-                empty.className =
-                    "facebook-empty";
-
-                empty.textContent =
-                    "目前還沒有可顯示的 Facebook 貼文。";
-
-                container.appendChild(empty);
-
-                return loadFacebookSDK();
+                return null;
 
             }
 
@@ -1464,25 +1423,26 @@
                 wrapper.className =
                     "facebook-post-embed";
 
+                wrapper.style.width = "100%";
+                wrapper.style.maxWidth = "560px";
+                wrapper.style.margin = "0 auto";
+
 
                 const embed =
                     document.createElement("div");
 
-                embed.className =
-                    "fb-post";
-
+                embed.className = "fb-post";
 
                 embed.setAttribute(
                     "data-href",
+                    post.embed_url ||
                     post.permalink_url
                 );
 
-
                 embed.setAttribute(
                     "data-width",
-                    "500"
+                    "560"
                 );
-
 
                 embed.setAttribute(
                     "data-show-text",
@@ -1497,10 +1457,9 @@
             });
 
 
-            return loadFacebookSDK();
+            return loadSDK();
 
         })
-
 
         .then(function () {
 
@@ -1517,37 +1476,22 @@
 
         })
 
-
         .catch(function (error) {
 
             console.error(
-                "Facebook 原生貼文載入失敗：",
+                "Facebook 最新貼文載入失敗：",
                 error
             );
 
-
-            container.innerHTML = "";
-
-
-            const errorBox =
-                document.createElement("div");
-
-            errorBox.className =
-                "facebook-error";
-
-
-            errorBox.textContent =
-                "目前無法載入 Facebook 原生貼文，請稍後再試。";
-
-
-            container.appendChild(errorBox);
+            container.innerHTML =
+                '<div class="facebook-error">' +
+                '目前無法載入 Facebook 最新貼文，請稍後再試。' +
+                '</div>';
 
         });
 
-
     })();
     </script>
-
 
 </body>
 </html>
