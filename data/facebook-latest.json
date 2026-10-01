@@ -27,7 +27,8 @@
           "value": "EVERYONE"
         },
         "target": null
-      }
+      },
+      "height": 1200
     },
     {
       "id": "116278631764622_1617694093703612",
@@ -53,7 +54,8 @@
           "value": "EVERYONE"
         },
         "target": null
-      }
+      },
+      "height": 1200
     },
     {
       "id": "116278631764622_1611190214354000",
@@ -79,7 +81,8 @@
           "value": "EVERYONE"
         },
         "target": null
-      }
+      },
+      "height": 1200
     }
   ]
 }
