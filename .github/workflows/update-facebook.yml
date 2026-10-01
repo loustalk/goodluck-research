@@ -20,20 +20,23 @@ jobs:
         env:
           FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
         run: |
-          set -e
+          set -euo pipefail
 
-          RESPONSE=$(curl -sS \
-            "https://graph.facebook.com/v26.0/me/posts?fields=id,message,created_time,permalink_url,from,parent_id,via,status_type,is_published,is_hidden,privacy,target&limit=3&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}")
+          PAGE_ID="1162786317464622"
+          OUTPUT="data/facebook-latest.json"
+
+          RESPONSE=$(curl -sS --fail-with-body \
+            "https://graph.facebook.com/v26.0/me/posts?fields=id,message,created_time,permalink_url&limit=3&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}")
 
           echo "$RESPONSE" > /tmp/facebook-response.json
 
-          if ! echo "$RESPONSE" | jq -e '.data' > /dev/null; then
+          if ! jq -e '.data and (.data | type == "array")' /tmp/facebook-response.json > /dev/null; then
             echo "Facebook API 回傳錯誤："
             cat /tmp/facebook-response.json
             exit 1
           fi
 
-          jq '
+          jq --arg page_id "$PAGE_ID" '
             {
               page: {
                 name: "觀音之光神諭卡占卜工作室"
@@ -44,38 +47,17 @@ jobs:
                   id: .id,
                   message: (.message // ""),
                   created_time: .created_time,
-                  permalink_url: .permalink_url,
-
-                  embed_url: (
-                    "https://www.facebook.com/permalink.php?story_fbid="
-                    + (
-                        .id
-                        | split("_")
-                        | .[1]
-                      )
-                    + "&id=1162786317464622"
-                  ),
-
-                  diagnostics: {
-                    from: (.from // null),
-                    parent_id: (.parent_id // null),
-                    via: (.via // null),
-                    status_type: (.status_type // null),
-                    is_published: (.is_published // null),
-                    is_hidden: (.is_hidden // null),
-                    privacy: (.privacy // null),
-                    target: (.target // null)
-                  }
+                  permalink_url: .permalink_url
                 }
               ]
             }
-          ' /tmp/facebook-response.json > data/facebook-latest.json
+          ' /tmp/facebook-response.json > /tmp/facebook-latest.json
 
-          echo "======================================"
-          echo "Facebook 最新貼文資料"
-          echo "======================================"
+          mkdir -p data
+          cp /tmp/facebook-latest.json "$OUTPUT"
 
-          cat data/facebook-latest.json
+          echo "更新完成："
+          cat "$OUTPUT"
 
       - name: Commit and Push
         run: |
