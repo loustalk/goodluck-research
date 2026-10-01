@@ -38,11 +38,6 @@
             color: inherit;
         }
 
-
-        /* =========================
-           導覽列
-           ========================= */
-
         header {
             position: sticky;
             top: 0;
@@ -96,11 +91,6 @@
         .nav-links a:hover {
             color: #a66f32;
         }
-
-
-        /* =========================
-           首頁主視覺
-           ========================= */
 
         .hero {
             min-height: 680px;
@@ -196,11 +186,6 @@
             background: white;
         }
 
-
-        /* =========================
-           主視覺右側
-           ========================= */
-
         .hero-card {
             position: relative;
             min-height: 390px;
@@ -254,11 +239,6 @@
             color: #97836d;
         }
 
-
-        /* =========================
-           Facebook 最新訊息區
-           ========================= */
-
         .facebook-section {
             background: #f0ebe2;
             padding: 70px 24px;
@@ -288,9 +268,6 @@
             letter-spacing: 3px;
         }
 
-
-        /* Facebook 外層 */
-
         .facebook-box {
             width: 100%;
             padding: 0;
@@ -316,13 +293,6 @@
             color: #81786e;
             font-size: 14px;
         }
-
-
-        /* =========================
-           Facebook 原生貼文
-           直接使用 Facebook post.php
-           固定顯示最新 3 篇
-           ========================= */
 
         .facebook-posts {
             width: 100%;
@@ -366,11 +336,6 @@
             margin-top: 24px;
             text-align: center;
         }
-
-
-        /* =========================
-           六大入口
-           ========================= */
 
         .rooms {
             padding: 100px 24px;
@@ -442,11 +407,6 @@
             font-size: 20px;
         }
 
-
-        /* =========================
-           關於小盧老師
-           ========================= */
-
         .about {
             padding: 100px 24px;
             background: #eee7dc;
@@ -506,11 +466,6 @@
             color: #6f665d;
             margin-bottom: 15px;
         }
-
-
-        /* =========================
-           好運研究所內容
-           ========================= */
 
         .content-section {
             padding: 100px 24px;
@@ -573,11 +528,6 @@
             font-size: 14px;
         }
 
-
-        /* =========================
-           未來品牌
-           ========================= */
-
         .future {
             padding: 90px 24px;
             background: #4d4034;
@@ -621,11 +571,6 @@
             font-size: 14px;
         }
 
-
-        /* =========================
-           聯絡／預約區
-           ========================= */
-
         .contact {
             padding: 105px 24px;
             background: #f5f0e8;
@@ -663,11 +608,6 @@
             margin-bottom: 28px;
         }
 
-
-        /* =========================
-           Footer
-           ========================= */
-
         footer {
             padding: 35px 24px;
 
@@ -686,11 +626,6 @@
 
             margin-bottom: 5px;
         }
-
-
-        /* =========================
-           平板
-           ========================= */
 
         @media (max-width: 850px) {
 
@@ -745,11 +680,6 @@
             }
         }
 
-
-        /* =========================
-           手機
-           ========================= */
-
         @media (max-width: 480px) {
 
             .logo {
@@ -793,10 +723,6 @@
 <body>
 
 
-    <!-- =========================
-         導覽列
-         ========================= -->
-
     <header>
 
         <nav class="nav">
@@ -826,10 +752,6 @@
 
     </header>
 
-
-    <!-- =========================
-         首頁主視覺
-         ========================= -->
 
     <section class="hero">
 
@@ -896,10 +818,6 @@
 
     </section>
 
-
-    <!-- =========================
-         六大研究室
-         ========================= -->
 
     <section class="rooms" id="rooms">
 
@@ -1020,10 +938,6 @@
     </section>
 
 
-    <!-- =========================
-         關於小盧老師
-         ========================= -->
-
     <section class="about" id="about">
 
         <div class="about-inner">
@@ -1080,10 +994,6 @@
 
     </section>
 
-
-    <!-- =========================
-         最新內容／媒體
-         ========================= -->
 
     <section class="content-section" id="content">
 
@@ -1187,10 +1097,6 @@
     </section>
 
 
-    <!-- =========================
-         Facebook 最新貼文
-         ========================= -->
-
     <section class="facebook-section" id="facebook">
 
         <div class="section-inner">
@@ -1250,10 +1156,6 @@
     </section>
 
 
-    <!-- =========================
-         聯絡／預約
-         ========================= -->
-
     <section class="contact" id="contact">
 
         <div class="section-inner">
@@ -1286,10 +1188,6 @@
     </section>
 
 
-    <!-- =========================
-         Footer
-         ========================= -->
-
     <footer>
 
         <strong>
@@ -1304,11 +1202,6 @@
 
     </footer>
 
-
-    <!-- =========================
-         Facebook 原生 Embedded Post
-         直接使用 post.php
-         ========================= -->
 
     <script>
 
@@ -1351,13 +1244,6 @@
                     "facebook-post-item";
 
 
-                /*
-                 * Facebook 原生 Embedded Post
-                 *
-                 * 直接建立 Facebook 官方 post.php
-                 * iframe。
-                 */
-
                 const iframe =
                     document.createElement("iframe");
 
@@ -1380,22 +1266,25 @@
                     true;
 
 
-                /*
-                 * 使用 Graph API 建立的 Facebook embed_url。
-                 */
-
                 const facebookUrl =
                     post.embed_url || post.permalink_url;
 
 
-                /*
-                 * 使用 GitHub Actions 透過 Facebook oEmbed
-                 * 取得的實際貼文高度。
-                 * 如果沒有高度，才使用 1200px。
-                 */
-
                 const postHeight =
                     post.height || 1200;
+
+
+                /*
+                 * 關鍵修正：
+                 * iframe 本身也必須使用 Facebook oEmbed
+                 * 回傳的實際高度，否則內容會被外框腰斬。
+                 */
+
+                iframe.height =
+                    postHeight;
+
+                iframe.style.height =
+                    postHeight + "px";
 
 
                 const embedUrl =
