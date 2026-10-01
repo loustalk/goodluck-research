@@ -1,13 +1,1138 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcast｜好運研究所</title>
+
+    <title>好運研究所 Podcast｜找到原因，人生就有更多選項</title>
+
+    <meta
+        name="description"
+        content="好運研究所 Podcast｜透過信仰、心理、邏輯、人生經驗、占卜、夢境、擲筊，一起找到事情背後真正的原因。因為，找到原因，人生就有更多選項。">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                "Noto Sans TC",
+                "Microsoft JhengHei",
+                "PingFang TC",
+                Arial,
+                sans-serif;
+
+            background: #faf8f3;
+            color: #40372f;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           導覽列
+           ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(250, 248, 243, 0.96);
+            border-bottom: 1px solid #e8e0d2;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 16px 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #7a5735;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #a08a70;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: #5d554c;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: #a66f32;
+        }
+
+        /* =========================
+           Hero
+           ========================= */
+
+        .hero {
+            padding: 105px 24px 95px;
+
+            background:
+                radial-gradient(
+                    circle at 82% 20%,
+                    rgba(210, 174, 112, 0.22),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 15% 85%,
+                    rgba(184, 148, 91, 0.10),
+                    transparent 30%
+                ),
+                #faf8f3;
+        }
+
+        .hero-inner {
+            max-width: 1080px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 65px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 6px 15px;
+
+            border: 1px solid #d9c4a4;
+            border-radius: 30px;
+
+            color: #987044;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1.2;
+            letter-spacing: 5px;
+            color: #68482d;
+            margin-bottom: 22px;
+        }
+
+        .hero h2 {
+            font-size: clamp(20px, 3vw, 29px);
+            font-weight: 500;
+            color: #51473e;
+            margin-bottom: 24px;
+        }
+
+        .hero-description {
+            max-width: 680px;
+            color: #70685f;
+            font-size: 16px;
+        }
+
+        .hero-buttons {
+            margin-top: 32px;
+
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        .btn-primary {
+            background: #87613b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #68482d;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #cbb99e;
+            color: #755839;
+            background: rgba(255,255,255,0.45);
+        }
+
+        .btn-outline:hover {
+            background: white;
+        }
+
+        .hero-card {
+            min-height: 370px;
+
+            border-radius: 28px;
+            padding: 40px;
+
+            background:
+                linear-gradient(145deg, #eee2cf, #f8f4ec);
+
+            border: 1px solid #dfd0b9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 20px 50px rgba(80, 57, 34, 0.08);
+        }
+
+        .podcast-symbol {
+            text-align: center;
+        }
+
+        .podcast-circle {
+            width: 185px;
+            height: 185px;
+
+            margin: auto auto 24px;
+
+            border: 1px solid #b99463;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,0.35);
+
+            font-size: 72px;
+        }
+
+        .podcast-symbol h3 {
+            color: #765332;
+            font-size: 22px;
+            letter-spacing: 3px;
+        }
+
+        .podcast-symbol p {
+            margin-top: 5px;
+            font-size: 13px;
+            color: #97836d;
+        }
+
+        /* =========================
+           頻道介紹
+           ========================= */
+
+        .intro-section {
+            padding: 100px 24px;
+            background: #eee7dc;
+        }
+
+        .section-inner {
+            max-width: 1080px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .section-title small {
+            display: block;
+            color: #a07b50;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #62472f;
+            letter-spacing: 3px;
+        }
+
+        .intro-box {
+            max-width: 900px;
+            margin: auto;
+
+            padding: 50px 60px;
+
+            background: white;
+            border: 1px solid #e2d7c8;
+            border-radius: 24px;
+
+            box-shadow: 0 15px 35px rgba(75, 54, 33, 0.06);
+        }
+
+        .intro-box p {
+            color: #665d55;
+            margin-bottom: 20px;
+        }
+
+        .intro-box .intro-list {
+            margin: 28px 0;
+            padding: 22px 28px;
+
+            background: #f8f4ec;
+            border-left: 3px solid #b99463;
+            border-radius: 8px;
+
+            color: #6e5b47;
+        }
+
+        .intro-box .closing {
+            margin-top: 28px;
+            margin-bottom: 0;
+
+            color: #765332;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* =========================
+           SoundOn
+           ========================= */
+
+        .listen-section {
+            padding: 75px 24px;
+            background: #f5f0e8;
+        }
+
+        .listen-box {
+            max-width: 850px;
+            margin: auto;
+
+            padding: 38px 45px;
+
+            background: white;
+            border: 1px solid #e2d7c8;
+            border-radius: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+
+            box-shadow: 0 12px 30px rgba(75, 54, 33, 0.05);
+        }
+
+        .listen-text strong {
+            display: block;
+            color: #694b31;
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .listen-text p {
+            color: #817970;
+            font-size: 14px;
+        }
+
+        /* =========================
+           最新節目
+           ========================= */
+
+        .episodes-section {
+            padding: 105px 24px;
+            background: #faf8f3;
+        }
+
+        .episodes {
+            max-width: 900px;
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .episode-card {
+            background: white;
+
+            border: 1px solid #e4dacf;
+            border-radius: 20px;
+
+            padding: 26px 28px;
+
+            display: grid;
+            grid-template-columns: 145px 1fr auto;
+            gap: 25px;
+            align-items: center;
+
+            transition: 0.25s;
+        }
+
+        .episode-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(75, 54, 33, 0.08);
+        }
+
+        .episode-cover {
+            width: 145px;
+            height: 145px;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(145deg, #e8dac3, #f5f0e8);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #8a6b49;
+            font-size: 42px;
+        }
+
+        .episode-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .episode-meta {
+            color: #a47b4d;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .episode-title {
+            color: #674a31;
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .episode-description {
+            color: #817970;
+            font-size: 14px;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .episode-date {
+            margin-top: 8px;
+            color: #a39a91;
+            font-size: 12px;
+        }
+
+        .episode-button {
+            white-space: nowrap;
+        }
+
+        .episode-button a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 52px;
+            height: 52px;
+
+            border-radius: 50%;
+
+            background: #87613b;
+            color: white;
+
+            font-size: 20px;
+
+            transition: 0.25s;
+        }
+
+        .episode-button a:hover {
+            background: #68482d;
+            transform: scale(1.05);
+        }
+
+        .loading {
+            padding: 45px;
+            text-align: center;
+
+            background: white;
+            border: 1px solid #e4dacf;
+            border-radius: 20px;
+
+            color: #817970;
+        }
+
+        .error {
+            padding: 30px;
+            text-align: center;
+
+            background: #fffaf5;
+            border: 1px solid #ead9c4;
+            border-radius: 20px;
+
+            color: #80684f;
+        }
+
+        /* =========================
+           尾端主張
+           ========================= */
+
+        .closing-section {
+            padding: 90px 24px;
+
+            background: #4d4034;
+            color: white;
+        }
+
+        .closing-inner {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .closing-inner h2 {
+            font-size: 31px;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .closing-inner p {
+            color: #ddd2c5;
+            font-size: 17px;
+        }
+
+        /* =========================
+           Footer
+           ========================= */
+
+        footer {
+            padding: 35px 24px;
+
+            background: #342b24;
+            color: #cfc3b5;
+
+            text-align: center;
+            font-size: 12px;
+        }
+
+        footer strong {
+            display: block;
+            color: #eee4d7;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        /* =========================
+           手機版
+           ========================= */
+
+        @media (max-width: 850px) {
+
+            .nav {
+                padding: 13px 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 70px 20px 75px;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .hero-card {
+                min-height: 300px;
+            }
+
+            .podcast-circle {
+                width: 150px;
+                height: 150px;
+                font-size: 58px;
+            }
+
+            .intro-box {
+                padding: 35px 25px;
+            }
+
+            .listen-box {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 30px 25px;
+            }
+
+            .episode-card {
+                grid-template-columns: 100px 1fr;
+                gap: 20px;
+            }
+
+            .episode-cover {
+                width: 100px;
+                height: 100px;
+            }
+
+            .episode-button {
+                grid-column: 1 / -1;
+            }
+
+            .episode-button a {
+                width: 100%;
+                height: 46px;
+                border-radius: 24px;
+                font-size: 14px;
+            }
+
+            .section-title h2 {
+                font-size: 27px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+                letter-spacing: 3px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .intro-box {
+                padding: 30px 20px;
+            }
+
+            .episode-card {
+                grid-template-columns: 1fr;
+            }
+
+            .episode-cover {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1 / 1;
+                max-width: 180px;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
-    <h1>Podcast</h1>
-    <p>這裡是《好運研究所》的 Podcast。</p>
-    <p>← <a href="index.html">回到好運研究所</a></p>
+
+    <!-- =========================
+         導覽列
+         ========================= -->
+
+    <header>
+
+        <nav class="nav">
+
+            <a href="index.html" class="logo">
+                好運研究所
+                <span>GOOD LUCK RESEARCH</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html#rooms">研究室</a>
+                <a href="index.html#about">關於小盧老師</a>
+                <a href="index.html#content">內容／媒體</a>
+                <a href="services.html">服務方案</a>
+                <a href="booking.html">預約</a>
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         Hero
+         ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-inner">
+
+            <div>
+
+                <span class="eyebrow">
+                    GOOD LUCK RESEARCH PODCAST
+                </span>
+
+                <h1>
+                    好運研究所<br>
+                    Podcast
+                </h1>
+
+                <h2>
+                    找到原因，<br>
+                    人生就有更多選項。
+                </h2>
+
+                <p class="hero-description">
+                    把故事說給你聽。
+                    從信仰、心理、邏輯、人生經驗，
+                    到占卜、夢境與擲筊，
+                    一起研究那些發生在我們身上的事。
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="https://sndn.link/lou136"
+                        class="btn btn-primary"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        ▶ 前往 SoundOn 收聽
+                    </a>
+
+                    <a
+                        href="#episodes"
+                        class="btn btn-outline">
+                        查看最新集數
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <div class="podcast-symbol">
+
+                    <div class="podcast-circle">
+                        🎙️
+                    </div>
+
+                    <h3>好運研究所</h3>
+
+                    <p>
+                        Podcast｜有聲故事・研究・分享
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         頻道介紹
+         ========================= -->
+
+    <section class="intro-section">
+
+        <div class="section-inner">
+
+            <div class="section-title">
+
+                <small>ABOUT THE PODCAST</small>
+
+                <h2>我們為什麼做這個 Podcast？</h2>
+
+            </div>
+
+
+            <div class="intro-box">
+
+                <p>
+                    我們相信，人生沒有真正的壞運。
+                </p>
+
+                <p>
+                    大部分的人，只是不知道：<br>
+                    事情為什麼會發生。
+                </p>
+
+                <p>
+                    所以，<br>
+                    不知道下一步該怎麼選。
+                </p>
+
+                <p>
+                    因此，<br>
+                    好運研究所，<br>
+                    不是教你相信命運、不是教你依賴神明、<br>
+                    更不是告訴你未來一定如何。
+                </p>
+
+                <p>
+                    而是希望透過：
+                </p>
+
+                <div class="intro-list">
+                    信仰、<br>
+                    心理、<br>
+                    邏輯、<br>
+                    人生經驗、<br>
+                    占卜、<br>
+                    夢境、<br>
+                    擲筊，
+                </div>
+
+                <p>
+                    一起找到事情背後真正的原因。
+                </p>
+
+                <p class="closing">
+                    因為，找到原因，人生就有更多選項。
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SoundOn
+         ========================= -->
+
+    <section class="listen-section">
+
+        <div class="section-inner">
+
+            <div class="listen-box">
+
+                <div class="listen-text">
+
+                    <strong>
+                        🎧 在 SoundOn 收聽好運研究所
+                    </strong>
+
+                    <p>
+                        新節目會持續在 SoundOn 更新，
+                        網站也會同步整理最新集數。
+                    </p>
+
+                </div>
+
+                <a
+                    href="https://sndn.link/lou136"
+                    class="btn btn-primary"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    前往 SoundOn
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         最新集數
+         ========================= -->
+
+    <section class="episodes-section" id="episodes">
+
+        <div class="section-inner">
+
+            <div class="section-title">
+
+                <small>LATEST EPISODES</small>
+
+                <h2>最新節目</h2>
+
+            </div>
+
+
+            <div
+                id="episodes-list"
+                class="episodes">
+
+                <div class="loading">
+                    正在載入最新 Podcast……
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         結尾主張
+         ========================= -->
+
+    <section class="closing-section">
+
+        <div class="closing-inner">
+
+            <h2>
+                找到原因，人生就有更多選項。
+            </h2>
+
+            <p>
+                好運研究所不是替你決定人生，
+                而是陪你多看見一點可能。
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         Footer
+         ========================= -->
+
+    <footer>
+
+        <strong>好運研究所</strong>
+
+        GOOD LUCK RESEARCH
+
+        <div style="margin-top:18px;">
+            © 2026 好運研究所｜小盧老師
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         Podcast 資料
+         ========================= -->
+
+    <script>
+
+        (async function () {
+
+            const container =
+                document.getElementById("episodes-list");
+
+            try {
+
+                const response =
+                    await fetch("data/podcast.json?ts=" + Date.now());
+
+                if (!response.ok) {
+                    throw new Error("Podcast 資料載入失敗");
+                }
+
+                const data =
+                    await response.json();
+
+                const episodes =
+                    Array.isArray(data.episodes)
+                        ? data.episodes
+                        : [];
+
+                if (!episodes.length) {
+
+                    container.innerHTML = `
+                        <div class="error">
+                            目前還沒有 Podcast 集數資料。
+                        </div>
+                    `;
+
+                    return;
+                }
+
+                container.innerHTML = "";
+
+                episodes.forEach(function (episode) {
+
+                    const card =
+                        document.createElement("article");
+
+                    card.className =
+                        "episode-card";
+
+                    const cover =
+                        document.createElement("div");
+
+                    cover.className =
+                        "episode-cover";
+
+                    if (episode.image) {
+
+                        const img =
+                            document.createElement("img");
+
+                        img.src =
+                            episode.image;
+
+                        img.alt =
+                            episode.title || "好運研究所 Podcast";
+
+                        img.loading =
+                            "lazy";
+
+                        cover.appendChild(img);
+
+                    } else {
+
+                        cover.textContent =
+                            "🎙️";
+
+                    }
+
+
+                    const content =
+                        document.createElement("div");
+
+                    const meta =
+                        document.createElement("div");
+
+                    meta.className =
+                        "episode-meta";
+
+                    meta.textContent =
+                        episode.episode
+                            ? "EP" + episode.episode
+                            : "好運研究所 Podcast";
+
+
+                    const title =
+                        document.createElement("h3");
+
+                    title.className =
+                        "episode-title";
+
+                    title.textContent =
+                        episode.title || "未命名集數";
+
+
+                    const description =
+                        document.createElement("p");
+
+                    description.className =
+                        "episode-description";
+
+                    description.textContent =
+                        episode.description || "";
+
+
+                    const date =
+                        document.createElement("div");
+
+                    date.className =
+                        "episode-date";
+
+                    date.textContent =
+                        episode.pubDate || "";
+
+
+                    content.appendChild(meta);
+                    content.appendChild(title);
+                    content.appendChild(description);
+                    content.appendChild(date);
+
+
+                    const button =
+                        document.createElement("div");
+
+                    button.className =
+                        "episode-button";
+
+
+                    const link =
+                        document.createElement("a");
+
+                    link.href =
+                        episode.link || "https://sndn.link/lou136";
+
+                    link.target =
+                        "_blank";
+
+                    link.rel =
+                        "noopener noreferrer";
+
+                    link.innerHTML =
+                        "▶ <span style=\"font-size:13px;margin-left:5px;\">收聽</span>";
+
+
+                    button.appendChild(link);
+
+
+                    card.appendChild(cover);
+                    card.appendChild(content);
+                    card.appendChild(button);
+
+                    container.appendChild(card);
+
+                });
+
+            } catch (error) {
+
+                console.error(error);
+
+                container.innerHTML = `
+                    <div class="error">
+                        Podcast 資料目前無法載入。<br>
+                        請稍後再試，或直接前往
+                        <a
+                            href="https://sndn.link/lou136"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="color:#87613b;font-weight:600;">
+                            SoundOn
+                        </a>
+                        收聽。
+                    </div>
+                `;
+
+            }
+
+        })();
+
+    </script>
+
 </body>
+
 </html>
