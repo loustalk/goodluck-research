@@ -1,0 +1,329 @@
+name: 更新 Podcast 最新節目
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+
+  update-podcast:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+
+      - name: 取得 SoundOn RSS
+        run: |
+
+          set -e
+
+          RSS_URL="https://feeds.soundon.fm/podcasts/c63d0cef-6444-458a-aae1-ba1282655588.xml"
+
+          mkdir -p data
+
+          curl -fLsS \
+            "$RSS_URL" \
+            -o /tmp/podcast.xml
+
+
+      - name: 解析 Podcast RSS
+        run: |
+
+          python3 <<'PY'
+
+          import json
+          import html
+          import re
+          import xml.etree.ElementTree as ET
+          from datetime import datetime
+          from email.utils import parsedate_to_datetime
+
+          RSS_FILE = "/tmp/podcast.xml"
+          OUTPUT_FILE = "data/podcast.json"
+
+          tree = ET.parse(RSS_FILE)
+          root = tree.getroot()
+
+          channel = root.find("./channel")
+
+          if channel is None:
+              raise RuntimeError("找不到 RSS channel")
+
+          def text_of(parent, tag):
+              node = parent.find(tag)
+              if node is None or node.text is None:
+                  return ""
+              return node.text.strip()
+
+          def first_text(parent, tags):
+              for tag in tags:
+                  node = parent.find(tag)
+                  if node is not None and node.text:
+                      return node.text.strip()
+              return ""
+
+          def clean_html(value):
+              if not value:
+                  return ""
+
+              value = html.unescape(value)
+
+              value = re.sub(
+                  r"<br\s*/?>",
+                  "\n",
+                  value,
+                  flags=re.I
+              )
+
+              value = re.sub(
+                  r"<[^>]+>",
+                  "",
+                  value
+              )
+
+              value = re.sub(
+                  r"\n\s*\n+",
+                  "\n",
+                  value
+              )
+
+              return value.strip()
+
+          def format_date(value):
+
+              if not value:
+                  return ""
+
+              try:
+                  dt = parsedate_to_datetime(value)
+
+                  return dt.strftime("%Y-%m-%d")
+
+              except Exception:
+                  return value
+
+          def get_episode_number(item, title):
+
+              candidates = [
+                  "{http://www.itunes.com/dtds/podcast-1.0.dtd}episode",
+                  "episode"
+              ]
+
+              for tag in candidates:
+
+                  node = item.find(tag)
+
+                  if node is not None and node.text:
+                      return node.text.strip()
+
+              match = re.search(
+                  r"(?:EP|ep)\s*(\d+)",
+                  title or ""
+              )
+
+              if match:
+                  return match.group(1)
+
+              return ""
+
+          def get_image(item):
+
+              tags = [
+                  "{http://www.itunes.com/dtds/podcast-1.0.dtd}image",
+                  "{http://search.yahoo.com/mrss/}thumbnail"
+              ]
+
+              for tag in tags:
+
+                  node = item.find(tag)
+
+                  if node is not None:
+
+                      href = node.attrib.get("href", "").strip()
+
+                      if href:
+                          return href
+
+                      url = node.attrib.get("url", "").strip()
+
+                      if url:
+                          return url
+
+              channel_image = channel.find(
+                  "{http://www.itunes.com/dtds/podcast-1.0.dtd}image"
+              )
+
+              if channel_image is not None:
+
+                  href = channel_image.attrib.get(
+                      "href",
+                      ""
+                  ).strip()
+
+                  if href:
+                      return href
+
+              return ""
+
+          episodes = []
+
+          for item in channel.findall("item"):
+
+              title = text_of(item, "title")
+
+              description = first_text(
+                  item,
+                  [
+                      "description",
+                      "{http://www.itunes.com/dtds/podcast-1.0.dtd}summary"
+                  ]
+              )
+
+              link = text_of(item, "link")
+
+              guid = text_of(item, "guid")
+
+              pub_date = text_of(item, "pubDate")
+
+              duration = first_text(
+                  item,
+                  [
+                      "{http://www.itunes.com/dtds/podcast-1.0.dtd}duration"
+                  ]
+              )
+
+              episode_number = get_episode_number(
+                  item,
+                  title
+              )
+
+              image = get_image(item)
+
+              enclosure = item.find("enclosure")
+
+              audio_url = ""
+
+              if enclosure is not None:
+
+                  audio_url = enclosure.attrib.get(
+                      "url",
+                      ""
+                  ).strip()
+
+              episodes.append({
+
+                  "episode": episode_number,
+
+                  "title": clean_html(title),
+
+                  "description": clean_html(
+                      description
+                  ),
+
+                  "link": link,
+
+                  "guid": guid,
+
+                  "pubDate": format_date(
+                      pub_date
+                  ),
+
+                  "duration": duration,
+
+                  "image": image,
+
+                  "audio": audio_url
+
+              })
+
+          output = {
+
+              "podcast": {
+
+                  "title": text_of(
+                      channel,
+                      "title"
+                  ),
+
+                  "description": clean_html(
+                      text_of(
+                          channel,
+                          "description"
+                      )
+                  ),
+
+                  "soundon_url":
+                      "https://sndn.link/lou136",
+
+                  "rss_url":
+                      "https://feeds.soundon.fm/podcasts/c63d0cef-6444-458a-aae1-ba1282655588.xml"
+
+              },
+
+              "updated_at":
+                  datetime.utcnow().isoformat(
+                      timespec="seconds"
+                  ) + "Z",
+
+              "episodes":
+                  episodes
+
+          }
+
+          with open(
+              OUTPUT_FILE,
+              "w",
+              encoding="utf-8"
+          ) as f:
+
+              json.dump(
+                  output,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
+
+          print(
+              f"取得 {len(episodes)} 集 Podcast"
+          )
+
+          PY
+
+
+      - name: 顯示 Podcast 資料
+        run: |
+
+          cat data/podcast.json
+
+
+      - name: Commit and Push
+        run: |
+
+          git config user.name "github-actions[bot]"
+
+          git config user.email \
+            "41898282+github-actions[bot]@noreply.github.com"
+
+          git add data/podcast.json
+
+          if git diff --cached --quiet; then
+
+            echo "沒有新的 Podcast 資料需要更新"
+
+          else
+
+            git commit \
+              -m "更新 Podcast 最新節目"
+
+            git push
+
+          fi
