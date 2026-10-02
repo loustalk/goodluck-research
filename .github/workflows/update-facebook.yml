@@ -1,3 +1,4 @@
+
 name: 更新 Facebook 最新貼文
 
 on:
@@ -25,17 +26,37 @@ jobs:
           PAGE_ID="1162786317464622"
           OUTPUT="data/facebook-latest.json"
 
-          RESPONSE=$(curl --http1.1 -sS --fail-with-body \
-            "https://graph.facebook.com/v26.0/me/posts?fields=id,message,created_time,permalink_url&limit=3&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}")
-
-          echo "$RESPONSE" > /tmp/facebook-response.json
-
-          if ! jq -e '.data and (.data | type == "array")' /tmp/facebook-response.json > /dev/null; then
-            echo "Facebook API 回傳錯誤："
-            cat /tmp/facebook-response.json
+          if [ -z "${FACEBOOK_PAGE_ACCESS_TOKEN:-}" ]; then
+            echo "錯誤：未設定 FACEBOOK_PAGE_ACCESS_TOKEN"
             exit 1
           fi
 
+          # 連線失敗時重試，並設定逾時
+          RESPONSE=$(curl --http1.1 --silent --show-error --fail-with-body \
+            --connect-timeout 15 \
+            --max-time 45 \
+            --retry 5 \
+            --retry-all-errors \
+            --retry-delay 2 \
+            --retry-max-time 180 \
+            --get \
+            --data-urlencode "fields=id,message,created_time,permalink_url" \
+            --data-urlencode "limit=3" \
+            --data-urlencode "access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}" \
+            "https://graph.facebook.com/v26.0/me/posts")
+
+          printf '%s\n' "$RESPONSE" > /tmp/facebook-response.json
+
+          # 確認 Facebook API 回傳有效資料
+          if ! jq -e '.data and (.data | type == "array")' \
+            /tmp/facebook-response.json > /dev/null; then
+            echo "Facebook API 回傳錯誤或資料格式不正確："
+            jq 'if .error then .error else . end' \
+              /tmp/facebook-response.json
+            exit 1
+          fi
+
+          # 先產生暫存檔，驗證成功後才更新正式資料
           jq --arg page_id "$PAGE_ID" '
             {
               page: {
@@ -53,14 +74,19 @@ jobs:
             }
           ' /tmp/facebook-response.json > /tmp/facebook-latest.json
 
+          jq -e '.posts and (.posts | type == "array")' \
+            /tmp/facebook-latest.json > /dev/null
+
           mkdir -p data
           cp /tmp/facebook-latest.json "$OUTPUT"
 
-          echo "更新完成："
-          cat "$OUTPUT"
+          echo "更新完成，取得貼文數量："
+          jq '.posts | length' "$OUTPUT"
 
       - name: Commit and Push
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
