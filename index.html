@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -9,7 +10,6 @@
     <meta name="description" content="好運研究所｜由小盧老師主持，分享占卜、風水、財運分析，以及故事、Podcast、YouTube與生活裡關於好運的觀察。">
 
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -21,15 +21,10 @@
         }
 
         body {
-            font-family:
-                "Noto Sans TC",
-                "Microsoft JhengHei",
-                "PingFang TC",
-                Arial,
-                sans-serif;
-
-            background: #faf8f3;
-            color: #333;
+            font-family: "Noto Sans TC", "Microsoft JhengHei",
+                "PingFang TC", Arial, sans-serif;
+            background: #fbf6f0;
+            color: #44362f;
             line-height: 1.8;
         }
 
@@ -38,16 +33,13 @@
             color: inherit;
         }
 
-        /* =========================
-           導覽列
-           ========================= */
-
+        /* 導覽列 */
         header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(250, 248, 243, 0.96);
-            border-bottom: 1px solid #e8e0d2;
+            background: rgba(251, 246, 240, 0.96);
+            border-bottom: 1px solid #ead8cd;
             backdrop-filter: blur(10px);
         }
 
@@ -65,7 +57,7 @@
             font-size: 22px;
             font-weight: 700;
             letter-spacing: 2px;
-            color: #7a5735;
+            color: #80513f;
             white-space: nowrap;
         }
 
@@ -74,7 +66,7 @@
             font-size: 11px;
             font-weight: 400;
             letter-spacing: 3px;
-            color: #a08a70;
+            color: #b18472;
             margin-top: -5px;
         }
 
@@ -86,27 +78,24 @@
         }
 
         .nav-links a {
-            color: #5d554c;
+            color: #65534c;
             transition: 0.25s;
         }
 
         .nav-links a:hover {
-            color: #a66f32;
+            color: #b77861;
         }
 
-        /* =========================
-           首頁主視覺
-           ========================= */
-
+        /* 首頁主視覺 */
         .hero {
             min-height: 680px;
             padding: 90px 24px 100px;
             display: flex;
             align-items: center;
             background:
-                radial-gradient(circle at 80% 20%, rgba(210, 174, 112, 0.22), transparent 28%),
-                radial-gradient(circle at 20% 80%, rgba(184, 148, 91, 0.10), transparent 30%),
-                #faf8f3;
+                radial-gradient(circle at 80% 20%, rgba(196, 132, 111, 0.22), transparent 28%),
+                radial-gradient(circle at 20% 80%, rgba(184, 123, 99, 0.12), transparent 30%),
+                #fbf6f0;
         }
 
         .hero-inner {
@@ -123,9 +112,9 @@
             display: inline-block;
             margin-bottom: 18px;
             padding: 6px 15px;
-            border: 1px solid #d9c4a4;
+            border: 1px solid #dfb9a7;
             border-radius: 30px;
-            color: #987044;
+            color: #a86e59;
             font-size: 13px;
             letter-spacing: 2px;
         }
@@ -134,20 +123,20 @@
             font-size: clamp(44px, 7vw, 78px);
             line-height: 1.15;
             letter-spacing: 7px;
-            color: #68482d;
+            color: #704638;
             margin-bottom: 20px;
         }
 
         .hero h2 {
             font-size: clamp(21px, 3vw, 30px);
             font-weight: 500;
-            color: #51473e;
+            color: #59483f;
             margin-bottom: 25px;
         }
 
         .hero p {
             max-width: 650px;
-            color: #70685f;
+            color: #75635b;
             font-size: 16px;
         }
 
@@ -167,36 +156,33 @@
         }
 
         .btn-primary {
-            background: #87613b;
+            background: #a76550;
             color: white;
         }
 
         .btn-primary:hover {
-            background: #68482d;
+            background: #704638;
             transform: translateY(-2px);
         }
 
         .btn-outline {
-            border: 1px solid #cbb99e;
-            color: #755839;
-            background: rgba(255,255,255,0.45);
+            border: 1px solid #d8b6a6;
+            color: #875744;
+            background: rgba(255, 255, 255, 0.45);
         }
 
         .btn-outline:hover {
-            background: white;
+            background: #fffaf6;
         }
 
-        /* =========================
-           主視覺右側
-           ========================= */
-
+        /* 主視覺右側 */
         .hero-card {
             position: relative;
             min-height: 390px;
             border-radius: 28px;
             padding: 45px;
-            background: linear-gradient(145deg, #eee2cf, #f8f4ec);
-            border: 1px solid #dfd0b9;
+            background: linear-gradient(145deg, #f0d9cb, #fff7f1);
+            border: 1px solid #e3c6b8;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -211,17 +197,17 @@
             width: 190px;
             height: 190px;
             margin: auto auto 25px;
-            border: 1px solid #b99463;
+            border: 1px solid #c38a72;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 72px;
-            background: rgba(255,255,255,0.35);
+            background: rgba(255, 255, 255, 0.35);
         }
 
         .hero-symbol h3 {
-            color: #765332;
+            color: #805443;
             font-size: 22px;
             letter-spacing: 4px;
         }
@@ -229,15 +215,12 @@
         .hero-symbol p {
             margin-top: 5px;
             font-size: 13px;
-            color: #97836d;
+            color: #ad8a7b;
         }
 
-        /* =========================
-           Facebook 最新訊息區
-           ========================= */
-
+        /* Facebook 最新訊息區 */
         .facebook-section {
-            background: #f0ebe2;
+            background: #f4e9e1;
             padding: 70px 24px;
         }
 
@@ -253,7 +236,7 @@
 
         .section-title small {
             display: block;
-            color: #a07b50;
+            color: #b47e69;
             font-size: 12px;
             letter-spacing: 3px;
             margin-bottom: 8px;
@@ -261,7 +244,7 @@
 
         .section-title h2 {
             font-size: 32px;
-            color: #62472f;
+            color: #754a3c;
             letter-spacing: 3px;
         }
 
@@ -278,7 +261,7 @@
         .facebook-box strong {
             display: block;
             margin-bottom: 8px;
-            color: #735437;
+            color: #835644;
             font-size: 20px;
         }
 
@@ -322,13 +305,10 @@
             text-align: center;
         }
 
-        /* =========================
-           六大入口
-           ========================= */
-
+        /* 六大入口 */
         .rooms {
             padding: 100px 24px;
-            background: #faf8f3;
+            background: #fbf6f0;
         }
 
         .room-grid {
@@ -340,8 +320,8 @@
         .room-card {
             min-height: 245px;
             padding: 32px;
-            background: white;
-            border: 1px solid #e7ddd0;
+            background: #fffaf6;
+            border: 1px solid #eadbd2;
             border-radius: 20px;
             transition: 0.3s;
             position: relative;
@@ -356,7 +336,7 @@
             right: -40px;
             bottom: -40px;
             border-radius: 50%;
-            background: #f1e6d5;
+            background: #f2e0d6;
         }
 
         .room-card:hover {
@@ -371,7 +351,7 @@
 
         .room-card h3 {
             font-size: 21px;
-            color: #694b31;
+            color: #754b3d;
             margin-bottom: 10px;
         }
 
@@ -384,17 +364,14 @@
             position: absolute;
             right: 25px;
             bottom: 20px;
-            color: #b18b5d;
+            color: #b77d66;
             font-size: 20px;
         }
 
-        /* =========================
-           關於小盧老師
-           ========================= */
-
+        /* 關於小盧老師 */
         .about {
             padding: 100px 24px;
-            background: #eee7dc;
+            background: #f1e5dc;
         }
 
         .about-inner {
@@ -409,16 +386,16 @@
         .about-image {
             min-height: 390px;
             border-radius: 25px;
-            background: linear-gradient(145deg, #d9c5a7, #eee6d8);
+            background: linear-gradient(145deg, #e3c3b2, #f7ece4);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #d2bea1;
+            border: 1px solid #dfc1b3;
         }
 
         .about-image div {
             text-align: center;
-            color: #7b5a39;
+            color: #865846;
         }
 
         .about-image .placeholder {
@@ -431,13 +408,13 @@
         }
 
         .about-text small {
-            color: #a07748;
+            color: #b17b65;
             letter-spacing: 3px;
         }
 
         .about-text h2 {
             font-size: 34px;
-            color: #61452e;
+            color: #744b3d;
             margin: 10px 0 22px;
         }
 
@@ -446,13 +423,10 @@
             margin-bottom: 15px;
         }
 
-        /* =========================
-           好運研究所內容
-           ========================= */
-
+        /* 好運研究所內容 */
         .content-section {
             padding: 100px 24px;
-            background: #faf8f3;
+            background: #fbf6f0;
         }
 
         .content-grid {
@@ -462,7 +436,7 @@
         }
 
         .content-card {
-            background: white;
+            background: #fffaf6;
             border-radius: 18px;
             overflow: hidden;
             border: 1px solid #e5dbce;
@@ -507,13 +481,10 @@
             font-size: 14px;
         }
 
-        /* =========================
-           未來品牌
-           ========================= */
-
+        /* 未來品牌 */
         .future {
             padding: 90px 24px;
-            background: #4d4034;
+            background: #6b4b40;
             color: white;
         }
 
@@ -532,7 +503,7 @@
         .future p {
             max-width: 700px;
             margin: auto;
-            color: #ddd2c5;
+            color: #f0dfd5;
         }
 
         .future-list {
@@ -545,19 +516,16 @@
 
         .future-item {
             padding: 12px 22px;
-            border: 1px solid #887968;
+            border: 1px solid #b58d7b;
             border-radius: 30px;
-            color: #f2e7d8;
+            color: #fff0e7;
             font-size: 14px;
         }
 
-        /* =========================
-           聯絡／預約區
-           ========================= */
-
+        /* 聯絡／預約區 */
         .contact {
             padding: 105px 24px;
-            background: #f5f0e8;
+            background: #f7eee8;
             text-align: center;
         }
 
@@ -566,8 +534,8 @@
             min-height: 300px;
             margin: 0 auto;
             padding: 55px 70px;
-            background: white;
-            border: 1px solid #e2d7c8;
+            background: #fffaf6;
+            border: 1px solid #ead8ce;
             border-radius: 24px;
             display: flex;
             flex-direction: column;
@@ -577,7 +545,7 @@
         }
 
         .contact h2 {
-            color: #65482f;
+            color: #754b3d;
             font-size: 31px;
             margin-bottom: 15px;
         }
@@ -588,29 +556,23 @@
             margin-bottom: 28px;
         }
 
-        /* =========================
-           Footer
-           ========================= */
-
+        /* Footer */
         footer {
             padding: 35px 24px;
-            background: #342b24;
-            color: #cfc3b5;
+            background: #49352f;
+            color: #e0cfc5;
             text-align: center;
             font-size: 12px;
         }
 
         footer strong {
             display: block;
-            color: #eee4d7;
+            color: #fff0e7;
             font-size: 16px;
             margin-bottom: 5px;
         }
 
-        /* =========================
-           平板
-           ========================= */
-
+        /* 平板 */
         @media (max-width: 850px) {
             .nav {
                 padding: 13px 18px;
@@ -663,10 +625,7 @@
             }
         }
 
-        /* =========================
-           手機
-           ========================= */
-
+        /* 手機 */
         @media (max-width: 480px) {
             .logo {
                 font-size: 19px;
@@ -697,7 +656,6 @@
                 padding: 40px 24px;
             }
         }
-
     </style>
 </head>
 
@@ -813,8 +771,7 @@
         </div>
     </section>
 
-  
-    <!-- 關於小盧老師：本次更新文案 -->
+    <!-- 關於小盧老師 -->
     <section class="about" id="about">
         <div class="about-inner">
 
@@ -871,10 +828,8 @@
                 </div>
 
             </div>
-
         </div>
     </section>
-
 
     <!-- 最新內容／媒體 -->
     <section class="content-section" id="content">
