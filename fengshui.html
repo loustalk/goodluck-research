@@ -1,621 +1,422 @@
-:root {
-    --bg: #f8f4ec;
-    --card: #fffdf8;
-    --text: #514033;
-    --subtext: #75675a;
-    --line: #e6d7c2;
-
-    /* 東方茶金 */
-    --green-bg: #f4ecdf;
-    --green-line: #dfc9a8;
-    --green-icon: #ead8b9;
-    --green-text: #896b43;
-
-    /* 溫潤米金 */
-    --blue-bg: #f8f1e6;
-    --blue-line: #e8d8bd;
-    --blue-icon: #efe2cb;
-    --blue-text: #94764e;
-
-    /* 玫瑰金 */
-    --gold-bg: #f8eee8;
-    --gold-line: #e6cdbd;
-    --gold-icon: #efd9ca;
-    --gold-text: #a87558;
-
-    /* 淺茶褐 */
-    --orange-bg: #f5eee5;
-    --orange-line: #e4d3bf;
-    --orange-icon: #ead8c3;
-    --orange-text: #916b4c;
-
-    /* 墨玉色 */
-    --purple-bg: #f2eee5;
-    --purple-line: #ddd0b7;
-    --purple-icon: #e5dac4;
-    --purple-text: #746448;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    background:
-        radial-gradient(
-            ellipse at 12% 8%,
-            rgba(213, 183, 137, 0.12),
-            transparent 32%
-        ),
-        radial-gradient(
-            ellipse at 90% 42%,
-            rgba(183, 139, 114, 0.08),
-            transparent 30%
-        ),
-        var(--bg);
-    color: var(--text);
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Noto Sans TC",
-        "Microsoft JhengHei",
-        sans-serif;
-    line-height: 1.8;
-}
-
-.page {
-    width: min(1100px, calc(100% - 36px));
-    margin: 0 auto;
-    padding: 50px 0 80px;
-}
-
-/* 頁首：東方雅緻、細緻金線 */
-.hero {
-    position: relative;
-    padding: 62px 50px;
-    margin-bottom: 28px;
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(224, 202, 164, 0.25),
-            transparent 58%
-        ),
-        var(--card);
-    border: 1px solid var(--line);
-    border-radius: 28px;
-    text-align: center;
-    box-shadow: 0 8px 28px rgba(70, 55, 40, 0.055);
-    overflow: hidden;
-}
-
-.hero::before {
-    content: "☯";
-    display: block;
-    margin-bottom: 12px;
-    font-size: 42px;
-    color: #aa8957;
-    opacity: 0.85;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    left: 15%;
-    right: 15%;
-    bottom: 0;
-    height: 2px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #d4b783,
-        #b78b72,
-        #d4b783,
-        transparent
-    );
-}
-
-.hero h1 {
-    margin: 0 0 12px;
-    color: #624a34;
-    font-size: clamp(32px, 5vw, 48px);
-    letter-spacing: 0.08em;
-}
-
-.hero .subtitle {
-    margin: 0;
-    color: var(--subtext);
-    font-size: 17px;
-}
-
-.hero-message {
-    max-width: 780px;
-    margin: 34px auto 0;
-    padding: 28px 32px;
-    background: linear-gradient(135deg, #f5ecdc, #fbf6ed);
-    border: 1px solid #e2cfad;
-    border-radius: 20px;
-    box-shadow: inset 0 0 0 4px rgba(255, 253, 248, 0.55);
-}
-
-.hero-message strong {
-    display: block;
-    margin-bottom: 8px;
-    color: #8b6b40;
-    font-size: clamp(22px, 3vw, 30px);
-}
-
-.hero-message span {
-    color: var(--subtext);
-    font-size: 16px;
-}
-
-/* 各內容區 */
-section {
-    position: relative;
-    margin-bottom: 28px;
-    padding: 42px;
-    background: rgba(255, 253, 248, 0.96);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    box-shadow: 0 6px 22px rgba(70, 55, 40, 0.04);
-}
-
-section h2 {
-    margin: 0 0 24px;
-    padding-bottom: 12px;
-    color: #624a34;
-    font-size: clamp(25px, 4vw, 32px);
-    letter-spacing: 0.02em;
-    border-bottom: 1px solid #eadcc8;
-}
-
-section p {
-    margin: 0 0 18px;
-    color: var(--subtext);
-    font-size: 16px;
-}
-
-section p:last-child {
-    margin-bottom: 0;
-}
-
-section strong {
-    color: #765638;
-}
-
-/* 重點文字：統一茶金系 */
-.highlight {
-    position: relative;
-    margin: 28px 0;
-    padding: 28px 52px;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    overflow: hidden;
-    box-shadow: inset 0 0 0 3px rgba(255, 253, 248, 0.38);
-}
-
-.highlight::before {
-    content: "❧";
-    position: absolute;
-    left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: serif;
-    font-size: 26px;
-    opacity: 0.55;
-}
-
-.highlight::after {
-    content: "❧";
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%) scaleX(-1);
-    font-family: serif;
-    font-size: 26px;
-    opacity: 0.45;
-}
-
-.highlight-green {
-    background: linear-gradient(135deg, #f4ecdf, #fbf6ec);
-    border: 1px solid #dfc9a8;
-    color: #896b43;
-}
-
-.highlight-blue {
-    background: linear-gradient(135deg, #f8f1e6, #fdf9f1);
-    border: 1px solid #e8d8bd;
-    color: #94764e;
-}
-
-.highlight-gold {
-    background: linear-gradient(135deg, #f8eee2, #fdf7ec);
-    border: 1px solid #e6d1ad;
-    color: #947343;
-}
-
-.highlight-orange {
-    background: linear-gradient(135deg, #f8eee8, #fdf7f2);
-    border: 1px solid #e6cdbd;
-    color: #a87558;
-}
-
-.highlight-purple {
-    background: linear-gradient(135deg, #f2eee5, #faf7ef);
-    border: 1px solid #ddd0b7;
-    color: #746448;
-}
-
-/* 格局學卡片：保留原本五欄架構 */
-.grid-cards {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-    margin-top: 28px;
-}
-
-.grid-card {
-    position: relative;
-    padding: 26px 16px;
-    text-align: center;
-    border: 1px solid;
-    border-radius: 18px;
-    overflow: hidden;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.grid-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 18%;
-    right: 18%;
-    height: 2px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(170, 137, 87, 0.65),
-        transparent
-    );
-}
-
-.grid-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(70, 55, 40, 0.08);
-}
-
-.grid-card .icon {
-    width: 58px;
-    height: 58px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px;
-    border-radius: 50%;
-    font-size: 27px;
-    border: 1px solid rgba(170, 137, 87, 0.22);
-}
-
-.grid-card h3 {
-    margin: 0 0 8px;
-    color: #684e35;
-    font-size: 17px;
-}
-
-.grid-card p {
-    margin: 0;
-    color: var(--subtext);
-    font-size: 13px;
-    line-height: 1.65;
-}
-
-.grid-green {
-    background: var(--green-bg);
-    border-color: var(--green-line);
-}
-
-.grid-green .icon {
-    background: var(--green-icon);
-    color: var(--green-text);
-}
-
-.grid-blue {
-    background: var(--blue-bg);
-    border-color: var(--blue-line);
-}
-
-.grid-blue .icon {
-    background: var(--blue-icon);
-    color: var(--blue-text);
-}
-
-.grid-gold {
-    background: var(--gold-bg);
-    border-color: var(--gold-line);
-}
-
-.grid-gold .icon {
-    background: var(--gold-icon);
-    color: var(--gold-text);
-}
-
-.grid-orange {
-    background: var(--orange-bg);
-    border-color: var(--orange-line);
-}
-
-.grid-orange .icon {
-    background: var(--orange-icon);
-    color: var(--orange-text);
-}
-
-.grid-purple {
-    background: var(--purple-bg);
-    border-color: var(--purple-line);
-}
-
-.grid-purple .icon {
-    background: var(--purple-icon);
-    color: var(--purple-text);
-}
-
-/* 研究流程 */
-.process {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-    margin-top: 28px;
-}
-
-.step {
-    padding: 24px 15px;
-    text-align: center;
-    border: 1px solid;
-    border-radius: 18px;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.step:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(70, 55, 40, 0.07);
-}
-
-.step .number {
-    width: 46px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 12px;
-    border-radius: 50%;
-    font-size: 20px;
-    font-weight: 600;
-    border: 1px solid rgba(170, 137, 87, 0.2);
-}
-
-.step h3 {
-    margin: 0 0 7px;
-    color: #684e35;
-    font-size: 17px;
-}
-
-.step p {
-    margin: 0;
-    color: var(--subtext);
-    font-size: 13px;
-    line-height: 1.65;
-}
-
-.step-green {
-    background: var(--green-bg);
-    border-color: var(--green-line);
-}
-
-.step-green .number {
-    background: var(--green-icon);
-    color: var(--green-text);
-}
-
-.step-blue {
-    background: var(--blue-bg);
-    border-color: var(--blue-line);
-}
-
-.step-blue .number {
-    background: var(--blue-icon);
-    color: var(--blue-text);
-}
-
-.step-gold {
-    background: var(--gold-bg);
-    border-color: var(--gold-line);
-}
-
-.step-gold .number {
-    background: var(--gold-icon);
-    color: var(--gold-text);
-}
-
-.step-orange {
-    background: var(--orange-bg);
-    border-color: var(--orange-line);
-}
-
-.step-orange .number {
-    background: var(--orange-icon);
-    color: var(--orange-text);
-}
-
-.step-purple {
-    background: var(--purple-bg);
-    border-color: var(--purple-line);
-}
-
-.step-purple .number {
-    background: var(--purple-icon);
-    color: var(--purple-text);
-}
-
-/* 引言區 */
-.quote {
-    position: relative;
-    margin-top: 26px;
-    padding: 36px 44px;
-    background: linear-gradient(135deg, #faf4e9, #f4ead9);
-    border: 1px solid #e6d5b9;
-    border-left: 5px solid #b18a58;
-    border-radius: 18px;
-    color: #654c35;
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    box-shadow: 0 6px 18px rgba(70, 55, 40, 0.045);
-}
-
-.quote::before {
-    content: "✦";
-    display: block;
-    margin-bottom: 5px;
-    color: #b18a58;
-    font-size: 20px;
-}
-
-/* 最後收尾區 */
-.ending {
-    position: relative;
-    padding: 42px;
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(217, 195, 155, 0.24),
-            transparent 55%
-        ),
-        #fffaf2;
-    border: 1px solid #eadcc7;
-    border-radius: 20px;
-    color: #62594f;
-    font-size: 17px;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(70, 55, 40, 0.045);
-}
-
-.ending::before {
-    content: "☯";
-    display: block;
-    margin-bottom: 14px;
-    color: #aa8957;
-    font-size: 34px;
-}
-
-.ending strong {
-    color: #4a4038;
-}
-
-.ending-main {
-    display: block;
-    margin: 24px 0;
-    color: #896b43;
-    font-size: 24px;
-}
-
-/* 返回首頁 */
-.back {
-    text-align: center;
-    padding-top: 10px;
-}
-
-.back a {
-    display: inline-block;
-    padding: 12px 24px;
-    background: var(--card);
-    border: 1px solid #ddc9ab;
-    border-radius: 999px;
-    text-decoration: none;
-    color: #806344;
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.back a:hover {
-    background: #fffaf1;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 14px rgba(70, 55, 40, 0.07);
-}
-
-/* 平板 */
-@media (max-width: 900px) {
-    .grid-cards,
-    .process {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* 手機 */
-@media (max-width: 760px) {
-    .page {
-        width: min(100% - 22px, 1100px);
-        padding: 28px 0 50px;
-    }
-
-    .hero {
-        padding: 42px 22px;
-        border-radius: 22px;
-    }
-
-    .hero-message {
-        padding: 22px 18px;
-    }
-
-    section {
-        padding: 30px 20px;
-        border-radius: 20px;
-    }
-
-    .grid-cards,
-    .process {
-        grid-template-columns: 1fr;
-    }
-
-    .grid-card {
-        padding: 24px 18px;
-    }
-
-    .step {
-        padding: 22px 18px;
-    }
-
-    .highlight {
-        padding: 22px 42px;
-        font-size: 18px;
-    }
-
-    .highlight::before {
-        left: 14px;
-    }
-
-    .highlight::after {
-        right: 14px;
-    }
-
-    .quote {
-        padding: 28px 24px;
-        font-size: 19px;
-    }
-
-    .ending {
-        padding: 30px 24px;
-    }
-
-    .ending-main {
-        font-size: 21px;
-    }
-}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>風水研究室｜好運研究所</title>
+
+    <style>
+        :root {
+            --bg: #f8f4ec;
+            --card: #fffdf8;
+            --text: #514033;
+            --subtext: #75675a;
+            --line: #e6d7c2;
+
+            /* 東方茶金 */
+            --green-bg: #f4ecdf;
+            --green-line: #dfc9a8;
+            --green-icon: #ead8b9;
+            --green-text: #896b43;
+
+            /* 溫潤米金 */
+            --blue-bg: #f8f1e6;
+            --blue-line: #e8d8bd;
+            --blue-icon: #efe2cb;
+            --blue-text: #94764e;
+
+            /* 玫瑰金 */
+            --gold-bg: #f8eee8;
+            --gold-line: #e6cdbd;
+            --gold-icon: #efd9ca;
+            --gold-text: #a87558;
+
+            /* 淺茶褐 */
+            --orange-bg: #f5eee5;
+            --orange-line: #e4d3bf;
+            --orange-icon: #ead8c3;
+            --orange-text: #916b4c;
+
+            /* 墨玉色 */
+            --purple-bg: #f2eee5;
+            --purple-line: #ddd0b7;
+            --purple-icon: #e5dac4;
+            --purple-text: #746448;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(ellipse at 12% 8%, rgba(213, 183, 137, 0.12), transparent 32%),
+                radial-gradient(ellipse at 90% 42%, rgba(183, 139, 114, 0.08), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Noto Sans TC",
+                "Microsoft JhengHei",
+                sans-serif;
+            line-height: 1.8;
+        }
+
+        .page {
+            width: min(1100px, calc(100% - 36px));
+            margin: 0 auto;
+            padding: 50px 0 80px;
+        }
+
+        /* 首頁：東方雅緻、細緻金線 */
+        .hero {
+            position: relative;
+            padding: 62px 50px;
+            margin-bottom: 28px;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(224, 202, 164, 0.25), transparent 58%),
+                var(--card);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 8px 28px rgba(70, 55, 40, 0.055);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "☯";
+            display: block;
+            margin-bottom: 12px;
+            font-size: 42px;
+            color: #aa8957;
+            opacity: 0.85;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            left: 15%;
+            right: 15%;
+            bottom: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b78b72, #d4b783, #b78b72, transparent);
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            color: #624a34;
+            font-size: clamp(32px, 5vw, 48px);
+            letter-spacing: 0.08em;
+        }
+
+        .hero .subtitle {
+            margin: 0;
+            color: var(--subtext);
+            font-size: 17px;
+        }
+
+        .hero-message {
+            max-width: 780px;
+            margin: 34px auto 0;
+            padding: 28px 32px;
+            background: linear-gradient(135deg, #f5ecdc, #fbf6ed);
+            border: 1px solid #e2cfad;
+            border-radius: 20px;
+            box-shadow: inset 0 0 0 4px rgba(255, 253, 248, 0.55);
+        }
+
+        .hero-message strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #8b6b40;
+            font-size: clamp(22px, 3vw, 30px);
+        }
+
+        .hero-message span {
+            color: var(--subtext);
+            font-size: 16px;
+        }
+
+        /* 各內容區 */
+        section {
+            position: relative;
+            margin-bottom: 28px;
+            padding: 42px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 6px 22px rgba(70, 55, 40, 0.04);
+        }
+
+        section h2 {
+            margin: 0 0 24px;
+            color: #624a34;
+            font-size: clamp(25px, 4vw, 32px);
+            letter-spacing: 0.02em;
+            border-bottom: 1px solid #eadcc8;
+            padding-bottom: 12px;
+        }
+
+        section p {
+            margin: 0 0 18px;
+            color: var(--subtext);
+            font-size: 16px;
+        }
+
+        section p:last-child {
+            margin-bottom: 0;
+        }
+
+        section strong {
+            color: #765638;
+        }
+
+        /* 重點文字：統一茶金系 */
+        .highlight {
+            position: relative;
+            margin: 28px 0;
+            padding: 28px 52px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 3px rgba(255, 253, 248, 0.38);
+        }
+
+        .highlight::before {
+            content: "❧";
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: serif;
+            font-size: 26px;
+            opacity: 0.55;
+        }
+
+        .highlight::after {
+            content: "❧";
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%) scaleX(-1);
+            font-family: serif;
+            font-size: 26px;
+            opacity: 0.45;
+        }
+
+        .highlight-green {
+            background: linear-gradient(135deg, #f4ecdf, #fbf6ec);
+            border: 1px solid #dfc9a8;
+            color: #896b43;
+        }
+
+        .highlight-blue {
+            background: linear-gradient(135deg, #f8f1e6, #fdf9f1);
+            border: 1px solid #e8d8bd;
+            color: #94764e;
+        }
+
+        .highlight-gold {
+            background: linear-gradient(135deg, #f8eee8, #fdf7f2);
+            border: 1px solid #e6cdbd;
+            color: #a87558;
+        }
+
+        .highlight-orange {
+            background: linear-gradient(135deg, #f5eee5, #fdf8f1);
+            border: 1px solid #e4d3bf;
+            color: #916b4c;
+        }
+
+        .highlight-purple {
+            background: linear-gradient(135deg, #f2eee5, #faf7ef);
+            border: 1px solid #ddd0b7;
+            color: #746448;
+        }
+
+        /* 格局學卡片：保留原本五欄架構 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .grid-card {
+            position: relative;
+            padding: 26px 16px;
+            text-align: center;
+            border: 1px solid;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .grid-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 18%;
+            right: 18%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(170, 137, 87, 0.65), transparent);
+        }
+
+        .grid-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(70, 55, 40, 0.08);
+        }
+
+        .grid-card .icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            font-size: 27px;
+            border: 1px solid rgba(170, 137, 87, 0.22);
+        }
+
+        .grid-card h3 {
+            margin: 0 0 8px;
+            color: #684e35;
+            font-size: 17px;
+        }
+
+        .grid-card p {
+            margin: 0;
+            color: var(--subtext);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .grid-green {
+            background: var(--green-bg);
+            border-color: var(--green-line);
+        }
+
+        .grid-green .icon {
+            background: var(--green-icon);
+            color: var(--green-text);
+        }
+
+        .grid-blue {
+            background: var(--blue-bg);
+            border-color: var(--blue-line);
+        }
+
+        .grid-blue .icon {
+            background: var(--blue-icon);
+            color: var(--blue-text);
+        }
+
+        .grid-gold {
+            background: var(--gold-bg);
+            border-color: var(--gold-line);
+        }
+
+        .grid-gold .icon {
+            background: var(--gold-icon);
+            color: var(--gold-text);
+        }
+
+        .grid-orange {
+            background: var(--orange-bg);
+            border-color: var(--orange-line);
+        }
+
+        .grid-orange .icon {
+            background: var(--orange-icon);
+            color: var(--orange-text);
+        }
+
+        .grid-purple {
+            background: var(--purple-bg);
+            border-color: var(--purple-line);
+        }
+
+        .grid-purple .icon {
+            background: var(--purple-icon);
+            color: var(--purple-text);
+        }
+
+        /* 研究流程 */
+        .process {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .step {
+            padding: 24px 15px;
+            text-align: center;
+            border: 1px solid;
+            border-radius: 18px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(70, 55, 40, 0.07);
+        }
+
+        .step .number {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 600;
+            border: 1px solid rgba(170, 137, 87, 0.2);
+        }
+
+        .step h3 {
+            margin: 0 0 7px;
+            color: #684e35;
+            font-size: 17px;
+        }
+
+        .step p {
+            margin: 0;
+            color: var(--subtext);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .step-green {
+            background: var(--green-bg);
+            border-color: var(--green-line);
+        }
+
+        .step-green .number {
+            background: var(--green-icon);
+            color: var(--green-text);
+        }
+
+        .step-blue {
+            background: var(--blue-bg);
+            border-color: var(--blue-line);
+        }
+
+        .step-blue .number {
+            background: var(--blue-icon);
+            color: var(--blue-text);
+        }
+
+        .step-gold {
+            background: var(--gold-bg);
+            border-color: var(--gold-line);
+        }
+
+        .step-gold .number {
+            background: var(--gold-icon);
