@@ -3,45 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>風水研究室｜好運研究所</title>
 
     <style>
         :root {
-            --bg: #f8f4ec;
-            --card: #fffdf8;
-            --text: #514033;
-            --subtext: #75675a;
-            --line: #e6d7c2;
+            --bg: #f7f0e8;
+            --card: #fffaf4;
+            --text: #514239;
+            --subtext: #78685c;
+            --line: #e8d5c7;
 
-            /* 東方茶金 */
-            --green-bg: #f4ecdf;
-            --green-line: #dfc9a8;
-            --green-icon: #ead8b9;
-            --green-text: #896b43;
+            --green-bg: #f8eee9;
+            --green-line: #e9cfc1;
+            --green-icon: #f0d9cc;
+            --green-text: #9b6b58;
 
-            /* 溫潤米金 */
-            --blue-bg: #f8f1e6;
-            --blue-line: #e8d8bd;
-            --blue-icon: #efe2cb;
-            --blue-text: #94764e;
+            --blue-bg: #f6f0e9;
+            --blue-line: #e5d6c7;
+            --blue-icon: #eee0d2;
+            --blue-text: #8b705b;
 
-            /* 玫瑰金 */
-            --gold-bg: #f8eee8;
-            --gold-line: #e6cdbd;
-            --gold-icon: #efd9ca;
-            --gold-text: #a87558;
+            --gold-bg: #fbf3df;
+            --gold-line: #e8d4a8;
+            --gold-icon: #f3e2b8;
+            --gold-text: #9a7538;
 
-            /* 淺茶褐 */
-            --orange-bg: #f5eee5;
-            --orange-line: #e4d3bf;
-            --orange-icon: #ead8c3;
-            --orange-text: #916b4c;
+            --orange-bg: #f8eae0;
+            --orange-line: #e8cbbb;
+            --orange-icon: #f0d8c7;
+            --orange-text: #a66f4e;
 
-            /* 墨玉色 */
-            --purple-bg: #f2eee5;
-            --purple-line: #ddd0b7;
-            --purple-icon: #e5dac4;
-            --purple-text: #746448;
+            --purple-bg: #f5eee9;
+            --purple-line: #e4d1c8;
+            --purple-icon: #eadbd4;
+            --purple-text: #8d675a;
         }
 
         * {
@@ -50,10 +46,7 @@
 
         body {
             margin: 0;
-            background:
-                radial-gradient(ellipse at 12% 8%, rgba(213, 183, 137, 0.12), transparent 32%),
-                radial-gradient(ellipse at 90% 42%, rgba(183, 139, 114, 0.08), transparent 30%),
-                var(--bg);
+            background: var(--bg);
             color: var(--text);
             font-family:
                 -apple-system,
@@ -70,45 +63,33 @@
             padding: 50px 0 80px;
         }
 
-        /* 首頁：東方雅緻、細緻金線 */
+        /* =========================
+           Hero
+        ========================= */
+
         .hero {
             position: relative;
             padding: 62px 50px;
             margin-bottom: 28px;
-            background:
-                radial-gradient(circle at 50% 0%, rgba(224, 202, 164, 0.25), transparent 58%),
-                var(--card);
+            background: var(--card);
             border: 1px solid var(--line);
             border-radius: 28px;
             text-align: center;
-            box-shadow: 0 8px 28px rgba(70, 55, 40, 0.055);
+            box-shadow: 0 8px 28px rgba(70, 55, 40, 0.045);
             overflow: hidden;
         }
 
         .hero::before {
-            content: "☯";
+            content: "🧭";
             display: block;
             margin-bottom: 12px;
             font-size: 42px;
-            color: #aa8957;
-            opacity: 0.85;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            left: 15%;
-            right: 15%;
-            bottom: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #b78b72, #d4b783, #b78b72, transparent);
         }
 
         .hero h1 {
             margin: 0 0 12px;
-            color: #624a34;
             font-size: clamp(32px, 5vw, 48px);
-            letter-spacing: 0.08em;
+            letter-spacing: 0.04em;
         }
 
         .hero .subtitle {
@@ -121,16 +102,15 @@
             max-width: 780px;
             margin: 34px auto 0;
             padding: 28px 32px;
-            background: linear-gradient(135deg, #f5ecdc, #fbf6ed);
-            border: 1px solid #e2cfad;
+            background: var(--green-bg);
+            border: 1px solid var(--green-line);
             border-radius: 20px;
-            box-shadow: inset 0 0 0 4px rgba(255, 253, 248, 0.55);
         }
 
         .hero-message strong {
             display: block;
             margin-bottom: 8px;
-            color: #8b6b40;
+            color: var(--green-text);
             font-size: clamp(22px, 3vw, 30px);
         }
 
@@ -139,24 +119,23 @@
             font-size: 16px;
         }
 
-        /* 各內容區 */
+        /* =========================
+           Sections
+        ========================= */
+
         section {
-            position: relative;
             margin-bottom: 28px;
             padding: 42px;
-            background: rgba(255, 255, 255, 0.96);
+            background: var(--card);
             border: 1px solid var(--line);
             border-radius: 24px;
-            box-shadow: 0 6px 22px rgba(70, 55, 40, 0.04);
+            box-shadow: 0 6px 22px rgba(70, 55, 40, 0.035);
         }
 
         section h2 {
             margin: 0 0 24px;
-            color: #624a34;
             font-size: clamp(25px, 4vw, 32px);
             letter-spacing: 0.02em;
-            border-bottom: 1px solid #eadcc8;
-            padding-bottom: 12px;
         }
 
         section p {
@@ -169,11 +148,10 @@
             margin-bottom: 0;
         }
 
-        section strong {
-            color: #765638;
-        }
+        /* =========================
+           Highlight
+        ========================= */
 
-        /* 重點文字：統一茶金系 */
         .highlight {
             position: relative;
             margin: 28px 0;
@@ -183,62 +161,62 @@
             font-size: 20px;
             font-weight: 600;
             overflow: hidden;
-            box-shadow: inset 0 0 0 3px rgba(255, 253, 248, 0.38);
         }
 
         .highlight::before {
-            content: "❧";
+            content: "✦";
             position: absolute;
-            left: 18px;
+            left: 24px;
             top: 50%;
             transform: translateY(-50%);
-            font-family: serif;
-            font-size: 26px;
-            opacity: 0.55;
-        }
-
-        .highlight::after {
-            content: "❧";
-            position: absolute;
-            right: 18px;
-            top: 50%;
-            transform: translateY(-50%) scaleX(-1);
-            font-family: serif;
-            font-size: 26px;
+            font-size: 24px;
             opacity: 0.45;
         }
 
+        .highlight::after {
+            content: "✦";
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            opacity: 0.35;
+        }
+
         .highlight-green {
-            background: linear-gradient(135deg, #f4ecdf, #fbf6ec);
-            border: 1px solid #dfc9a8;
-            color: #896b43;
+            background: var(--green-bg);
+            border: 1px solid var(--green-line);
+            color: var(--green-text);
         }
 
         .highlight-blue {
-            background: linear-gradient(135deg, #f8f1e6, #fdf9f1);
-            border: 1px solid #e8d8bd;
-            color: #94764e;
+            background: var(--blue-bg);
+            border: 1px solid var(--blue-line);
+            color: var(--blue-text);
         }
 
         .highlight-gold {
-            background: linear-gradient(135deg, #f8eee8, #fdf7f2);
-            border: 1px solid #e6cdbd;
-            color: #a87558;
+            background: var(--gold-bg);
+            border: 1px solid var(--gold-line);
+            color: var(--gold-text);
         }
 
         .highlight-orange {
-            background: linear-gradient(135deg, #f5eee5, #fdf8f1);
-            border: 1px solid #e4d3bf;
-            color: #916b4c;
+            background: var(--orange-bg);
+            border: 1px solid var(--orange-line);
+            color: var(--orange-text);
         }
 
         .highlight-purple {
-            background: linear-gradient(135deg, #f2eee5, #faf7ef);
-            border: 1px solid #ddd0b7;
-            color: #746448;
+            background: var(--purple-bg);
+            border: 1px solid var(--purple-line);
+            color: var(--purple-text);
         }
 
-        /* 格局學卡片：保留原本五欄架構 */
+        /* =========================
+           Five Grid Cards
+        ========================= */
+
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -253,22 +231,14 @@
             border: 1px solid;
             border-radius: 18px;
             overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .grid-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 18%;
-            right: 18%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(170, 137, 87, 0.65), transparent);
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
         .grid-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(70, 55, 40, 0.08);
+            box-shadow: 0 8px 20px rgba(70, 55, 40, 0.07);
         }
 
         .grid-card .icon {
@@ -280,18 +250,15 @@
             margin: 0 auto 14px;
             border-radius: 50%;
             font-size: 27px;
-            border: 1px solid rgba(170, 137, 87, 0.22);
         }
 
         .grid-card h3 {
             margin: 0 0 8px;
-            color: #684e35;
             font-size: 17px;
         }
 
         .grid-card p {
             margin: 0;
-            color: var(--subtext);
             font-size: 13px;
             line-height: 1.65;
         }
@@ -346,7 +313,10 @@
             color: var(--purple-text);
         }
 
-        /* 研究流程 */
+        /* =========================
+           Process
+        ========================= */
+
         .process {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -359,7 +329,9 @@
             text-align: center;
             border: 1px solid;
             border-radius: 18px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
         .step:hover {
@@ -377,18 +349,15 @@
             border-radius: 50%;
             font-size: 20px;
             font-weight: 600;
-            border: 1px solid rgba(170, 137, 87, 0.2);
         }
 
         .step h3 {
             margin: 0 0 7px;
-            color: #684e35;
             font-size: 17px;
         }
 
         .step p {
             margin: 0;
-            color: var(--subtext);
             font-size: 13px;
             line-height: 1.65;
         }
@@ -420,3 +389,228 @@
 
         .step-gold .number {
             background: var(--gold-icon);
+            color: var(--gold-text);
+        }
+
+        .step-orange {
+            background: var(--orange-bg);
+            border-color: var(--orange-line);
+        }
+
+        .step-orange .number {
+            background: var(--orange-icon);
+            color: var(--orange-text);
+        }
+
+        .step-purple {
+            background: var(--purple-bg);
+            border-color: var(--purple-line);
+        }
+
+        .step-purple .number {
+            background: var(--purple-icon);
+            color: var(--purple-text);
+        }
+
+        /* =========================
+           Quote
+        ========================= */
+
+        .quote {
+            position: relative;
+            margin-top: 26px;
+            padding: 36px 44px;
+            background: #fbf3e9;
+            border: 1px solid #e8d2bf;
+            border-left: 5px solid #b78368;
+            border-radius: 18px;
+            color: #655044;
+            font-size: 22px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(70, 55, 40, 0.04);
+        }
+
+        .quote::before {
+            content: "✦";
+            display: block;
+            margin-bottom: 5px;
+            color: #b78368;
+            font-size: 20px;
+        }
+
+        /* =========================
+           Ending
+        ========================= */
+
+        .ending {
+            position: relative;
+            padding: 42px;
+            background: #fff7ed;
+            border: 1px solid #e8d3bf;
+            border-radius: 20px;
+            color: #655347;
+            font-size: 17px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(70, 55, 40, 0.04);
+        }
+
+        .ending::before {
+            content: "🧭";
+            display: block;
+            margin-bottom: 14px;
+            font-size: 32px;
+        }
+
+        .ending strong {
+            color: #514239;
+        }
+
+        .ending-main {
+            display: block;
+            margin: 24px 0;
+            color: var(--green-text);
+            font-size: 24px;
+        }
+
+        /* =========================
+           Back
+        ========================= */
+
+        .back {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            text-decoration: none;
+            color: var(--subtext);
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .back a:hover {
+            background: #fffaf4;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           Mobile
+        ========================= */
+
+        @media (max-width: 900px) {
+            .grid-cards,
+            .process {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 760px) {
+
+            .page {
+                width: min(100% - 22px, 1100px);
+                padding: 28px 0 50px;
+            }
+
+            .hero {
+                padding: 42px 22px;
+                border-radius: 22px;
+            }
+
+            .hero-message {
+                padding: 22px 18px;
+            }
+
+            section {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+
+            .grid-cards,
+            .process {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-card {
+                padding: 24px 18px;
+            }
+
+            .step {
+                padding: 22px 18px;
+            }
+
+            .highlight {
+                padding: 22px 42px;
+                font-size: 18px;
+            }
+
+            .highlight::before {
+                left: 14px;
+            }
+
+            .highlight::after {
+                right: 14px;
+            }
+
+            .quote {
+                padding: 28px 24px;
+                font-size: 19px;
+            }
+
+            .ending {
+                padding: 30px 24px;
+            }
+
+            .ending-main {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- =========================
+         Hero
+    ========================= -->
+
+    <header class="hero">
+
+        <h1>風水研究室</h1>
+
+        <p class="subtitle">
+            從環境出發，理解磁場、格局與人之間的關係。
+        </p>
+
+        <div class="hero-message">
+
+            <strong>
+                風水不是改變命運，<br>
+                而是重新理解我們所處的環境。
+            </strong>
+
+            <span>
+                從環境的磁場與能量，到空間的格局與人的行動，
+                我們研究環境如何影響人生。
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         第一區
+    ========================= -->
+
+    <section>
+
+        <
