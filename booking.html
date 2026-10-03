@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8f3e9">
 
     <title>聯絡／預約｜好運研究所</title>
-
-    <meta
-        name="description"
-        content="好運研究所｜聯絡小盧老師，提供線上諮詢與 Facebook 聯絡入口。"
-    >
+    <meta name="description" content="好運研究所｜聯絡小盧老師，提供線上諮詢與 Facebook 聯絡入口。">
 
     <style>
+        :root {
+            --ivory: #faf7f0;
+            --cream: #f2e9da;
+            --rose-gold: #b78b72;
+            --rose-light: #dfc5b2;
+            --tea-gold: #aa8957;
+            --gold-light: #d9c39b;
+            --brown: #654a37;
+            --brown-dark: #403127;
+            --text: #655a50;
+            --text-light: #82756a;
+            --border: #e6d8c5;
+            --white: #fffdf8;
+        }
 
         * {
             box-sizing: border-box;
@@ -24,15 +35,10 @@
         }
 
         body {
-            font-family:
-                "Noto Sans TC",
-                "Microsoft JhengHei",
-                "PingFang TC",
-                Arial,
-                sans-serif;
-
-            background: #faf8f3;
-            color: #4f4942;
+            font-family: "Noto Sans TC", "Microsoft JhengHei",
+                "PingFang TC", Arial, sans-serif;
+            background: var(--ivory);
+            color: var(--text);
             line-height: 1.8;
         }
 
@@ -41,27 +47,20 @@
             color: inherit;
         }
 
-
-        /* =========================
-           導覽列
-           ========================= */
-
+        /* 導覽列 */
         header {
             position: sticky;
             top: 0;
             z-index: 1000;
-
-            background: rgba(250, 248, 243, 0.96);
-            border-bottom: 1px solid #e8e0d2;
-
-            backdrop-filter: blur(10px);
+            background: rgba(250, 247, 240, 0.96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
         }
 
         .nav {
             max-width: 1180px;
             margin: auto;
             padding: 16px 24px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -72,19 +71,16 @@
             font-size: 22px;
             font-weight: 700;
             letter-spacing: 2px;
-            color: #7a5735;
+            color: var(--brown);
             white-space: nowrap;
         }
 
         .logo span {
             display: block;
-
             font-size: 11px;
             font-weight: 400;
             letter-spacing: 3px;
-
-            color: #a08a70;
-
+            color: var(--tea-gold);
             margin-top: -5px;
         }
 
@@ -92,81 +88,120 @@
             display: flex;
             align-items: center;
             gap: 24px;
-
             font-size: 14px;
         }
 
         .nav-links a {
-            color: #5d554c;
-            transition: 0.25s;
+            color: var(--text);
+            transition: color 0.25s;
         }
 
         .nav-links a:hover {
-            color: #a66f32;
+            color: var(--rose-gold);
         }
 
-
-        /* =========================
-           Hero
-           ========================= */
-
+        /* 頁首主視覺 */
         .hero {
+            position: relative;
+            overflow: hidden;
             padding: 90px 24px 70px;
-
             text-align: center;
-
             background:
                 radial-gradient(
-                    circle at 50% 10%,
-                    rgba(210, 174, 112, 0.18),
-                    transparent 32%
+                    ellipse at 50% 15%,
+                    rgba(217, 195, 155, 0.28),
+                    transparent 48%
                 ),
-                #faf8f3;
+                linear-gradient(180deg, #faf7f0 0%, #f6efe4 100%);
+            border-bottom: 1px solid rgba(183, 139, 114, 0.15);
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "❧";
+            position: absolute;
+            color: rgba(170, 137, 87, 0.20);
+            font-family: serif;
+            font-size: 100px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            left: max(5%, calc((100% - 1100px) / 2));
+            top: 32px;
+            transform: rotate(-35deg);
+        }
+
+        .hero::after {
+            right: max(5%, calc((100% - 1100px) / 2));
+            bottom: 10px;
+            transform: rotate(145deg);
         }
 
         .eyebrow {
+            position: relative;
+            z-index: 1;
             display: inline-block;
-
-            padding: 6px 15px;
+            padding: 6px 18px;
             margin-bottom: 18px;
-
-            border: 1px solid #d9c4a4;
+            border: 1px solid var(--gold-light);
             border-radius: 30px;
-
-            color: #987044;
-
-            font-size: 13px;
+            color: #98764c;
+            background: rgba(255, 253, 248, 0.65);
+            font-size: 12px;
             letter-spacing: 2px;
         }
 
         .hero h1 {
-            color: #68482d;
-
+            position: relative;
+            z-index: 1;
+            color: var(--brown);
             font-size: clamp(40px, 6vw, 62px);
-            line-height: 1.2;
-
+            line-height: 1.3;
             letter-spacing: 6px;
-
             margin-bottom: 20px;
         }
 
+        .hero h1::after {
+            content: "";
+            display: block;
+            width: 76px;
+            height: 2px;
+            margin: 20px auto 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--rose-gold),
+                var(--gold-light),
+                transparent
+            );
+        }
+
         .hero p {
+            position: relative;
+            z-index: 1;
             max-width: 650px;
-
             margin: auto;
-
-            color: #70685f;
-
+            color: var(--text-light);
             font-size: 16px;
         }
 
-
-        /* =========================
-           聯絡內容
-           ========================= */
-
+        /* 聯絡內容 */
         .contact-section {
-            padding: 20px 24px 100px;
+            padding: 40px 24px 100px;
+            background:
+                radial-gradient(
+                    circle at 0% 30%,
+                    rgba(223, 197, 178, 0.12),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 100% 70%,
+                    rgba(217, 195, 155, 0.12),
+                    transparent 28%
+                ),
+                var(--ivory);
         }
 
         .contact-inner {
@@ -176,56 +211,57 @@
 
         .contact-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 28px;
         }
 
-
-        /* =========================
-           聯絡卡片
-           ========================= */
-
+        /* 聯絡卡片 */
         .contact-card {
-            background: white;
-
-            border: 1px solid #e5dbce;
-            border-radius: 24px;
-
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 253, 248, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 22px;
             padding: 38px 32px;
-
             text-align: center;
+            box-shadow: 0 12px 32px rgba(83, 60, 40, 0.055);
+            transition: transform 0.3s, box-shadow 0.3s,
+                border-color 0.3s;
+        }
 
-            box-shadow:
-                0 15px 35px
-                rgba(75, 54, 33, 0.06);
-
-            transition: 0.3s;
+        .contact-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 12%;
+            right: 12%;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--rose-gold),
+                var(--gold-light),
+                transparent
+            );
         }
 
         .contact-card:hover {
             transform: translateY(-4px);
-
-            box-shadow:
-                0 20px 42px
-                rgba(75, 54, 33, 0.10);
+            border-color: #d8bca6;
+            box-shadow: 0 18px 38px rgba(83, 60, 40, 0.10);
         }
 
         .contact-icon {
             width: 76px;
             height: 76px;
-
             margin: 0 auto 20px;
-
+            border: 1px solid #e5d3bd;
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
-            background: #f3eadc;
+            background: linear-gradient(145deg, #f7efe3, #ead9c5);
+            box-shadow: inset 0 0 0 5px rgba(255, 253, 248, 0.45);
         }
 
         .contact-icon svg {
@@ -235,71 +271,54 @@
         }
 
         .contact-card h2 {
-            color: #65482f;
-
+            color: var(--brown);
             font-size: 25px;
             letter-spacing: 2px;
-
             margin-bottom: 10px;
         }
 
         .contact-card h3 {
-            color: #8a6949;
-
+            color: #9b7658;
             font-size: 16px;
             font-weight: 500;
-
             margin-bottom: 16px;
         }
 
         .contact-card p {
-            color: #776e65;
-
+            color: var(--text-light);
             font-size: 14px;
             line-height: 1.9;
-
             margin-bottom: 24px;
         }
 
-
-        /* =========================
-           LINE QR
-           ========================= */
-
+        /* LINE QR Code */
         .line-qr {
             width: 220px;
             max-width: 100%;
             height: auto;
-
             display: block;
-
             margin: 10px auto 24px;
-
             border-radius: 14px;
-
-            border: 1px solid #e6ddd1;
-
+            border: 1px solid var(--border);
             background: white;
-
             padding: 8px;
+            box-shadow: 0 5px 16px rgba(83, 60, 40, 0.06);
         }
 
-
-        /* =========================
-           Facebook Logo 大圖
-           ========================= */
-
+        /* Facebook 圖示區 */
         .facebook-logo-box {
             width: 220px;
             height: 220px;
             max-width: 100%;
-
             margin: 10px auto 24px;
-
+            border: 1px solid var(--border);
             border-radius: 14px;
-
-            background: #f3eadc;
-
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255, 253, 248, 0.9),
+                    rgba(234, 217, 197, 0.8)
+                );
             display: flex;
             align-items: center;
             justify-content: center;
@@ -308,131 +327,127 @@
         .facebook-logo-box svg {
             width: 110px;
             height: 110px;
-
             display: block;
         }
 
-
-        /* =========================
-           按鈕
-           ========================= */
-
+        /* 按鈕 */
         .btn {
             display: inline-block;
-
             padding: 12px 26px;
-
+            border: 1px solid transparent;
             border-radius: 30px;
-
             font-size: 14px;
             font-weight: 500;
-
-            transition: 0.25s;
+            letter-spacing: 0.5px;
+            transition: transform 0.25s, box-shadow 0.25s,
+                background 0.25s;
         }
 
-        .btn-primary {
-            background: #87613b;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #68482d;
-            transform: translateY(-2px);
-        }
-
+        .btn-primary,
         .btn-facebook {
-            background: #87613b;
-            color: white;
+            color: #fffdf8;
+            background: linear-gradient(135deg, #98734f, #765238);
+            box-shadow: 0 5px 14px rgba(101, 74, 55, 0.15);
         }
 
+        .btn-primary:hover,
         .btn-facebook:hover {
-            background: #68482d;
+            background: linear-gradient(135deg, #b18b65, #68482d);
             transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(101, 74, 55, 0.22);
         }
 
+        .btn:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--rose-gold);
+            outline-offset: 4px;
+        }
 
-        /* =========================
-           下方說明
-           ========================= */
-
+        /* 下方說明 */
         .note {
+            position: relative;
             max-width: 760px;
-
             margin: 45px auto 0;
-
             padding: 25px 30px;
-
-            background: #f1ebe2;
-
-            border: 1px solid #e2d7c8;
+            background: linear-gradient(135deg, #f4ecdf, #f8f2e8);
+            border: 1px solid var(--border);
             border-radius: 18px;
-
             text-align: center;
+        }
+
+        .note::before,
+        .note::after {
+            content: "✦";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--tea-gold);
+            font-size: 15px;
+        }
+
+        .note::before {
+            left: 16px;
+        }
+
+        .note::after {
+            right: 16px;
         }
 
         .note p {
-            color: #776e65;
-
+            color: var(--text-light);
             font-size: 14px;
         }
 
-
-        /* =========================
-           返回首頁
-           ========================= */
-
+        /* 返回首頁 */
         .back-home {
             padding: 0 24px 90px;
-
             text-align: center;
+            background: var(--ivory);
         }
 
         .back-home a {
+            display: inline-block;
             color: #8a6949;
-
             font-size: 14px;
-
-            transition: 0.25s;
+            transition: color 0.25s, transform 0.25s;
         }
 
         .back-home a:hover {
-            color: #68482d;
+            color: var(--rose-gold);
+            transform: translateY(-2px);
         }
 
-
-        /* =========================
-           Footer
-           ========================= */
-
+        /* 頁尾 */
         footer {
+            position: relative;
+            overflow: hidden;
             padding: 35px 24px;
-
-            background: #342b24;
-
-            color: #cfc3b5;
-
+            background: linear-gradient(135deg, #49372b, #342820);
+            color: #d8c9b6;
             text-align: center;
-
             font-size: 12px;
+            border-top: 2px solid #a88a5c;
+        }
+
+        footer::before {
+            content: "✧  ─────────  ✧  ─────────  ✧";
+            display: block;
+            margin-bottom: 15px;
+            color: #bba078;
+            letter-spacing: 2px;
+            opacity: 0.8;
         }
 
         footer strong {
             display: block;
-
-            color: #eee4d7;
-
+            color: #f4e7d3;
             font-size: 16px;
-
+            letter-spacing: 3px;
             margin-bottom: 5px;
         }
 
-
-        /* =========================
-           平板／手機
-           ========================= */
-
+        /* 平板與手機 */
         @media (max-width: 850px) {
-
             .nav {
                 padding: 13px 18px;
             }
@@ -445,8 +460,16 @@
                 padding: 70px 20px 55px;
             }
 
+            .hero::before {
+                left: -15px;
+            }
+
+            .hero::after {
+                right: -15px;
+            }
+
             .contact-section {
-                padding: 10px 20px 75px;
+                padding: 25px 20px 75px;
             }
 
             .contact-grid {
@@ -456,12 +479,9 @@
             .contact-card {
                 padding: 35px 25px;
             }
-
         }
 
-
         @media (max-width: 480px) {
-
             .logo {
                 font-size: 19px;
             }
@@ -473,6 +493,12 @@
 
             .hero p {
                 font-size: 14px;
+            }
+
+            .hero::before,
+            .hero::after {
+                font-size: 65px;
+                opacity: 0.7;
             }
 
             .contact-card h2 {
@@ -494,109 +520,70 @@
             }
 
             .note {
-                padding: 22px 20px;
+                padding: 22px 24px;
             }
 
+            footer::before {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 
-
 <body>
 
-
-    <!-- =========================
-         導覽列
-         ========================= -->
-
+    <!-- 導覽列 -->
     <header>
-
         <nav class="nav">
-
             <a href="index.html" class="logo">
-
                 好運研究所
-
-                <span>
-                    GOOD LUCK RESEARCH
-                </span>
-
+                <span>GOOD LUCK RESEARCH</span>
             </a>
 
-
             <div class="nav-links">
-
-                <a href="index.html#rooms">
-                    研究室
-                </a>
-
-                <a href="index.html#about">
-                    關於小盧老師
-                </a>
-
-                <a href="index.html#content">
-                    內容／媒體
-                </a>
-
-                <a href="services.html">
-                    服務方案
-                </a>
-
-                <a href="index.html#facebook">
-                    Facebook
-                </a>
-
+                <a href="index.html#rooms">研究室</a>
+                <a href="index.html#about">關於小盧老師</a>
+                <a href="index.html#content">內容／媒體</a>
+                <a href="services.html">服務方案</a>
+                <a href="index.html#facebook">Facebook</a>
             </div>
-
         </nav>
-
     </header>
 
-
-    <!-- =========================
-         Hero
-         ========================= -->
-
+    <!-- 頁首主視覺 -->
     <section class="hero">
+        <span class="eyebrow">CONTACT &amp; APPOINTMENT</span>
 
-        <span class="eyebrow">
-            CONTACT & APPOINTMENT
-        </span>
-
-        <h1>
-            聯絡／預約
-        </h1>
+        <h1>聯絡／預約</h1>
 
         <p>
             想了解服務、進行線上諮詢，
             或想與小盧老師聊聊，
             歡迎透過 LINE 或 Facebook 聯絡。
         </p>
-
     </section>
 
-
-    <!-- =========================
-         聯絡方式
-         ========================= -->
-
+    <!-- 聯絡方式 -->
     <section class="contact-section">
-
         <div class="contact-inner">
-
             <div class="contact-grid">
 
-
-                <!-- =========================
-                     LINE
-                     ========================= -->
-
+                <!-- LINE -->
                 <div class="contact-card">
-
                     <div class="contact-icon">
-
-                        <!-- LINE -->
                         <svg
                             viewBox="0 0 64 64"
                             xmlns="http://www.w3.org/2000/svg"
@@ -611,30 +598,21 @@
                                 fill="white"
                             />
                         </svg>
-
                     </div>
 
-
-                    <h2>
-                        LINE 線上諮詢
-                    </h2>
-
-                    <h3>
-                        線上占卜／諮詢專用 LINE
-                    </h3>
+                    <h2>LINE 線上諮詢</h2>
+                    <h3>線上占卜／諮詢專用 LINE</h3>
 
                     <p>
                         如果想直接與小盧老師聯絡，
                         歡迎加入線上諮詢專用 LINE。
                     </p>
 
-
                     <img
                         src="uploads/line-consultation-qr.jpg"
                         alt="線上諮詢 LINE QR Code"
                         class="line-qr"
                     >
-
 
                     <a
                         href="https://line.me/ti/p/VPmctCadW3"
@@ -644,19 +622,11 @@
                     >
                         立即加入 LINE
                     </a>
-
                 </div>
 
-
-                <!-- =========================
-                     Facebook
-                     ========================= -->
-
+                <!-- Facebook -->
                 <div class="contact-card">
-
                     <div class="contact-icon">
-
-                        <!-- Facebook -->
                         <svg
                             viewBox="0 0 64 64"
                             xmlns="http://www.w3.org/2000/svg"
@@ -673,17 +643,10 @@
                                 fill="white"
                             />
                         </svg>
-
                     </div>
 
-
-                    <h2>
-                        Facebook
-                    </h2>
-
-                    <h3>
-                        觀音之光神諭卡占卜工作室
-                    </h3>
+                    <h2>Facebook</h2>
+                    <h3>觀音之光神諭卡占卜工作室</h3>
 
                     <p>
                         想看看最新消息、文章與活動，
@@ -691,9 +654,7 @@
                         歡迎前往粉絲專頁。
                     </p>
 
-
                     <div class="facebook-logo-box">
-
                         <svg
                             viewBox="0 0 120 120"
                             xmlns="http://www.w3.org/2000/svg"
@@ -705,15 +666,12 @@
                                 r="48"
                                 fill="#1877F2"
                             />
-
                             <path
                                 d="M66 67h12l2-14H66v-9c0-4 2.2-7 8.4-7h6.2V25c-2.8-.4-6.4-.8-10.4-.8-10.8 0-18.2 6.6-18.2 18.6V53H40v14h12v32h14V67Z"
                                 fill="white"
                             />
                         </svg>
-
                     </div>
-
 
                     <a
                         href="https://www.facebook.com/Loustalk789"
@@ -723,63 +681,35 @@
                     >
                         前往 Facebook 粉專
                     </a>
-
                 </div>
-
 
             </div>
 
-
-            <!-- =========================
-                 說明
-                 ========================= -->
-
+            <!-- 聯絡說明 -->
             <div class="note">
-
                 <p>
                     好運研究所目前以 LINE 線上諮詢
                     與 Facebook 粉絲專頁作為主要聯絡方式。
                     歡迎透過你方便的方式與小盧老師聯絡。
                 </p>
-
             </div>
-
         </div>
-
     </section>
 
-
-    <!-- =========================
-         返回首頁
-         ========================= -->
-
+    <!-- 返回首頁 -->
     <div class="back-home">
-
-        <a href="index.html">
-            ← 回到好運研究所首頁
-        </a>
-
+        <a href="index.html">← 回到好運研究所首頁</a>
     </div>
 
-
-    <!-- =========================
-         Footer
-         ========================= -->
-
+    <!-- 頁尾 -->
     <footer>
-
-        <strong>
-            好運研究所
-        </strong>
-
+        <strong>好運研究所</strong>
         GOOD LUCK RESEARCH
 
         <div style="margin-top:18px;">
             © 2026 好運研究所｜小盧老師
         </div>
-
     </footer>
-
 
 </body>
 </html>
