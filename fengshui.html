@@ -1,43 +1,42 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>風水研究室｜好運研究所</title>
 
     <style>
         :root {
-            --bg: #f7f3ec;
-            --card: #fffdf9;
-            --text: #4a4038;
-            --subtext: #70665d;
-            --line: #e7ded2;
+            --bg: #f7f0e8;
+            --card: #fffaf4;
+            --text: #514239;
+            --subtext: #78685c;
+            --line: #e8d5c7;
 
-            --green-bg: #f0f7f1;
-            --green-line: #d5e4d7;
-            --green-icon: #dfede1;
-            --green-text: #5f8067;
+            --green-bg: #f8eee9;
+            --green-line: #e9cfc1;
+            --green-icon: #f0d9cc;
+            --green-text: #9b6b58;
 
-            --blue-bg: #f0f6fa;
-            --blue-line: #d4e2ea;
-            --blue-icon: #e1edf3;
-            --blue-text: #587d91;
+            --blue-bg: #f6f0e9;
+            --blue-line: #e5d6c7;
+            --blue-icon: #eee0d2;
+            --blue-text: #8b705b;
 
-            --gold-bg: #fcf6e9;
-            --gold-line: #eadbb9;
-            --gold-icon: #f6e9c9;
-            --gold-text: #a17d3e;
+            --gold-bg: #fbf3df;
+            --gold-line: #e8d4a8;
+            --gold-icon: #f3e2b8;
+            --gold-text: #9a7538;
 
-            --orange-bg: #faf1e9;
-            --orange-line: #ead8c8;
-            --orange-icon: #f4e1d1;
-            --orange-text: #a8754f;
+            --orange-bg: #f8eae0;
+            --orange-line: #e8cbbb;
+            --orange-icon: #f0d8c7;
+            --orange-text: #a66f4e;
 
-            --purple-bg: #f7f1fb;
-            --purple-line: #dfd0ec;
-            --purple-icon: #eee4f6;
-            --purple-text: #8060a0;
+            --purple-bg: #f5eee9;
+            --purple-line: #e4d1c8;
+            --purple-icon: #eadbd4;
+            --purple-text: #8d675a;
         }
 
         * {
@@ -48,12 +47,7 @@
             margin: 0;
             background: var(--bg);
             color: var(--text);
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Noto Sans TC",
-                "Microsoft JhengHei",
-                sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
             line-height: 1.8;
         }
 
@@ -231,9 +225,7 @@
             border: 1px solid;
             border-radius: 18px;
             overflow: hidden;
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .grid-card:hover {
@@ -329,9 +321,7 @@
             text-align: center;
             border: 1px solid;
             border-radius: 18px;
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .step:hover {
@@ -420,11 +410,11 @@
             position: relative;
             margin-top: 26px;
             padding: 36px 44px;
-            background: #faf6ee;
-            border: 1px solid #e6d9c6;
-            border-left: 5px solid #6f8b72;
+            background: #fbf3e9;
+            border: 1px solid #e8d2bf;
+            border-left: 5px solid #b78368;
             border-radius: 18px;
-            color: #5d5146;
+            color: #655044;
             font-size: 22px;
             font-weight: 600;
             text-align: center;
@@ -435,7 +425,7 @@
             content: "✦";
             display: block;
             margin-bottom: 5px;
-            color: #708773;
+            color: #b78368;
             font-size: 20px;
         }
 
@@ -446,10 +436,10 @@
         .ending {
             position: relative;
             padding: 42px;
-            background: #fffaf2;
-            border: 1px solid #eadcc7;
+            background: #fff7ed;
+            border: 1px solid #e8d3bf;
             border-radius: 20px;
-            color: #62594f;
+            color: #655347;
             font-size: 17px;
             text-align: center;
             box-shadow: 0 6px 20px rgba(70, 55, 40, 0.04);
@@ -463,7 +453,7 @@
         }
 
         .ending strong {
-            color: #4a4038;
+            color: #514239;
         }
 
         .ending-main {
@@ -490,13 +480,14 @@
             border-radius: 999px;
             text-decoration: none;
             color: var(--subtext);
-            transition:
-                background 0.2s ease,
-                transform 0.2s ease;
+            font-size: 16px;
+            line-height: 1.8;
+            white-space: nowrap;
+            transition: background 0.2s ease, transform 0.2s ease;
         }
 
         .back a:hover {
-            background: #fff;
+            background: #fffaf4;
             transform: translateY(-2px);
         }
 
@@ -512,7 +503,6 @@
         }
 
         @media (max-width: 760px) {
-
             .page {
                 width: min(100% - 22px, 1100px);
                 padding: 28px 0 50px;
@@ -575,7 +565,6 @@
 </head>
 
 <body>
-
 <div class="page">
 
     <!-- =========================
@@ -583,7 +572,6 @@
     ========================= -->
 
     <header class="hero">
-
         <h1>風水研究室</h1>
 
         <p class="subtitle">
@@ -591,7 +579,6 @@
         </p>
 
         <div class="hero-message">
-
             <strong>
                 風水不是改變命運，<br>
                 而是重新理解我們所處的環境。
@@ -601,18 +588,14 @@
                 從環境的磁場與能量，到空間的格局與人的行動，
                 我們研究環境如何影響人生。
             </span>
-
         </div>
-
     </header>
-
 
     <!-- =========================
          第一區
     ========================= -->
 
     <section>
-
         <h2>🌬️ 風生水起，研究的是環境</h2>
 
         <p>
@@ -638,16 +621,13 @@
         <div class="highlight highlight-green">
             這個環境，正在對人產生什麼樣的影響？
         </div>
-
     </section>
-
 
     <!-- =========================
          第二區
     ========================= -->
 
     <section>
-
         <h2>🏔️ 古代風水，與現代環境</h2>
 
         <p>
@@ -685,16 +665,13 @@
         <p>
             這也是「格局學」開始出現的原因。
         </p>
-
     </section>
-
 
     <!-- =========================
          第三區：格局學
     ========================= -->
 
     <section>
-
         <h2>🧩 什麼是「格局學」？</h2>
 
         <p>
@@ -726,7 +703,6 @@
         </p>
 
         <div class="grid-cards">
-
             <div class="grid-card grid-green">
                 <div class="icon">🏔️</div>
                 <h3>山川走勢</h3>
@@ -766,22 +742,18 @@
                     依照需求重新安排環境，創造希望發生的影響。
                 </p>
             </div>
-
         </div>
 
         <div class="highlight highlight-orange">
             格局不是單純「擺東西」，而是透過環境的重新安排，創造我們希望發生的影響。
         </div>
-
     </section>
-
 
     <!-- =========================
          第四區
     ========================= -->
 
     <section>
-
         <h2>🏠 現代風水，研究的是「人與空間」</h2>
 
         <p>
@@ -811,16 +783,13 @@
         <p>
             了解目前的環境格局之後，才有機會找到真正適合調整的方向。
         </p>
-
     </section>
-
 
     <!-- =========================
          第五區：研究流程
     ========================= -->
 
     <section>
-
         <h2>🔎 我們的風水研究，從「發現問題」開始</h2>
 
         <p>
@@ -828,7 +797,6 @@
         </p>
 
         <div class="process">
-
             <div class="step step-green">
                 <div class="number">①</div>
                 <h3>觀察環境</h3>
@@ -868,18 +836,14 @@
                     持續觀察環境改變之後，人有沒有跟著改變。
                 </p>
             </div>
-
         </div>
-
     </section>
-
 
     <!-- =========================
          第六區
     ========================= -->
 
     <section>
-
         <h2>⚠️ 風水不是「今天擺完，明天就變好」</h2>
 
         <p>
@@ -925,16 +889,13 @@
         <p>
             當我們開始採取不同的行動，結果才有機會慢慢不同。
         </p>
-
     </section>
-
 
     <!-- =========================
          第七區
     ========================= -->
 
     <section>
-
         <h2>🧭 我們不只想告訴你「哪裡好」</h2>
 
         <p>
@@ -942,7 +903,6 @@
         </p>
 
         <div class="grid-cards">
-
             <div class="grid-card grid-purple">
                 <div class="icon">❓</div>
                 <h3>這個位置好不好？</h3>
@@ -960,7 +920,6 @@
                 <h3>這個東西放這裡好不好？</h3>
                 <p>希望找到最適合的位置。</p>
             </div>
-
         </div>
 
         <p style="margin-top: 28px;">
@@ -986,16 +945,13 @@
         <div class="highlight highlight-gold">
             什麼樣的格局，能夠更接近你現在所需要的目標？
         </div>
-
     </section>
-
 
     <!-- =========================
          第八區
     ========================= -->
 
     <section>
-
         <h2>✦ 看見環境，才有機會改變環境</h2>
 
         <p>
@@ -1007,7 +963,6 @@
         </p>
 
         <div class="grid-cards">
-
             <div class="grid-card grid-blue">
                 <div class="icon">💻</div>
                 <h3>工作的地方</h3>
@@ -1047,20 +1002,15 @@
                     當我們看見這些影響，就有機會重新選擇。
                 </p>
             </div>
-
         </div>
-
     </section>
-
 
     <!-- =========================
          最終收尾
     ========================= -->
 
     <section>
-
         <div class="ending">
-
             <h2>🌿 風水的真正意義</h2>
 
             <p>
@@ -1108,11 +1058,8 @@
                 我們不是要你相信風水。<br>
                 我們想和你一起研究風水。
             </strong>
-
         </div>
-
     </section>
-
 
     <!-- =========================
          Back
@@ -1123,6 +1070,5 @@
     </div>
 
 </div>
-
 </body>
 </html>
