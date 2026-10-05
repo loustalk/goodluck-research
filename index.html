@@ -452,32 +452,30 @@
         }
 
         .about-image {
+            width: 100%;
             min-height: 390px;
 
             border-radius: 25px;
+            overflow: hidden;
 
-            background:
-                linear-gradient(145deg, #d9c5a7, #eee6d8);
+            background: #d9c5a7;
+
+            border: 1px solid #d2bea1;
 
             display: flex;
             align-items: center;
             justify-content: center;
-
-            border: 1px solid #d2bea1;
         }
 
-        .about-image div {
-            text-align: center;
-            color: #7b5a39;
-        }
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 390px;
 
-        .about-image .placeholder {
-            font-size: 58px;
-            margin-bottom: 15px;
-        }
+            display: block;
 
-        .about-image p {
-            font-size: 13px;
+            object-fit: cover;
+            object-position: center center;
         }
 
         .about-text small {
@@ -724,6 +722,10 @@
                 min-height: 300px;
             }
 
+            .about-image img {
+                min-height: 300px;
+            }
+
             .section-title h2 {
                 font-size: 27px;
             }
@@ -764,6 +766,7 @@
                 min-height: 260px;
                 padding: 40px 24px;
             }
+
         }
 
     </style>
@@ -1065,17 +1068,10 @@
 
             <div class="about-image">
 
-                <div>
-
-                    <div class="placeholder">
-                        👤
-                    </div>
-
-                    <p>
-                        未來放置小盧老師照片
-                    </p>
-
-                </div>
+                <img
+                    src="uploads/lou.png"
+                    alt="小盧老師｜縱貫古今，探索真相"
+                >
 
             </div>
 
@@ -1338,176 +1334,270 @@
     </footer>
 
 
-
     <!-- Facebook 最新 3 篇：原生貼文嵌入，不設定固定高度 -->
+
     <script>
     (function () {
-        const container = document.getElementById("facebook-posts");
+
+        const container =
+            document.getElementById("facebook-posts");
+
         if (!container) return;
 
+
         function loadSDK() {
+
             return new Promise(function (resolve, reject) {
+
                 if (window.FB && window.FB.XFBML) {
+
                     resolve();
+
                     return;
                 }
 
+
                 window.fbAsyncInit = function () {
-                    if (window.FB && window.FB.XFBML) {
+
+                    if (
+                        window.FB &&
+                        window.FB.XFBML
+                    ) {
+
                         resolve();
+
                     } else {
-                        reject(new Error("Facebook SDK 載入失敗"));
+
+                        reject(
+                            new Error(
+                                "Facebook SDK 載入失敗"
+                            )
+                        );
+
                     }
+
                 };
 
-                const old = document.getElementById("facebook-jssdk");
+
+                const old =
+                    document.getElementById(
+                        "facebook-jssdk"
+                    );
 
                 if (old) return;
 
-                const script = document.createElement("script");
 
-                script.id = "facebook-jssdk";
+                const script =
+                    document.createElement("script");
+
+
+                script.id =
+                    "facebook-jssdk";
+
                 script.async = true;
+
                 script.defer = true;
+
                 script.crossOrigin = "anonymous";
+
 
                 script.src =
                     "https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v26.0";
 
+
                 script.onerror = function () {
-                    reject(new Error("Facebook SDK 載入失敗"));
+
+                    reject(
+                        new Error(
+                            "Facebook SDK 載入失敗"
+                        )
+                    );
+
                 };
 
+
                 document.head.appendChild(script);
+
             });
+
         }
 
-        fetch("data/facebook-latest.json", {
-            cache: "no-store"
-        })
 
-            .then(function (response) {
+        fetch(
+            "data/facebook-latest.json",
+            {
+                cache: "no-store"
+            }
+        )
 
-                if (!response.ok) {
-                    throw new Error("Facebook 資料讀取失敗");
-                }
+        .then(function (response) {
 
-                return response.json();
-            })
+            if (!response.ok) {
 
-            .then(function (data) {
-
-                const sourcePosts =
-                    Array.isArray(data.posts)
-                        ? data.posts
-                        : [];
-
-                const seen = new Set();
-
-                const posts =
-                    sourcePosts
-                        .filter(function (post) {
-
-                            if (!post || !post.permalink_url) {
-                                return false;
-                            }
-
-                            const key =
-                                post.id ||
-                                post.permalink_url;
-
-                            if (seen.has(key)) {
-                                return false;
-                            }
-
-                            seen.add(key);
-
-                            return true;
-                        })
-                        .slice(0, 3);
-
-                container.innerHTML = "";
-
-                if (!posts.length) {
-
-                    container.innerHTML =
-                        '<div class="facebook-empty">目前還沒有可顯示的 Facebook 貼文。</div>';
-
-                    return null;
-                }
-
-                posts.forEach(function (post) {
-
-                    const wrapper =
-                        document.createElement("div");
-
-                    wrapper.className =
-                        "facebook-post-embed";
-
-                    wrapper.style.width =
-                        "100%";
-
-                    wrapper.style.maxWidth =
-                        "560px";
-
-                    wrapper.style.margin =
-                        "0 auto";
-
-
-                    const embed =
-                        document.createElement("div");
-
-                    embed.className =
-                        "fb-post";
-
-                    embed.setAttribute(
-                        "data-href",
-                        post.embed_url ||
-                        post.permalink_url
-                    );
-
-                    embed.setAttribute(
-                        "data-width",
-                        "560"
-                    );
-
-                    embed.setAttribute(
-                        "data-show-text",
-                        "true"
-                    );
-
-
-                    wrapper.appendChild(embed);
-
-                    container.appendChild(wrapper);
-                });
-
-                return loadSDK();
-            })
-
-            .then(function () {
-
-                if (
-                    window.FB &&
-                    window.FB.XFBML
-                ) {
-
-                    window.FB.XFBML.parse(
-                        container
-                    );
-                }
-            })
-
-            .catch(function (error) {
-
-                console.error(
-                    "Facebook 最新貼文載入失敗：",
-                    error
+                throw new Error(
+                    "Facebook 資料讀取失敗"
                 );
 
+            }
+
+            return response.json();
+
+        })
+
+
+        .then(function (data) {
+
+            const sourcePosts =
+                Array.isArray(data.posts)
+                    ? data.posts
+                    : [];
+
+
+            const seen = new Set();
+
+
+            const posts =
+                sourcePosts
+
+                    .filter(function (post) {
+
+                        if (
+                            !post ||
+                            !post.permalink_url
+                        ) {
+
+                            return false;
+
+                        }
+
+
+                        const key =
+                            post.id ||
+                            post.permalink_url;
+
+
+                        if (seen.has(key)) {
+
+                            return false;
+
+                        }
+
+
+                        seen.add(key);
+
+                        return true;
+
+                    })
+
+                    .slice(0, 3);
+
+
+            container.innerHTML = "";
+
+
+            if (!posts.length) {
+
                 container.innerHTML =
-                    '<div class="facebook-error">目前無法載入 Facebook 最新貼文，請稍後再試。</div>';
+                    '<div class="facebook-empty">目前還沒有可顯示的 Facebook 貼文。</div>';
+
+                return null;
+
+            }
+
+
+            posts.forEach(function (post) {
+
+                const wrapper =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                wrapper.className =
+                    "facebook-post-embed";
+
+
+                wrapper.style.width =
+                    "100%";
+
+
+                wrapper.style.maxWidth =
+                    "560px";
+
+
+                wrapper.style.margin =
+                    "0 auto";
+
+
+                const embed =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                embed.className =
+                    "fb-post";
+
+
+                embed.setAttribute(
+                    "data-href",
+                    post.embed_url ||
+                    post.permalink_url
+                );
+
+
+                embed.setAttribute(
+                    "data-width",
+                    "560"
+                );
+
+
+                embed.setAttribute(
+                    "data-show-text",
+                    "true"
+                );
+
+
+                wrapper.appendChild(embed);
+
+                container.appendChild(wrapper);
+
             });
+
+
+            return loadSDK();
+
+        })
+
+
+        .then(function () {
+
+            if (
+                window.FB &&
+                window.FB.XFBML
+            ) {
+
+                window.FB.XFBML.parse(
+                    container
+                );
+
+            }
+
+        })
+
+
+        .catch(function (error) {
+
+            console.error(
+                "Facebook 最新貼文載入失敗：",
+                error
+            );
+
+
+            container.innerHTML =
+                '<div class="facebook-error">目前無法載入 Facebook 最新貼文，請稍後再試。</div>';
+
+        });
 
     })();
     </script>
