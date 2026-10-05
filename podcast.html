@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -10,108 +9,474 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",Arial,sans-serif;background:#FBF7F2;color:#51413D;line-height:1.8}
+
+body{
+    font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",Arial,sans-serif;
+    background:#f3e6dc;
+    color:#76513f;
+    line-height:1.8
+}
 a{text-decoration:none;color:inherit}
 
-header{position:sticky;top:0;z-index:1000;background:rgba(250,248,243,.96);border-bottom:1px solid #E8D9D2;backdrop-filter:blur(10px)}
-.nav{max-width:1180px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-size:22px;font-weight:700;letter-spacing:2px;color:#946B60;white-space:nowrap}
-.logo span{display:block;font-size:11px;font-weight:400;letter-spacing:3px;color:#B28E82;margin-top:-5px}
-.nav-links{display:flex;gap:24px;align-items:center;font-size:14px}
-.nav-links a{color:#66534F;transition:.25s}
-.nav-links a:hover{color:#B47B72}
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,250,246,.96);
+    border-bottom:1px solid #e6cbb9;
+    backdrop-filter:blur(10px)
+}
+.nav{
+    max-width:1180px;
+    margin:auto;
+    padding:16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px
+}
+.logo{
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:2px;
+    color:#a86e53;
+    white-space:nowrap
+}
+.logo span{
+    display:block;
+    font-size:11px;
+    font-weight:400;
+    letter-spacing:3px;
+    color:#a17a43;
+    margin-top:-5px
+}
+.nav-links{
+    display:flex;
+    gap:24px;
+    align-items:center;
+    font-size:14px
+}
+.nav-links a{
+    color:#765746;
+    transition:.25s
+}
+.nav-links a:hover{color:#bd8a6b}
 
-.hero{padding:105px 24px 95px;background:radial-gradient(circle at 82% 20%,rgba(198,151,137,.22),transparent 28%),radial-gradient(circle at 15% 85%,rgba(183,139,126,.12),transparent 30%),#FBF7F2}
-.hero-inner{max-width:1080px;margin:auto;display:grid;grid-template-columns:1.15fr .85fr;gap:65px;align-items:center}
-.eyebrow{display:inline-block;margin-bottom:18px;padding:6px 15px;border:1px solid #D8B7AC;border-radius:30px;color:#A9786B;font-size:13px;letter-spacing:2px}
-.hero h1{font-size:clamp(42px,6vw,68px);line-height:1.2;letter-spacing:5px;color:#80564F;margin-bottom:22px}
-.hero h2{font-size:clamp(20px,3vw,29px);font-weight:500;color:#5C4A46;margin-bottom:24px}
-.hero-description{max-width:680px;color:#786963;font-size:16px}
-.hero-buttons{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
-.btn{display:inline-block;padding:12px 25px;border-radius:30px;font-size:14px;transition:.25s}
-.btn-primary{background:#A87568;color:white}
-.btn-primary:hover{background:#80564F;transform:translateY(-2px)}
-.btn-outline{border:1px solid #D7B9AF;color:#755839;background:rgba(255,255,255,.58)}
-.btn-outline:hover{background:white}
-.hero-card{min-height:370px;border-radius:28px;padding:40px;background:linear-gradient(145deg,#F0DFD7,#FBF2ED);border:1px solid #E4CFC6;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(101,66,59,.08)}
+.hero{
+    padding:105px 24px 95px;
+    background:
+        radial-gradient(circle at 82% 20%,rgba(189,138,107,.22),transparent 28%),
+        radial-gradient(circle at 15% 85%,rgba(161,122,67,.12),transparent 30%),
+        #f3e6dc
+}
+.hero-inner{
+    max-width:1080px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:65px;
+    align-items:center
+}
+.eyebrow{
+    display:inline-block;
+    margin-bottom:18px;
+    padding:6px 15px;
+    border:1px solid #e6cbb9;
+    border-radius:30px;
+    color:#a86e53;
+    font-size:13px;
+    letter-spacing:2px
+}
+.hero h1{
+    font-size:clamp(42px,6vw,68px);
+    line-height:1.2;
+    letter-spacing:5px;
+    color:#76513f;
+    margin-bottom:22px
+}
+.hero h2{
+    font-size:clamp(20px,3vw,29px);
+    font-weight:500;
+    color:#765746;
+    margin-bottom:24px
+}
+.hero-description{
+    max-width:680px;
+    color:#8c6c5b;
+    font-size:16px
+}
+.hero-buttons{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap
+}
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    border-radius:30px;
+    font-size:14px;
+    transition:.25s
+}
+.btn-primary{
+    background:#a86e53;
+    color:#fffaf6
+}
+.btn-primary:hover{
+    background:#76513f;
+    transform:translateY(-2px)
+}
+.btn-outline{
+    border:1px solid #e6cbb9;
+    color:#765746;
+    background:rgba(255,250,246,.72)
+}
+.btn-outline:hover{background:#fffaf6}
+
+.hero-card{
+    min-height:370px;
+    border-radius:28px;
+    padding:40px;
+    background:linear-gradient(145deg,#f0d9ca,#fffaf6);
+    border:1px solid #e6cbb9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 20px 50px rgba(118,81,63,.10)
+}
 .podcast-symbol{text-align:center}
-.podcast-circle{width:185px;height:185px;margin:auto auto 24px;border:1px solid #C59A8D;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.45);font-size:72px}
-.podcast-symbol h3{color:#8D6258;font-size:22px;letter-spacing:3px}
-.podcast-symbol p{margin-top:5px;font-size:13px;color:#A68C83}
+.podcast-circle{
+    width:185px;
+    height:185px;
+    margin:auto auto 24px;
+    border:1px solid #bd8a6b;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,250,246,.65);
+    font-size:72px
+}
+.podcast-symbol h3{
+    color:#a86e53;
+    font-size:22px;
+    letter-spacing:3px
+}
+.podcast-symbol p{
+    margin-top:5px;
+    font-size:13px;
+    color:#8c6c5b
+}
 
-.intro-section{padding:100px 24px;background:#F1E6E0}
+.intro-section{
+    padding:100px 24px;
+    background:#f8eee6
+}
 .section-inner{max-width:1080px;margin:auto}
-.section-title{text-align:center;margin-bottom:42px}
-.section-title small{display:block;color:#B18478;font-size:12px;letter-spacing:3px;margin-bottom:8px}
-.section-title h2{font-size:32px;color:#76544C;letter-spacing:3px}
-.intro-box{max-width:900px;margin:auto;padding:50px 60px;background:white;border:1px solid #E8D7D0;border-radius:24px;box-shadow:0 15px 35px rgba(101,66,59,.06)}
-.intro-box p{color:#6E5B56;margin-bottom:20px}
+.section-title{
+    text-align:center;
+    margin-bottom:42px
+}
+.section-title small{
+    display:block;
+    color:#a17a43;
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:8px
+}
+.section-title h2{
+    font-size:32px;
+    color:#76513f;
+    letter-spacing:3px
+}
+.intro-box{
+    max-width:900px;
+    margin:auto;
+    padding:50px 60px;
+    background:#fffaf6;
+    border:1px solid #e6cbb9;
+    border-radius:24px;
+    box-shadow:0 15px 35px rgba(118,81,63,.07)
+}
+.intro-box p{
+    color:#765746;
+    margin-bottom:20px
+}
 
 /* 頻道介紹：小型彩色標籤 */
-.intro-list{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:24px 0 28px;padding:0;background:transparent;border:0}
-.intro-tag{display:inline-flex;align-items:center;justify-content:center;padding:7px 17px;border:1px solid;border-radius:9px;font-size:16px;font-weight:500;line-height:1.6;white-space:nowrap}
-.tag-faith{background:#F3E3DD;color:#8F6558;border-color:#DAB9AD}
-.tag-psychology{background:#EEE8E2;color:#78665F;border-color:#D8C6BF}
-.tag-logic{background:#EDE5E3;color:#78615F;border-color:#D9C4C0}
-.tag-experience{background:#F3E1DC;color:#945F56;border-color:#DDBEB6}
-.tag-divination{background:#EFE5EA;color:#866572;border-color:#D9C3CC}
-.tag-dream{background:#E9E6E5;color:#6D6668;border-color:#D2C7C7}
-.tag-jiaobei{background:#F4E9D5;color:#88704A;border-color:#E0CDA8}
-.intro-box .closing{margin-top:28px;margin-bottom:0;color:#8D6258;font-size:20px;font-weight:600;text-align:center}
+.intro-list{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:10px;
+    margin:24px 0 28px;
+    padding:0;
+    background:transparent;
+    border:0
+}
+.intro-tag{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:7px 17px;
+    border:1px solid;
+    border-radius:9px;
+    font-size:16px;
+    font-weight:500;
+    line-height:1.6;
+    white-space:nowrap
+}
+.tag-faith{
+    background:#f8eee6;
+    color:#8f6558;
+    border-color:#e6cbb9
+}
+.tag-psychology{
+    background:#f3eee7;
+    color:#88715a;
+    border-color:#e3d5c7
+}
+.tag-logic{
+    background:#f7eee7;
+    color:#765746;
+    border-color:#e7d1c2
+}
+.tag-experience{
+    background:#f9eee6;
+    color:#a86e53;
+    border-color:#e8cbb8
+}
+.tag-divination{
+    background:#f8eee7;
+    color:#a86e53;
+    border-color:#e8cdbb
+}
+.tag-dream{
+    background:#f3eee7;
+    color:#765746;
+    border-color:#e3d5c7
+}
+.tag-jiaobei{
+    background:#fbf2e4;
+    color:#a17a43;
+    border-color:#ead7b7
+}
+.intro-box .closing{
+    margin-top:28px;
+    margin-bottom:0;
+    color:#a86e53;
+    font-size:20px;
+    font-weight:600;
+    text-align:center
+}
 
-.listen-section{padding:75px 24px;background:#F7EFEA}
-.listen-box{max-width:850px;margin:auto;padding:38px 45px;background:white;border:1px solid #E8D7D0;border-radius:22px;display:flex;align-items:center;justify-content:space-between;gap:30px;box-shadow:0 12px 30px rgba(75,54,33,.05)}
-.listen-text strong{display:block;color:#694b31;font-size:20px;margin-bottom:6px}
-.listen-text p{color:#81716C;font-size:14px}
+.listen-section{
+    padding:75px 24px;
+    background:#f3e6dc
+}
+.listen-box{
+    max-width:850px;
+    margin:auto;
+    padding:38px 45px;
+    background:#fffaf6;
+    border:1px solid #e6cbb9;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    box-shadow:0 12px 30px rgba(118,81,63,.06)
+}
+.listen-text strong{
+    display:block;
+    color:#76513f;
+    font-size:20px;
+    margin-bottom:6px
+}
+.listen-text p{
+    color:#8c6c5b;
+    font-size:14px
+}
 
-.episodes-section{padding:105px 24px;background:#FBF7F2}
-.episodes{max-width:900px;margin:auto;display:flex;flex-direction:column;gap:22px}
-.episode-card{background:white;border:1px solid #E7D8D1;border-radius:20px;padding:26px 28px;display:grid;grid-template-columns:145px 1fr auto;gap:25px;align-items:center;transition:.25s}
-.episode-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(101,66,59,.08)}
-.episode-cover{width:145px;height:145px;border-radius:14px;overflow:hidden;background:linear-gradient(145deg,#e8dac3,#F7EFEA);display:flex;align-items:center;justify-content:center;color:#8a6b49;font-size:42px}
-.episode-cover img{width:100%;height:100%;object-fit:cover;display:block}
-.episode-meta{color:#B18478;font-size:13px;margin-bottom:5px}
-.episode-title{color:#674a31;font-size:20px;line-height:1.5;margin-bottom:10px}
-.episode-description{color:#81716C;font-size:14px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.episode-date{margin-top:8px;color:#A89994;font-size:12px}
+.episodes-section{
+    padding:105px 24px;
+    background:#f3e6dc
+}
+.episodes{
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:22px
+}
+.episode-card{
+    background:#fffaf6;
+    border:1px solid #e6cbb9;
+    border-radius:20px;
+    padding:26px 28px;
+    display:grid;
+    grid-template-columns:145px 1fr auto;
+    gap:25px;
+    align-items:center;
+    transition:.25s
+}
+.episode-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px rgba(118,81,63,.10)
+}
+.episode-cover{
+    width:145px;
+    height:145px;
+    border-radius:14px;
+    overflow:hidden;
+    background:linear-gradient(145deg,#f0d9ca,#f8eee6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#a17a43;
+    font-size:42px
+}
+.episode-cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block
+}
+.episode-meta{
+    color:#a86e53;
+    font-size:13px;
+    margin-bottom:5px
+}
+.episode-title{
+    color:#76513f;
+    font-size:20px;
+    line-height:1.5;
+    margin-bottom:10px
+}
+.episode-description{
+    color:#8c6c5b;
+    font-size:14px;
+    display:-webkit-box;
+    -webkit-line-clamp:4;
+    -webkit-box-orient:vertical;
+    overflow:hidden
+}
+.episode-date{
+    margin-top:8px;
+    color:#a17a43;
+    font-size:12px
+}
 .episode-button{white-space:nowrap}
-.episode-button a{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#A87568;color:white;font-size:20px;transition:.25s}
-.episode-button a:hover{background:#80564F;transform:scale(1.05)}
-.loading{padding:45px;text-align:center;background:white;border:1px solid #E7D8D1;border-radius:20px;color:#81716C}
-.error{padding:30px;text-align:center;background:#FFF8F5;border:1px solid #E7D1C7;border-radius:20px;color:#896B61}
+.episode-button a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:#a86e53;
+    color:#fffaf6;
+    font-size:20px;
+    transition:.25s
+}
+.episode-button a:hover{
+    background:#76513f;
+    transform:scale(1.05)
+}
+.loading{
+    padding:45px;
+    text-align:center;
+    background:#fffaf6;
+    border:1px solid #e6cbb9;
+    border-radius:20px;
+    color:#8c6c5b
+}
+.error{
+    padding:30px;
+    text-align:center;
+    background:#f8eee6;
+    border:1px solid #e6cbb9;
+    border-radius:20px;
+    color:#765746
+}
 
-.closing-section{padding:90px 24px;background:#765A52;color:white}
-.closing-inner{max-width:850px;margin:auto;text-align:center}
-.closing-inner h2{font-size:31px;letter-spacing:3px;margin-bottom:25px}
-.closing-inner p{color:#E7D7D0;font-size:17px}
-footer{padding:35px 24px;background:#4D3935;color:#D8C5BE;text-align:center;font-size:12px}
-footer strong{display:block;color:#F5E9E3;font-size:16px;margin-bottom:5px}
+.closing-section{
+    padding:90px 24px;
+    background:#76513f;
+    color:#fffaf6
+}
+.closing-inner{
+    max-width:850px;
+    margin:auto;
+    text-align:center
+}
+.closing-inner h2{
+    font-size:31px;
+    letter-spacing:3px;
+    margin-bottom:25px
+}
+.closing-inner p{
+    color:#f0d9ca;
+    font-size:17px
+}
+
+footer{
+    padding:35px 24px;
+    background:#5b4034;
+    color:#f0d9ca;
+    text-align:center;
+    font-size:12px
+}
+footer strong{
+    display:block;
+    color:#fffaf6;
+    font-size:16px;
+    margin-bottom:5px
+}
 
 @media(max-width:850px){
-.nav{padding:13px 18px}
-.nav-links{display:none}
-.hero{padding:70px 20px 75px}
-.hero-inner{grid-template-columns:1fr;gap:45px}
-.hero-card{min-height:300px}
-.podcast-circle{width:150px;height:150px;font-size:58px}
-.intro-box{padding:35px 25px}
-.listen-box{flex-direction:column;align-items:flex-start;padding:30px 25px}
-.episode-card{grid-template-columns:100px 1fr;gap:20px}
-.episode-cover{width:100px;height:100px}
-.episode-button{grid-column:1/-1}
-.episode-button a{width:100%;height:46px;border-radius:24px;font-size:14px}
-.section-title h2{font-size:27px}
+    .nav{padding:13px 18px}
+    .nav-links{display:none}
+    .hero{padding:70px 20px 75px}
+    .hero-inner{grid-template-columns:1fr;gap:45px}
+    .hero-card{min-height:300px}
+    .podcast-circle{width:150px;height:150px;font-size:58px}
+    .intro-box{padding:35px 25px}
+    .listen-box{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:30px 25px
+    }
+    .episode-card{
+        grid-template-columns:100px 1fr;
+        gap:20px
+    }
+    .episode-cover{width:100px;height:100px}
+    .episode-button{grid-column:1/-1}
+    .episode-button a{
+        width:100%;
+        height:46px;
+        border-radius:24px;
+        font-size:14px
+    }
+    .section-title h2{font-size:27px}
 }
+
 @media(max-width:480px){
-.logo{font-size:19px}
-.hero h1{font-size:42px;letter-spacing:3px}
-.hero-buttons{flex-direction:column}
-.btn{width:100%;text-align:center}
-.intro-box{padding:30px 20px}
-.intro-list{gap:8px}
-.intro-tag{padding:6px 13px;font-size:15px}
-.episode-card{grid-template-columns:1fr}
-.episode-cover{width:100%;height:auto;aspect-ratio:1/1;max-width:180px}
+    .logo{font-size:19px}
+    .hero h1{font-size:42px;letter-spacing:3px}
+    .hero-buttons{flex-direction:column}
+    .btn{width:100%;text-align:center}
+    .intro-box{padding:30px 20px}
+    .intro-list{gap:8px}
+    .intro-tag{padding:6px 13px;font-size:15px}
+    .episode-card{grid-template-columns:1fr}
+    .episode-cover{
+        width:100%;
+        height:auto;
+        aspect-ratio:1/1;
+        max-width:180px
+    }
 }
 </style>
 </head>
@@ -235,60 +600,4 @@ GOOD LUCK RESEARCH
             const card=document.createElement("article");
             card.className="episode-card";
 
-            const cover=document.createElement("div");
-            cover.className="episode-cover";
-            if(episode.image){
-                const img=document.createElement("img");
-                img.src=episode.image;
-                img.alt=episode.title||"好運研究所 Podcast";
-                img.loading="lazy";
-                cover.appendChild(img);
-            }else{
-                cover.textContent="🎙️";
-            }
-
-            const content=document.createElement("div");
-            const meta=document.createElement("div");
-            meta.className="episode-meta";
-            meta.textContent=episode.episode?"EP"+episode.episode:"好運研究所 Podcast";
-
-            const title=document.createElement("h3");
-            title.className="episode-title";
-            title.textContent=episode.title||"未命名集數";
-
-            const description=document.createElement("p");
-            description.className="episode-description";
-            description.textContent=episode.description||"";
-
-            const date=document.createElement("div");
-            date.className="episode-date";
-            date.textContent=episode.pubDate||"";
-
-            content.appendChild(meta);
-            content.appendChild(title);
-            content.appendChild(description);
-            content.appendChild(date);
-
-            const button=document.createElement("div");
-            button.className="episode-button";
-
-            const link=document.createElement("a");
-            link.href=episode.link||"https://sndn.link/lou136";
-            link.target="_blank";
-            link.rel="noopener noreferrer";
-            link.innerHTML='▶ <span style="font-size:13px;margin-left:5px;">收聽</span>';
-
-            button.appendChild(link);
-            card.appendChild(cover);
-            card.appendChild(content);
-            card.appendChild(button);
-            container.appendChild(card);
-        });
-    }catch(error){
-        console.error(error);
-        container.innerHTML=' <div class="error">Podcast 資料目前無法載入。<br>請稍後再試，或直接前往 <a href="https://sndn.link/lou136" target="_blank" rel="noopener noreferrer" style="color:#A87568;font-weight:600;">SoundOn</a> 收聽。</div>';
-    }
-})();
-</script>
-</body>
-</html>
+            const cover=document.create
