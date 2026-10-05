@@ -380,8 +380,8 @@
         }
 
         .room-card {
-            min-height: 245px;
-            padding: 32px;
+            min-height: 0;
+            padding: 0;
 
             background: white;
             border: 1px solid #e7ddd0;
@@ -393,29 +393,21 @@
             overflow: hidden;
         }
 
-        .room-card::after {
-            content: "";
-
-            position: absolute;
-
-            width: 100px;
-            height: 100px;
-
-            right: -40px;
-            bottom: -40px;
-
-            border-radius: 50%;
-            background: #f1e6d5;
-        }
-
         .room-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(75, 54, 33, 0.09);
         }
 
-        .room-icon {
-            font-size: 35px;
-            margin-bottom: 14px;
+        .room-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            display: block;
+        }
+
+        .room-content {
+            padding: 24px 26px 30px;
+            position: relative;
         }
 
         .room-card h3 {
@@ -427,12 +419,13 @@
         .room-card p {
             font-size: 14px;
             color: #81776d;
+            margin-right: 30px;
         }
 
         .room-card .arrow {
             position: absolute;
-            right: 25px;
-            bottom: 20px;
+            right: 24px;
+            bottom: 24px;
 
             color: #b18b5d;
             font-size: 20px;
@@ -904,98 +897,152 @@
             <div class="room-grid">
 
 
+                <!-- 占卜研究室 -->
+
                 <a href="fortune.html" class="room-card">
 
-                    <div class="room-icon">🔮</div>
+                    <img
+                        src="uploads/fortune.png"
+                        alt="占卜研究室"
+                        class="room-image"
+                    >
 
-                    <h3>占卜研究室</h3>
+                    <div class="room-content">
 
-                    <p>
-                        從占卜桌上的故事，
-                        看見選擇、關係與人生裡不同的可能。
-                    </p>
+                        <h3>占卜研究室</h3>
 
-                    <span class="arrow">→</span>
+                        <p>
+                            從占卜桌上的故事，看見選擇、關係與人生裡不同的可能。
+                        </p>
+
+                        <span class="arrow">→</span>
+
+                    </div>
 
                 </a>
 
+
+                <!-- 風水研究室 -->
 
                 <a href="fengshui.html" class="room-card">
 
-                    <div class="room-icon">🧭</div>
+                    <img
+                        src="uploads/fengshui.png"
+                        alt="風水研究室"
+                        class="room-image"
+                    >
 
-                    <h3>風水研究室</h3>
+                    <div class="room-content">
 
-                    <p>
-                        從環境、空間與生活方式，
-                        探討人與居住環境之間的關係。
-                    </p>
+                        <h3>風水研究室</h3>
 
-                    <span class="arrow">→</span>
+                        <p>
+                            從環境、空間與生活方式，探討人與居住環境之間的關係。
+                        </p>
+
+                        <span class="arrow">→</span>
+
+                    </div>
 
                 </a>
 
+
+                <!-- 財運分析 -->
 
                 <a href="wealth.html" class="room-card">
 
-                    <div class="room-icon">💰</div>
+                    <img
+                        src="uploads/wealth.png"
+                        alt="財運分析"
+                        class="room-image"
+                    >
 
-                    <h3>財運分析</h3>
+                    <div class="room-content">
 
-                    <p>
-                        從個人條件與人生階段，
-                        思考財運、機會與選擇。
-                    </p>
+                        <h3>財運分析</h3>
 
-                    <span class="arrow">→</span>
+                        <p>
+                            從個人條件與人生階段，思考財運、機會與選擇。
+                        </p>
+
+                        <span class="arrow">→</span>
+
+                    </div>
 
                 </a>
 
+
+                <!-- 好運研究室 -->
 
                 <a href="research.html" class="room-card">
 
-                    <div class="room-icon">📚</div>
+                    <img
+                        src="uploads/research.png"
+                        alt="好運研究室"
+                        class="room-image"
+                    >
 
-                    <h3>好運研究室</h3>
+                    <div class="room-content">
 
-                    <p>
-                        文章、故事、觀察與生活裡，
-                        那些值得慢慢研究的事情。
-                    </p>
+                        <h3>好運研究室</h3>
 
-                    <span class="arrow">→</span>
+                        <p>
+                            文章、故事、觀察與生活裡，那些值得慢慢研究的事情。
+                        </p>
+
+                        <span class="arrow">→</span>
+
+                    </div>
 
                 </a>
 
+
+                <!-- 好運琥珀 -->
 
                 <a href="amber.html" class="room-card">
 
-                    <div class="room-icon">🟠</div>
+                    <img
+                        src="uploads/amber.png"
+                        alt="好運琥珀"
+                        class="room-image"
+                    >
 
-                    <h3>好運琥珀</h3>
+                    <div class="room-content">
 
-                    <p>
-                        從琥珀開始，
-                        延伸出屬於好運研究所的生活選物與品牌。
-                    </p>
+                        <h3>好運琥珀</h3>
 
-                    <span class="arrow">→</span>
+                        <p>
+                            從琥珀開始，延伸出屬於好運研究所的生活選物與品牌。
+                        </p>
+
+                        <span class="arrow">→</span>
+
+                    </div>
 
                 </a>
 
 
+                <!-- 好運生活日 -->
+
                 <a href="life.html" class="room-card">
 
-                    <div class="room-icon">🎪</div>
+                    <img
+                        src="uploads/life.png"
+                        alt="好運生活日"
+                        class="room-image"
+                    >
 
-                    <h3>好運生活日</h3>
+                    <div class="room-content">
 
-                    <p>
-                        把好運從研究所帶進生活，
-                        與更多人一起交流、體驗與分享。
-                    </p>
+                        <h3>好運生活日</h3>
 
-                    <span class="arrow">→</span>
+                        <p>
+                            把好運從研究所帶進生活，與更多人一起交流、體驗與分享。
+                        </p>
+
+                        <span class="arrow">→</span>
+
+                    </div>
 
                 </a>
 
