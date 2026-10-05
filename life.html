@@ -1,13 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>好運生活日｜好運研究所</title>
 
@@ -17,7 +13,6 @@
     >
 
     <style>
-
         * {
             box-sizing: border-box;
         }
@@ -28,7 +23,6 @@
 
         body {
             margin: 0;
-
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -36,10 +30,8 @@
                 "Microsoft JhengHei",
                 "PingFang TC",
                 sans-serif;
-
-            background: #f7f4ed;
-            color: #333;
-
+            background: #f8f2ed;
+            color: #55443e;
             line-height: 1.9;
         }
 
@@ -58,28 +50,20 @@
             margin: 0 auto;
         }
 
-
-        /* =========================
-           Header
-        ========================= */
-
+        /* Header */
         header {
             padding: 22px 20px;
-
-            background: rgba(255,255,255,0.94);
-
-            border-bottom:
-                1px solid #e4ddcf;
-
+            background: rgba(255, 250, 246, 0.96);
+            border-bottom: 1px solid #ead8d0;
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(12px);
         }
 
         .header-inner {
             width: min(1120px, 92%);
             margin: auto;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -87,60 +71,45 @@
         }
 
         .logo {
-            color: #245a38;
-
+            color: #986b60;
             font-size: 21px;
             font-weight: 700;
-
             letter-spacing: 2px;
         }
 
         .logo span {
             display: block;
-
             font-size: 9px;
             font-weight: 400;
-
             letter-spacing: 3px;
-
-            color: #9a7650;
+            color: #b18a60;
         }
 
         .header-link {
-            color: #5d604f;
-
+            color: #80665a;
             font-size: 14px;
+            transition: color 0.2s ease;
         }
 
         .header-link:hover {
-            color: #245a38;
+            color: #b47c75;
         }
 
-
-        /* =========================
-           Hero
-        ========================= */
-
+        /* Hero */
         .hero {
             padding: 45px 0 70px;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    #fffdf8 0%,
-                    #f7f4ed 100%
-                );
+            background: linear-gradient(
+                180deg,
+                #fffaf6 0%,
+                #f8f2ed 100%
+            );
         }
 
         .hero-image {
             width: 100%;
-
             border-radius: 24px;
-
             overflow: hidden;
-
-            box-shadow:
-                0 18px 45px rgba(63, 74, 45, 0.12);
+            box-shadow: 0 18px 45px rgba(139, 94, 83, 0.15);
         }
 
         .hero-image img {
@@ -148,78 +117,52 @@
             height: auto;
         }
 
-
-        /* =========================
-           Intro
-        ========================= */
-
+        /* Intro */
         .intro {
             padding: 85px 0;
         }
 
         .section-heading {
             text-align: center;
-
             margin-bottom: 42px;
         }
 
         .section-heading small {
             display: block;
-
             margin-bottom: 7px;
-
-            color: #a07142;
-
+            color: #b18459;
             font-size: 12px;
-
             letter-spacing: 4px;
         }
 
         .section-heading h2 {
             margin: 0;
-
-            color: #285a3c;
-
+            color: #966b61;
             font-size: 34px;
-
             letter-spacing: 3px;
         }
 
         .intro-box {
             max-width: 880px;
-
             margin: auto;
-
             padding: 48px 55px;
-
-            background: #fff;
-
-            border:
-                1px solid #e6dfd2;
-
+            background: #fffdfb;
+            border: 1px solid #ead8d0;
             border-radius: 22px;
-
-            box-shadow:
-                0 8px 30px rgba(70, 64, 50, 0.06);
-
+            box-shadow: 0 8px 30px rgba(117, 81, 70, 0.07);
             text-align: center;
         }
 
         .intro-lead {
             margin: 0 0 25px;
-
-            color: #255a3b;
-
+            color: #a16f68;
             font-size: 25px;
-
             font-weight: 700;
         }
 
         .intro-box p {
             margin: 0 0 18px;
-
-            color: #666;
-
+            color: #74635b;
             font-size: 16px;
         }
 
@@ -229,454 +172,328 @@
 
         .intro-highlight {
             margin-top: 28px;
-
-            color: #7c4c2d;
-
+            color: #a5794f;
             font-weight: 700;
-
             font-size: 18px;
         }
 
-
-        /* =========================
-           Course
-        ========================= */
-
+        /* Course */
         .courses {
             padding: 90px 0;
-
-            background: #eef4e9;
+            background: #f3e6e0;
         }
 
         .course-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
+            grid-template-columns: repeat(2, 1fr);
             gap: 28px;
         }
 
         .course-card {
             padding: 38px;
-
-            background: #fff;
-
+            background: #fffaf7;
             border-radius: 22px;
+            border: 1px solid #e8d2c8;
+            box-shadow: 0 8px 28px rgba(130, 87, 76, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
 
-            border:
-                1px solid #dfe6d8;
-
-            box-shadow:
-                0 8px 28px rgba(65, 83, 52, 0.07);
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(130, 87, 76, 0.12);
         }
 
         .course-time {
             display: inline-block;
-
             padding: 5px 14px;
-
             border-radius: 30px;
-
-            background: #e5f2dc;
-
-            color: #2b6b40;
-
+            background: #ead1c8;
+            color: #895b52;
             font-size: 14px;
-
             font-weight: 700;
         }
 
         .course-card h3 {
             margin: 20px 0 8px;
-
-            color: #245a38;
-
+            color: #98675e;
             font-size: 27px;
-
             line-height: 1.4;
         }
 
         .course-card .teacher {
             margin-bottom: 20px;
-
-            color: #86522e;
-
+            color: #a5794f;
             font-weight: 700;
         }
 
         .course-card p {
             margin: 0 0 15px;
-
-            color: #666;
-
+            color: #74635b;
             font-size: 15px;
         }
 
         .course-note {
             margin-top: 22px;
-
             padding: 16px 18px;
-
-            background: #f8f4eb;
-
+            background: #f7eee8;
+            border: 1px solid #efdfd6;
             border-radius: 12px;
-
-            color: #70563e;
-
+            color: #806357;
             font-size: 14px;
         }
 
-
-        /* =========================
-           Six Experiences
-        ========================= */
-
+        /* Six Experiences */
         .experiences {
             padding: 95px 0;
-
-            background: #fffdf8;
+            background: #fffaf6;
         }
 
         .experience-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 22px;
         }
 
         .experience-card {
             padding: 30px 27px;
-
-            background: #fff;
-
-            border:
-                1px solid #e7dfd1;
-
+            background: #fffdfb;
+            border: 1px solid #eadbd3;
             border-radius: 20px;
-
             transition:
                 transform 0.2s ease,
-                box-shadow 0.2s ease;
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
         }
 
         .experience-card:hover {
             transform: translateY(-4px);
-
-            box-shadow:
-                0 12px 30px rgba(70, 60, 45, 0.08);
+            border-color: #d8b4a8;
+            box-shadow: 0 12px 30px rgba(139, 94, 83, 0.11);
         }
 
         .experience-number {
-            color: #9a7650;
-
+            color: #b18a60;
             font-size: 13px;
-
             letter-spacing: 2px;
         }
 
         .experience-icon {
             margin: 8px 0;
-
             font-size: 35px;
         }
 
         .experience-card h3 {
             margin: 0 0 10px;
-
-            color: #285a3c;
-
+            color: #986b61;
             font-size: 21px;
         }
 
         .experience-card p {
             margin: 0;
-
-            color: #706b64;
-
+            color: #746b64;
             font-size: 14px;
         }
 
-
-        /* =========================
-           Flow
-        ========================= */
-
+        /* Flow */
         .flow {
             padding: 95px 0;
-
-            background: #f0eadf;
+            background: #f0e4dc;
         }
 
         .flow-image {
             max-width: 760px;
-
             margin: auto;
-
-            background: #fff;
-
+            background: #fffaf7;
             padding: 14px;
-
+            border: 1px solid #e8d5ca;
             border-radius: 18px;
-
-            box-shadow:
-                0 10px 35px rgba(70, 60, 45, 0.09);
+            box-shadow: 0 10px 35px rgba(117, 81, 70, 0.10);
         }
 
         .flow-image img {
             width: 100%;
-
             border-radius: 10px;
         }
 
-
-        /* =========================
-           Lottery
-        ========================= */
-
+        /* Lottery */
         .lottery {
             padding: 90px 0;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f9f0d8,
-                    #fffaf0
-                );
+            background: linear-gradient(
+                135deg,
+                #f5e5dc,
+                #fff8ed
+            );
         }
 
         .lottery-box {
             max-width: 850px;
-
             margin: auto;
-
             text-align: center;
         }
 
         .lottery-icon {
             font-size: 58px;
-
             margin-bottom: 10px;
         }
 
         .lottery-box h2 {
             margin: 0 0 15px;
-
-            color: #7b4c27;
-
+            color: #a06e61;
             font-size: 31px;
         }
 
         .lottery-box p {
             max-width: 680px;
-
             margin: 0 auto 20px;
-
-            color: #6b6258;
+            color: #74635b;
         }
 
         .lottery-rule {
             display: inline-block;
-
             margin-top: 15px;
-
             padding: 16px 28px;
-
-            background: #fff;
-
-            border:
-                1px solid #ead9b8;
-
+            background: #fffdf9;
+            border: 1px solid #e5c8b5;
             border-radius: 14px;
-
-            color: #80532c;
-
+            color: #9a704c;
             font-weight: 700;
         }
 
-
-        /* =========================
-           Event Info
-        ========================= */
-
+        /* Event Info */
         .event-info {
             padding: 95px 0;
-
-            background: #fff;
+            background: #fffdfb;
         }
 
         .info-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 22px;
         }
 
         .info-card {
             padding: 30px;
-
-            background: #faf7f0;
-
-            border:
-                1px solid #e7dfd2;
-
+            background: #faf1ec;
+            border: 1px solid #ead8cf;
             border-radius: 18px;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 10px 25px rgba(139, 94, 83, 0.08);
         }
 
         .info-card small {
             display: block;
-
             margin-bottom: 8px;
-
-            color: #9b7650;
-
+            color: #b18a60;
             letter-spacing: 2px;
         }
 
         .info-card h3 {
             margin: 0 0 12px;
-
-            color: #285a3c;
-
+            color: #986b61;
             font-size: 21px;
         }
 
         .info-card p {
             margin: 0;
-
-            color: #666;
-
+            color: #74635b;
             font-size: 15px;
         }
 
         .price {
-            color: #8a4d28;
-
+            color: #a16f68;
             font-size: 25px;
-
             font-weight: 700;
         }
 
         .price-note {
             display: block;
-
             margin-top: 6px;
-
-            color: #777;
-
+            color: #80746c;
             font-size: 13px;
         }
 
-
-        /* =========================
-           CTA
-        ========================= */
-
+        /* CTA */
         .cta {
             padding: 100px 0;
-
-            background: #24563a;
-
-            color: white;
-
+            background: linear-gradient(
+                135deg,
+                #a87970,
+                #875e58
+            );
+            color: #fffaf6;
             text-align: center;
         }
 
         .cta h2 {
             margin: 0 0 18px;
-
             font-size: 35px;
-
             letter-spacing: 3px;
         }
 
         .cta p {
             max-width: 680px;
-
             margin: 0 auto 30px;
-
-            color: #dfeadf;
+            color: #fff0e8;
         }
 
         .cta-button {
             display: inline-block;
-
             padding: 14px 35px;
-
+            border: 1px solid #f0d6c5;
             border-radius: 35px;
-
-            background: #fff;
-
-            color: #24563a;
-
+            background: #fffaf6;
+            color: #98675e;
             font-size: 16px;
-
             font-weight: 700;
-
-            transition: 0.2s;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-
-            box-shadow:
-                0 8px 20px rgba(0,0,0,0.15);
+            background: #f7e8df;
+            box-shadow: 0 8px 20px rgba(70, 40, 35, 0.16);
         }
 
-
-        /* =========================
-           CMS Updates
-        ========================= */
-
+        /* CMS Updates */
         .updates {
             padding: 90px 0;
-
-            background: #f7f4ed;
+            background: #f8f2ed;
         }
 
         .update-list {
             display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
+            grid-template-columns: repeat(2, 1fr);
             gap: 22px;
         }
 
         .update-card {
             padding: 28px;
-
-            background: #fff;
-
-            border:
-                1px solid #e5ddd0;
-
+            background: #fffdfb;
+            border: 1px solid #ead8cf;
             border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(117, 81, 70, 0.04);
         }
 
         .update-date {
-            color: #a07045;
-
+            color: #b18459;
             font-size: 13px;
         }
 
         .update-card h3 {
             margin: 8px 0 10px;
-
-            color: #4d4439;
-
+            color: #79574f;
             font-size: 20px;
         }
 
         .update-card p {
             margin: 0;
-
-            color: #777;
-
+            color: #746b64;
             font-size: 14px;
         }
 
@@ -684,75 +501,49 @@
         .empty,
         .error {
             grid-column: 1 / -1;
-
             padding: 35px;
-
             text-align: center;
-
-            color: #888;
+            color: #88776f;
         }
 
         .error {
             color: #a35c5c;
         }
 
-
-        /* =========================
-           Footer
-        ========================= */
-
+        /* Footer */
         footer {
             padding: 35px 20px;
-
-            background: #302b25;
-
-            color: #cfc7bc;
-
+            background: #493934;
+            color: #e4d2c8;
             text-align: center;
-
             font-size: 12px;
         }
 
         footer strong {
             display: block;
-
             margin-bottom: 5px;
-
-            color: #eee6da;
-
+            color: #fff5ef;
             font-size: 16px;
         }
 
-
-        /* =========================
-           Tablet
-        ========================= */
-
+        /* Tablet */
         @media (max-width: 850px) {
-
             .course-grid,
             .info-grid {
                 grid-template-columns: 1fr;
             }
 
             .experience-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .update-list {
                 grid-template-columns: 1fr;
             }
-
         }
 
-
-        /* =========================
-           Mobile
-        ========================= */
-
+        /* Mobile */
         @media (max-width: 600px) {
-
             header {
                 padding: 17px 15px;
             }
@@ -785,7 +576,6 @@
 
             .section-heading h2 {
                 font-size: 27px;
-
                 letter-spacing: 2px;
             }
 
@@ -811,7 +601,6 @@
 
             .flow-image {
                 padding: 7px;
-
                 border-radius: 12px;
             }
 
@@ -826,88 +615,47 @@
             .cta h2 {
                 font-size: 29px;
             }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     Header
-========================= -->
-
+<!-- Header -->
 <header>
-
     <div class="header-inner">
-
-        <a
-            href="index.html"
-            class="logo"
-        >
+        <a href="index.html" class="logo">
             好運研究所
             <span>GOOD LUCK RESEARCH</span>
         </a>
 
-        <a
-            href="index.html"
-            class="header-link"
-        >
+        <a href="index.html" class="header-link">
             ← 回到好運研究所
         </a>
-
     </div>
-
 </header>
 
-
-<!-- =========================
-     Hero
-========================= -->
-
+<!-- Hero -->
 <section class="hero">
-
     <div class="container">
-
         <div class="hero-image">
-
             <img
                 src="uploads/好運生活日主視覺.png"
                 alt="好運生活日主視覺"
             >
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     活動介紹
-========================= -->
-
+<!-- 活動介紹 -->
 <section class="intro">
-
     <div class="container">
-
         <div class="section-heading">
-
             <small>GOOD LUCK LIFESTYLE DAY</small>
-
-            <h2>
-                活出自信與美麗的同樂市集
-            </h2>
-
+            <h2>活出自信與美麗的同樂市集</h2>
         </div>
 
-
         <div class="intro-box">
-
             <p class="intro-lead">
                 好運，不是等來的，而是活出來的。
             </p>
@@ -934,45 +682,23 @@
             <p class="intro-highlight">
                 半日學習 × 生活體驗 × 交流 × 好運抽獎
             </p>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     兩堂專業主題課程
-========================= -->
-
+<!-- 兩堂專業主題課程 -->
 <section class="courses">
-
     <div class="container">
-
         <div class="section-heading">
-
             <small>FEATURED COURSES</small>
-
-            <h2>
-                兩堂專業主題課程
-            </h2>
-
+            <h2>兩堂專業主題課程</h2>
         </div>
 
-
         <div class="course-grid">
-
-
             <article class="course-card">
+                <span class="course-time">13:30–14:30</span>
 
-                <span class="course-time">
-                    13:30–14:30
-                </span>
-
-                <h3>
-                    健康順起來
-                </h3>
+                <h3>健康順起來</h3>
 
                 <div class="teacher">
                     講師｜黃順偉老師
@@ -992,19 +718,12 @@
                 <div class="course-note">
                     現場體驗｜從生活開始，認識日常健康促進。
                 </div>
-
             </article>
 
-
             <article class="course-card">
+                <span class="course-time">16:30–17:30</span>
 
-                <span class="course-time">
-                    16:30–17:30
-                </span>
-
-                <h3>
-                    儀態，「走」出你的自信生活
-                </h3>
+                <h3>儀態，「走」出你的自信生活</h3>
 
                 <div class="teacher">
                     講師｜李羿葶老師
@@ -1024,227 +743,104 @@
                     讓你從生活行為之中，
                     走出屬於自己的自信與魅力。
                 </div>
-
             </article>
-
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     六大生活體驗館
-========================= -->
-
+<!-- 六大生活體驗館 -->
 <section class="experiences">
-
     <div class="container">
-
         <div class="section-heading">
-
             <small>SIX LIFE EXPERIENCES</small>
-
-            <h2>
-                六大生活體驗館
-            </h2>
-
+            <h2>六大生活體驗館</h2>
         </div>
 
-
         <div class="experience-grid">
-
-
             <article class="experience-card">
-
-                <div class="experience-number">
-                    EXPERIENCE 01
-                </div>
-
-                <div class="experience-icon">
-                    🌿
-                </div>
-
-                <h3>
-                    好運生活體驗館
-                </h3>
-
-                <p>
-                    占卜、數字、琥珀礦石、療癒畫作等帶來好運的體驗。
-                </p>
-
+                <div class="experience-number">EXPERIENCE 01</div>
+                <div class="experience-icon">🌿</div>
+                <h3>好運生活體驗館</h3>
+                <p>占卜、數字、琥珀礦石、療癒畫作等帶來好運的體驗。</p>
             </article>
 
-
             <article class="experience-card">
-
-                <div class="experience-number">
-                    EXPERIENCE 02
-                </div>
-
-                <div class="experience-icon">
-                    ❤️
-                </div>
-
-                <h3>
-                    正能量生活體驗館
-                </h3>
-
+                <div class="experience-number">EXPERIENCE 02</div>
+                <div class="experience-icon">❤️</div>
+                <h3>正能量生活體驗館</h3>
                 <p>
                     從身心療癒與情緒管理出發，
                     學習保健，體驗能量與科技的結合應用。
                 </p>
-
             </article>
 
-
             <article class="experience-card">
-
-                <div class="experience-number">
-                    EXPERIENCE 03
-                </div>
-
-                <div class="experience-icon">
-                    🪷
-                </div>
-
-                <h3>
-                    能量儀生活體驗館
-                </h3>
-
+                <div class="experience-number">EXPERIENCE 03</div>
+                <div class="experience-icon">🪷</div>
+                <h3>能量儀生活體驗館</h3>
                 <p>
                     體驗能量儀器對身體保健的應用，
                     認識不同的生活保養方式。
                 </p>
-
             </article>
 
-
             <article class="experience-card">
-
-                <div class="experience-number">
-                    EXPERIENCE 04
-                </div>
-
-                <div class="experience-icon">
-                    🎁
-                </div>
-
-                <h3>
-                    客製禮品生活體驗館
-                </h3>
-
+                <div class="experience-number">EXPERIENCE 04</div>
+                <div class="experience-icon">🎁</div>
+                <h3>客製禮品生活體驗館</h3>
                 <p>
                     探索客製化設計，
                     為自己或重要的人打造一份專屬心意。
                 </p>
-
             </article>
 
-
             <article class="experience-card">
-
-                <div class="experience-number">
-                    EXPERIENCE 05
-                </div>
-
-                <div class="experience-icon">
-                    🍴
-                </div>
-
-                <h3>
-                    AI＆美食生活體驗館
-                </h3>
-
+                <div class="experience-number">EXPERIENCE 05</div>
+                <div class="experience-icon">🍴</div>
+                <h3>AI＆美食生活體驗館</h3>
                 <p>
                     看看 AI 如何進入生活，
                     邊探索，也別忘了用美食撫慰你的生活。
                 </p>
-
             </article>
 
-
             <article class="experience-card">
-
-                <div class="experience-number">
-                    EXPERIENCE 06
-                </div>
-
-                <div class="experience-icon">
-                    👗
-                </div>
-
-                <h3>
-                    儀態與形象
-                </h3>
-
+                <div class="experience-number">EXPERIENCE 06</div>
+                <div class="experience-icon">👗</div>
+                <h3>儀態與形象</h3>
                 <p>
                     從穿搭、儀態與個人魅力出發，
                     重新認識自己的自信與生活風格。
                 </p>
-
             </article>
-
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     活動流程
-========================= -->
-
+<!-- 活動流程 -->
 <section class="flow">
-
     <div class="container">
-
         <div class="section-heading">
-
             <small>EVENT SCHEDULE</small>
-
-            <h2>
-                活動流程
-            </h2>
-
+            <h2>活動流程</h2>
         </div>
 
-
         <div class="flow-image">
-
             <img
                 src="uploads/好運生活日活動流程.png"
                 alt="好運生活日活動流程"
             >
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     好運抽獎
-========================= -->
-
+<!-- 好運抽獎 -->
 <section class="lottery">
-
     <div class="container">
-
         <div class="lottery-box">
+            <div class="lottery-icon">🍀</div>
 
-            <div class="lottery-icon">
-                🍀
-            </div>
-
-            <h2>
-                集 4 攤・抽好運！
-            </h2>
+            <h2>集 4 攤・抽好運！</h2>
 
             <p>
                 報名參加並完成活動費用付款後，
@@ -1260,127 +856,58 @@
             <div class="lottery-rule">
                 完成四格體驗 → 參加好運抽獎
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     活動資訊
-========================= -->
-
+<!-- 活動資訊 -->
 <section class="event-info">
-
     <div class="container">
-
         <div class="section-heading">
-
             <small>EVENT INFORMATION</small>
-
-            <h2>
-                活動資訊
-            </h2>
-
+            <h2>活動資訊</h2>
         </div>
-
 
         <div class="info-grid">
-
-
             <article class="info-card">
-
-                <small>DATE & TIME</small>
-
-                <h3>
-                    活動時間
-                </h3>
-
+                <small>DATE &amp; TIME</small>
+                <h3>活動時間</h3>
                 <p>
-                    <strong>
-                        2026／10／31（六）
-                    </strong>
-
+                    <strong>2026／10／31（六）</strong>
                     <br>
-
                     12:30–18:30
                 </p>
-
             </article>
 
-
             <article class="info-card">
-
                 <small>LOCATION</small>
-
-                <h3>
-                    活動地點
-                </h3>
-
+                <h3>活動地點</h3>
                 <p>
                     劍潭區民活動中心 3樓
-
                     <br>
-
                     台北市士林區通河街179巷2號3樓
                 </p>
-
             </article>
-
 
             <article class="info-card">
-
                 <small>TICKET</small>
-
-                <h3>
-                    活動票價
-                </h3>
-
+                <h3>活動票價</h3>
                 <p>
-
-                    <span class="price">
-                        $599
-                    </span>
-
-                    <span class="price-note">
-                        早鳥票｜即日起至 10／23
-                    </span>
-
+                    <span class="price">$599</span>
+                    <span class="price-note">早鳥票｜即日起至 10／23</span>
                     <br>
-
-                    <span class="price">
-                        $699
-                    </span>
-
-                    <span class="price-note">
-                        一般票｜10／24 起至活動日前
-                    </span>
-
+                    <span class="price">$699</span>
+                    <span class="price-note">一般票｜10／24 起至活動日前</span>
                 </p>
-
             </article>
-
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     報名 CTA
-========================= -->
-
+<!-- 報名 CTA -->
 <section class="cta">
-
     <div class="container">
-
-        <h2>
-            給自己一個下午
-        </h2>
+        <h2>給自己一個下午</h2>
 
         <p>
             來走走、看看、體驗不同的生活方式。
@@ -1397,485 +924,214 @@
         >
             立即報名好運生活日
         </a>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     CMS 活動更新
-========================= -->
-
+<!-- CMS 活動更新 -->
 <section class="updates">
-
     <div class="container">
-
         <div class="section-heading">
-
             <small>GOOD LUCK LIFE DAY</small>
-
-            <h2>
-                活動最新消息
-            </h2>
-
+            <h2>活動最新消息</h2>
         </div>
 
-
-        <div
-            id="lifeUpdates"
-            class="update-list"
-        >
-
+        <div id="lifeUpdates" class="update-list">
             <div class="loading">
                 正在整理活動最新消息……
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     Footer
-========================= -->
-
+<!-- Footer -->
 <footer>
-
-    <strong>
-        好運研究所
-    </strong>
-
+    <strong>好運研究所</strong>
     GOOD LUCK RESEARCH
 
     <div style="margin-top:16px;">
         © 2026 好運研究所｜小盧老師
     </div>
-
 </footer>
 
-
 <script>
-
-/* =========================
-   GitHub CMS
-========================= */
-
+/* GitHub CMS */
 const API_URL =
     "https://api.github.com/repos/loustalk/goodluck-research/contents/content/articles?ref=main";
 
 const RAW_BASE =
     "https://raw.githubusercontent.com/loustalk/goodluck-research/main/content/articles/";
 
-
-/* =========================
-   Front Matter
-========================= */
-
+/* Front Matter */
 function parseFrontMatter(text) {
-
     const result = {
-
         title: "",
         date: "",
         category: "",
         body: text
-
     };
 
     if (!text.startsWith("---")) {
-
         return result;
-
     }
 
-    const end =
-        text.indexOf("\n---", 3);
+    const end = text.indexOf("\n---", 3);
 
     if (end === -1) {
-
         return result;
-
     }
 
-    const frontMatter =
-        text.substring(
-            3,
-            end
-        ).trim();
+    const frontMatter = text.substring(3, end).trim();
+    result.body = text.substring(end + 4).trim();
 
-    result.body =
-        text.substring(
-            end + 4
-        ).trim();
+    frontMatter.split("\n").forEach(line => {
+        const colon = line.indexOf(":");
 
-
-    frontMatter
-        .split("\n")
-        .forEach(line => {
-
-            const colon =
-                line.indexOf(":");
-
-            if (colon === -1) {
-
-                return;
-
-            }
-
-            const key =
-                line
-                    .substring(
-                        0,
-                        colon
-                    )
-                    .trim();
-
-            let value =
-                line
-                    .substring(
-                        colon + 1
-                    )
-                    .trim();
-
-
-            value =
-                value.replace(
-                    /^["']|["']$/g,
-                    ""
-                );
-
-
-            if (key === "title") {
-
-                result.title = value;
-
-            }
-
-            if (key === "date") {
-
-                result.date = value;
-
-            }
-
-            if (key === "category") {
-
-                result.category = value;
-
-            }
-
-        });
-
-
-    return result;
-
-}
-
-
-/* =========================
-   HTML Escape
-========================= */
-
-function escapeHtml(text) {
-
-    return text
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* =========================
-   建立摘要
-========================= */
-
-function createSummary(markdown) {
-
-    return markdown
-
-        .replace(
-            /<img\s+[^>]*>/gi,
-            ""
-        )
-
-        .replace(
-            /[#*_]/g,
-            ""
-        )
-
-        .replace(
-            /\n+/g,
-            " "
-        )
-
-        .trim();
-
-}
-
-
-/* =========================
-   載入活動文章
-========================= */
-
-async function loadLifeUpdates() {
-
-    const container =
-        document.getElementById(
-            "lifeUpdates"
-        );
-
-
-    try {
-
-        const response =
-            await fetch(
-                API_URL
-            );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "GitHub API 讀取失敗"
-            );
-
+        if (colon === -1) {
+            return;
         }
 
+        const key = line.substring(0, colon).trim();
+        let value = line.substring(colon + 1).trim();
 
-        const files =
-            await response.json();
+        value = value.replace(/^[\"']|[\"']$/g, "");
 
+        if (key === "title") {
+            result.title = value;
+        }
 
-        const markdownFiles =
-            files.filter(file =>
-                file.name
-                    .toLowerCase()
-                    .endsWith(".md")
-            );
+        if (key === "date") {
+            result.date = value;
+        }
 
+        if (key === "category") {
+            result.category = value;
+        }
+    });
+
+    return result;
+}
+
+/* HTML Escape */
+function escapeHtml(text) {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+/* 建立摘要 */
+function createSummary(markdown) {
+    return markdown
+        .replace(/<img\s+[^>]*>/gi, "")
+        .replace(/[#*_]/g, "")
+        .replace(/\n+/g, " ")
+        .trim();
+}
+
+/* 載入活動文章 */
+async function loadLifeUpdates() {
+    const container = document.getElementById("lifeUpdates");
+
+    try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error("GitHub API 讀取失敗");
+        }
+
+        const files = await response.json();
+
+        const markdownFiles = files.filter(file =>
+            file.name.toLowerCase().endsWith(".md")
+        );
 
         const articles = [];
 
-
-        for (
-            const file of markdownFiles
-        ) {
-
+        for (const file of markdownFiles) {
             try {
-
                 const rawUrl =
-                    RAW_BASE +
-                    encodeURIComponent(
-                        file.name
-                    );
+                    RAW_BASE + encodeURIComponent(file.name);
 
+                const articleResponse = await fetch(rawUrl);
 
-                const articleResponse =
-                    await fetch(
-                        rawUrl
-                    );
-
-
-                if (
-                    !articleResponse.ok
-                ) {
-
+                if (!articleResponse.ok) {
                     continue;
-
                 }
 
+                const text = await articleResponse.text();
+                const article = parseFrontMatter(text);
 
-                const text =
-                    await articleResponse.text();
-
-
-                const article =
-                    parseFrontMatter(
-                        text
-                    );
-
-
-                if (
-                    article.category !==
-                    "life-day"
-                ) {
-
+                if (article.category !== "life-day") {
                     continue;
-
                 }
 
-
-                article.summary =
-                    createSummary(
-                        article.body
-                    );
-
-
-                articles.push(
-                    article
-                );
-
-
-            }
-
-            catch (error) {
-
+                article.summary = createSummary(article.body);
+                articles.push(article);
+            } catch (error) {
                 console.warn(
                     "活動文章讀取失敗：",
                     file.name,
                     error
                 );
-
             }
-
         }
 
-
-        /* =========================
-           最新文章排前面
-        ========================= */
-
+        /* 最新文章排前面 */
         articles.sort(
-            (a, b) =>
-                new Date(b.date) -
-                new Date(a.date)
+            (a, b) => new Date(b.date) - new Date(a.date)
         );
 
-
-        /* =========================
-           沒有活動文章
-        ========================= */
-
-        if (
-            articles.length === 0
-        ) {
-
+        /* 沒有活動文章 */
+        if (articles.length === 0) {
             container.innerHTML = `
-
                 <div class="empty">
-
                     活動最新消息將陸續更新。
-
                 </div>
-
             `;
-
             return;
-
         }
 
+        /* 建立文章卡片 */
+        container.innerHTML = articles
+            .map(article => {
+                const summary = article.summary
+                    ? article.summary
+                    : "好運生活日最新消息。";
 
-        /* =========================
-           建立文章卡片
-        ========================= */
+                return `
+                    <article class="update-card">
+                        <div class="update-date">
+                            ${escapeHtml(article.date || "")}
+                        </div>
 
-        container.innerHTML =
+                        <h3>
+                            ${escapeHtml(article.title || "活動消息")}
+                        </h3>
 
-            articles
-                .map(article => {
-
-                    const summary =
-                        article.summary
-                            ? article.summary
-                            : "好運生活日最新消息。";
-
-
-                    return `
-
-                        <article
-                            class="update-card"
-                        >
-
-                            <div
-                                class="update-date"
-                            >
-                                ${escapeHtml(
-                                    article.date ||
-                                    ""
-                                )}
-                            </div>
-
-
-                            <h3>
-                                ${escapeHtml(
-                                    article.title ||
-                                    "活動消息"
-                                )}
-                            </h3>
-
-
-                            <p>
-                                ${escapeHtml(
-                                    summary
-                                )}
-                            </p>
-
-                        </article>
-
-                    `;
-
-                })
-                .join("");
-
-
-    }
-
-    catch (error) {
-
-        console.error(
-            error
-        );
-
+                        <p>
+                            ${escapeHtml(summary)}
+                        </p>
+                    </article>
+                `;
+            })
+            .join("");
+    } catch (error) {
+        console.error(error);
 
         container.innerHTML = `
-
             <div class="error">
-
                 活動最新消息載入失敗，
                 請稍後再試。
-
             </div>
-
         `;
-
     }
-
 }
 
-
-/* =========================
-   啟動
-========================= */
-
+/* 啟動 */
 loadLifeUpdates();
-
 </script>
-
 
 </body>
 </html>
