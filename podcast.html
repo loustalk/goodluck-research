@@ -10,82 +10,82 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",Arial,sans-serif;background:#faf8f3;color:#40372f;line-height:1.8}
+body{font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",Arial,sans-serif;background:#FBF7F2;color:#51413D;line-height:1.8}
 a{text-decoration:none;color:inherit}
 
-header{position:sticky;top:0;z-index:1000;background:rgba(250,248,243,.96);border-bottom:1px solid #e8e0d2;backdrop-filter:blur(10px)}
+header{position:sticky;top:0;z-index:1000;background:rgba(250,248,243,.96);border-bottom:1px solid #E8D9D2;backdrop-filter:blur(10px)}
 .nav{max-width:1180px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-size:22px;font-weight:700;letter-spacing:2px;color:#7a5735;white-space:nowrap}
-.logo span{display:block;font-size:11px;font-weight:400;letter-spacing:3px;color:#a08a70;margin-top:-5px}
+.logo{font-size:22px;font-weight:700;letter-spacing:2px;color:#946B60;white-space:nowrap}
+.logo span{display:block;font-size:11px;font-weight:400;letter-spacing:3px;color:#B28E82;margin-top:-5px}
 .nav-links{display:flex;gap:24px;align-items:center;font-size:14px}
-.nav-links a{color:#5d554c;transition:.25s}
-.nav-links a:hover{color:#a66f32}
+.nav-links a{color:#66534F;transition:.25s}
+.nav-links a:hover{color:#B47B72}
 
-.hero{padding:105px 24px 95px;background:radial-gradient(circle at 82% 20%,rgba(210,174,112,.22),transparent 28%),radial-gradient(circle at 15% 85%,rgba(184,148,91,.10),transparent 30%),#faf8f3}
+.hero{padding:105px 24px 95px;background:radial-gradient(circle at 82% 20%,rgba(198,151,137,.22),transparent 28%),radial-gradient(circle at 15% 85%,rgba(183,139,126,.12),transparent 30%),#FBF7F2}
 .hero-inner{max-width:1080px;margin:auto;display:grid;grid-template-columns:1.15fr .85fr;gap:65px;align-items:center}
-.eyebrow{display:inline-block;margin-bottom:18px;padding:6px 15px;border:1px solid #d9c4a4;border-radius:30px;color:#987044;font-size:13px;letter-spacing:2px}
-.hero h1{font-size:clamp(42px,6vw,68px);line-height:1.2;letter-spacing:5px;color:#68482d;margin-bottom:22px}
-.hero h2{font-size:clamp(20px,3vw,29px);font-weight:500;color:#51473e;margin-bottom:24px}
-.hero-description{max-width:680px;color:#70685f;font-size:16px}
+.eyebrow{display:inline-block;margin-bottom:18px;padding:6px 15px;border:1px solid #D8B7AC;border-radius:30px;color:#A9786B;font-size:13px;letter-spacing:2px}
+.hero h1{font-size:clamp(42px,6vw,68px);line-height:1.2;letter-spacing:5px;color:#80564F;margin-bottom:22px}
+.hero h2{font-size:clamp(20px,3vw,29px);font-weight:500;color:#5C4A46;margin-bottom:24px}
+.hero-description{max-width:680px;color:#786963;font-size:16px}
 .hero-buttons{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
 .btn{display:inline-block;padding:12px 25px;border-radius:30px;font-size:14px;transition:.25s}
-.btn-primary{background:#87613b;color:white}
-.btn-primary:hover{background:#68482d;transform:translateY(-2px)}
-.btn-outline{border:1px solid #cbb99e;color:#755839;background:rgba(255,255,255,.45)}
+.btn-primary{background:#A87568;color:white}
+.btn-primary:hover{background:#80564F;transform:translateY(-2px)}
+.btn-outline{border:1px solid #D7B9AF;color:#755839;background:rgba(255,255,255,.58)}
 .btn-outline:hover{background:white}
-.hero-card{min-height:370px;border-radius:28px;padding:40px;background:linear-gradient(145deg,#eee2cf,#f8f4ec);border:1px solid #dfd0b9;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(80,57,34,.08)}
+.hero-card{min-height:370px;border-radius:28px;padding:40px;background:linear-gradient(145deg,#F0DFD7,#FBF2ED);border:1px solid #E4CFC6;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(101,66,59,.08)}
 .podcast-symbol{text-align:center}
-.podcast-circle{width:185px;height:185px;margin:auto auto 24px;border:1px solid #b99463;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.35);font-size:72px}
-.podcast-symbol h3{color:#765332;font-size:22px;letter-spacing:3px}
-.podcast-symbol p{margin-top:5px;font-size:13px;color:#97836d}
+.podcast-circle{width:185px;height:185px;margin:auto auto 24px;border:1px solid #C59A8D;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.45);font-size:72px}
+.podcast-symbol h3{color:#8D6258;font-size:22px;letter-spacing:3px}
+.podcast-symbol p{margin-top:5px;font-size:13px;color:#A68C83}
 
-.intro-section{padding:100px 24px;background:#eee7dc}
+.intro-section{padding:100px 24px;background:#F1E6E0}
 .section-inner{max-width:1080px;margin:auto}
 .section-title{text-align:center;margin-bottom:42px}
-.section-title small{display:block;color:#a07b50;font-size:12px;letter-spacing:3px;margin-bottom:8px}
-.section-title h2{font-size:32px;color:#62472f;letter-spacing:3px}
-.intro-box{max-width:900px;margin:auto;padding:50px 60px;background:white;border:1px solid #e2d7c8;border-radius:24px;box-shadow:0 15px 35px rgba(75,54,33,.06)}
-.intro-box p{color:#665d55;margin-bottom:20px}
+.section-title small{display:block;color:#B18478;font-size:12px;letter-spacing:3px;margin-bottom:8px}
+.section-title h2{font-size:32px;color:#76544C;letter-spacing:3px}
+.intro-box{max-width:900px;margin:auto;padding:50px 60px;background:white;border:1px solid #E8D7D0;border-radius:24px;box-shadow:0 15px 35px rgba(101,66,59,.06)}
+.intro-box p{color:#6E5B56;margin-bottom:20px}
 
 /* 頻道介紹：小型彩色標籤 */
 .intro-list{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:24px 0 28px;padding:0;background:transparent;border:0}
 .intro-tag{display:inline-flex;align-items:center;justify-content:center;padding:7px 17px;border:1px solid;border-radius:9px;font-size:16px;font-weight:500;line-height:1.6;white-space:nowrap}
-.tag-faith{background:#f2e5d4;color:#805c37;border-color:#ddc19a}
-.tag-psychology{background:#e8eee2;color:#526b4a;border-color:#c6d5bc}
-.tag-logic{background:#e4ebf4;color:#4c6380;border-color:#c3d1e3}
-.tag-experience{background:#f4e3df;color:#89584f;border-color:#e2c3bc}
-.tag-divination{background:#eee4f3;color:#76558a;border-color:#d7c3e2}
-.tag-dream{background:#e3eaf2;color:#526c8c;border-color:#c4d3e4}
-.tag-jiaobei{background:#f5edcf;color:#806c2d;border-color:#e5d59a}
-.intro-box .closing{margin-top:28px;margin-bottom:0;color:#765332;font-size:20px;font-weight:600;text-align:center}
+.tag-faith{background:#F3E3DD;color:#8F6558;border-color:#DAB9AD}
+.tag-psychology{background:#EEE8E2;color:#78665F;border-color:#D8C6BF}
+.tag-logic{background:#EDE5E3;color:#78615F;border-color:#D9C4C0}
+.tag-experience{background:#F3E1DC;color:#945F56;border-color:#DDBEB6}
+.tag-divination{background:#EFE5EA;color:#866572;border-color:#D9C3CC}
+.tag-dream{background:#E9E6E5;color:#6D6668;border-color:#D2C7C7}
+.tag-jiaobei{background:#F4E9D5;color:#88704A;border-color:#E0CDA8}
+.intro-box .closing{margin-top:28px;margin-bottom:0;color:#8D6258;font-size:20px;font-weight:600;text-align:center}
 
-.listen-section{padding:75px 24px;background:#f5f0e8}
-.listen-box{max-width:850px;margin:auto;padding:38px 45px;background:white;border:1px solid #e2d7c8;border-radius:22px;display:flex;align-items:center;justify-content:space-between;gap:30px;box-shadow:0 12px 30px rgba(75,54,33,.05)}
+.listen-section{padding:75px 24px;background:#F7EFEA}
+.listen-box{max-width:850px;margin:auto;padding:38px 45px;background:white;border:1px solid #E8D7D0;border-radius:22px;display:flex;align-items:center;justify-content:space-between;gap:30px;box-shadow:0 12px 30px rgba(75,54,33,.05)}
 .listen-text strong{display:block;color:#694b31;font-size:20px;margin-bottom:6px}
-.listen-text p{color:#817970;font-size:14px}
+.listen-text p{color:#81716C;font-size:14px}
 
-.episodes-section{padding:105px 24px;background:#faf8f3}
+.episodes-section{padding:105px 24px;background:#FBF7F2}
 .episodes{max-width:900px;margin:auto;display:flex;flex-direction:column;gap:22px}
-.episode-card{background:white;border:1px solid #e4dacf;border-radius:20px;padding:26px 28px;display:grid;grid-template-columns:145px 1fr auto;gap:25px;align-items:center;transition:.25s}
-.episode-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(75,54,33,.08)}
-.episode-cover{width:145px;height:145px;border-radius:14px;overflow:hidden;background:linear-gradient(145deg,#e8dac3,#f5f0e8);display:flex;align-items:center;justify-content:center;color:#8a6b49;font-size:42px}
+.episode-card{background:white;border:1px solid #E7D8D1;border-radius:20px;padding:26px 28px;display:grid;grid-template-columns:145px 1fr auto;gap:25px;align-items:center;transition:.25s}
+.episode-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(101,66,59,.08)}
+.episode-cover{width:145px;height:145px;border-radius:14px;overflow:hidden;background:linear-gradient(145deg,#e8dac3,#F7EFEA);display:flex;align-items:center;justify-content:center;color:#8a6b49;font-size:42px}
 .episode-cover img{width:100%;height:100%;object-fit:cover;display:block}
-.episode-meta{color:#a47b4d;font-size:13px;margin-bottom:5px}
+.episode-meta{color:#B18478;font-size:13px;margin-bottom:5px}
 .episode-title{color:#674a31;font-size:20px;line-height:1.5;margin-bottom:10px}
-.episode-description{color:#817970;font-size:14px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.episode-date{margin-top:8px;color:#a39a91;font-size:12px}
+.episode-description{color:#81716C;font-size:14px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.episode-date{margin-top:8px;color:#A89994;font-size:12px}
 .episode-button{white-space:nowrap}
-.episode-button a{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#87613b;color:white;font-size:20px;transition:.25s}
-.episode-button a:hover{background:#68482d;transform:scale(1.05)}
-.loading{padding:45px;text-align:center;background:white;border:1px solid #e4dacf;border-radius:20px;color:#817970}
-.error{padding:30px;text-align:center;background:#fffaf5;border:1px solid #ead9c4;border-radius:20px;color:#80684f}
+.episode-button a{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#A87568;color:white;font-size:20px;transition:.25s}
+.episode-button a:hover{background:#80564F;transform:scale(1.05)}
+.loading{padding:45px;text-align:center;background:white;border:1px solid #E7D8D1;border-radius:20px;color:#81716C}
+.error{padding:30px;text-align:center;background:#FFF8F5;border:1px solid #E7D1C7;border-radius:20px;color:#896B61}
 
-.closing-section{padding:90px 24px;background:#4d4034;color:white}
+.closing-section{padding:90px 24px;background:#765A52;color:white}
 .closing-inner{max-width:850px;margin:auto;text-align:center}
 .closing-inner h2{font-size:31px;letter-spacing:3px;margin-bottom:25px}
-.closing-inner p{color:#ddd2c5;font-size:17px}
-footer{padding:35px 24px;background:#342b24;color:#cfc3b5;text-align:center;font-size:12px}
-footer strong{display:block;color:#eee4d7;font-size:16px;margin-bottom:5px}
+.closing-inner p{color:#E7D7D0;font-size:17px}
+footer{padding:35px 24px;background:#4D3935;color:#D8C5BE;text-align:center;font-size:12px}
+footer strong{display:block;color:#F5E9E3;font-size:16px;margin-bottom:5px}
 
 @media(max-width:850px){
 .nav{padding:13px 18px}
@@ -286,7 +286,7 @@ GOOD LUCK RESEARCH
         });
     }catch(error){
         console.error(error);
-        container.innerHTML=' <div class="error">Podcast 資料目前無法載入。<br>請稍後再試，或直接前往 <a href="https://sndn.link/lou136" target="_blank" rel="noopener noreferrer" style="color:#87613b;font-weight:600;">SoundOn</a> 收聽。</div>';
+        container.innerHTML=' <div class="error">Podcast 資料目前無法載入。<br>請稍後再試，或直接前往 <a href="https://sndn.link/lou136" target="_blank" rel="noopener noreferrer" style="color:#A87568;font-weight:600;">SoundOn</a> 收聽。</div>';
     }
 })();
 </script>
