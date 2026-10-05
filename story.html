@@ -19,8 +19,8 @@
                 "Noto Sans TC",
                 "Microsoft JhengHei",
                 sans-serif;
-            background: #f7f4ef;
-            color: #333;
+            background: #f3e6dc;
+            color: #76513f;
             line-height: 1.9;
         }
 
@@ -32,25 +32,26 @@
         header {
             padding: 70px 20px 45px;
             text-align: center;
-            background: #eee8de;
+            background: #f8eee6;
         }
 
         header h1 {
             margin: 0 0 12px;
             font-size: 36px;
             letter-spacing: 2px;
+            color: #76513f;
         }
 
         header p {
             margin: 0;
-            color: #777;
+            color: #8c6c5b;
             font-size: 16px;
         }
 
         .back {
             display: inline-block;
             margin-top: 25px;
-            color: #765c42;
+            color: #a86e53;
             text-decoration: none;
             font-size: 15px;
         }
@@ -71,32 +72,32 @@
         }
 
         .story-card {
-            background: #fff;
+            background: #fffaf6;
             border-radius: 14px;
             padding: 28px 30px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 18px rgba(118, 81, 63, 0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .story-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 25px rgba(118, 81, 63, 0.08);
         }
 
         .story-card h2 {
             margin: 0 0 8px;
             font-size: 24px;
-            color: #4b4036;
+            color: #76513f;
         }
 
         .story-date {
             margin-bottom: 15px;
-            color: #999;
+            color: #8c6c5b;
             font-size: 14px;
         }
 
         .story-excerpt {
-            color: #666;
+            color: #765746;
             font-size: 16px;
             line-height: 1.9;
         }
@@ -105,37 +106,37 @@
             display: inline-block;
             margin-top: 18px;
             padding: 8px 18px;
-            border: 1px solid #8a745d;
+            border: 1px solid #bd8a6b;
             border-radius: 20px;
-            color: #6d5947;
+            color: #a86e53;
             text-decoration: none;
             font-size: 14px;
             transition: all 0.2s ease;
         }
 
         .read-more:hover {
-            background: #6d5947;
-            color: #fff;
+            background: #a86e53;
+            color: #fffaf6;
         }
 
         /* 單篇文章 */
 
         .article {
-            background: #fff;
+            background: #fffaf6;
             border-radius: 14px;
             padding: 45px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 18px rgba(118, 81, 63, 0.05);
         }
 
         .article h2 {
             margin-top: 0;
             margin-bottom: 8px;
             font-size: 32px;
-            color: #4b4036;
+            color: #76513f;
         }
 
         .article-date {
-            color: #999;
+            color: #8c6c5b;
             font-size: 14px;
             margin-bottom: 35px;
         }
@@ -143,7 +144,7 @@
         .article-body {
             font-size: 17px;
             line-height: 2;
-            color: #444;
+            color: #765746;
         }
 
         .article-body p {
@@ -154,11 +155,11 @@
         .article-body h3 {
             margin-top: 2em;
             margin-bottom: 0.8em;
-            color: #4b4036;
+            color: #a86e53;
         }
 
         .article-body strong {
-            color: #5c4937;
+            color: #a86e53;
         }
 
         .article-body img {
@@ -174,7 +175,7 @@
         }
 
         .article-navigation a {
-            color: #765c42;
+            color: #a86e53;
             text-decoration: none;
         }
 
@@ -187,11 +188,11 @@
         .error {
             text-align: center;
             padding: 50px 20px;
-            color: #888;
+            color: #8c6c5b;
         }
 
         .error {
-            color: #a55;
+            color: #a86e53;
         }
 
         @media (max-width: 700px) {
@@ -395,7 +396,6 @@ function markdownToHtml(markdown) {
         }
     );
 
-
     text = escapeHtml(text);
 
 
@@ -438,7 +438,6 @@ function markdownToHtml(markdown) {
         .map(block => block.trim())
         .filter(Boolean);
 
-
     text = blocks.map(block => {
 
         if (
@@ -471,7 +470,6 @@ function markdownToHtml(markdown) {
         );
 
     });
-
 
     return text;
 }
@@ -516,14 +514,11 @@ async function loadStories() {
 
         const files = await response.json();
 
-
         const markdownFiles = files.filter(file =>
             file.name.toLowerCase().endsWith(".md")
         );
 
-
         const articles = [];
-
 
         for (const file of markdownFiles) {
 
@@ -685,11 +680,9 @@ function showArticle(article) {
     const articleView =
         document.getElementById("articleView");
 
-
     storyList.style.display = "none";
 
     articleView.style.display = "block";
-
 
     articleView.innerHTML = `
 
