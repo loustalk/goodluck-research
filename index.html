@@ -10,9 +10,6 @@
 
     <style>
 
-        /* Hero 主標題：東方書法字體 */
-        @import url('https://fonts.googleapis.com/css2?family=Long+Cang&display=swap');
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -163,32 +160,53 @@
             letter-spacing: 2px;
         }
 
+
         /* =========================
            Hero 主標題
+           新篆體
            ========================= */
 
         .hero h1 {
             font-family:
-                "Long Cang",
-                "DFKai-SB",
-                "BiauKai",
-                "標楷體",
+                "DFNewChuan-B5",
+                "DFNewChuanHK-W5",
+                "華康新篆體",
+                "Noto Serif TC",
+                "PMingLiU",
                 serif;
 
-            font-size: clamp(52px, 7.2vw, 88px);
-            font-weight: 400;
-            line-height: 1.05;
-            letter-spacing: 5px;
+            font-size: clamp(58px, 7.2vw, 88px);
+            font-weight: normal;
+            line-height: 1.12;
+            letter-spacing: 6px;
 
             color: #68482d;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
+
+        /* =========================
+           Hero 副標
+           隸書體
+           ========================= */
+
         .hero h2 {
-            font-size: clamp(21px, 3vw, 30px);
-            font-weight: 500;
+            font-family:
+                "DFLiShuW5-B5",
+                "DFLiShuHK-W5",
+                "華康隸書體",
+                "Noto Serif TC",
+                "PMingLiU",
+                serif;
+
+            font-size: clamp(25px, 3vw, 34px);
+            font-weight: normal;
+            line-height: 1.55;
+            letter-spacing: 3px;
+
             color: #51473e;
+
             margin-bottom: 25px;
         }
 
@@ -717,7 +735,11 @@
             }
 
             .hero h1 {
-                letter-spacing: 3px;
+                letter-spacing: 4px;
+            }
+
+            .hero h2 {
+                letter-spacing: 2px;
             }
 
             .hero-card {
@@ -764,7 +786,9 @@
             }
 
             .hero h2 {
-                font-size: 20px;
+                font-size: 22px;
+                letter-spacing: 1px;
+                line-height: 1.6;
             }
 
             .hero-buttons {
