@@ -532,12 +532,21 @@ img{
         );
 }
 
+
+/* =========================================================
+   影片標題區
+   桌機固定高度，讓兩部影片完全對齊
+========================================================= */
+
 .video-heading{
-    min-height:132px;
+    height:174px;
+    min-height:174px;
 
     padding:23px 23px 17px;
 
     flex-shrink:0;
+
+    overflow:hidden;
 }
 
 .video-heading small{
@@ -941,10 +950,16 @@ footer strong{
         gap:20px;
     }
 
+
+    /* 手機取消固定標題高度 */
+
     .video-heading{
+        height:auto;
         min-height:0;
 
         padding:19px 18px 15px;
+
+        overflow:visible;
     }
 
     .video-heading h3{
