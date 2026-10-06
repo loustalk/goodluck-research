@@ -3,25 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f8f3e9">
+    <meta name="theme-color" content="#f3e6dc">
 
     <title>聯絡／預約｜好運研究所</title>
     <meta name="description" content="好運研究所｜聯絡小盧老師，提供線上諮詢與 Facebook 聯絡入口。">
 
     <style>
         :root {
-            --ivory: #faf7f0;
-            --cream: #f2e9da;
-            --rose-gold: #b78b72;
-            --rose-light: #dfc5b2;
-            --tea-gold: #aa8957;
-            --gold-light: #d9c39b;
-            --brown: #654a37;
-            --brown-dark: #403127;
-            --text: #655a50;
-            --text-light: #82756a;
-            --border: #e6d8c5;
-            --white: #fffdf8;
+            /* =====================================================
+               好運研究所統一色系
+            ===================================================== */
+
+            --bg: #f3e6dc;
+            --card: #fffaf6;
+
+            --text: #76513f;
+            --subtext: #8c6c5b;
+
+            --line: #e6cbb9;
+
+            --rose-gold: #a86e53;
+            --rose-light: #f0d9ca;
+
+            --gold-bg: #fbf2e4;
+            --gold-line: #ead7b7;
+            --gold-text: #a17a43;
+
+            --brown-dark: #5f4030;
+            --white: #fffaf6;
         }
 
         * {
@@ -41,8 +50,10 @@
                 "PingFang TC",
                 Arial,
                 sans-serif;
-            background: var(--ivory);
+
+            background: var(--bg);
             color: var(--text);
+
             line-height: 1.8;
         }
 
@@ -59,47 +70,63 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(250, 247, 240, 0.96);
-            border-bottom: 1px solid var(--border);
+
+            background: rgba(255, 250, 246, 0.96);
+
+            border-bottom: 1px solid var(--line);
+
             backdrop-filter: blur(12px);
         }
 
         .nav {
             max-width: 1180px;
             margin: auto;
+
             padding: 16px 24px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 20px;
         }
 
         .logo {
             font-size: 22px;
             font-weight: 700;
+
             letter-spacing: 2px;
-            color: var(--brown);
+
+            color: var(--text);
+
             white-space: nowrap;
         }
 
         .logo span {
             display: block;
+
             font-size: 11px;
             font-weight: 400;
+
             letter-spacing: 3px;
-            color: var(--tea-gold);
+
+            color: var(--gold-text);
+
             margin-top: -5px;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
+
             gap: 24px;
+
             font-size: 14px;
         }
 
         .nav-links a {
-            color: var(--text);
+            color: var(--subtext);
+
             transition: color 0.25s;
         }
 
@@ -113,52 +140,75 @@
 
         .hero {
             position: relative;
+
             min-height: 500px;
+
             padding: 70px 24px;
+
             display: flex;
             align-items: center;
+
             overflow: hidden;
 
-            background-color: var(--ivory);
-            background-image: url("uploads/booking2.png");
+            background-color: var(--bg);
+
+            background-image:
+                url("uploads/booking2.png");
+
             background-size: cover;
-            background-position: center center;
+
+            background-position:
+                center center;
+
             background-repeat: no-repeat;
 
-            border-bottom: 1px solid rgba(183, 139, 114, 0.18);
+            border-bottom:
+                1px solid rgba(230, 203, 185, 0.8);
         }
 
         /*
-         * booking2.png 本身包含示範文字。
-         * 這一層把圖片左側文字區遮掉，
-         * 讓真正的 HTML 標題只出現一次。
+         * booking2.png 本身帶有示範文字。
+         * 左側以奶油白／淡玫瑰色遮罩，
+         * 讓 HTML 真正的標題只出現一次。
          */
         .hero::before {
             content: "";
+
             position: absolute;
+
             inset: 0;
 
             background:
                 linear-gradient(
                     90deg,
-                    #faf7f0 0%,
-                    #faf7f0 43%,
-                    rgba(250, 247, 240, 0.98) 49%,
-                    rgba(250, 247, 240, 0.76) 56%,
-                    rgba(250, 247, 240, 0.25) 67%,
-                    rgba(250, 247, 240, 0.00) 78%
+
+                    rgba(243, 230, 220, 0.98) 0%,
+
+                    rgba(243, 230, 220, 0.98) 39%,
+
+                    rgba(243, 230, 220, 0.96) 47%,
+
+                    rgba(243, 230, 220, 0.76) 56%,
+
+                    rgba(243, 230, 220, 0.28) 68%,
+
+                    rgba(243, 230, 220, 0.00) 79%
                 );
 
             pointer-events: none;
+
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
+
             z-index: 2;
 
             width: 100%;
+
             max-width: 1180px;
+
             margin: 0 auto;
         }
 
@@ -170,34 +220,45 @@
             display: inline-block;
 
             padding: 7px 20px;
+
             margin-bottom: 20px;
 
-            border: 1px solid rgba(170, 137, 87, 0.58);
+            border:
+                1px solid rgba(234, 215, 183, 0.95);
+
             border-radius: 30px;
 
-            color: #8d6947;
-            background: rgba(255, 253, 248, 0.88);
+            color: var(--gold-text);
+
+            background:
+                rgba(255, 250, 246, 0.90);
 
             font-size: 13px;
+
             font-weight: 500;
+
             letter-spacing: 3px;
 
             backdrop-filter: blur(4px);
         }
 
         .hero h1 {
-            color: #5d402f;
+            color: var(--text);
 
-            font-size: clamp(58px, 7vw, 82px);
+            font-size:
+                clamp(58px, 7vw, 82px);
+
             font-weight: 700;
 
             line-height: 1.18;
+
             letter-spacing: 8px;
 
             margin-bottom: 20px;
 
             text-shadow:
-                0 2px 10px rgba(255, 250, 242, 0.65);
+                0 2px 10px
+                rgba(255, 250, 246, 0.72);
         }
 
         .hero h1::after {
@@ -206,6 +267,7 @@
             display: block;
 
             width: 82px;
+
             height: 2px;
 
             margin-top: 20px;
@@ -213,8 +275,11 @@
             background:
                 linear-gradient(
                     90deg,
-                    #b78b72,
-                    #d9c39b,
+
+                    var(--rose-gold),
+
+                    var(--gold-line),
+
                     transparent
                 );
         }
@@ -222,14 +287,17 @@
         .hero p {
             max-width: 600px;
 
-            color: #65564b;
+            color: var(--subtext);
 
             font-size: 17px;
+
             font-weight: 500;
+
             line-height: 2;
 
             text-shadow:
-                0 1px 8px rgba(255, 250, 242, 0.8);
+                0 1px 8px
+                rgba(255, 250, 246, 0.88);
         }
 
         /* =========================================================
@@ -242,25 +310,34 @@
             background:
                 radial-gradient(
                     circle at 0% 20%,
-                    rgba(223, 197, 178, 0.13),
+
+                    rgba(240, 217, 202, 0.34),
+
                     transparent 28%
                 ),
+
                 radial-gradient(
                     circle at 100% 70%,
-                    rgba(217, 195, 155, 0.13),
-                    transparent 28%
+
+                    rgba(251, 242, 228, 0.52),
+
+                    transparent 30%
                 ),
-                var(--ivory);
+
+                var(--bg);
         }
 
         .contact-inner {
             max-width: 1080px;
+
             margin: auto;
         }
 
         .contact-intro {
             max-width: 720px;
+
             margin: 0 auto 42px;
+
             text-align: center;
         }
 
@@ -269,24 +346,28 @@
 
             margin-bottom: 10px;
 
-            color: var(--tea-gold);
+            color: var(--rose-gold);
 
             font-size: 12px;
+
             letter-spacing: 3px;
+
             font-weight: 500;
         }
 
         .contact-intro h2 {
-            color: var(--brown);
+            color: var(--text);
 
             font-size: 30px;
+
             letter-spacing: 3px;
 
             margin-bottom: 10px;
         }
 
         .contact-intro p {
-            color: var(--text-light);
+            color: var(--subtext);
+
             font-size: 14px;
         }
 
@@ -305,16 +386,21 @@
 
         .contact-card {
             position: relative;
+
             overflow: hidden;
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(255, 253, 248, 0.98),
-                    rgba(249, 244, 235, 0.96)
+
+                    rgba(255, 250, 246, 0.98),
+
+                    rgba(255, 248, 243, 0.96)
                 );
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--line);
+
             border-radius: 24px;
 
             padding: 42px 34px;
@@ -322,7 +408,8 @@
             text-align: center;
 
             box-shadow:
-                0 12px 32px rgba(83, 60, 40, 0.055);
+                0 12px 32px
+                rgba(118, 81, 63, 0.055);
 
             transition:
                 transform 0.3s,
@@ -336,7 +423,9 @@
             position: absolute;
 
             top: 0;
+
             left: 12%;
+
             right: 12%;
 
             height: 2px;
@@ -344,9 +433,13 @@
             background:
                 linear-gradient(
                     90deg,
+
                     transparent,
+
                     var(--rose-gold),
-                    var(--gold-light),
+
+                    var(--gold-line),
+
                     transparent
                 );
         }
@@ -354,10 +447,12 @@
         .contact-card:hover {
             transform: translateY(-4px);
 
-            border-color: #d8bca6;
+            border-color:
+                #dcb9a5;
 
             box-shadow:
-                0 18px 38px rgba(83, 60, 40, 0.10);
+                0 18px 38px
+                rgba(118, 81, 63, 0.10);
         }
 
         .contact-icon {
@@ -366,52 +461,63 @@
 
             margin: 0 auto 20px;
 
-            border: 1px solid #e5d3bd;
+            border:
+                1px solid var(--line);
+
             border-radius: 50%;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             background:
                 linear-gradient(
                     145deg,
-                    #f7efe3,
-                    #ead9c5
+
+                    var(--rose-light),
+
+                    #f7e9df
                 );
 
             box-shadow:
-                inset 0 0 0 5px rgba(255, 253, 248, 0.45);
+                inset 0 0 0 5px
+                rgba(255, 250, 246, 0.55);
         }
 
         .contact-icon svg {
             width: 42px;
             height: 42px;
+
             display: block;
         }
 
         .contact-card h2 {
-            color: var(--brown);
+            color: var(--text);
 
             font-size: 25px;
+
             letter-spacing: 2px;
 
             margin-bottom: 10px;
         }
 
         .contact-card h3 {
-            color: #9b7658;
+            color: var(--rose-gold);
 
             font-size: 16px;
+
             font-weight: 500;
 
             margin-bottom: 16px;
         }
 
         .contact-card p {
-            color: var(--text-light);
+            color: var(--subtext);
 
             font-size: 14px;
+
             line-height: 1.9;
 
             margin-bottom: 24px;
@@ -423,7 +529,9 @@
 
         .line-qr {
             width: 220px;
+
             max-width: 100%;
+
             height: auto;
 
             display: block;
@@ -431,13 +539,17 @@
             margin: 10px auto 24px;
 
             border-radius: 14px;
-            border: 1px solid var(--border);
 
-            background: white;
+            border:
+                1px solid var(--line);
+
+            background: #ffffff;
+
             padding: 8px;
 
             box-shadow:
-                0 5px 16px rgba(83, 60, 40, 0.06);
+                0 5px 16px
+                rgba(118, 81, 63, 0.06);
         }
 
         /* =========================================================
@@ -447,28 +559,36 @@
         .facebook-logo-box {
             width: 220px;
             height: 220px;
+
             max-width: 100%;
 
             margin: 10px auto 24px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--line);
+
             border-radius: 14px;
 
             background:
                 radial-gradient(
                     circle,
-                    rgba(255, 253, 248, 0.9),
-                    rgba(234, 217, 197, 0.8)
+
+                    rgba(255, 250, 246, 0.96),
+
+                    rgba(240, 217, 202, 0.55)
                 );
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
         }
 
         .facebook-logo-box svg {
             width: 110px;
             height: 110px;
+
             display: block;
         }
 
@@ -481,11 +601,15 @@
 
             padding: 12px 28px;
 
-            border: 1px solid transparent;
+            border:
+                1px solid transparent;
+
             border-radius: 30px;
 
             font-size: 14px;
+
             font-weight: 500;
+
             letter-spacing: 0.5px;
 
             transition:
@@ -496,17 +620,20 @@
 
         .btn-primary,
         .btn-facebook {
-            color: #fffdf8;
+            color: #fffaf6;
 
             background:
                 linear-gradient(
                     135deg,
-                    #98734f,
-                    #765238
+
+                    var(--rose-gold),
+
+                    #8f5d48
                 );
 
             box-shadow:
-                0 5px 14px rgba(101, 74, 55, 0.15);
+                0 5px 14px
+                rgba(118, 81, 63, 0.15);
         }
 
         .btn-primary:hover,
@@ -514,19 +641,25 @@
             background:
                 linear-gradient(
                     135deg,
-                    #b18b65,
-                    #68482d
+
+                    #b67b61,
+
+                    var(--text)
                 );
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
 
             box-shadow:
-                0 8px 18px rgba(101, 74, 55, 0.22);
+                0 8px 18px
+                rgba(118, 81, 63, 0.22);
         }
 
         .btn:focus-visible,
         a:focus-visible {
-            outline: 2px solid var(--rose-gold);
+            outline:
+                2px solid var(--rose-gold);
+
             outline-offset: 4px;
         }
 
@@ -540,24 +673,27 @@
 
         .guide-title {
             text-align: center;
+
             margin-bottom: 28px;
         }
 
         .guide-title span {
             display: block;
 
-            color: var(--tea-gold);
+            color: var(--rose-gold);
 
             font-size: 12px;
+
             letter-spacing: 3px;
 
             margin-bottom: 8px;
         }
 
         .guide-title h2 {
-            color: var(--brown);
+            color: var(--text);
 
             font-size: 25px;
+
             letter-spacing: 3px;
         }
 
@@ -576,9 +712,11 @@
             padding: 24px 20px;
 
             background:
-                rgba(255, 253, 248, 0.74);
+                rgba(255, 250, 246, 0.74);
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--line);
+
             border-radius: 18px;
 
             text-align: center;
@@ -590,12 +728,14 @@
         }
 
         .guide-item:hover {
-            transform: translateY(-3px);
+            transform:
+                translateY(-3px);
 
-            border-color: #d8bca6;
+            border-color:
+                #dcb9a5;
 
             background:
-                rgba(255, 253, 248, 0.96);
+                rgba(255, 250, 246, 0.96);
         }
 
         .guide-number {
@@ -609,27 +749,31 @@
 
             margin-bottom: 10px;
 
-            border: 1px solid var(--gold-light);
+            border:
+                1px solid var(--gold-line);
+
             border-radius: 50%;
 
-            color: var(--tea-gold);
+            color: var(--gold-text);
 
             font-size: 12px;
         }
 
         .guide-item h3 {
-            color: var(--brown);
+            color: var(--text);
 
             font-size: 17px;
+
             letter-spacing: 1px;
 
             margin-bottom: 5px;
         }
 
         .guide-item p {
-            color: var(--text-light);
+            color: var(--subtext);
 
             font-size: 13px;
+
             line-height: 1.7;
         }
 
@@ -649,11 +793,15 @@
             background:
                 linear-gradient(
                     135deg,
-                    #f4ecdf,
-                    #f8f2e8
+
+                    var(--gold-bg),
+
+                    #f9eee7
                 );
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--line);
+
             border-radius: 18px;
 
             text-align: center;
@@ -667,9 +815,10 @@
 
             top: 50%;
 
-            transform: translateY(-50%);
+            transform:
+                translateY(-50%);
 
-            color: var(--tea-gold);
+            color: var(--gold-text);
 
             font-size: 15px;
         }
@@ -683,7 +832,8 @@
         }
 
         .note p {
-            color: var(--text-light);
+            color: var(--subtext);
+
             font-size: 14px;
         }
 
@@ -696,13 +846,14 @@
 
             text-align: center;
 
-            background: var(--ivory);
+            background: var(--bg);
         }
 
         .back-home a {
             display: inline-block;
 
-            color: #8a6949;
+            color: var(--rose-gold);
+
             font-size: 14px;
 
             transition:
@@ -711,9 +862,10 @@
         }
 
         .back-home a:hover {
-            color: var(--rose-gold);
+            color: var(--text);
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
         }
 
         /* =========================================================
@@ -722,6 +874,7 @@
 
         footer {
             position: relative;
+
             overflow: hidden;
 
             padding: 35px 24px;
@@ -729,17 +882,21 @@
             background:
                 linear-gradient(
                     135deg,
-                    #49372b,
-                    #342820
+
+                    #60483a,
+
+                    #49372f
                 );
 
-            color: #d8c9b6;
+            color: #eadbd0;
 
             text-align: center;
 
             font-size: 12px;
 
-            border-top: 2px solid #a88a5c;
+            border-top:
+                2px solid
+                var(--gold-line);
         }
 
         footer::before {
@@ -750,7 +907,8 @@
 
             margin-bottom: 15px;
 
-            color: #bba078;
+            color:
+                #d9bd91;
 
             letter-spacing: 2px;
 
@@ -760,9 +918,10 @@
         footer strong {
             display: block;
 
-            color: #f4e7d3;
+            color: #fff3e8;
 
             font-size: 16px;
+
             letter-spacing: 3px;
 
             margin-bottom: 5px;
@@ -785,7 +944,8 @@
             .hero {
                 min-height: 500px;
 
-                padding: 65px 20px 60px;
+                padding:
+                    65px 20px 60px;
 
                 background-position:
                     64% center;
@@ -795,12 +955,18 @@
                 background:
                     linear-gradient(
                         90deg,
-                        #faf7f0 0%,
-                        #faf7f0 48%,
-                        rgba(250, 247, 240, 0.96) 55%,
-                        rgba(250, 247, 240, 0.70) 68%,
-                        rgba(250, 247, 240, 0.16) 82%,
-                        rgba(250, 247, 240, 0.00) 100%
+
+                        rgba(243, 230, 220, 0.99) 0%,
+
+                        rgba(243, 230, 220, 0.99) 46%,
+
+                        rgba(243, 230, 220, 0.96) 55%,
+
+                        rgba(243, 230, 220, 0.70) 68%,
+
+                        rgba(243, 230, 220, 0.16) 82%,
+
+                        rgba(243, 230, 220, 0.00) 100%
                     );
             }
 
@@ -820,7 +986,8 @@
             }
 
             .contact-section {
-                padding: 55px 20px 80px;
+                padding:
+                    55px 20px 80px;
             }
 
             .contact-grid {
@@ -828,11 +995,13 @@
             }
 
             .contact-card {
-                padding: 38px 28px;
+                padding:
+                    38px 28px;
             }
 
             .guide-grid {
                 grid-template-columns: 1fr;
+
                 gap: 14px;
             }
 
@@ -854,7 +1023,8 @@
             .hero {
                 min-height: 500px;
 
-                padding: 60px 20px 55px;
+                padding:
+                    60px 20px 55px;
 
                 align-items: flex-start;
 
@@ -862,19 +1032,20 @@
                     68% center;
             }
 
-            /*
-             * 手機版直接把圖片左側文字區遮掉，
-             * 只保留右側桌面與窗景。
-             */
             .hero::before {
                 background:
                     linear-gradient(
                         90deg,
-                        #faf7f0 0%,
-                        #faf7f0 52%,
-                        rgba(250, 247, 240, 0.96) 62%,
-                        rgba(250, 247, 240, 0.68) 76%,
-                        rgba(250, 247, 240, 0.12) 100%
+
+                        rgba(243, 230, 220, 0.99) 0%,
+
+                        rgba(243, 230, 220, 0.99) 52%,
+
+                        rgba(243, 230, 220, 0.96) 62%,
+
+                        rgba(243, 230, 220, 0.68) 76%,
+
+                        rgba(243, 230, 220, 0.12) 100%
                     );
             }
 
@@ -887,11 +1058,13 @@
             }
 
             .eyebrow {
-                padding: 6px 15px;
+                padding:
+                    6px 15px;
 
                 margin-bottom: 18px;
 
                 font-size: 11px;
+
                 letter-spacing: 2px;
             }
 
@@ -922,7 +1095,8 @@
             }
 
             .contact-card {
-                padding: 34px 22px;
+                padding:
+                    34px 22px;
             }
 
             .contact-card h2 {
@@ -948,11 +1122,13 @@
             }
 
             .note {
-                padding: 22px 24px;
+                padding:
+                    22px 24px;
             }
 
             footer::before {
                 font-size: 10px;
+
                 letter-spacing: 1px;
             }
         }
@@ -973,6 +1149,7 @@
 
             .hero h1 {
                 font-size: 43px;
+
                 letter-spacing: 2px;
             }
 
@@ -994,7 +1171,8 @@
             *,
             *::before,
             *::after {
-                transition-duration: 0.01ms !important;
+                transition-duration:
+                    0.01ms !important;
             }
         }
     </style>
@@ -1012,7 +1190,10 @@
 
             <a href="index.html" class="logo">
                 好運研究所
-                <span>GOOD LUCK RESEARCH</span>
+
+                <span>
+                    GOOD LUCK RESEARCH
+                </span>
             </a>
 
             <div class="nav-links">
@@ -1083,6 +1264,7 @@
 
         <div class="contact-inner">
 
+
             <!-- 區塊標題 -->
 
             <div class="contact-intro">
@@ -1108,6 +1290,7 @@
             ================================================= -->
 
             <div class="contact-grid">
+
 
                 <!-- LINE -->
 
@@ -1272,6 +1455,7 @@
 
 
                 <div class="guide-grid">
+
 
                     <!-- 01 -->
 
