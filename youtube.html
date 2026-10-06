@@ -71,41 +71,65 @@ img{
 
     overflow:hidden;
 
-    background-color:var(--bg);
-
-    background-image:
-        url("uploads/youtube2.png");
-
-    background-size:cover;
-    background-position:center center;
-    background-repeat:no-repeat;
+    background:var(--bg);
 
     border-bottom:1px solid rgba(230,203,185,.75);
 }
 
-.hero::before{
+
+/* HERO 圖片層 */
+
+.hero-image{
+    position:absolute;
+    inset:0;
+
+    z-index:0;
+
+    overflow:hidden;
+}
+
+.hero-image img{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    object-position:center center;
+}
+
+
+/* HERO 左側文字遮罩 */
+
+.hero::after{
     content:"";
 
     position:absolute;
     inset:0;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(243,230,220,.97) 0%,
-            rgba(243,230,220,.94) 31%,
-            rgba(243,230,220,.72) 48%,
-            rgba(243,230,220,.25) 67%,
-            rgba(243,230,220,0) 82%
-        );
+    z-index:1;
 
     pointer-events:none;
 
-    z-index:1;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(243,230,220,.98) 0%,
+            rgba(243,230,220,.95) 29%,
+            rgba(243,230,220,.74) 47%,
+            rgba(243,230,220,.27) 66%,
+            rgba(243,230,220,0) 83%
+        );
 }
+
 
 .hero-inner{
     position:relative;
+
     z-index:2;
 
     width:min(1180px,calc(100% - 48px));
@@ -738,19 +762,16 @@ footer strong{
 
 
 /* =========================================================
-   MOBILE
+   TABLET
 ========================================================= */
 
 @media(max-width:900px){
 
     .hero{
         min-height:540px;
-
-        background-position:
-            62% center;
     }
 
-    .hero::before{
+    .hero::after{
         background:
             linear-gradient(
                 90deg,
@@ -759,6 +780,10 @@ footer strong{
                 rgba(243,230,220,.60) 65%,
                 rgba(243,230,220,.08) 100%
             );
+    }
+
+    .hero-image img{
+        object-position:62% center;
     }
 
     .hero-copy{
@@ -784,18 +809,19 @@ footer strong{
 }
 
 
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media(max-width:760px){
 
     .hero{
         min-height:620px;
 
         align-items:flex-start;
-
-        background-position:
-            67% center;
     }
 
-    .hero::before{
+    .hero::after{
         background:
             linear-gradient(
                 180deg,
@@ -804,6 +830,10 @@ footer strong{
                 rgba(243,230,220,.58) 67%,
                 rgba(243,230,220,.12) 100%
             );
+    }
+
+    .hero-image img{
+        object-position:67% center;
     }
 
     .hero-inner{
@@ -939,6 +969,10 @@ footer strong{
 }
 
 
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
 @media(max-width:480px){
 
     .hero{
@@ -997,6 +1031,22 @@ footer strong{
 ======================================================= -->
 
 <header class="hero">
+
+
+    <!-- HERO 圖片 -->
+
+    <div class="hero-image">
+
+        <img
+            src="uploads/youtube2.png"
+            alt=""
+            aria-hidden="true"
+        >
+
+    </div>
+
+
+    <!-- HERO 文字 -->
 
     <div class="hero-inner">
 
