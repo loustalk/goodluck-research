@@ -113,12 +113,13 @@
 
         .hero {
             position: relative;
-            min-height: 520px;
-            padding: 80px 24px;
+            min-height: 500px;
+            padding: 70px 24px;
             display: flex;
             align-items: center;
             overflow: hidden;
 
+            background-color: var(--ivory);
             background-image: url("uploads/booking2.png");
             background-size: cover;
             background-position: center center;
@@ -128,46 +129,54 @@
         }
 
         /*
-         * 左側文字閱讀區。
-         * 不把整張照片蓋掉，只讓左側稍微亮一些。
+         * booking2.png 本身包含示範文字。
+         * 這一層把圖片左側文字區遮掉，
+         * 讓真正的 HTML 標題只出現一次。
          */
         .hero::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                90deg,
-                rgba(250, 247, 240, 0.88) 0%,
-                rgba(250, 247, 240, 0.72) 28%,
-                rgba(250, 247, 240, 0.34) 48%,
-                rgba(250, 247, 240, 0.08) 70%,
-                rgba(250, 247, 240, 0.00) 100%
-            );
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #faf7f0 0%,
+                    #faf7f0 43%,
+                    rgba(250, 247, 240, 0.98) 49%,
+                    rgba(250, 247, 240, 0.76) 56%,
+                    rgba(250, 247, 240, 0.25) 67%,
+                    rgba(250, 247, 240, 0.00) 78%
+                );
+
             pointer-events: none;
+            z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
+
             width: 100%;
             max-width: 1180px;
             margin: 0 auto;
         }
 
         .hero-copy {
-            width: min(600px, 56%);
+            width: min(590px, 54%);
         }
 
         .eyebrow {
             display: inline-block;
-            padding: 7px 20px;
-            margin-bottom: 22px;
 
-            border: 1px solid rgba(170, 137, 87, 0.55);
+            padding: 7px 20px;
+            margin-bottom: 20px;
+
+            border: 1px solid rgba(170, 137, 87, 0.58);
             border-radius: 30px;
 
             color: #8d6947;
-            background: rgba(255, 253, 248, 0.68);
+            background: rgba(255, 253, 248, 0.88);
 
             font-size: 13px;
             font-weight: 500;
@@ -178,43 +187,49 @@
 
         .hero h1 {
             color: #5d402f;
+
             font-size: clamp(58px, 7vw, 82px);
             font-weight: 700;
+
             line-height: 1.18;
             letter-spacing: 8px;
+
             margin-bottom: 20px;
 
             text-shadow:
-                0 2px 10px rgba(255, 250, 242, 0.55);
+                0 2px 10px rgba(255, 250, 242, 0.65);
         }
 
         .hero h1::after {
             content: "";
+
             display: block;
 
             width: 82px;
             height: 2px;
 
-            margin-top: 22px;
+            margin-top: 20px;
 
-            background: linear-gradient(
-                90deg,
-                #b78b72,
-                #d9c39b,
-                transparent
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    #b78b72,
+                    #d9c39b,
+                    transparent
+                );
         }
 
         .hero p {
             max-width: 600px;
 
             color: #65564b;
+
             font-size: 17px;
             font-weight: 500;
             line-height: 2;
 
             text-shadow:
-                0 1px 8px rgba(255, 250, 242, 0.65);
+                0 1px 8px rgba(255, 250, 242, 0.8);
         }
 
         /* =========================================================
@@ -251,9 +266,11 @@
 
         .contact-intro .section-label {
             display: inline-block;
+
             margin-bottom: 10px;
 
             color: var(--tea-gold);
+
             font-size: 12px;
             letter-spacing: 3px;
             font-weight: 500;
@@ -261,8 +278,10 @@
 
         .contact-intro h2 {
             color: var(--brown);
+
             font-size: 30px;
             letter-spacing: 3px;
+
             margin-bottom: 10px;
         }
 
@@ -273,7 +292,10 @@
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
             gap: 30px;
         }
 
@@ -310,20 +332,23 @@
 
         .contact-card::before {
             content: "";
+
             position: absolute;
+
             top: 0;
             left: 12%;
             right: 12%;
 
             height: 2px;
 
-            background: linear-gradient(
-                90deg,
-                transparent,
-                var(--rose-gold),
-                var(--gold-light),
-                transparent
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--rose-gold),
+                    var(--gold-light),
+                    transparent
+                );
         }
 
         .contact-card:hover {
@@ -367,22 +392,28 @@
 
         .contact-card h2 {
             color: var(--brown);
+
             font-size: 25px;
             letter-spacing: 2px;
+
             margin-bottom: 10px;
         }
 
         .contact-card h3 {
             color: #9b7658;
+
             font-size: 16px;
             font-weight: 500;
+
             margin-bottom: 16px;
         }
 
         .contact-card p {
             color: var(--text-light);
+
             font-size: 14px;
             line-height: 1.9;
+
             margin-bottom: 24px;
         }
 
@@ -396,6 +427,7 @@
             height: auto;
 
             display: block;
+
             margin: 10px auto 24px;
 
             border-radius: 14px;
@@ -515,6 +547,7 @@
             display: block;
 
             color: var(--tea-gold);
+
             font-size: 12px;
             letter-spacing: 3px;
 
@@ -523,13 +556,17 @@
 
         .guide-title h2 {
             color: var(--brown);
+
             font-size: 25px;
             letter-spacing: 3px;
         }
 
         .guide-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 18px;
         }
 
@@ -538,7 +575,8 @@
 
             padding: 24px 20px;
 
-            background: rgba(255, 253, 248, 0.74);
+            background:
+                rgba(255, 253, 248, 0.74);
 
             border: 1px solid var(--border);
             border-radius: 18px;
@@ -556,7 +594,8 @@
 
             border-color: #d8bca6;
 
-            background: rgba(255, 253, 248, 0.96);
+            background:
+                rgba(255, 253, 248, 0.96);
         }
 
         .guide-number {
@@ -574,18 +613,22 @@
             border-radius: 50%;
 
             color: var(--tea-gold);
+
             font-size: 12px;
         }
 
         .guide-item h3 {
             color: var(--brown);
+
             font-size: 17px;
             letter-spacing: 1px;
+
             margin-bottom: 5px;
         }
 
         .guide-item p {
             color: var(--text-light);
+
             font-size: 13px;
             line-height: 1.7;
         }
@@ -621,11 +664,13 @@
             content: "✦";
 
             position: absolute;
+
             top: 50%;
 
             transform: translateY(-50%);
 
             color: var(--tea-gold);
+
             font-size: 15px;
         }
 
@@ -667,6 +712,7 @@
 
         .back-home a:hover {
             color: var(--rose-gold);
+
             transform: translateY(-2px);
         }
 
@@ -690,13 +736,15 @@
             color: #d8c9b6;
 
             text-align: center;
+
             font-size: 12px;
 
             border-top: 2px solid #a88a5c;
         }
 
         footer::before {
-            content: "✧  ─────────  ✧  ─────────  ✧";
+            content:
+                "✧  ─────────  ✧  ─────────  ✧";
 
             display: block;
 
@@ -705,6 +753,7 @@
             color: #bba078;
 
             letter-spacing: 2px;
+
             opacity: 0.8;
         }
 
@@ -735,20 +784,24 @@
 
             .hero {
                 min-height: 500px;
-                padding: 70px 20px 65px;
+
+                padding: 65px 20px 60px;
 
                 background-position:
-                    58% center;
+                    64% center;
             }
 
             .hero::before {
-                background: linear-gradient(
-                    90deg,
-                    rgba(250, 247, 240, 0.92) 0%,
-                    rgba(250, 247, 240, 0.78) 38%,
-                    rgba(250, 247, 240, 0.40) 68%,
-                    rgba(250, 247, 240, 0.08) 100%
-                );
+                background:
+                    linear-gradient(
+                        90deg,
+                        #faf7f0 0%,
+                        #faf7f0 48%,
+                        rgba(250, 247, 240, 0.96) 55%,
+                        rgba(250, 247, 240, 0.70) 68%,
+                        rgba(250, 247, 240, 0.16) 82%,
+                        rgba(250, 247, 240, 0.00) 100%
+                    );
             }
 
             .hero-copy {
@@ -756,7 +809,9 @@
             }
 
             .hero h1 {
-                font-size: clamp(52px, 9vw, 68px);
+                font-size:
+                    clamp(52px, 9vw, 70px);
+
                 letter-spacing: 5px;
             }
 
@@ -797,23 +852,30 @@
             }
 
             .hero {
-                min-height: 530px;
-                padding: 65px 20px 55px;
+                min-height: 500px;
+
+                padding: 60px 20px 55px;
 
                 align-items: flex-start;
 
                 background-position:
-                    67% center;
+                    68% center;
             }
 
+            /*
+             * 手機版直接把圖片左側文字區遮掉，
+             * 只保留右側桌面與窗景。
+             */
             .hero::before {
-                background: linear-gradient(
-                    90deg,
-                    rgba(250, 247, 240, 0.95) 0%,
-                    rgba(250, 247, 240, 0.86) 48%,
-                    rgba(250, 247, 240, 0.48) 75%,
-                    rgba(250, 247, 240, 0.08) 100%
-                );
+                background:
+                    linear-gradient(
+                        90deg,
+                        #faf7f0 0%,
+                        #faf7f0 52%,
+                        rgba(250, 247, 240, 0.96) 62%,
+                        rgba(250, 247, 240, 0.68) 76%,
+                        rgba(250, 247, 240, 0.12) 100%
+                    );
             }
 
             .hero-content {
@@ -821,11 +883,12 @@
             }
 
             .hero-copy {
-                width: 90%;
+                width: 94%;
             }
 
             .eyebrow {
                 padding: 6px 15px;
+
                 margin-bottom: 18px;
 
                 font-size: 11px;
@@ -834,12 +897,15 @@
 
             .hero h1 {
                 font-size: 48px;
+
                 letter-spacing: 3px;
+
                 line-height: 1.25;
             }
 
             .hero h1::after {
                 width: 65px;
+
                 margin-top: 18px;
             }
 
@@ -847,6 +913,7 @@
                 max-width: 330px;
 
                 font-size: 14px;
+
                 line-height: 1.9;
             }
 
@@ -897,11 +964,11 @@
         @media (max-width: 380px) {
 
             .hero {
-                min-height: 510px;
+                min-height: 490px;
             }
 
             .hero-copy {
-                width: 94%;
+                width: 96%;
             }
 
             .hero h1 {
@@ -940,6 +1007,7 @@
     ========================================================= -->
 
     <header>
+
         <nav class="nav">
 
             <a href="index.html" class="logo">
@@ -948,14 +1016,31 @@
             </a>
 
             <div class="nav-links">
-                <a href="index.html#rooms">研究室</a>
-                <a href="index.html#about">關於小盧老師</a>
-                <a href="index.html#content">內容／媒體</a>
-                <a href="services.html">服務方案</a>
-                <a href="index.html#facebook">Facebook</a>
+
+                <a href="index.html#rooms">
+                    研究室
+                </a>
+
+                <a href="index.html#about">
+                    關於小盧老師
+                </a>
+
+                <a href="index.html#content">
+                    內容／媒體
+                </a>
+
+                <a href="services.html">
+                    服務方案
+                </a>
+
+                <a href="index.html#facebook">
+                    Facebook
+                </a>
+
             </div>
 
         </nav>
+
     </header>
 
 
@@ -998,7 +1083,6 @@
 
         <div class="contact-inner">
 
-
             <!-- 區塊標題 -->
 
             <div class="contact-intro">
@@ -1024,7 +1108,6 @@
             ================================================= -->
 
             <div class="contact-grid">
-
 
                 <!-- LINE -->
 
@@ -1189,7 +1272,6 @@
 
 
                 <div class="guide-grid">
-
 
                     <!-- 01 -->
 
