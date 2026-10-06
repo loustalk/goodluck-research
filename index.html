@@ -163,7 +163,7 @@
 
         /* =========================
            Hero 主標題
-           新篆體
+           新篆體＋加粗
            ========================= */
 
         .hero h1 {
@@ -182,13 +182,20 @@
 
             color: #68482d;
 
+            /*
+             * 新篆體本身筆畫偏細，
+             * 用描邊增加厚度，而不是硬套粗體。
+             */
+            -webkit-text-stroke: 1.1px #68482d;
+            paint-order: stroke fill;
+
             margin-bottom: 18px;
         }
 
 
         /* =========================
            Hero 副標
-           隸書體
+           隸書體＋加粗
            ========================= */
 
         .hero h2 {
@@ -206,6 +213,13 @@
             letter-spacing: 3px;
 
             color: #51473e;
+
+            /*
+             * 隸書副標也稍微加厚，
+             * 但比主標收斂，保持主次關係。
+             */
+            -webkit-text-stroke: 0.75px #51473e;
+            paint-order: stroke fill;
 
             margin-bottom: 25px;
         }
@@ -736,10 +750,12 @@
 
             .hero h1 {
                 letter-spacing: 4px;
+                -webkit-text-stroke: 1px #68482d;
             }
 
             .hero h2 {
                 letter-spacing: 2px;
+                -webkit-text-stroke: 0.7px #51473e;
             }
 
             .hero-card {
@@ -783,12 +799,14 @@
             .hero h1 {
                 font-size: 52px;
                 letter-spacing: 2px;
+                -webkit-text-stroke: 0.9px #68482d;
             }
 
             .hero h2 {
                 font-size: 22px;
                 letter-spacing: 1px;
                 line-height: 1.6;
+                -webkit-text-stroke: 0.65px #51473e;
             }
 
             .hero-buttons {
