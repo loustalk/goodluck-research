@@ -633,7 +633,7 @@ main {
 
 /* ==================================================
    ★ 文章內容
-   保留後台原本換行
+   後台換行整理成正常段落
 ================================================== */
 
 .article-body {
@@ -642,16 +642,21 @@ main {
 
     font-size: 17px;
 
-    line-height: 2;
-
-    white-space: pre-line;
+    line-height: 1.9;
 
 }
 
 
 .article-body p {
 
-    margin: 0 0 1.4em;
+    margin: 0 0 1.15em;
+
+}
+
+
+.article-body p:last-child {
+
+    margin-bottom: 0;
 
 }
 
@@ -659,9 +664,9 @@ main {
 .article-body h2,
 .article-body h3 {
 
-    margin-top: 2em;
+    margin-top: 1.7em;
 
-    margin-bottom: .8em;
+    margin-bottom: .7em;
 
     color: #68482d;
 
@@ -1060,9 +1065,14 @@ main {
 
         font-size: 16px;
 
-        line-height: 1.9;
+        line-height: 1.85;
 
-        white-space: pre-line;
+    }
+
+
+    .article-body p {
+
+        margin-bottom: 1em;
 
     }
 
@@ -1529,6 +1539,73 @@ function createExcerpt(markdown) {
 
 
 /* ==================================================
+   整理文章內容
+================================================== */
+
+function formatArticleBody(body) {
+
+
+    let content =
+        String(body || "").trim();
+
+
+    /*
+       如果 CMS 已經產生 HTML 段落，
+       直接保留，不再重複處理。
+    */
+
+    if (
+        /<(p|div|h[1-6]|ul|ol|li|blockquote|img|figure)\b/i.test(
+            content
+        )
+    ) {
+
+        return content;
+
+    }
+
+
+    /*
+       純文字文章：
+       連續空白行視為段落，
+       單一換行視為同一段中的換行。
+    */
+
+    const paragraphs =
+        content
+            .split(/\n\s*\n+/)
+            .map(
+                paragraph =>
+                    paragraph.trim()
+            )
+            .filter(
+                paragraph =>
+                    paragraph.length > 0
+            );
+
+
+    return paragraphs
+        .map(
+            paragraph => `
+
+                <p>
+                    ${escapeHtml(
+                        paragraph
+                    ).replace(
+                        /\n/g,
+                        "<br>"
+                    )}
+                </p>
+
+            `
+        )
+        .join("");
+
+}
+
+
+
+/* ==================================================
    載入研究文章
 ================================================== */
 
@@ -1538,12 +1615,6 @@ async function loadResearch() {
     const researchList =
         document.getElementById(
             "researchList"
-        );
-
-
-    const articleView =
-        document.getElementById(
-            "articleView"
         );
 
 
@@ -1581,6 +1652,7 @@ async function loadResearch() {
 
 
         const articles = [];
+
 
 
         for (
@@ -1893,7 +1965,9 @@ function showArticle(article) {
                 class="article-body"
             >
 
-                ${article.body}
+                ${formatArticleBody(
+                    article.body
+                )}
 
             </div>
 
