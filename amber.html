@@ -646,40 +646,71 @@
 
         /* ==================================================
            手機
+
+           這裡是本次唯一施工重點：
+
+           1. amber2.png 完整顯示
+           2. 不使用 object-fit: cover
+           3. 不裁切圖片
+           4. 不疊白色漸層
+           5. 文字移到圖片下面
         ================================================== */
 
         @media (max-width: 600px) {
 
+
             .amber-hero {
 
-                min-height: 430px;
+                min-height: 0;
+
+                display: block;
+
+                background: #ead7c6;
+
+            }
+
+
+            .amber-hero img {
+
+                position: relative;
+
+                inset: auto;
+
+                width: 100%;
+
+                height: auto;
+
+                max-width: 100%;
+
+                object-fit: contain;
+
+                object-position: center top;
+
+                display: block;
 
             }
 
 
             /*
-               手機不再另外加一層白色漸層。
 
-               直接使用原圖的自然光，
-               避免 Hero 又被洗白。
+               手機不再疊白色漸層。
+
+               保留 amber2.png 原本的自然光線。
+
             */
 
             .amber-hero::after {
 
-                background:
-                    linear-gradient(
-                        180deg,
-                        rgba(255, 250, 246, 0.18) 0%,
-                        rgba(255, 250, 246, 0.07) 42%,
-                        rgba(255, 250, 246, 0.00) 72%
-                    );
+                display: none;
 
             }
 
 
             .amber-hero-content {
 
-                padding: 50px 0;
+                width: min(1100px, 92%);
+
+                padding: 42px 0 52px;
 
             }
 
@@ -1478,6 +1509,7 @@ async function loadAmber() {
                 ================================================== */
 
                 article.image =
+
                     extractImage(
                         article.body
                     );
@@ -1489,6 +1521,7 @@ async function loadAmber() {
                 ================================================== */
 
                 article.imageAlt =
+
                     extractImageAlt(
                         article.body
                     );
@@ -1500,6 +1533,7 @@ async function loadAmber() {
                 ================================================== */
 
                 article.description =
+
                     createDescription(
                         article.body
                     );
