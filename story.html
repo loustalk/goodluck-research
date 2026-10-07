@@ -11,260 +11,1064 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #f3e6dc;
+            --card: #fffaf6;
+            --text: #76513f;
+            --subtext: #8c6c5b;
+            --line: #e6cbb9;
+
+            --rose-gold: #a86e53;
+            --rose-light: #f0d9ca;
+
+            --gold-bg: #fbf2e4;
+            --gold-line: #ead7b7;
+            --gold-text: #a17a43;
+
+            --brown-dark: #5f4030;
+            --white: #fffaf6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
+            background: var(--bg);
+            color: var(--text);
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
                 "Noto Sans TC",
                 "Microsoft JhengHei",
                 sans-serif;
-            background: #f3e6dc;
-            color: #76513f;
+
             line-height: 1.9;
+        }
+
+        a {
+            color: inherit;
         }
 
         .container {
-            width: min(1000px, 92%);
+            width: min(1180px, calc(100% - 48px));
             margin: 0 auto;
         }
 
-        header {
-            padding: 70px 20px 45px;
-            text-align: center;
-            background: #f8eee6;
+
+        /* ==================================================
+           HERO
+        ================================================== */
+
+        .hero {
+            position: relative;
+            min-height: 650px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background: var(--bg);
+            border-bottom: 1px solid rgba(230, 203, 185, 0.8);
         }
 
-        header h1 {
-            margin: 0 0 12px;
-            font-size: 36px;
-            letter-spacing: 2px;
-            color: #76513f;
+        .hero-image {
+            position: absolute;
+            inset: 0;
+
+            z-index: 0;
+
+            overflow: hidden;
         }
 
-        header p {
-            margin: 0;
-            color: #8c6c5b;
-            font-size: 16px;
+        .hero-image img {
+            position: absolute;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+            object-position: center center;
         }
 
-        .back {
+        /*
+         * 左側文字區域淡化。
+         * 右側保留完整占卜桌場景。
+         */
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(243, 230, 220, 0.98) 0%,
+                    rgba(243, 230, 220, 0.94) 25%,
+                    rgba(243, 230, 220, 0.72) 40%,
+                    rgba(243, 230, 220, 0.30) 58%,
+                    rgba(243, 230, 220, 0.03) 78%,
+                    rgba(243, 230, 220, 0) 100%
+                );
+        }
+
+        .hero-inner {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(1180px, calc(100% - 48px));
+
+            margin: 0 auto;
+
+            padding: 90px 0 100px;
+        }
+
+        .hero-copy {
+            width: min(560px, 50%);
+        }
+
+        .hero-eyebrow {
             display: inline-block;
-            margin-top: 25px;
-            color: #a86e53;
+
+            margin-bottom: 18px;
+
+            color: var(--gold-text);
+
+            font-size: 13px;
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 0 0 20px;
+
+            color: var(--brown-dark);
+
+            font-family:
+                "DFNewChuan-B5",
+                "DFNewChuanHK-W5",
+                "華康新篆體",
+                "Noto Serif TC",
+                "PMingLiU",
+                serif;
+
+            font-size: clamp(52px, 6vw, 78px);
+
+            font-weight: normal;
+
+            line-height: 1.2;
+
+            letter-spacing: 6px;
+
+            -webkit-text-stroke: 0.8px var(--brown-dark);
+
+            paint-order: stroke fill;
+        }
+
+        .hero-subtitle {
+            margin: 0 0 22px;
+
+            color: var(--rose-gold);
+
+            font-family:
+                "DFLiShuW5-B5",
+                "DFLiShuHK-W5",
+                "華康隸書體",
+                "Noto Serif TC",
+                "PMingLiU",
+                serif;
+
+            font-size: clamp(25px, 3vw, 34px);
+
+            font-weight: normal;
+
+            line-height: 1.55;
+
+            letter-spacing: 3px;
+
+            -webkit-text-stroke: 0.45px var(--rose-gold);
+
+            paint-order: stroke fill;
+        }
+
+        .hero-description {
+            max-width: 510px;
+
+            margin: 0 0 30px;
+
+            color: #684c3b;
+
+            font-size: 16px;
+
+            line-height: 2;
+
+            font-weight: 500;
+        }
+
+        .hero-decoration {
+            width: 120px;
+            height: 1px;
+
+            margin: 22px 0;
+
+            background: linear-gradient(
+                90deg,
+                var(--gold-text),
+                rgba(161, 122, 67, 0)
+            );
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+
+            gap: 8px;
+
+            color: var(--rose-gold);
+
             text-decoration: none;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+
+            transition: opacity 0.2s ease;
+        }
+
+        .back-home:hover {
+            opacity: 0.7;
+        }
+
+
+        /* ==================================================
+           STORY SECTION
+        ================================================== */
+
+        .stories-section {
+            padding: 90px 0 110px;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 48px;
+        }
+
+        .section-eyebrow {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: var(--gold-text);
+
+            font-size: 12px;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+
+            color: var(--brown-dark);
+
+            font-family:
+                "DFLiShuW5-B5",
+                "DFLiShuHK-W5",
+                "華康隸書體",
+                "Noto Serif TC",
+                "PMingLiU",
+                serif;
+
+            font-size: 38px;
+
+            font-weight: normal;
+
+            letter-spacing: 4px;
+        }
+
+        .section-heading p {
+            max-width: 620px;
+
+            margin: 14px auto 0;
+
+            color: var(--subtext);
+
             font-size: 15px;
         }
 
-        .back:hover {
-            text-decoration: underline;
-        }
 
-        main {
-            padding: 55px 0 80px;
-        }
-
-        /* 文章列表 */
+        /* ==================================================
+           STORY LIST
+        ================================================== */
 
         .story-list {
             display: grid;
-            gap: 24px;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 28px;
         }
 
         .story-card {
-            background: #fffaf6;
-            border-radius: 14px;
-            padding: 28px 30px;
-            box-shadow: 0 4px 18px rgba(118, 81, 63, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+
+            min-height: 300px;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 34px 36px 32px;
+
+            background: var(--card);
+
+            border: 1px solid var(--line);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 28px rgba(118, 81, 63, 0.045);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        /*
+         * 卡片右上角淡淡的東方裝飾
+         */
+
+        .story-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 18px;
+            right: 20px;
+
+            width: 48px;
+            height: 48px;
+
+            border-top: 1px solid var(--gold-line);
+            border-right: 1px solid var(--gold-line);
+
+            opacity: 0.65;
+        }
+
+        .story-card::after {
+            content: "";
+
+            position: absolute;
+
+            bottom: 18px;
+            left: 20px;
+
+            width: 48px;
+            height: 48px;
+
+            border-bottom: 1px solid var(--gold-line);
+            border-left: 1px solid var(--gold-line);
+
+            opacity: 0.65;
         }
 
         .story-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(118, 81, 63, 0.08);
+            transform: translateY(-4px);
+
+            border-color: #dfbda9;
+
+            box-shadow:
+                0 14px 34px rgba(118, 81, 63, 0.09);
         }
 
-        .story-card h2 {
-            margin: 0 0 8px;
-            font-size: 24px;
-            color: #76513f;
+        .story-card-title {
+            position: relative;
+            z-index: 1;
+
+            margin: 0 45px 8px 0;
+
+            color: var(--brown-dark);
+
+            font-family:
+                "Noto Serif TC",
+                "PMingLiU",
+                "Microsoft JhengHei",
+                serif;
+
+            font-size: 27px;
+
+            font-weight: 600;
+
+            line-height: 1.55;
         }
 
         .story-date {
-            margin-bottom: 15px;
-            color: #8c6c5b;
-            font-size: 14px;
+            position: relative;
+            z-index: 1;
+
+            margin-bottom: 20px;
+
+            color: var(--subtext);
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
         }
 
         .story-excerpt {
+            position: relative;
+            z-index: 1;
+
             color: #765746;
-            font-size: 16px;
-            line-height: 1.9;
+
+            font-size: 15px;
+
+            line-height: 1.95;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+
+            overflow: hidden;
         }
 
         .read-more {
-            display: inline-block;
-            margin-top: 18px;
-            padding: 8px 18px;
-            border: 1px solid #bd8a6b;
-            border-radius: 20px;
-            color: #a86e53;
+            position: relative;
+            z-index: 1;
+
+            align-self: flex-start;
+
+            margin-top: auto;
+            padding-top: 24px;
+
+            color: var(--rose-gold);
+
             text-decoration: none;
+
             font-size: 14px;
-            transition: all 0.2s ease;
+
+            letter-spacing: 1px;
+
+            transition:
+                color 0.2s ease,
+                transform 0.2s ease;
         }
 
         .read-more:hover {
-            background: #a86e53;
-            color: #fffaf6;
+            color: var(--brown-dark);
+
+            transform: translateX(4px);
         }
 
-        /* 單篇文章 */
+
+        /* ==================================================
+           EMPTY / LOADING / ERROR
+        ================================================== */
+
+        .loading,
+        .empty,
+        .error {
+            grid-column: 1 / -1;
+
+            padding: 70px 20px;
+
+            text-align: center;
+
+            color: var(--subtext);
+
+            background: rgba(255, 250, 246, 0.72);
+
+            border: 1px solid var(--line);
+
+            border-radius: 20px;
+        }
+
+        .error {
+            color: var(--rose-gold);
+        }
+
+
+        /* ==================================================
+           STORY CLOSING
+        ================================================== */
+
+        .story-closing {
+            margin-top: 85px;
+
+            padding: 65px 30px;
+
+            text-align: center;
+
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .story-closing-mark {
+            width: 80px;
+            height: 1px;
+
+            margin: 0 auto 24px;
+
+            background: linear-gradient(
+                90deg,
+                rgba(161, 122, 67, 0),
+                var(--gold-text),
+                rgba(161, 122, 67, 0)
+            );
+        }
+
+        .story-closing p {
+            margin: 0;
+
+            color: var(--brown-dark);
+
+            font-family:
+                "DFLiShuW5-B5",
+                "DFLiShuHK-W5",
+                "華康隸書體",
+                "Noto Serif TC",
+                "PMingLiU",
+                serif;
+
+            font-size: 26px;
+
+            letter-spacing: 3px;
+
+            line-height: 1.8;
+        }
+
+        .story-closing small {
+            display: block;
+
+            margin-top: 14px;
+
+            color: var(--subtext);
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* ==================================================
+           ARTICLE VIEW
+        ================================================== */
+
+        .article-view {
+            display: none;
+
+            padding: 80px 0 110px;
+        }
 
         .article {
-            background: #fffaf6;
-            border-radius: 14px;
-            padding: 45px;
-            box-shadow: 0 4px 18px rgba(118, 81, 63, 0.05);
+            max-width: 820px;
+
+            margin: 0 auto;
+
+            padding: 60px 68px;
+
+            background: var(--card);
+
+            border: 1px solid var(--line);
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 10px 36px rgba(118, 81, 63, 0.05);
         }
 
-        .article h2 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 32px;
-            color: #76513f;
+        .article-topline {
+            width: 70px;
+            height: 2px;
+
+            margin-bottom: 28px;
+
+            background: var(--rose-gold);
+        }
+
+        .article h1 {
+            margin: 0 0 12px;
+
+            color: var(--brown-dark);
+
+            font-family:
+                "Noto Serif TC",
+                "PMingLiU",
+                "Microsoft JhengHei",
+                serif;
+
+            font-size: 38px;
+
+            font-weight: 600;
+
+            line-height: 1.55;
         }
 
         .article-date {
-            color: #8c6c5b;
-            font-size: 14px;
-            margin-bottom: 35px;
+            margin-bottom: 42px;
+
+            color: var(--subtext);
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
         }
 
         .article-body {
-            font-size: 17px;
-            line-height: 2;
             color: #765746;
+
+            font-size: 17px;
+
+            line-height: 2.15;
         }
 
         .article-body p {
-            margin: 0 0 1.5em;
+            margin: 0 0 1.65em;
         }
 
         .article-body h2,
         .article-body h3 {
-            margin-top: 2em;
-            margin-bottom: 0.8em;
-            color: #a86e53;
+            margin-top: 2.2em;
+            margin-bottom: 0.9em;
+
+            color: var(--rose-gold);
+
+            font-weight: 600;
+        }
+
+        .article-body h2 {
+            font-size: 26px;
+        }
+
+        .article-body h3 {
+            font-size: 21px;
         }
 
         .article-body strong {
-            color: #a86e53;
+            color: var(--rose-gold);
+        }
+
+        .article-body em {
+            color: var(--gold-text);
         }
 
         .article-body img {
             max-width: 100%;
             height: auto;
+
             display: block;
-            margin: 25px auto;
+
+            margin: 35px auto;
+
+            border-radius: 10px;
         }
 
         .article-navigation {
-            margin-top: 30px;
+            max-width: 820px;
+
+            margin: 28px auto 0;
+
             text-align: center;
         }
 
         .article-navigation a {
-            color: #a86e53;
+            color: var(--rose-gold);
+
             text-decoration: none;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
         }
 
         .article-navigation a:hover {
             text-decoration: underline;
         }
 
-        .loading,
-        .empty,
-        .error {
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        footer {
+            padding: 30px 20px 45px;
+
             text-align: center;
-            padding: 50px 20px;
-            color: #8c6c5b;
+
+            color: var(--subtext);
+
+            font-size: 12px;
         }
 
-        .error {
-            color: #a86e53;
+
+        /* ==================================================
+           TABLET
+        ================================================== */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                min-height: 620px;
+            }
+
+            .hero::after {
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(243, 230, 220, 0.98) 0%,
+                        rgba(243, 230, 220, 0.94) 32%,
+                        rgba(243, 230, 220, 0.66) 52%,
+                        rgba(243, 230, 220, 0.18) 75%,
+                        rgba(243, 230, 220, 0) 100%
+                    );
+            }
+
+            .hero-image img {
+                object-position: 62% center;
+            }
+
+            .hero-copy {
+                width: min(560px, 65%);
+            }
+
+            .story-list {
+                grid-template-columns: 1fr;
+            }
         }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
 
         @media (max-width: 700px) {
 
-            header {
-                padding: 50px 18px 35px;
+            .container {
+                width: min(100% - 34px, 1180px);
             }
 
-            header h1 {
-                font-size: 29px;
+            .hero {
+                min-height: 680px;
+
+                align-items: flex-start;
             }
 
-            main {
-                padding: 35px 0 60px;
+            .hero::after {
+                background:
+                    linear-gradient(
+                        180deg,
+                        rgba(243, 230, 220, 0.98) 0%,
+                        rgba(243, 230, 220, 0.95) 38%,
+                        rgba(243, 230, 220, 0.66) 60%,
+                        rgba(243, 230, 220, 0.14) 85%,
+                        rgba(243, 230, 220, 0) 100%
+                    );
+            }
+
+            .hero-image img {
+                object-position: 70% center;
+            }
+
+            .hero-inner {
+                width: min(100% - 34px, 1180px);
+
+                padding: 65px 0 70px;
+            }
+
+            .hero-copy {
+                width: 100%;
+            }
+
+            .hero-eyebrow {
+                font-size: 11px;
+
+                letter-spacing: 3px;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+
+                letter-spacing: 3px;
+
+                -webkit-text-stroke: 0.65px var(--brown-dark);
+            }
+
+            .hero-subtitle {
+                font-size: 25px;
+
+                letter-spacing: 1px;
+
+                -webkit-text-stroke: 0.35px var(--rose-gold);
+            }
+
+            .hero-description {
+                max-width: 100%;
+
+                font-size: 15px;
+
+                line-height: 1.9;
+            }
+
+            .stories-section {
+                padding: 65px 0 80px;
+            }
+
+            .section-heading {
+                margin-bottom: 34px;
+            }
+
+            .section-heading h2 {
+                font-size: 31px;
+
+                letter-spacing: 2px;
+            }
+
+            .section-heading p {
+                font-size: 14px;
             }
 
             .story-card {
-                padding: 22px;
+                min-height: 275px;
+
+                padding: 28px 25px 26px;
             }
 
-            .story-card h2 {
+            .story-card-title {
+                font-size: 23px;
+            }
+
+            .story-excerpt {
+                font-size: 14px;
+            }
+
+            .story-closing {
+                margin-top: 60px;
+
+                padding: 50px 20px;
+            }
+
+            .story-closing p {
                 font-size: 21px;
+
+                letter-spacing: 1px;
+            }
+
+            .article-view {
+                padding: 55px 0 80px;
             }
 
             .article {
-                padding: 25px 20px;
+                padding: 38px 25px;
+
+                border-radius: 18px;
             }
 
-            .article h2 {
-                font-size: 26px;
+            .article h1 {
+                font-size: 29px;
+
+                line-height: 1.6;
             }
 
             .article-body {
                 font-size: 16px;
-                line-height: 1.9;
+
+                line-height: 2;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .hero {
+                min-height: 700px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero-subtitle {
+                font-size: 22px;
+            }
+
+            .hero-decoration {
+                margin: 18px 0;
+            }
+
+            .story-card {
+                border-radius: 17px;
+            }
+
+            .story-card-title {
+                font-size: 22px;
             }
         }
     </style>
 </head>
 
+
 <body>
 
-<header>
-    <div class="container">
-        <h1>📖 占卜桌上的故事</h1>
 
-        <p>
-            從一張占卜桌，看見人、選擇、因果與人生。
-        </p>
+<!-- ==================================================
+     HERO
+================================================== -->
 
-        <a class="back" href="index.html">
-            ← 回到好運研究所
-        </a>
+<section class="hero">
+
+    <div class="hero-image">
+        <img
+            src="uploads/story2.png"
+            alt=""
+            aria-hidden="true"
+        >
     </div>
-</header>
 
-<main>
+
+    <div class="hero-inner">
+
+        <div class="hero-copy">
+
+            <span class="hero-eyebrow">
+                STORIES FROM THE DIVINATION TABLE
+            </span>
+
+
+            <h1>
+                占卜桌上的故事
+            </h1>
+
+
+            <div class="hero-decoration"></div>
+
+
+            <div class="hero-subtitle">
+                每一個提問，<br>
+                都是一段故事的開始。
+            </div>
+
+
+            <p class="hero-description">
+                有人帶著疑惑而來，有人帶著選擇而來。
+                坐上占卜桌前的那一刻，
+                每個問題背後，都藏著一段屬於自己的故事。
+            </p>
+
+
+            <a
+                class="back-home"
+                href="index.html"
+            >
+                ← 回到好運研究所
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     STORY LIST
+================================================== -->
+
+<section
+    id="storyListSection"
+    class="stories-section"
+>
+
     <div class="container">
 
-        <!-- 文章列表 -->
-        <section id="storyList" class="story-list">
+
+        <div class="section-heading">
+
+            <span class="section-eyebrow">
+                STORIES
+            </span>
+
+            <h2>
+                故事集
+            </h2>
+
+            <p>
+                真實提問・真心對話・真實啟發
+            </p>
+
+        </div>
+
+
+        <section
+            id="storyList"
+            class="story-list"
+        >
+
             <div class="loading">
                 正在整理占卜桌上的故事……
             </div>
+
         </section>
 
-        <!-- 單篇文章 -->
-        <section id="articleView" style="display:none;">
-        </section>
+
+        <div class="story-closing">
+
+            <div class="story-closing-mark"></div>
+
+            <p>
+                故事來自占卜桌，<br>
+                也來自你我的人生。
+            </p>
+
+            <small>
+                每一次看見，都是一次重新選擇的開始。
+            </small>
+
+        </div>
 
     </div>
-</main>
+
+</section>
+
+
+
+<!-- ==================================================
+     SINGLE ARTICLE
+================================================== -->
+
+<section
+    id="articleView"
+    class="article-view"
+>
+
+</section>
+
+
+
+<footer>
+    © 好運研究所 Good Luck Research
+</footer>
+
+
 
 <script>
 
@@ -275,9 +1079,9 @@ const RAW_BASE =
     "https://raw.githubusercontent.com/loustalk/goodluck-research/main/content/articles/";
 
 
-/* =========================
+/* ==================================================
    Front Matter
-========================= */
+================================================== */
 
 function parseFrontMatter(text) {
 
@@ -288,52 +1092,85 @@ function parseFrontMatter(text) {
         body: text
     };
 
+
     if (!text.startsWith("---")) {
         return result;
     }
 
+
     const end = text.indexOf("\n---", 3);
+
 
     if (end === -1) {
         return result;
     }
 
-    const frontMatter = text.substring(3, end).trim();
 
-    result.body = text.substring(end + 4).trim();
+    const frontMatter =
+        text.substring(3, end).trim();
 
-    frontMatter.split("\n").forEach(line => {
 
-        const colon = line.indexOf(":");
+    result.body =
+        text.substring(end + 4).trim();
 
-        if (colon === -1) return;
 
-        const key = line.substring(0, colon).trim();
+    frontMatter
+        .split("\n")
+        .forEach(line => {
 
-        let value = line.substring(colon + 1).trim();
+            const colon =
+                line.indexOf(":");
 
-        value = value.replace(/^["']|["']$/g, "");
 
-        if (key === "title") {
-            result.title = value;
-        }
+            if (colon === -1) {
+                return;
+            }
 
-        if (key === "date") {
-            result.date = value;
-        }
 
-        if (key === "category") {
-            result.category = value;
-        }
-    });
+            const key =
+                line.substring(
+                    0,
+                    colon
+                ).trim();
+
+
+            let value =
+                line.substring(
+                    colon + 1
+                ).trim();
+
+
+            value =
+                value.replace(
+                    /^["']|["']$/g,
+                    ""
+                );
+
+
+            if (key === "title") {
+                result.title = value;
+            }
+
+
+            if (key === "date") {
+                result.date = value;
+            }
+
+
+            if (key === "category") {
+                result.category = value;
+            }
+
+        });
+
 
     return result;
 }
 
 
-/* =========================
+/* ==================================================
    日期格式
-========================= */
+================================================== */
 
 function formatDate(dateString) {
 
@@ -341,216 +1178,359 @@ function formatDate(dateString) {
         return "";
     }
 
-    const date = new Date(dateString);
+
+    const date =
+        new Date(dateString);
+
 
     if (isNaN(date.getTime())) {
         return dateString;
     }
 
-    return date.toLocaleDateString("zh-TW", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-    });
+
+    return date.toLocaleDateString(
+        "zh-TW",
+        {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit"
+        }
+    );
 }
 
 
-/* =========================
+/* ==================================================
    HTML Escape
-========================= */
+================================================== */
 
 function escapeHtml(text) {
 
-    return text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    return String(text || "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 }
 
 
-/* =========================
+/* ==================================================
    Markdown → HTML
-   保留 CMS 圖片
-========================= */
+================================================== */
 
 function markdownToHtml(markdown) {
 
     const images = [];
 
-    /*
-     * 先把 CMS 插入的 img 抓出來
-     * 避免後面的 HTML escape 把圖片變成文字
-     */
-
-    let text = markdown.replace(
-        /<img\s+[^>]*>/gi,
-        function(match) {
-
-            const index = images.length;
-
-            images.push(match);
-
-            return `___IMAGE_${index}___`;
-        }
-    );
-
-    text = escapeHtml(text);
-
 
     /*
-     * 基本 Markdown
+     * 先保留 CMS 插入的圖片
      */
 
-    text = text.replace(
-        /^### (.*)$/gm,
-        "<h3>$1</h3>"
-    );
+    let text =
+        markdown.replace(
+            /<img\s+[^>]*>/gi,
+            function(match) {
 
-    text = text.replace(
-        /^## (.*)$/gm,
-        "<h2>$1</h2>"
-    );
+                const index =
+                    images.length;
 
-    text = text.replace(
-        /^# (.*)$/gm,
-        "<h2>$1</h2>"
-    );
 
-    text = text.replace(
-        /\*\*(.*?)\*\*/g,
-        "<strong>$1</strong>"
-    );
+                images.push(match);
 
-    text = text.replace(
-        /\*(.*?)\*/g,
-        "<em>$1</em>"
-    );
+
+                return `___IMAGE_${index}___`;
+
+            }
+        );
+
+
+    text =
+        escapeHtml(text);
+
+
+    /*
+     * Markdown 標題
+     */
+
+    text =
+        text.replace(
+            /^### (.*)$/gm,
+            "<h3>$1</h3>"
+        );
+
+
+    text =
+        text.replace(
+            /^## (.*)$/gm,
+            "<h2>$1</h2>"
+        );
+
+
+    text =
+        text.replace(
+            /^# (.*)$/gm,
+            "<h2>$1</h2>"
+        );
+
+
+    /*
+     * 粗體
+     */
+
+    text =
+        text.replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+
+    /*
+     * 斜體
+     */
+
+    text =
+        text.replace(
+            /\*(.*?)\*/g,
+            "<em>$1</em>"
+        );
 
 
     /*
      * 空白行 → 段落
      */
 
-    const blocks = text
-        .split(/\n\s*\n/)
-        .map(block => block.trim())
-        .filter(Boolean);
+    const blocks =
+        text
+            .split(/\n\s*\n/)
+            .map(
+                block =>
+                    block.trim()
+            )
+            .filter(Boolean);
 
-    text = blocks.map(block => {
 
-        if (
-            block.startsWith("<h2>") ||
-            block.startsWith("<h3>")
-        ) {
-            return block;
-        }
+    text =
+        blocks
+            .map(block => {
 
-        if (block.startsWith("___IMAGE_")) {
-            return block;
-        }
+                if (
+                    block.startsWith("<h2>") ||
+                    block.startsWith("<h3>")
+                ) {
+                    return block;
+                }
 
-        return "<p>" +
-            block.replace(/\n/g, "<br>") +
-            "</p>";
 
-    }).join("\n");
+                if (
+                    block.startsWith(
+                        "___IMAGE_"
+                    )
+                ) {
+                    return block;
+                }
+
+
+                return (
+                    "<p>" +
+                    block.replace(
+                        /\n/g,
+                        "<br>"
+                    ) +
+                    "</p>"
+                );
+
+            })
+            .join("\n");
 
 
     /*
-     * 把圖片放回去
+     * 圖片放回去
      */
 
-    images.forEach((image, index) => {
+    images.forEach(
+        (image, index) => {
 
-        text = text.replace(
-            new RegExp(`___IMAGE_${index}___`, "g"),
-            image
-        );
+            text =
+                text.replace(
+                    new RegExp(
+                        `___IMAGE_${index}___`,
+                        "g"
+                    ),
+                    image
+                );
 
-    });
+        }
+    );
+
 
     return text;
 }
 
 
-/* =========================
+/* ==================================================
    摘要
-========================= */
+================================================== */
 
 function createExcerpt(markdown) {
 
-    let text = markdown
-        .replace(/<img\s+[^>]*>/gi, "")
-        .replace(/[#*_]/g, "")
-        .replace(/\n+/g, " ")
-        .trim();
+    let text =
+        markdown
+            .replace(
+                /<img\s+[^>]*>/gi,
+                ""
+            )
+            .replace(
+                /[#*_]/g,
+                ""
+            )
+            .replace(
+                /\n+/g,
+                " "
+            )
+            .trim();
 
-    if (text.length > 120) {
-        text = text.substring(0, 120) + "……";
+
+    if (text.length > 135) {
+
+        text =
+            text.substring(
+                0,
+                135
+            ) + "……";
+
     }
+
 
     return text;
 }
 
 
-/* =========================
+/* ==================================================
    載入文章
-========================= */
+================================================== */
 
 async function loadStories() {
 
-    const storyList = document.getElementById("storyList");
-    const articleView = document.getElementById("articleView");
+    const storyList =
+        document.getElementById(
+            "storyList"
+        );
+
 
     try {
 
-        const response = await fetch(API_URL);
+        const response =
+            await fetch(
+                API_URL + "&t=" + Date.now(),
+                {
+                    cache: "no-store"
+                }
+            );
+
 
         if (!response.ok) {
-            throw new Error("GitHub API 讀取失敗");
+
+            throw new Error(
+                "GitHub API 讀取失敗"
+            );
+
         }
 
-        const files = await response.json();
 
-        const markdownFiles = files.filter(file =>
-            file.name.toLowerCase().endsWith(".md")
-        );
+        const files =
+            await response.json();
+
+
+        const markdownFiles =
+            files.filter(
+                file =>
+                    file.name
+                        .toLowerCase()
+                        .endsWith(".md")
+            );
+
 
         const articles = [];
 
-        for (const file of markdownFiles) {
+
+        for (
+            const file
+            of markdownFiles
+        ) {
 
             try {
 
                 const rawUrl =
-                    RAW_BASE + encodeURIComponent(file.name);
+                    RAW_BASE +
+                    encodeURIComponent(
+                        file.name
+                    );
+
 
                 const articleResponse =
-                    await fetch(rawUrl);
+                    await fetch(
+                        rawUrl +
+                        "?t=" +
+                        Date.now(),
+                        {
+                            cache:
+                                "no-store"
+                        }
+                    );
 
-                if (!articleResponse.ok) {
+
+                if (
+                    !articleResponse.ok
+                ) {
                     continue;
                 }
+
 
                 const text =
                     await articleResponse.text();
 
+
                 const article =
-                    parseFrontMatter(text);
+                    parseFrontMatter(
+                        text
+                    );
+
 
                 /*
-                 * 只抓「占卜桌上的故事」
+                 * 只抓 story
                  */
 
-                if (article.category !== "story") {
+                if (
+                    article.category !==
+                    "story"
+                ) {
                     continue;
                 }
 
-                article.filename = file.name;
 
-                articles.push(article);
+                article.filename =
+                    file.name;
+
+
+                articles.push(
+                    article
+                );
 
             } catch (error) {
 
@@ -561,6 +1541,7 @@ async function loadStories() {
                 );
 
             }
+
         }
 
 
@@ -568,12 +1549,16 @@ async function loadStories() {
          * 最新文章排最前面
          */
 
-        articles.sort((a, b) =>
-            new Date(b.date) - new Date(a.date)
+        articles.sort(
+            (a, b) =>
+                new Date(b.date) -
+                new Date(a.date)
         );
 
 
-        if (articles.length === 0) {
+        if (
+            articles.length === 0
+        ) {
 
             storyList.innerHTML = `
                 <div class="empty">
@@ -586,145 +1571,218 @@ async function loadStories() {
 
 
         /*
-         * 建立文章列表
+         * 建立故事卡片
          */
 
-        storyList.innerHTML = articles.map(
-            (article, index) => {
+        storyList.innerHTML =
+            articles
+                .map(
+                    (article, index) => {
 
-                return `
-                    <article class="story-card">
+                        return `
 
-                        <h2>
-                            ${escapeHtml(article.title || "未命名故事")}
-                        </h2>
+                            <article
+                                class="story-card"
+                            >
 
-                        <div class="story-date">
-                            ${formatDate(article.date)}
-                        </div>
+                                <h2
+                                    class="story-card-title"
+                                >
+                                    ${escapeHtml(
+                                        article.title ||
+                                        "未命名故事"
+                                    )}
+                                </h2>
 
-                        <div class="story-excerpt">
-                            ${escapeHtml(
-                                createExcerpt(article.body)
-                            )}
-                        </div>
 
-                        <a
-                            href="#story-${index}"
-                            class="read-more"
-                            data-index="${index}"
-                        >
-                            閱讀全文 →
-                        </a>
+                                <div
+                                    class="story-date"
+                                >
+                                    ${formatDate(
+                                        article.date
+                                    )}
+                                </div>
 
-                    </article>
-                `;
 
-            }
-        ).join("");
+                                <div
+                                    class="story-excerpt"
+                                >
+                                    ${escapeHtml(
+                                        createExcerpt(
+                                            article.body
+                                        )
+                                    )}
+                                </div>
+
+
+                                <a
+                                    href="#story-${index}"
+                                    class="read-more"
+                                    data-index="${index}"
+                                >
+                                    閱讀全文 →
+                                </a>
+
+                            </article>
+
+                        `;
+
+                    }
+                )
+                .join("");
 
 
         /*
          * 綁定閱讀按鈕
          */
 
-        document.querySelectorAll(".read-more")
-            .forEach(link => {
+        document
+            .querySelectorAll(
+                ".read-more"
+            )
+            .forEach(
+                link => {
 
-                link.addEventListener(
-                    "click",
-                    function(event) {
+                    link.addEventListener(
+                        "click",
+                        function(event) {
 
-                        event.preventDefault();
-
-                        const index =
-                            Number(this.dataset.index);
-
-                        showArticle(
-                            articles[index]
-                        );
-
-                    }
-                );
-
-            });
+                            event.preventDefault();
 
 
-        /*
-         * 如果網址本身帶有 #story
-         * 預設仍然先顯示列表
-         */
+                            const index =
+                                Number(
+                                    this.dataset
+                                        .index
+                                );
+
+
+                            showArticle(
+                                articles[index]
+                            );
+
+                        }
+                    );
+
+                }
+            );
 
     } catch (error) {
 
         console.error(error);
 
+
         storyList.innerHTML = `
+
             <div class="error">
-                文章載入失敗，請稍後再試。
+                故事載入失敗，請稍後再試。
             </div>
+
         `;
     }
 }
 
 
-/* =========================
+/* ==================================================
    顯示單篇文章
-========================= */
+================================================== */
 
 function showArticle(article) {
 
-    const storyList =
-        document.getElementById("storyList");
+    const storyListSection =
+        document.getElementById(
+            "storyListSection"
+        );
+
 
     const articleView =
-        document.getElementById("articleView");
+        document.getElementById(
+            "articleView"
+        );
 
-    storyList.style.display = "none";
 
-    articleView.style.display = "block";
+    storyListSection.style.display =
+        "none";
+
+
+    articleView.style.display =
+        "block";
+
 
     articleView.innerHTML = `
 
-        <article class="article">
+        <div class="container">
 
-            <h2>
-                ${escapeHtml(
-                    article.title || "未命名故事"
-                )}
-            </h2>
+            <article class="article">
 
-            <div class="article-date">
-                ${formatDate(article.date)}
+                <div
+                    class="article-topline"
+                ></div>
+
+
+                <h1>
+                    ${escapeHtml(
+                        article.title ||
+                        "未命名故事"
+                    )}
+                </h1>
+
+
+                <div
+                    class="article-date"
+                >
+                    ${formatDate(
+                        article.date
+                    )}
+                </div>
+
+
+                <div
+                    class="article-body"
+                >
+                    ${markdownToHtml(
+                        article.body
+                    )}
+                </div>
+
+            </article>
+
+
+            <div
+                class="article-navigation"
+            >
+
+                <a
+                    href="#"
+                    id="backToList"
+                >
+                    ← 返回故事列表
+                </a>
+
             </div>
-
-            <div class="article-body">
-                ${markdownToHtml(article.body)}
-            </div>
-
-        </article>
-
-        <div class="article-navigation">
-
-            <a href="#" id="backToList">
-                ← 返回故事列表
-            </a>
 
         </div>
     `;
 
 
     document
-        .getElementById("backToList")
+        .getElementById(
+            "backToList"
+        )
         .addEventListener(
             "click",
             function(event) {
 
                 event.preventDefault();
 
-                articleView.style.display = "none";
 
-                storyList.style.display = "grid";
+                articleView.style.display =
+                    "none";
+
+
+                storyListSection.style.display =
+                    "block";
+
 
                 window.scrollTo({
                     top: 0,
@@ -742,13 +1800,14 @@ function showArticle(article) {
 }
 
 
-/* =========================
+/* ==================================================
    啟動
-========================= */
+================================================== */
 
 loadStories();
 
 </script>
+
 
 </body>
 </html>
