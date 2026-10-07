@@ -32,6 +32,9 @@ collections:
           - label: "🟠 好運琥珀"
             value: "amber"
 
+          - label: "🌿 好運研究室"
+            value: "research"
+
           - label: "🎪 好運生活日"
             value: "life-day"
 
