@@ -4,12 +4,14 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
 
     <title>好運研究所｜好運琥珀</title>
+
 
     <style>
 
@@ -21,9 +23,11 @@
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
+
 
         body {
             margin: 0;
@@ -36,21 +40,26 @@
                 sans-serif;
 
             background: #f3e6dc;
+
             color: #76513f;
 
             line-height: 1.9;
         }
 
+
         img {
             max-width: 100%;
         }
+
 
         a {
             color: inherit;
         }
 
+
         .container {
             width: min(1120px, 92%);
+
             margin: 0 auto;
         }
 
@@ -65,6 +74,7 @@
             min-height: 560px;
 
             display: flex;
+
             align-items: center;
 
             overflow: hidden;
@@ -78,13 +88,17 @@
         }
 
 
-        /* 左側文字保護區
-           不做死白色方塊，而是自然漸層 */
+        /*
+           左側文字保護漸層
+           不做死白色方塊，
+           讓文字能清楚閱讀，同時保留原圖氣氛。
+        */
 
         .hero::before {
             content: "";
 
             position: absolute;
+
             inset: 0;
 
             background:
@@ -103,9 +117,11 @@
 
         .hero-inner {
             position: relative;
+
             z-index: 2;
 
             width: min(1120px, 92%);
+
             margin: 0 auto;
 
             padding:
@@ -120,11 +136,13 @@
 
 
         .hero-kicker {
-            margin: 0 0 12px;
+            margin:
+                0 0 12px;
 
             color: #a17a43;
 
             font-size: 14px;
+
             font-weight: 600;
 
             letter-spacing: 3px;
@@ -132,7 +150,8 @@
 
 
         .hero h1 {
-            margin: 0 0 16px;
+            margin:
+                0 0 16px;
 
             color: #68482d;
 
@@ -148,7 +167,8 @@
 
 
         .hero-subtitle {
-            margin: 0 0 22px;
+            margin:
+                0 0 22px;
 
             color: #76513f;
 
@@ -166,24 +186,25 @@
         .hero-description {
             margin: 0;
 
+            max-width: 430px;
+
             color: #6f5647;
 
             font-size: 16px;
 
             line-height: 2;
-
-            max-width: 430px;
         }
 
 
         /* =========================================================
-           回首頁按鈕
+           回到好運研究所按鈕
         ========================================================= */
 
         .back-button {
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
             min-height: 42px;
@@ -204,6 +225,7 @@
             text-decoration: none;
 
             font-size: 14px;
+
             font-weight: 500;
 
             letter-spacing: 1px;
@@ -279,9 +301,11 @@
             position: absolute;
 
             top: 0;
+
             left: 45px;
 
             width: 70px;
+
             height: 3px;
 
             background: #a86e53;
@@ -350,7 +374,8 @@
 
 
         .gallery-title .eyebrow {
-            margin: 0 0 7px;
+            margin:
+                0 0 7px;
 
             color: #a17a43;
 
@@ -436,17 +461,22 @@
 
 
         /* =========================================================
-           商品圖片
+           商品圖片區
+           
+           注意：
+           不統一商品圖片比例。
+           每件商品保留自己的原始拍攝比例。
         ========================================================= */
 
         .amber-image {
             width: 100%;
 
-            height: 390px;
+            height: 420px;
 
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             padding: 16px;
@@ -462,10 +492,12 @@
 
         .amber-image img {
             width: auto;
+
             height: auto;
 
             max-width: 88%;
-            max-height: 360px;
+
+            max-height: 390px;
 
             display: block;
 
@@ -476,7 +508,7 @@
 
 
         /* =========================================================
-           商品說明
+           商品文字區
         ========================================================= */
 
         .amber-content {
@@ -492,7 +524,7 @@
 
         .amber-content h3 {
             margin:
-                0 0 11px;
+                0 0 12px;
 
             color: #68482d;
 
@@ -505,6 +537,12 @@
             letter-spacing: 1px;
         }
 
+
+        /* =========================================================
+           商品說明
+           
+           這裡會真正保留 CMS 的段落。
+        ========================================================= */
 
         .amber-description {
             color: #76513f;
@@ -525,6 +563,11 @@
 
         .amber-description p:last-child {
             margin-bottom: 0;
+        }
+
+
+        .amber-description br {
+            line-height: 1.9;
         }
 
 
@@ -581,10 +624,6 @@
         }
 
 
-        /* =========================================================
-           Footer 區隔感
-        ========================================================= */
-
         .page-ending {
             margin-top:
                 20px;
@@ -616,7 +655,8 @@
 
 
             .hero-content {
-                width: min(470px, 58%);
+                width:
+                    min(470px, 58%);
             }
 
 
@@ -649,7 +689,8 @@
         @media (max-width: 600px) {
 
             .container {
-                width: min(92%, 520px);
+                width:
+                    min(92%, 520px);
             }
 
 
@@ -887,19 +928,23 @@
                 GOOD LUCK AMBER
             </p>
 
+
             <h1>
                 好運琥珀
             </h1>
 
+
             <p class="hero-subtitle">
                 留住時間，也留住一份好運。
             </p>
+
 
             <p class="hero-description">
                 從自然形成的琥珀原礦，
                 到承載祝福與象徵意義的琥珀作品，
                 在每一塊琥珀裡，看見自然留下的時間與故事。
             </p>
+
 
             <a
                 class="back-button hero-back"
@@ -934,11 +979,13 @@
                 🟠 好運琥珀
             </h2>
 
+
             <p>
                 琥珀，是大自然留下來的一段時間。
                 它來自遠古樹脂，經過漫長歲月的變化，
                 最後成為我們今天所看到的琥珀。
             </p>
+
 
             <p>
                 每一塊琥珀都有自己的顏色、紋理與形狀，
@@ -946,6 +993,7 @@
                 對我們而言，琥珀不只是漂亮的飾品，
                 也是一種值得觀察與研究的自然材料。
             </p>
+
 
             <p>
                 在風水格局中，琥珀能聚財氣、調思維。
@@ -971,9 +1019,11 @@
                 AMBER COLLECTION
             </p>
 
+
             <h2>
                 ✨ 琥珀收藏
             </h2>
+
 
             <p>
                 每一塊琥珀，都有自己的樣子與故事。
@@ -1010,6 +1060,7 @@
             >
                 ← 回到好運研究所
             </a>
+
 
             <div class="page-ending">
                 好運琥珀 · GOOD LUCK AMBER
@@ -1193,43 +1244,161 @@ function extractImageAlt(markdown) {
 
 
 /* =========================================================
-   取得說明文字
+   商品文字處理
+           
+   這裡是這次修正的重點。
+
+   CMS：
+
+   第一段。
+
+   第二段。
+
+   第三段。
+
+   會轉成真正的：
+
+   <p>第一段。</p>
+   <p>第二段。</p>
+   <p>第三段。</p>
+
+   不再把所有換行壓成空格。
 ========================================================= */
 
 function createDescription(markdown) {
 
-    return markdown
+    let text =
+        String(markdown || "");
 
-        /* 移除 HTML 圖片 */
-        .replace(
+
+    /* ---------------------------------------------------------
+       先移除圖片
+    --------------------------------------------------------- */
+
+    text =
+        text.replace(
             /<img\s+[^>]*>/gi,
             ""
-        )
+        );
 
-        /* 移除其他 HTML 標籤 */
-        .replace(
-            /<[^>]+>/g,
+
+    /* ---------------------------------------------------------
+       移除一般 HTML 標籤
+       但保留純文字內容
+    --------------------------------------------------------- */
+
+    text =
+        text.replace(
+            /<\/?[^>]+>/g,
             ""
-        )
+        );
 
-        /* 移除 Markdown 標記 */
-        .replace(
-            /[#*_>`~]/g,
+
+    /* ---------------------------------------------------------
+       Markdown 換行統一
+    --------------------------------------------------------- */
+
+    text =
+        text.replace(
+            /\r\n/g,
+            "\n"
+        );
+
+
+    text =
+        text.replace(
+            /\r/g,
+            "\n"
+        );
+
+
+    /* ---------------------------------------------------------
+       移除 Markdown 標記
+    --------------------------------------------------------- */
+
+    text =
+        text.replace(
+            /^#{1,6}\s+/gm,
             ""
-        )
+        );
 
-        /* 換行整理 */
-        .replace(
-            /\n+/g,
-            " "
-        )
 
-        .replace(
-            /\s+/g,
-            " "
-        )
+    text =
+        text.replace(
+            /(\*\*|__)(.*?)\1/g,
+            "$2"
+        );
 
-        .trim();
+
+    text =
+        text.replace(
+            /(\*|_)(.*?)\1/g,
+            "$2"
+        );
+
+
+    text =
+        text.replace(
+            /`([^`]+)`/g,
+            "$1"
+        );
+
+
+    /* ---------------------------------------------------------
+       清掉文章前後空白
+    --------------------------------------------------------- */
+
+    text =
+        text.trim();
+
+
+    if (!text) {
+        return "";
+    }
+
+
+    /* ---------------------------------------------------------
+       依照「空白行」切成真正段落
+    --------------------------------------------------------- */
+
+    const paragraphs =
+        text
+            .split(/\n\s*\n+/)
+            .map(paragraph =>
+                paragraph.trim()
+            )
+            .filter(Boolean);
+
+
+    /* ---------------------------------------------------------
+       每一段裡面的單純換行，
+       保留成 <br>
+    --------------------------------------------------------- */
+
+    return paragraphs
+        .map(paragraph => {
+
+            const safe =
+                escapeHtml(
+                    paragraph
+                );
+
+
+            const withBreaks =
+                safe.replace(
+                    /\n/g,
+                    "<br>"
+                );
+
+
+            return `
+                <p>
+                    ${withBreaks}
+                </p>
+            `;
+
+        })
+        .join("");
 
 }
 
@@ -1406,10 +1575,12 @@ async function loadAmber() {
                         a.date || 0
                     );
 
+
                 const dateB =
                     new Date(
                         b.date || 0
                     );
+
 
                 return dateB - dateA;
 
@@ -1441,7 +1612,7 @@ async function loadAmber() {
 
 
         /* =====================================================
-           建立畫廊
+           建立商品卡片
         ====================================================== */
 
         gallery.innerHTML =
@@ -1483,7 +1654,7 @@ async function loadAmber() {
 
 
                     /* -----------------------------------------
-                       說明
+                       商品說明
                     ----------------------------------------- */
 
                     const description =
@@ -1495,9 +1666,7 @@ async function loadAmber() {
                                 class="amber-description"
                             >
 
-                                ${escapeHtml(
-                                    article.description
-                                )}
+                                ${article.description}
 
                             </div>
 
@@ -1507,7 +1676,7 @@ async function loadAmber() {
 
 
                     /* -----------------------------------------
-                       卡片
+                       商品卡片
                     ----------------------------------------- */
 
                     return `
@@ -1517,6 +1686,7 @@ async function loadAmber() {
                         >
 
                             ${image}
+
 
                             <div
                                 class="amber-content"
@@ -1528,6 +1698,7 @@ async function loadAmber() {
                                         "未命名琥珀"
                                     )}
                                 </h3>
+
 
                                 ${description}
 
