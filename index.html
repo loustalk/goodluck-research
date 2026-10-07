@@ -117,6 +117,11 @@
             overflow: hidden;
         }
 
+        /* 手機版完整顯示 Hero 圖片 */
+        .hero-mobile-image {
+            display: none;
+        }
+
         .hero::before {
             content: "";
             position: absolute;
@@ -788,6 +793,70 @@
                 font-size: 19px;
             }
 
+            /*
+             * 手機版 Hero 改成：
+             * 完整圖片 → 文字內容
+             *
+             * 不再使用 background-size: cover，
+             * 避免橫式 Hero 圖片被手機直立比例裁掉。
+             */
+
+            .hero {
+                min-height: 0;
+                padding: 0;
+
+                display: block;
+
+                background-image: none;
+
+                background-color: #faf8f3;
+
+                overflow: hidden;
+            }
+
+            /*
+             * 手機直接顯示完整原圖。
+             * width:100% + height:auto
+             * 不裁切、不變形。
+             */
+
+            .hero-mobile-image {
+                display: block;
+
+                width: 100%;
+                height: auto;
+
+                margin: 0;
+                padding: 0;
+
+                object-fit: contain;
+            }
+
+            /*
+             * 手機不需要桌機版的左右漸層遮罩。
+             */
+
+            .hero::before {
+                display: none;
+            }
+
+            /*
+             * Hero 文字改成圖片下方正常排版。
+             */
+
+            .hero-inner {
+                width: 100%;
+                max-width: none;
+
+                display: block;
+
+                padding: 48px 20px 60px;
+            }
+
+            .hero-text {
+                width: 100%;
+            }
+
             .hero h1 {
                 font-size: 52px;
                 letter-spacing: 2px;
@@ -799,6 +868,10 @@
                 letter-spacing: 1px;
                 line-height: 1.6;
                 -webkit-text-stroke: 0.65px #51473e;
+            }
+
+            .hero p {
+                max-width: 100%;
             }
 
             .hero-buttons {
@@ -866,6 +939,19 @@
          ========================= -->
 
     <section class="hero">
+
+        <!--
+            手機版 Hero 圖片
+            桌機隱藏、手機顯示。
+            使用原始圖片比例，避免裁切。
+        -->
+
+        <img
+            src="uploads/hero-oriental-main.png"
+            alt="好運研究所主視覺"
+            class="hero-mobile-image"
+        >
+
 
         <div class="hero-inner">
 
