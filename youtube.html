@@ -824,62 +824,31 @@ footer strong{
 
 @media(max-width:760px){
 
-    /*
-       手機 Hero：
-       YT 圖片不再用 cover 強制裁切。
-       先完整顯示 youtube2.png，
-       再把文字放到圖片下面。
-       桌機與平板版維持原樣。
-    */
-
     .hero{
-        min-height:0;
+        min-height:620px;
 
-        display:block;
-
-        align-items:initial;
-
-        background:var(--bg);
+        align-items:flex-start;
     }
 
     .hero::after{
-        display:none;
-    }
-
-    .hero-image{
-        position:relative;
-
-        inset:auto;
-
-        width:100%;
-
-        height:auto;
-
-        overflow:hidden;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(243,230,220,.98) 0%,
+                rgba(243,230,220,.94) 42%,
+                rgba(243,230,220,.58) 67%,
+                rgba(243,230,220,.12) 100%
+            );
     }
 
     .hero-image img{
-        position:relative;
-
-        inset:auto;
-
-        width:100%;
-
-        height:auto;
-
-        max-width:100%;
-
-        object-fit:contain;
-
-        object-position:center top;
-
-        display:block;
+        object-position:67% center;
     }
 
     .hero-inner{
         width:min(100% - 34px,1180px);
 
-        padding:44px 0 60px;
+        padding:54px 0 60px;
     }
 
     .hero-copy{
@@ -1022,11 +991,11 @@ footer strong{
 @media(max-width:480px){
 
     .hero{
-        min-height:0;
+        min-height:600px;
     }
 
     .hero-inner{
-        padding-top:38px;
+        padding-top:44px;
     }
 
     .hero h1{
