@@ -658,6 +658,61 @@
 
 
         /* ==================================================
+           BOTTOM HOME
+        ================================================== */
+
+        .bottom-home {
+            margin-top: 45px;
+
+            text-align: center;
+        }
+
+        .bottom-home a {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 10px 22px;
+
+            color: var(--rose-gold);
+
+            background: rgba(255, 250, 246, 0.72);
+
+            border:
+                1px solid var(--rose-gold);
+
+            border-radius: 24px;
+
+            font-family:
+                "Noto Sans TC",
+                "Microsoft JhengHei",
+                sans-serif;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            letter-spacing: 1px;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .bottom-home a:hover {
+            color: var(--white);
+
+            background: var(--rose-gold);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ==================================================
            ARTICLE VIEW
         ================================================== */
 
@@ -1019,6 +1074,17 @@
                 letter-spacing: 1px;
             }
 
+            .bottom-home {
+                margin-top: 35px;
+            }
+
+            .bottom-home a {
+                padding:
+                    9px 20px;
+
+                font-size: 13px;
+            }
+
             .article-view {
                 padding:
                     55px 0 80px;
@@ -1205,6 +1271,17 @@
             <small>
                 每一次看見，都是一次重新選擇的開始。
             </small>
+
+        </div>
+
+
+        <!-- 回到好運研究所 -->
+
+        <div class="bottom-home">
+
+            <a href="index.html">
+                ← 回到好運研究所
+            </a>
 
         </div>
 
