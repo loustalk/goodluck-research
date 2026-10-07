@@ -632,8 +632,7 @@ main {
 
 
 /* ==================================================
-   ★ 文章內容
-   後台換行整理成正常段落
+   文章內容
 ================================================== */
 
 .article-body {
@@ -642,7 +641,7 @@ main {
 
     font-size: 17px;
 
-    line-height: 1.9;
+    line-height: 1.85;
 
 }
 
@@ -657,6 +656,13 @@ main {
 .article-body p:last-child {
 
     margin-bottom: 0;
+
+}
+
+
+.article-body br {
+
+    line-height: 1.85;
 
 }
 
@@ -1065,7 +1071,14 @@ main {
 
         font-size: 16px;
 
-        line-height: 1.85;
+        line-height: 1.8;
+
+    }
+
+
+    .article-body br {
+
+        line-height: 1.8;
 
     }
 
@@ -1539,67 +1552,114 @@ function createExcerpt(markdown) {
 
 
 /* ==================================================
-   整理文章內容
+   ★ 正確整理文章內容
+==================================================
+
+   CMS 目前實際產生的文章格式是：
+
+   第一段文字
+
+
+   第二段文字
+
+
+   第三段文字
+
+
+   <img ...>
+
+
+   所以：
+
+   1. 空白行 = 新段落
+   2. 同一段中的換行 = <br>
+   3. 單獨的 img = 原樣保留
+   4. 不使用 white-space: pre-line
 ================================================== */
 
 function formatArticleBody(body) {
 
 
-    let content =
-        String(body || "").trim();
+    const source =
+        String(body || "")
+            .replace(/\r\n/g, "\n")
+            .replace(/\r/g, "\n")
+            .trim();
 
 
-    /*
-       如果 CMS 已經產生 HTML 段落，
-       直接保留，不再重複處理。
-    */
+    if (!source) {
 
-    if (
-        /<(p|div|h[1-6]|ul|ol|li|blockquote|img|figure)\b/i.test(
-            content
-        )
-    ) {
-
-        return content;
+        return "";
 
     }
 
 
-    /*
-       純文字文章：
-       連續空白行視為段落，
-       單一換行視為同一段中的換行。
-    */
-
-    const paragraphs =
-        content
+    const blocks =
+        source
             .split(/\n\s*\n+/)
             .map(
-                paragraph =>
-                    paragraph.trim()
+                block =>
+                    block.trim()
             )
             .filter(
-                paragraph =>
-                    paragraph.length > 0
+                block =>
+                    block.length > 0
             );
 
 
-    return paragraphs
-        .map(
-            paragraph => `
+    const result = [];
 
-                <p>
-                    ${escapeHtml(
-                        paragraph
-                    ).replace(
-                        /\n/g,
-                        "<br>"
-                    )}
-                </p>
 
-            `
-        )
-        .join("");
+    blocks.forEach(block => {
+
+
+        /*
+           單獨圖片區塊
+        */
+
+        if (
+            /^<img\b[\s\S]*?>$/i.test(
+                block
+            )
+        ) {
+
+            result.push(
+                block
+            );
+
+            return;
+
+        }
+
+
+        /*
+           一般文字區塊
+
+           同一段內如果有換行，
+           保留成 <br>。
+        */
+
+        const safeText =
+            escapeHtml(
+                block
+            ).replace(
+                /\n/g,
+                "<br>"
+            );
+
+
+        result.push(`
+
+            <p>
+                ${safeText}
+            </p>
+
+        `);
+
+    });
+
+
+    return result.join("\n");
 
 }
 
@@ -1652,7 +1712,6 @@ async function loadResearch() {
 
 
         const articles = [];
-
 
 
         for (
