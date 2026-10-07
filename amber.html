@@ -91,6 +91,14 @@
         }
 
 
+        /*
+           淡淡的文字襯底。
+
+           不再使用上一版 0.92 的白光。
+           左側輕微提亮，中間快速淡出，
+           右側基本維持原圖。
+        */
+
         .amber-hero::after {
 
             content: "";
@@ -102,10 +110,10 @@
             background:
                 linear-gradient(
                     90deg,
-                    rgba(255, 250, 246, 0.92) 0%,
-                    rgba(255, 250, 246, 0.78) 28%,
-                    rgba(255, 250, 246, 0.32) 55%,
-                    rgba(255, 250, 246, 0.04) 100%
+                    rgba(255, 250, 246, 0.34) 0%,
+                    rgba(255, 250, 246, 0.20) 24%,
+                    rgba(255, 250, 246, 0.07) 43%,
+                    rgba(255, 250, 246, 0.00) 60%
                 );
 
             pointer-events: none;
@@ -174,11 +182,13 @@
 
             padding: 10px 22px;
 
-            border: 1px solid #a86e53;
+            border:
+                1px solid #a86e53;
 
             border-radius: 24px;
 
-            background: rgba(255, 250, 246, 0.82);
+            background:
+                rgba(255, 250, 246, 0.78);
 
             color: #a86e53;
 
@@ -228,14 +238,16 @@
 
             background: #fffaf6;
 
-            border: 1px solid #e6cbb9;
+            border:
+                1px solid #e6cbb9;
 
             border-radius: 18px;
 
             padding: 45px;
 
             box-shadow:
-                0 8px 24px rgba(118, 81, 63, 0.07);
+                0 8px 24px
+                rgba(118, 81, 63, 0.07);
 
         }
 
@@ -285,7 +297,8 @@
 
             border: 0;
 
-            border-top: 1px solid #e6cbb9;
+            border-top:
+                1px solid #e6cbb9;
 
         }
 
@@ -384,8 +397,9 @@
 
         /* ==================================================
            琥珀圖片區
-           保留原本固定展示區，
-           但不改變每件商品本身的比例
+
+           保留原本圖片展示方式。
+           不強迫商品統一比例。
         ================================================== */
 
         .amber-image {
@@ -433,7 +447,6 @@
 
         /* ==================================================
            琥珀內容區
-           不再固定死高度，避免文字被切掉
         ================================================== */
 
         .amber-content {
@@ -522,7 +535,7 @@
             border-radius: 24px;
 
             background:
-                rgba(255, 250, 246, 0.8);
+                rgba(255, 250, 246, 0.78);
 
             color: #a86e53;
 
@@ -644,14 +657,21 @@
             }
 
 
+            /*
+               手機不再另外加一層白色漸層。
+
+               直接使用原圖的自然光，
+               避免 Hero 又被洗白。
+            */
+
             .amber-hero::after {
 
                 background:
                     linear-gradient(
                         180deg,
-                        rgba(255, 250, 246, 0.88) 0%,
-                        rgba(255, 250, 246, 0.68) 55%,
-                        rgba(255, 250, 246, 0.28) 100%
+                        rgba(255, 250, 246, 0.18) 0%,
+                        rgba(255, 250, 246, 0.07) 42%,
+                        rgba(255, 250, 246, 0.00) 72%
                     );
 
             }
@@ -803,6 +823,7 @@
 
 <section class="amber-hero">
 
+
     <img
         src="uploads/amber2.png"
         alt="好運琥珀"
@@ -810,6 +831,7 @@
 
 
     <div class="amber-hero-content">
+
 
         <h1>
             好運琥珀
@@ -828,7 +850,9 @@
             ← 回到好運研究所
         </a>
 
+
     </div>
+
 
 </section>
 
@@ -840,6 +864,7 @@
 
 <main>
 
+
     <div class="container">
 
 
@@ -848,6 +873,7 @@
         ================================================== -->
 
         <section class="intro">
+
 
             <h2>
                 🟠 好運琥珀
@@ -877,6 +903,7 @@
                 分享不同琥珀的特色、故事與我們對它的觀察。
             </p>
 
+
         </section>
 
 
@@ -891,6 +918,7 @@
 
         <section class="gallery-title">
 
+
             <h2>
                 ✨ 琥珀收藏
             </h2>
@@ -899,6 +927,7 @@
             <p>
                 每一塊琥珀，都有自己的樣子與故事。
             </p>
+
 
         </section>
 
@@ -913,9 +942,13 @@
             class="amber-gallery"
         >
 
+
             <div class="loading">
+
                 正在整理好運琥珀……
+
             </div>
+
 
         </section>
 
@@ -927,14 +960,19 @@
 
         <div class="bottom-home">
 
+
             <a href="index.html">
+
                 ← 回到好運研究所
+
             </a>
+
 
         </div>
 
 
     </div>
+
 
 </main>
 
@@ -960,6 +998,7 @@ const RAW_BASE =
 ================================================== */
 
 function parseFrontMatter(text) {
+
 
     const result = {
 
@@ -993,16 +1032,26 @@ function parseFrontMatter(text) {
 
 
     const frontMatter =
-        text.substring(3, end).trim();
+        text
+            .substring(
+                3,
+                end
+            )
+            .trim();
 
 
     result.body =
-        text.substring(end + 4).trim();
+        text
+            .substring(
+                end + 4
+            )
+            .trim();
 
 
     frontMatter
         .split("\n")
         .forEach(line => {
+
 
             const colon =
                 line.indexOf(":");
@@ -1016,16 +1065,20 @@ function parseFrontMatter(text) {
 
 
             const key =
-                line.substring(
-                    0,
-                    colon
-                ).trim();
+                line
+                    .substring(
+                        0,
+                        colon
+                    )
+                    .trim();
 
 
             let value =
-                line.substring(
-                    colon + 1
-                ).trim();
+                line
+                    .substring(
+                        colon + 1
+                    )
+                    .trim();
 
 
             value =
@@ -1037,23 +1090,27 @@ function parseFrontMatter(text) {
 
             if (key === "title") {
 
-                result.title = value;
+                result.title =
+                    value;
 
             }
 
 
             if (key === "date") {
 
-                result.date = value;
+                result.date =
+                    value;
 
             }
 
 
             if (key === "category") {
 
-                result.category = value;
+                result.category =
+                    value;
 
             }
+
 
         });
 
@@ -1069,6 +1126,7 @@ function parseFrontMatter(text) {
 ================================================== */
 
 function escapeHtml(text) {
+
 
     return String(text)
 
@@ -1097,6 +1155,7 @@ function escapeHtml(text) {
             "&#039;"
         );
 
+
 }
 
 
@@ -1106,6 +1165,7 @@ function escapeHtml(text) {
 ================================================== */
 
 function extractImage(markdown) {
+
 
     const match =
         markdown.match(
@@ -1132,6 +1192,7 @@ function extractImage(markdown) {
 
 function extractImageAlt(markdown) {
 
+
     const match =
         markdown.match(
             /<img\s+[^>]*alt="([^"]*)"[^>]*>/i
@@ -1154,17 +1215,19 @@ function extractImageAlt(markdown) {
 /* ==================================================
    取得說明文字
 
-   這裡是這次修正的核心：
+   CMS 按 Enter 分段：
+   → 保留段落
 
-   1. 移除 CMS 圖片
-   2. 移除單獨一行的 \
-   3. 保留段落
-   4. CMS 按 Enter 分段後，
-      網站會用 <p> 分開
-   5. 最後才做 HTML Escape
+   單獨一行的 "\"：
+   → 自動移除
+
+   圖片：
+   → 移除
+
 ================================================== */
 
 function createDescription(markdown) {
+
 
     let text =
         markdown
@@ -1191,17 +1254,7 @@ function createDescription(markdown) {
 
 
     /*
-       移除只有反斜線的行。
-
-       例如：
-
-       \
-       
-       或
-
-          \
-
-       都會被清掉。
+       移除單獨一行的反斜線。
     */
 
     text =
@@ -1212,8 +1265,7 @@ function createDescription(markdown) {
 
 
     /*
-       移除 Markdown 常見符號，
-       保留原本頁面的處理方式。
+       保留原本的文字清理方式。
     */
 
     text =
@@ -1224,20 +1276,20 @@ function createDescription(markdown) {
 
 
     /*
-       清掉每一行尾端多餘空白。
+       清掉每一行前後多餘空白。
     */
 
     text =
         text
             .split("\n")
-            .map(line => line.trim())
+            .map(line =>
+                line.trim()
+            )
             .join("\n");
 
 
     /*
-       三個以上連續換行，
-       統一成兩個換行，
-       也就是一個段落間距。
+       連續空白行最多保留一個段落間距。
     */
 
     text =
@@ -1259,44 +1311,39 @@ function createDescription(markdown) {
 
 
     /*
-       依照空白行分成段落。
-
-       CMS：
-
-       第一段
-
-       第二段
-
-       就會變成：
-
-       <p>第一段</p>
-       <p>第二段</p>
+       空白行代表新的段落。
     */
 
     const paragraphs =
         text
-            .split(/\n\s*\n/)
+            .split(
+                /\n\s*\n/
+            )
             .map(paragraph =>
+
                 paragraph
                     .replace(
                         /\n+/g,
                         " "
                     )
                     .trim()
+
             )
             .filter(Boolean);
 
 
     return paragraphs
-        .map(paragraph => {
 
-            return `
-                <p>
-                    ${escapeHtml(paragraph)}
-                </p>
-            `;
+        .map(paragraph => `
 
-        })
+            <p>
+                ${escapeHtml(
+                    paragraph
+                )}
+            </p>
+
+        `)
+
         .join("");
 
 }
@@ -1308,6 +1355,7 @@ function createDescription(markdown) {
 ================================================== */
 
 async function loadAmber() {
+
 
     const gallery =
         document.getElementById(
@@ -1324,7 +1372,9 @@ async function loadAmber() {
 
         const response =
             await fetch(
-                API_URL + "&t=" + Date.now()
+                API_URL +
+                "&t=" +
+                Date.now()
             );
 
 
@@ -1342,11 +1392,12 @@ async function loadAmber() {
 
 
         const markdownFiles =
-            files.filter(file =>
+            files.filter(
+                file =>
 
-                file.name
-                    .toLowerCase()
-                    .endsWith(".md")
+                    file.name
+                        .toLowerCase()
+                        .endsWith(".md")
 
             );
 
@@ -1434,7 +1485,7 @@ async function loadAmber() {
 
 
                 /* ==================================================
-                   ALT
+                   圖片 ALT
                 ================================================== */
 
                 article.imageAlt =
@@ -1462,7 +1513,9 @@ async function loadAmber() {
 
             }
 
+
             catch (error) {
+
 
                 console.warn(
 
@@ -1474,7 +1527,9 @@ async function loadAmber() {
 
                 );
 
+
             }
+
 
         }
 
@@ -1503,6 +1558,7 @@ async function loadAmber() {
             articles.length === 0
         ) {
 
+
             gallery.innerHTML = `
 
                 <div class="empty">
@@ -1512,6 +1568,7 @@ async function loadAmber() {
                 </div>
 
             `;
+
 
             return;
 
@@ -1548,6 +1605,7 @@ async function loadAmber() {
                                     src="${escapeHtml(
                                         article.image
                                     )}"
+
                                     alt="${escapeHtml(
                                         article.imageAlt ||
                                         article.title ||
@@ -1626,6 +1684,7 @@ async function loadAmber() {
 
                     `;
 
+
                 })
 
                 .join("");
@@ -1647,14 +1706,15 @@ async function loadAmber() {
             <div class="error">
 
                 琥珀資料載入失敗，
-
                 請稍後再試。
 
             </div>
 
         `;
 
+
     }
+
 
 }
 
