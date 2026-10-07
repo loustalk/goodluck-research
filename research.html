@@ -1,346 +1,2028 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>好運研究室｜好運研究所</title>
 
-    <style>
-        :root {
-            --bg: #f3e6dc;
-            --card: #fffaf6;
-            --text: #76513f;
-            --muted: #8c6c5b;
-            --line: #e6cbb9;
-            --accent: #bd8a6b;
-        }
+<meta charset="UTF-8">
 
-        * {
-            box-sizing: border-box;
-        }
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-        body {
-            margin: 0;
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Noto Sans TC",
-                "Microsoft JhengHei",
-                sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.9;
-        }
+<title>好運研究所｜好運研究室</title>
 
-        header {
-            padding: 72px 20px 58px;
-            text-align: center;
-            background: var(--bg);
-        }
 
-        header h1 {
-            margin: 0 0 14px;
-            font-size: 42px;
-            letter-spacing: 1px;
-            color: var(--text);
-        }
+<style>
 
-        header p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 18px;
-        }
+/* ==================================================
+   基本設定
+================================================== */
 
-        .back {
-            max-width: 1080px;
-            margin: 0 auto 28px;
-            padding: 0 24px;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .back a {
-            color: var(--muted);
-            text-decoration: none;
-            transition: color 0.25s;
-        }
 
-        .back a:hover {
-            color: var(--accent);
-            text-decoration: underline;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        main {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 0 24px 70px;
-        }
 
-        .intro {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 42px 46px;
-            margin-bottom: 24px;
-            box-shadow: 0 8px 24px rgba(118, 81, 63, 0.06);
-        }
+body {
 
-        .intro h2 {
-            margin: 0 0 18px;
-            font-size: 28px;
-            color: var(--text);
-        }
+    margin: 0;
 
-        .intro p {
-            margin: 0 0 18px;
-            color: #765746;
-            font-size: 17px;
-        }
+    background: #f3e6dc;
 
-        .intro p:last-child {
-            margin-bottom: 0;
-        }
+    color: #76513f;
 
-        .intro strong {
-            color: #a86e53;
-        }
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        sans-serif;
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+    line-height: 1.9;
 
-        .card {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 30px;
-            box-shadow: 0 6px 20px rgba(118, 81, 63, 0.05);
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
+}
 
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(118, 81, 63, 0.09);
-        }
 
-        .card .icon {
-            font-size: 30px;
-            margin-bottom: 12px;
-        }
+a {
+    color: inherit;
+}
 
-        .card h3 {
-            margin: 0 0 12px;
-            font-size: 22px;
-            color: #a86e53;
-        }
 
-        .card p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 15px;
-        }
+/* ==================================================
+   共用容器
+================================================== */
 
-        .quote {
-            margin-top: 24px;
-            padding: 34px 38px;
-            border: 1px solid var(--line);
-            border-left: 5px solid var(--accent);
-            background: #f8eee6;
-            border-radius: 0 16px 16px 0;
-            color: #765746;
-            font-size: 21px;
-            font-weight: 600;
-            text-align: center;
-        }
+.container {
 
-        .ending {
-            margin-top: 24px;
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 32px 38px;
-            color: #765746;
-            font-size: 17px;
-            text-align: center;
-        }
+    width: min(1100px, 92%);
 
-        .ending strong {
-            color: #a17a43;
-        }
+    margin: 0 auto;
 
-        footer {
-            text-align: center;
-            padding: 35px 20px 55px;
-            color: #8c6c5b;
-            font-size: 14px;
-            background: var(--bg);
-        }
+}
 
-        @media (max-width: 760px) {
-            header {
-                padding: 52px 18px 42px;
-            }
 
-            header h1 {
-                font-size: 32px;
-            }
+/* ==================================================
+   Hero
+================================================== */
 
-            header p {
-                font-size: 16px;
-            }
+.research-hero {
 
-            .back,
-            main {
-                padding-left: 16px;
-                padding-right: 16px;
-            }
+    position: relative;
 
-            .intro {
-                padding: 30px 24px;
-            }
+    width: 100%;
 
-            .grid {
-                grid-template-columns: 1fr;
-            }
+    min-height: 520px;
 
-            .quote {
-                padding: 28px 24px;
-                font-size: 19px;
-            }
+    overflow: hidden;
 
-            .ending {
-                padding: 28px 24px;
-            }
-        }
-    </style>
+    background: #ead7c6;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.research-hero-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+}
+
+
+.research-hero-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center center;
+
+}
+
+
+/*
+   桌機文字襯底。
+
+   不做大片白光，只讓左側文字有閱讀空間。
+*/
+
+.research-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(243,230,220,.78) 0%,
+            rgba(243,230,220,.58) 25%,
+            rgba(243,230,220,.22) 45%,
+            rgba(243,230,220,0) 64%
+        );
+
+}
+
+
+.research-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(1100px, 92%);
+
+    margin: 0 auto;
+
+    padding: 78px 0;
+
+}
+
+
+.research-eyebrow {
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding: 7px 18px;
+
+    border:
+        1px solid rgba(168,110,83,.42);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,250,246,.74);
+
+    color: #a86e53;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    backdrop-filter: blur(5px);
+
+}
+
+
+.research-hero h1 {
+
+    margin: 0 0 16px;
+
+    color: #68482d;
+
+    font-size: clamp(44px, 5.8vw, 70px);
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 2px 10px rgba(255,250,246,.85);
+
+}
+
+
+.research-hero h1::after {
+
+    content: "";
+
+    display: block;
+
+    width: 90px;
+
+    height: 2px;
+
+    margin-top: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a86e53,
+            #d7b47a,
+            transparent
+        );
+
+}
+
+
+.research-hero p {
+
+    max-width: 540px;
+
+    margin: 0;
+
+    color: #76513f;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    text-shadow:
+        0 1px 8px rgba(255,250,246,.9);
+
+}
+
+
+.back {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 28px;
+
+    padding: 10px 22px;
+
+    border:
+        1px solid #a86e53;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,250,246,.78);
+
+    color: #a86e53;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+.back:hover {
+
+    background: #a86e53;
+
+    color: #fffaf6;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ==================================================
+   Main
+================================================== */
+
+main {
+
+    padding: 60px 0 80px;
+
+}
+
+
+/* ==================================================
+   研究室介紹
+================================================== */
+
+.intro {
+
+    background: #fffaf6;
+
+    border:
+        1px solid #e6cbb9;
+
+    border-radius: 20px;
+
+    padding: 45px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(118,81,63,.07);
+
+}
+
+
+.intro h2 {
+
+    margin: 0 0 20px;
+
+    color: #68482d;
+
+    font-size: 30px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.intro p {
+
+    margin: 0 0 1.35em;
+
+    color: #76513f;
+
+    font-size: 17px;
+
+    line-height: 2;
+
+}
+
+
+.intro p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+/* ==================================================
+   分隔線
+================================================== */
+
+.section-divider {
+
+    margin: 55px 0 45px;
+
+    border: 0;
+
+    border-top:
+        1px solid #e6cbb9;
+
+}
+
+
+/* ==================================================
+   文章區標題
+================================================== */
+
+.section-heading {
+
+    margin-bottom: 28px;
+
+    text-align: center;
+
+}
+
+
+.section-heading small {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #a17a43;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+}
+
+
+.section-heading h2 {
+
+    margin: 0;
+
+    color: #68482d;
+
+    font-size: 30px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.section-heading p {
+
+    max-width: 650px;
+
+    margin: 10px auto 0;
+
+    color: #8c6c5b;
+
+    font-size: 15px;
+
+}
+
+
+/* ==================================================
+   文章列表
+================================================== */
+
+.research-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 26px;
+
+}
+
+
+.research-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 280px;
+
+    padding: 28px;
+
+    background: #fffaf6;
+
+    border:
+        1px solid #e6cbb9;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(118,81,63,.055);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.research-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 28px
+        rgba(118,81,63,.10);
+
+}
+
+
+.research-card-date {
+
+    margin-bottom: 10px;
+
+    color: #a17a43;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.research-card h3 {
+
+    margin: 0 0 14px;
+
+    color: #68482d;
+
+    font-size: 23px;
+
+    line-height: 1.5;
+
+}
+
+
+.research-card-excerpt {
+
+    flex: 1;
+
+    color: #76513f;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+
+}
+
+
+.read-more {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    align-self: flex-start;
+
+    margin-top: 22px;
+
+    padding: 8px 17px;
+
+    border:
+        1px solid #c99b7e;
+
+    border-radius: 22px;
+
+    color: #a86e53;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    letter-spacing: .5px;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+
+}
+
+
+.read-more:hover {
+
+    background: #a86e53;
+
+    color: #fffaf6;
+
+}
+
+
+/* ==================================================
+   單篇文章
+================================================== */
+
+.article {
+
+    margin-top: 34px;
+
+    padding: 45px;
+
+    background: #fffaf6;
+
+    border:
+        1px solid #e6cbb9;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(118,81,63,.07);
+
+}
+
+
+.article-top {
+
+    padding-bottom: 25px;
+
+    margin-bottom: 30px;
+
+    border-bottom:
+        1px solid #e6cbb9;
+
+}
+
+
+.article h2 {
+
+    margin: 0 0 8px;
+
+    color: #68482d;
+
+    font-size: 32px;
+
+    line-height: 1.5;
+
+}
+
+
+.article-date {
+
+    color: #a17a43;
+
+    font-size: 14px;
+
+}
+
+
+.article-body {
+
+    color: #76513f;
+
+    font-size: 17px;
+
+    line-height: 2;
+
+}
+
+
+.article-body p {
+
+    margin: 0 0 1.4em;
+
+}
+
+
+.article-body h2,
+.article-body h3 {
+
+    margin-top: 2em;
+
+    margin-bottom: .8em;
+
+    color: #68482d;
+
+}
+
+
+.article-body strong {
+
+    color: #5c4937;
+
+}
+
+
+.article-body img {
+
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    margin: 28px auto;
+
+    border-radius: 10px;
+
+}
+
+
+.article-navigation {
+
+    margin-top: 35px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid #e6cbb9;
+
+    text-align: center;
+
+}
+
+
+.article-navigation a {
+
+    color: #a86e53;
+
+    text-decoration: none;
+
+}
+
+
+.article-navigation a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* ==================================================
+   Loading / Empty / Error
+================================================== */
+
+.loading,
+.empty,
+.error {
+
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: #8c6c5b;
+
+}
+
+
+.error {
+
+    color: #a55;
+
+}
+
+
+/* ==================================================
+   底部回首頁
+================================================== */
+
+.bottom-home {
+
+    margin-top: 55px;
+
+    text-align: center;
+
+}
+
+
+.bottom-home a {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 11px 24px;
+
+    border:
+        1px solid #a86e53;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,250,246,.78);
+
+    color: #a86e53;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+.bottom-home a:hover {
+
+    background: #a86e53;
+
+    color: #fffaf6;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ==================================================
+   平板
+================================================== */
+
+@media (max-width: 850px) {
+
+    .research-hero {
+
+        min-height: 460px;
+
+    }
+
+
+    .research-hero-content {
+
+        padding: 65px 0;
+
+    }
+
+
+    .research-list {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+/* ==================================================
+   手機
+==================================================
+
+   這裡刻意不沿用桌機 Hero 的 cover。
+
+   research2.png 是本次新定調圖片，
+   手機版採「完整圖片在上、文字在下」：
+
+   1. 不裁切 research2.png
+   2. 不讓左右出現圖片外的白邊
+   3. 不疊桌機用的白色漸層
+   4. 文字獨立放在下方
+   5. 桌機版完全維持原本 Hero 邏輯
+
+================================================== */
+
+@media (max-width: 600px) {
+
+    .research-hero {
+
+        min-height: 0;
+
+        display: block;
+
+        background: #ead7c6;
+
+    }
+
+
+    .research-hero::after {
+
+        display: none;
+
+    }
+
+
+    .research-hero-image {
+
+        position: relative;
+
+        inset: auto;
+
+        width: 100%;
+
+        height: auto;
+
+    }
+
+
+    .research-hero-image img {
+
+        position: relative;
+
+        inset: auto;
+
+        width: 100%;
+
+        height: auto;
+
+        max-width: 100%;
+
+        object-fit: contain;
+
+        object-position: center top;
+
+        display: block;
+
+    }
+
+
+    .research-hero-content {
+
+        width: min(1100px, 92%);
+
+        padding: 42px 0 52px;
+
+    }
+
+
+    .research-eyebrow {
+
+        margin-bottom: 14px;
+
+        padding: 6px 16px;
+
+        font-size: 11px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .research-hero h1 {
+
+        font-size: 40px;
+
+        letter-spacing: 2px;
+
+        line-height: 1.3;
+
+    }
+
+
+    .research-hero h1::after {
+
+        width: 65px;
+
+        margin-top: 17px;
+
+    }
+
+
+    .research-hero p {
+
+        font-size: 16px;
+
+        line-height: 1.9;
+
+    }
+
+
+    main {
+
+        padding: 35px 0 60px;
+
+    }
+
+
+    .intro {
+
+        padding: 28px 22px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .intro h2 {
+
+        font-size: 25px;
+
+    }
+
+
+    .intro p {
+
+        font-size: 16px;
+
+        line-height: 1.9;
+
+    }
+
+
+    .section-divider {
+
+        margin: 40px 0 35px;
+
+    }
+
+
+    .section-heading {
+
+        margin-bottom: 24px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 25px;
+
+    }
+
+
+    .section-heading p {
+
+        font-size: 14px;
+
+    }
+
+
+    .research-list {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+    }
+
+
+    .research-card {
+
+        min-height: 0;
+
+        padding: 23px 20px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .research-card h3 {
+
+        font-size: 21px;
+
+    }
+
+
+    .research-card-excerpt {
+
+        font-size: 15px;
+
+        line-height: 1.9;
+
+    }
+
+
+    .article {
+
+        padding: 27px 20px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .article h2 {
+
+        font-size: 26px;
+
+    }
+
+
+    .article-body {
+
+        font-size: 16px;
+
+        line-height: 1.9;
+
+    }
+
+
+    .bottom-home {
+
+        margin-top: 42px;
+
+    }
+
+}
+
+
+</style>
+
 </head>
+
 
 <body>
 
-<header>
-    <h1>📚 好運研究室</h1>
-    <p>從經驗、案例與觀察出發，研究那些影響人生選擇的事。</p>
-</header>
 
-<div class="back">
-    <a href="index.html">← 回到好運研究所</a>
-</div>
+<!-- ==================================================
+     Hero
+================================================== -->
+
+<section class="research-hero">
+
+
+    <div class="research-hero-image">
+
+        <img
+            src="uploads/research2.png"
+            alt="好運研究室"
+        >
+
+    </div>
+
+
+    <div class="research-hero-content">
+
+
+        <div class="research-eyebrow">
+            GOOD LUCK RESEARCH LAB
+        </div>
+
+
+        <h1>
+            好運研究室
+        </h1>
+
+
+        <p>
+            文章、故事、觀察與生活裡，
+            那些值得慢慢研究的事情。
+        </p>
+
+
+        <a
+            class="back"
+            href="index.html"
+        >
+            ← 回到好運研究所
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     Main
+================================================== -->
 
 <main>
 
-    <section class="intro">
 
-        <h2>我們為什麼需要研究「好運」？</h2>
-
-        <p>
-            人們常常把一件事情的順利與否，稱為運氣。
-            但一個結果的形成，往往不只有運氣。
-            環境、選擇、時機、性格、行動，以及我們看事情的方式，
-            都可能成為影響人生走向的一部分。
-        </p>
-
-        <p>
-            人們所謂的好運，跟我們常常說的<strong>因果</strong>，息息相關。
-            因果因果，顧名思義就是<strong>原因與結果</strong>。
-        </p>
-
-        <p>
-            你想要有好的結果，就要種下好的原因。
-            不管是起心動念，還是行事的方法，都可能成為最後結果的一部分。
-        </p>
-
-        <p>
-            <strong>研究好運，就是在尋找各種好的因，幫助大家有機會得到好的結果。</strong>
-            好運研究室想做的，就是把這些問題一件一件拆開來看。
-        </p>
-
-    </section>
+    <div class="container">
 
 
-    <section class="grid">
+        <!-- ==================================================
+             固定介紹
+        ================================================== -->
 
-        <article class="card">
+        <section class="intro">
 
-            <div class="icon">🔎</div>
 
-            <h3>觀察現象</h3>
+            <h2>
+                📚 好運研究室
+            </h2>
+
 
             <p>
-                從生活中的事件、人們的行為反應、時事、占卜案例與實際經驗出發，
-                觀察事情究竟是怎麼發生的。
-                <br><br>
-                我們不急著相信第一眼看到的答案，
-                而是先看清事情本身的「現況」。
+                好運研究室，是好運研究所裡比較安靜的一個房間。
+                這裡不急著給答案，而是把一些值得研究的問題留下來，
+                慢慢觀察、慢慢整理。
             </p>
 
-        </article>
-
-
-        <article class="card">
-
-            <div class="icon">🧩</div>
-
-            <h3>整理脈絡</h3>
 
             <p>
-                不急著替事情下答案，
-                而是把人物、環境、選擇與結果之間的關係重新整理。
-                透過邏輯、理性、有條理的脈絡線索，
-                一步一步挖掘出事情的真相。
-                <br><br>
-                我們相信，只有把事情的來龍去脈整理清楚，
-                才有機會真正理解一個結果是怎麼形成的。
+                從生活裡遇到的人、事情與選擇，
+                到那些看似神祕、卻又與我們每天生活有關的現象，
+                都可以成為研究的起點。
             </p>
 
-        </article>
-
-
-        <article class="card">
-
-            <div class="icon">💡</div>
-
-            <h3>重新理解</h3>
 
             <p>
-                當真相出現，我們就能看見更多可能性，
-                就有機會用不同角度理解自己，
-                也看見原本忽略的選擇。
-                <br><br>
-                只要我們願意接受真相、面對真相，
-                願意面對自己、調整自己，
-                勇敢地往前走，好運就離我們不遠了！
+                有些事情值得相信，有些事情值得懷疑，
+                也有些事情目前還不知道答案。
+                好運研究室想做的，就是保留這個空間，
+                讓我們在經驗、觀察與思考之間，
+                多看見一些可能。
             </p>
 
-        </article>
 
-    </section>
+        </section>
 
 
-    <div class="quote">
-        真相不一定討喜，卻能讓我們自由。
+
+        <hr class="section-divider">
+
+
+
+        <!-- ==================================================
+             文章標題
+        ================================================== -->
+
+        <section class="section-heading">
+
+
+            <small>
+                RESEARCH NOTES
+            </small>
+
+
+            <h2>
+                最新研究文章
+            </h2>
+
+
+            <p>
+                從生活、故事與觀察開始，
+                把值得研究的問題慢慢留下來。
+            </p>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             文章列表
+        ================================================== -->
+
+        <section
+            id="researchList"
+            class="research-list"
+        >
+
+
+            <div class="loading">
+
+                正在整理好運研究室的文章……
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             單篇文章
+        ================================================== -->
+
+        <section
+            id="articleView"
+            style="display:none;"
+        >
+        </section>
+
+
+
+        <!-- ==================================================
+             底部回首頁
+        ================================================== -->
+
+        <div class="bottom-home">
+
+
+            <a href="index.html">
+
+                ← 回到好運研究所
+
+            </a>
+
+
+        </div>
+
+
     </div>
 
-
-    <div class="ending">
-
-        真正值得研究的，不只是「有沒有好運」，
-        而是當事情發生之後，
-        我們能不能理解它，並且知道下一步可以怎麼走。
-
-        <br><br>
-
-        <strong>
-            願意調整自己的步伐與做法，人生才有金色的未來！
-        </strong>
-
-    </div>
 
 </main>
 
 
-<footer>
-    © 好運研究所｜好運研究室
-</footer>
+
+<script>
+
+/* ==================================================
+   GitHub CMS
+================================================== */
+
+const API_URL =
+    "https://api.github.com/repos/loustalk/goodluck-research/contents/content/articles?ref=main";
+
+
+const RAW_BASE =
+    "https://raw.githubusercontent.com/loustalk/goodluck-research/main/content/articles/";
+
+
+
+/* ==================================================
+   Front Matter
+================================================== */
+
+function parseFrontMatter(text) {
+
+
+    const result = {
+
+        title: "",
+
+        date: "",
+
+        category: "",
+
+        body: text
+
+    };
+
+
+    if (!text.startsWith("---")) {
+
+        return result;
+
+    }
+
+
+    const end =
+        text.indexOf("\n---", 3);
+
+
+    if (end === -1) {
+
+        return result;
+
+    }
+
+
+    const frontMatter =
+        text
+            .substring(
+                3,
+                end
+            )
+            .trim();
+
+
+    result.body =
+        text
+            .substring(
+                end + 4
+            )
+            .trim();
+
+
+    frontMatter
+        .split("\n")
+        .forEach(line => {
+
+
+            const colon =
+                line.indexOf(":");
+
+
+            if (colon === -1) {
+
+                return;
+
+            }
+
+
+            const key =
+                line
+                    .substring(
+                        0,
+                        colon
+                    )
+                    .trim();
+
+
+            let value =
+                line
+                    .substring(
+                        colon + 1
+                    )
+                    .trim();
+
+
+            value =
+                value.replace(
+                    /^[\"']|[\"']$/g,
+                    ""
+                );
+
+
+            if (key === "title") {
+
+                result.title = value;
+
+            }
+
+
+            if (key === "date") {
+
+                result.date = value;
+
+            }
+
+
+            if (key === "category") {
+
+                result.category = value;
+
+            }
+
+
+        });
+
+
+    return result;
+
+}
+
+
+
+/* ==================================================
+   日期格式
+================================================== */
+
+function formatDate(dateString) {
+
+
+    if (!dateString) {
+
+        return "";
+
+    }
+
+
+    const date =
+        new Date(dateString);
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return dateString;
+
+    }
+
+
+    return date.toLocaleDateString(
+        "zh-TW",
+        {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit"
+        }
+    );
+
+}
+
+
+
+/* ==================================================
+   HTML Escape
+================================================== */
+
+function escapeHtml(text) {
+
+
+    return String(text)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* ==================================================
+   建立摘要
+================================================== */
+
+function createExcerpt(markdown) {
+
+
+    let text =
+        String(markdown)
+
+            .replace(
+                /<img\s+[^>]*>/gi,
+                ""
+            )
+
+            .replace(
+                /<[^>]+>/g,
+                " "
+            )
+
+            .replace(
+                /[#*_]/g,
+                ""
+            )
+
+            .replace(
+                /\\n/g,
+                " "
+            )
+
+            .replace(
+                /\s+/g,
+                " "
+            )
+
+            .trim();
+
+
+    if (text.length > 150) {
+
+        text =
+            text.substring(
+                0,
+                150
+            ) +
+            "……";
+
+    }
+
+
+    return text;
+
+}
+
+
+
+/* ==================================================
+   載入研究文章
+================================================== */
+
+async function loadResearch() {
+
+
+    const researchList =
+        document.getElementById(
+            "researchList"
+        );
+
+
+    const articleView =
+        document.getElementById(
+            "articleView"
+        );
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                API_URL +
+                "&t=" +
+                Date.now()
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "GitHub API 讀取失敗"
+            );
+
+        }
+
+
+        const files =
+            await response.json();
+
+
+        const markdownFiles =
+            files.filter(
+                file =>
+                    file.name
+                        .toLowerCase()
+                        .endsWith(".md")
+            );
+
+
+        const articles = [];
+
+
+
+        /* ==================================================
+           逐篇讀取
+        ================================================== */
+
+        for (
+            const file of markdownFiles
+        ) {
+
+
+            try {
+
+
+                const rawUrl =
+                    RAW_BASE +
+                    encodeURIComponent(
+                        file.name
+                    );
+
+
+                const articleResponse =
+                    await fetch(
+                        rawUrl +
+                        "?t=" +
+                        Date.now()
+                    );
+
+
+                if (
+                    !articleResponse.ok
+                ) {
+
+                    continue;
+
+                }
+
+
+                const text =
+                    await articleResponse.text();
+
+
+                const article =
+                    parseFrontMatter(
+                        text
+                    );
+
+
+                /* ==========================================
+                   只抓 research 類別
+                ========================================== */
+
+                if (
+                    article.category !==
+                    "research"
+                ) {
+
+                    continue;
+
+                }
+
+
+                article.filename =
+                    file.name;
+
+
+                articles.push(
+                    article
+                );
+
+
+            }
+
+
+            catch (error) {
+
+
+                console.warn(
+                    "研究文章讀取失敗：",
+                    file.name,
+                    error
+                );
+
+
+            }
+
+
+        }
+
+
+
+        /* ==================================================
+           最新文章排前面
+        ================================================== */
+
+        articles.sort(
+            (a, b) =>
+                new Date(b.date) -
+                new Date(a.date)
+        );
+
+
+
+        /* ==================================================
+           沒有文章
+        ================================================== */
+
+        if (
+            articles.length === 0
+        ) {
+
+
+            researchList.innerHTML = `
+
+                <div class="empty">
+
+                    目前還沒有研究文章。
+
+                </div>
+
+            `;
+
+
+            return;
+
+        }
+
+
+
+        /* ==================================================
+           建立文章卡片
+        ================================================== */
+
+        researchList.innerHTML =
+
+            articles
+
+                .map(
+                    (article, index) => {
+
+
+                        return `
+
+                            <article
+                                class="research-card"
+                            >
+
+
+                                <div
+                                    class="research-card-date"
+                                >
+
+                                    ${escapeHtml(
+                                        formatDate(
+                                            article.date
+                                        )
+                                    )}
+
+                                </div>
+
+
+                                <h3>
+
+                                    ${escapeHtml(
+                                        article.title ||
+                                        "未命名研究"
+                                    )}
+
+                                </h3>
+
+
+                                <div
+                                    class="research-card-excerpt"
+                                >
+
+                                    ${escapeHtml(
+                                        createExcerpt(
+                                            article.body
+                                        )
+                                    )}
+
+                                </div>
+
+
+                                <a
+                                    href="#research-${index}"
+                                    class="read-more"
+                                    data-index="${index}"
+                                >
+
+                                    閱讀全文 →
+
+                                </a>
+
+
+                            </article>
+
+                        `;
+
+                    }
+                )
+
+                .join("");
+
+
+
+        /* ==================================================
+           閱讀全文
+        ================================================== */
+
+        document
+            .querySelectorAll(
+                ".read-more"
+            )
+            .forEach(link => {
+
+
+                link.addEventListener(
+                    "click",
+                    function(event) {
+
+
+                        event.preventDefault();
+
+
+                        const index =
+                            Number(
+                                this.dataset.index
+                            );
+
+
+                        showArticle(
+                            articles[index]
+                        );
+
+
+                    }
+                );
+
+
+            });
+
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+            error
+        );
+
+
+        researchList.innerHTML = `
+
+            <div class="error">
+
+                研究文章載入失敗，
+                請稍後再試。
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* ==================================================
+   顯示單篇文章
+================================================== */
+
+function showArticle(article) {
+
+
+    const researchList =
+        document.getElementById(
+            "researchList"
+        );
+
+
+    const articleView =
+        document.getElementById(
+            "articleView"
+        );
+
+
+    researchList.style.display =
+        "none";
+
+
+    articleView.style.display =
+        "block";
+
+
+    articleView.innerHTML = `
+
+        <article class="article">
+
+
+            <div class="article-top">
+
+
+                <h2>
+
+                    ${escapeHtml(
+                        article.title ||
+                        "未命名研究"
+                    )}
+
+                </h2>
+
+
+                <div
+                    class="article-date"
+                >
+
+                    ${escapeHtml(
+                        formatDate(
+                            article.date
+                        )
+                    )}
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                class="article-body"
+            >
+
+                ${article.body}
+
+            </div>
+
+
+            <div
+                class="article-navigation"
+            >
+
+                <a
+                    href="#"
+                    id="backToResearch"
+                >
+
+                    ← 回到研究文章列表
+
+                </a>
+
+
+            </div>
+
+
+        </article>
+
+    `;
+
+
+    document
+        .getElementById(
+            "backToResearch"
+        )
+        .addEventListener(
+            "click",
+            function(event) {
+
+
+                event.preventDefault();
+
+
+                articleView.style.display =
+                    "none";
+
+
+                researchList.style.display =
+                    "grid";
+
+
+                window.scrollTo({
+                    top:
+                        researchList.offsetTop -
+                        30,
+                    behavior:
+                        "smooth"
+                });
+
+
+            }
+        );
+
+
+    window.scrollTo({
+        top:
+            articleView.offsetTop -
+            25,
+        behavior:
+            "smooth"
+    });
+
+}
+
+
+
+/* ==================================================
+   啟動
+================================================== */
+
+loadResearch();
+
+</script>
+
 
 </body>
+
 </html>
