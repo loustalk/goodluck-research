@@ -1,515 +1,938 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>好運研究所｜好運琥珀</title>
 
     <style>
+
+        /* =========================================================
+           基本設定
+        ========================================================= */
+
         * {
             box-sizing: border-box;
         }
 
-        :root {
-            --ivory: #fbf7f1;
-            --ivory-deep: #f3e9dd;
-            --cream: #fffdf9;
-            --rose-gold: #bd9274;
-            --gold: #c5a078;
-            --gold-light: #e5ceb2;
-            --brown: #574033;
-            --brown-soft: #786353;
-            --text: #51463e;
-            --muted: #8d7b6c;
-            --border: #ead9c7;
-            --shadow: 0 10px 30px rgba(105, 75, 49, 0.09);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
                 "Noto Sans TC",
                 "Microsoft JhengHei",
                 sans-serif;
-            background:
-                radial-gradient(ellipse at top, #fffaf3 0%, transparent 48%),
-                linear-gradient(180deg, var(--ivory) 0%, #f4ede4 100%);
-            color: var(--text);
+
+            background: #f3e6dc;
+            color: #76513f;
+
             line-height: 1.9;
         }
 
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
         .container {
-            width: min(1100px, 92%);
+            width: min(1120px, 92%);
             margin: 0 auto;
         }
 
-        /* ===== 頁首主題 ===== */
 
-        header {
+        /* =========================================================
+           Hero
+        ========================================================= */
+
+        .hero {
             position: relative;
+
+            min-height: 560px;
+
+            display: flex;
+            align-items: center;
+
             overflow: hidden;
-            padding: 76px 20px 50px;
-            text-align: center;
+
             background:
-                radial-gradient(
-                    circle at 15% 20%,
-                    rgba(255, 255, 255, 0.8),
-                    transparent 30%
-                ),
-                linear-gradient(
-                    135deg,
-                    #f7eee4 0%,
-                    #ead7c4 48%,
-                    #f6e9dc 100%
-                );
-            border-bottom: 1px solid rgba(184, 139, 101, 0.25);
+                #ead9c8
+                url("uploads/amber2.png")
+                center center /
+                cover
+                no-repeat;
         }
 
-        header::before,
-        header::after {
+
+        /* 左側文字保護區
+           不做死白色方塊，而是自然漸層 */
+
+        .hero::before {
             content: "";
+
             position: absolute;
-            width: 190px;
-            height: 190px;
-            border: 1px solid rgba(177, 132, 93, 0.15);
-            border-radius: 50%;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255, 250, 246, 0.86) 0%,
+                    rgba(255, 250, 246, 0.72) 24%,
+                    rgba(255, 250, 246, 0.40) 43%,
+                    rgba(255, 250, 246, 0.10) 62%,
+                    rgba(255, 250, 246, 0) 76%
+                );
+
             pointer-events: none;
         }
 
-        header::before {
-            top: -120px;
-            left: -55px;
-        }
 
-        header::after {
-            right: -65px;
-            bottom: -135px;
-            width: 250px;
-            height: 250px;
-        }
-
-        header .container {
+        .hero-inner {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+
+            width: min(1120px, 92%);
+            margin: 0 auto;
+
+            padding:
+                90px 0
+                80px;
         }
 
-        header h1 {
+
+        .hero-content {
+            width: min(470px, 48%);
+        }
+
+
+        .hero-kicker {
             margin: 0 0 12px;
-            font-size: clamp(29px, 4vw, 38px);
-            letter-spacing: 3px;
-            color: var(--brown);
-            text-shadow: 0 2px 0 rgba(255, 255, 255, 0.7);
-        }
 
-        header p {
-            margin: 0;
-            color: var(--brown-soft);
-            font-size: 16px;
-            letter-spacing: 1px;
-        }
+            color: #a17a43;
 
-        .back {
-            display: inline-block;
-            margin-top: 27px;
-            padding: 8px 19px;
-            color: #876345;
-            text-decoration: none;
             font-size: 14px;
-            border: 1px solid #d8b99b;
-            border-radius: 999px;
-            background: rgba(255, 253, 249, 0.68);
+            font-weight: 600;
+
+            letter-spacing: 3px;
+        }
+
+
+        .hero h1 {
+            margin: 0 0 16px;
+
+            color: #68482d;
+
+            font-size:
+                clamp(42px, 5vw, 66px);
+
+            font-weight: 600;
+
+            line-height: 1.2;
+
+            letter-spacing: 5px;
+        }
+
+
+        .hero-subtitle {
+            margin: 0 0 22px;
+
+            color: #76513f;
+
+            font-size:
+                clamp(19px, 2vw, 25px);
+
+            font-weight: 500;
+
+            line-height: 1.7;
+
+            letter-spacing: 2px;
+        }
+
+
+        .hero-description {
+            margin: 0;
+
+            color: #6f5647;
+
+            font-size: 16px;
+
+            line-height: 2;
+
+            max-width: 430px;
+        }
+
+
+        /* =========================================================
+           回首頁按鈕
+        ========================================================= */
+
+        .back-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 42px;
+
+            padding:
+                9px 22px;
+
+            border:
+                1px solid #a86e53;
+
+            border-radius: 24px;
+
+            background:
+                rgba(255, 250, 246, 0.82);
+
+            color: #a86e53;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            letter-spacing: 1px;
+
+            box-shadow:
+                0 5px 16px
+                rgba(100, 65, 45, 0.08);
+
             transition:
-                background 0.25s ease,
-                color 0.25s ease,
-                transform 0.25s ease,
-                box-shadow 0.25s ease;
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
-        .back:hover {
-            background: var(--cream);
-            color: var(--brown);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 14px rgba(105, 75, 49, 0.1);
+
+        .back-button:hover {
+            background: #a86e53;
+
+            color: #fffaf6;
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(100, 65, 45, 0.14);
         }
 
-        /* ===== 主內容 ===== */
+
+        .hero-back {
+            margin-top: 30px;
+        }
+
+
+        /* =========================================================
+           主內容
+        ========================================================= */
 
         main {
-            padding: 58px 0 85px;
+            padding:
+                65px 0
+                90px;
         }
 
-        /* ===== 介紹卡片 ===== */
+
+        /* =========================================================
+           固定介紹
+        ========================================================= */
 
         .intro {
             position: relative;
-            overflow: hidden;
-            background: rgba(255, 253, 249, 0.95);
-            border: 1px solid var(--border);
+
+            background: #fffaf6;
+
+            border:
+                1px solid #e6cbb9;
+
             border-radius: 20px;
-            padding: 45px;
-            box-shadow: var(--shadow);
+
+            padding:
+                45px 50px;
+
+            box-shadow:
+                0 8px 28px
+                rgba(106, 73, 52, 0.06);
         }
+
 
         .intro::before {
             content: "";
+
             position: absolute;
+
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(
-                90deg,
-                #b98560,
-                #e5c7a7,
-                #c59a78,
-                #ead6bd
-            );
+            left: 45px;
+
+            width: 70px;
+            height: 3px;
+
+            background: #a86e53;
+
+            border-radius:
+                0 0 4px 4px;
         }
+
 
         .intro h2 {
-            margin-top: 0;
-            margin-bottom: 24px;
-            padding-bottom: 13px;
+            margin:
+                0 0 22px;
+
+            color: #68482d;
+
             font-size: 30px;
-            color: var(--brown);
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
         }
 
-        .intro h2::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 3px;
-            margin-top: 12px;
-            border-radius: 10px;
-            background: linear-gradient(
-                90deg,
-                var(--rose-gold),
-                var(--gold-light)
-            );
-        }
 
         .intro p {
-            margin: 0 0 1.4em;
-            font-size: 17px;
+            margin:
+                0 0 1.4em;
+
+            color: #76513f;
+
+            font-size: 16px;
+
             line-height: 2;
-            color: #65574c;
         }
+
 
         .intro p:last-child {
             margin-bottom: 0;
         }
 
-        /* ===== 分隔線 ===== */
+
+        /* =========================================================
+           分隔線
+        ========================================================= */
 
         .section-divider {
-            margin: 58px 0 46px;
+            margin:
+                58px 0
+                48px;
+
             border: 0;
-            border-top: 1px solid #dfcdbb;
+
+            border-top:
+                1px solid #e6cbb9;
         }
 
-        /* ===== 收藏區標題 ===== */
+
+        /* =========================================================
+           收藏標題
+        ========================================================= */
 
         .gallery-title {
             margin-bottom: 34px;
+
             text-align: center;
         }
 
-        .gallery-title h2 {
-            display: inline-block;
-            margin: 0 0 10px;
-            font-size: 30px;
-            letter-spacing: 1px;
-            color: var(--brown);
+
+        .gallery-title .eyebrow {
+            margin: 0 0 7px;
+
+            color: #a17a43;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 3px;
         }
 
-        .gallery-title h2::after {
-            content: "";
-            display: block;
-            width: 58px;
-            height: 3px;
-            margin: 12px auto 0;
-            border-radius: 10px;
-            background: linear-gradient(
-                90deg,
-                var(--rose-gold),
-                var(--gold-light)
-            );
+
+        .gallery-title h2 {
+            margin:
+                0 0 9px;
+
+            color: #68482d;
+
+            font-size: 31px;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
         }
+
 
         .gallery-title p {
             margin: 0;
-            color: var(--muted);
+
+            color: #8c6c5b;
+
             font-size: 15px;
-            letter-spacing: 0.5px;
         }
 
-        /* ===== 琥珀畫廊 ===== */
+
+        /* =========================================================
+           琥珀畫廊
+        ========================================================= */
 
         .amber-gallery {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 28px;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 30px;
+
             align-items: start;
         }
 
-        /* ===== 琥珀卡片 ===== */
+
+        /* =========================================================
+           琥珀卡片
+        ========================================================= */
 
         .amber-card {
-            min-width: 0;
             overflow: hidden;
-            background: var(--cream);
-            border: 1px solid var(--border);
+
+            background: #fffaf6;
+
+            border:
+                1px solid #e6cbb9;
+
             border-radius: 18px;
-            box-shadow: 0 6px 22px rgba(105, 75, 49, 0.07);
+
+            box-shadow:
+                0 7px 24px
+                rgba(106, 73, 52, 0.07);
+
             transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease,
-                border-color 0.25s ease;
+                transform 0.22s ease,
+                box-shadow 0.22s ease;
         }
+
 
         .amber-card:hover {
-            transform: translateY(-5px);
-            border-color: #d9b99a;
-            box-shadow: 0 14px 32px rgba(105, 75, 49, 0.14);
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(106, 73, 52, 0.11);
         }
 
-        /* ===== 琥珀圖片區 ===== */
+
+        /* =========================================================
+           商品圖片
+        ========================================================= */
 
         .amber-image {
             width: 100%;
-            height: 420px;
-            background:
-                radial-gradient(
-                    circle at 50% 42%,
-                    rgba(255, 253, 247, 0.98),
-                    transparent 60%
-                ),
-                linear-gradient(
-                    145deg,
-                    #f5eadc 0%,
-                    #ead8c5 48%,
-                    #f8f0e6 100%
-                );
+
+            height: 390px;
+
             display: flex;
+
             align-items: center;
             justify-content: center;
-            padding: 18px;
-            border-bottom: 1px solid rgba(210, 181, 151, 0.4);
+
+            padding: 16px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f5e9df,
+                    #ead8c7
+                );
         }
+
 
         .amber-image img {
             width: auto;
             height: auto;
-            max-width: 85%;
-            max-height: 390px;
+
+            max-width: 88%;
+            max-height: 360px;
+
             display: block;
+
             object-fit: contain;
-            border-radius: 8px;
-            filter: drop-shadow(0 5px 9px rgba(80, 56, 36, 0.1));
-            transition: transform 0.3s ease;
+
+            border-radius: 9px;
         }
 
-        .amber-card:hover .amber-image img {
-            transform: scale(1.025);
-        }
 
-        /* ===== 琥珀文字區 ===== */
+        /* =========================================================
+           商品說明
+        ========================================================= */
 
         .amber-content {
-            min-height: 180px;
-            padding: 23px 22px;
-            background: var(--cream);
+            min-height: 175px;
+
+            padding:
+                23px 24px
+                25px;
+
+            background: #fffaf6;
         }
+
 
         .amber-content h3 {
-            margin: 0 0 12px;
-            padding-bottom: 10px;
+            margin:
+                0 0 11px;
+
+            color: #68482d;
+
             font-size: 21px;
-            line-height: 1.6;
-            color: var(--brown);
-            border-bottom: 1px solid #eee1d3;
-            overflow-wrap: anywhere;
+
+            font-weight: 600;
+
+            line-height: 1.5;
+
+            letter-spacing: 1px;
         }
+
 
         .amber-description {
-            color: #746559;
+            color: #76513f;
+
             font-size: 15px;
+
             line-height: 1.9;
+
             overflow-wrap: anywhere;
         }
 
+
         .amber-description p {
-            margin: 0 0 1em;
+            margin:
+                0 0 1em;
         }
+
 
         .amber-description p:last-child {
             margin-bottom: 0;
         }
 
-        /* ===== 載入、空白與錯誤提示 ===== */
+
+        /* =========================================================
+           Loading / Empty / Error
+        ========================================================= */
 
         .loading,
         .empty,
         .error {
-            grid-column: 1 / -1;
+            grid-column:
+                1 / -1;
+
+            padding:
+                55px 20px;
+
             text-align: center;
-            padding: 50px 20px;
-            color: var(--muted);
-            background: rgba(255, 253, 249, 0.75);
-            border: 1px solid var(--border);
-            border-radius: 16px;
+
+            color: #8c6c5b;
+
+            background:
+                rgba(255, 250, 246, 0.72);
+
+            border:
+                1px solid #e6cbb9;
+
+            border-radius: 18px;
         }
 
-        .loading::before {
-            content: "✧";
-            display: block;
-            margin-bottom: 8px;
-            color: var(--gold);
-            font-size: 28px;
-        }
 
         .error {
-            color: #a55;
+            color: #a05f52;
         }
 
-        /* ===== 平板 ===== */
 
-        @media (max-width: 800px) {
+        /* =========================================================
+           底部回首頁
+        ========================================================= */
+
+        .bottom-home {
+            margin-top:
+                70px;
+
+            padding-top:
+                10px;
+
+            text-align: center;
+        }
+
+
+        .bottom-home .back-button {
+            background:
+                rgba(255, 250, 246, 0.86);
+        }
+
+
+        /* =========================================================
+           Footer 區隔感
+        ========================================================= */
+
+        .page-ending {
+            margin-top:
+                20px;
+
+            text-align: center;
+
+            color: #a17a43;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            opacity: 0.72;
+        }
+
+
+        /* =========================================================
+           平板
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                min-height: 510px;
+
+                background-position:
+                    58% center;
+            }
+
+
+            .hero-content {
+                width: min(470px, 58%);
+            }
+
+
+            .hero::before {
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(255, 250, 246, 0.88) 0%,
+                        rgba(255, 250, 246, 0.72) 32%,
+                        rgba(255, 250, 246, 0.34) 55%,
+                        rgba(255, 250, 246, 0.04) 75%
+                    );
+            }
+
+
             .amber-gallery {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 22px;
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 24px;
             }
 
-            .amber-image {
-                height: 360px;
-            }
-
-            .amber-image img {
-                max-height: 330px;
-                max-width: 85%;
-            }
-
-            .intro {
-                padding: 35px;
-            }
-
-            .amber-content {
-                padding: 20px;
-            }
         }
 
-        /* ===== 手機 ===== */
+
+        /* =========================================================
+           手機
+        ========================================================= */
 
         @media (max-width: 600px) {
-            header {
-                padding: 52px 18px 36px;
+
+            .container {
+                width: min(92%, 520px);
             }
 
-            header h1 {
-                font-size: 29px;
+
+            .hero {
+                min-height: 590px;
+
+                align-items: flex-end;
+
+                background-position:
+                    62% center;
+            }
+
+
+            .hero::before {
+                background:
+                    linear-gradient(
+                        180deg,
+                        rgba(255, 250, 246, 0.10) 0%,
+                        rgba(255, 250, 246, 0.28) 34%,
+                        rgba(255, 250, 246, 0.84) 63%,
+                        rgba(255, 250, 246, 0.96) 100%
+                    );
+            }
+
+
+            .hero-inner {
+                width: 92%;
+
+                padding:
+                    50px 0
+                    45px;
+            }
+
+
+            .hero-content {
+                width: 100%;
+            }
+
+
+            .hero-kicker {
+                margin-bottom: 8px;
+
+                font-size: 12px;
+
                 letter-spacing: 2px;
             }
 
-            header p {
-                font-size: 14px;
-                line-height: 1.9;
+
+            .hero h1 {
+                margin-bottom: 11px;
+
+                font-size: 42px;
+
+                letter-spacing: 3px;
             }
+
+
+            .hero-subtitle {
+                margin-bottom: 15px;
+
+                font-size: 20px;
+
+                line-height: 1.6;
+
+                letter-spacing: 1px;
+            }
+
+
+            .hero-description {
+                max-width: 100%;
+
+                font-size: 14px;
+
+                line-height: 1.85;
+            }
+
+
+            .hero-back {
+                margin-top: 22px;
+            }
+
+
+            .back-button {
+                min-height: 40px;
+
+                padding:
+                    8px 18px;
+
+                font-size: 13px;
+            }
+
 
             main {
-                padding: 36px 0 60px;
+                padding:
+                    42px 0
+                    65px;
             }
 
-            .container {
-                width: 91%;
-            }
 
             .intro {
-                padding: 30px 23px;
+                padding:
+                    30px 23px;
+
                 border-radius: 16px;
             }
 
+
+            .intro::before {
+                left: 24px;
+            }
+
+
             .intro h2 {
                 font-size: 25px;
+
+                letter-spacing: 1px;
             }
+
 
             .intro p {
                 font-size: 16px;
-                line-height: 1.95;
+
+                line-height: 1.9;
             }
+
 
             .section-divider {
-                margin: 42px 0 36px;
+                margin:
+                    42px 0
+                    35px;
             }
+
 
             .gallery-title {
-                margin-bottom: 27px;
+                margin-bottom: 25px;
             }
 
+
             .gallery-title h2 {
-                font-size: 25px;
+                font-size: 26px;
             }
+
 
             .gallery-title p {
                 font-size: 14px;
             }
 
+
             .amber-gallery {
                 grid-template-columns: 1fr;
+
                 gap: 24px;
             }
 
-            .amber-card {
-                border-radius: 16px;
-            }
 
             .amber-image {
                 height: 420px;
-                padding: 16px;
             }
 
+
             .amber-image img {
-                width: auto;
-                max-width: 85%;
+                max-width: 88%;
+
                 max-height: 390px;
             }
 
+
             .amber-content {
-                min-height: 180px;
-                padding: 21px;
+                min-height: 0;
+
+                padding:
+                    20px;
             }
+
 
             .amber-content h3 {
                 font-size: 20px;
             }
+
+
+            .bottom-home {
+                margin-top:
+                    52px;
+            }
+
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-                animation-duration: 0.01ms !important;
+
+        /* =========================================================
+           超小手機
+        ========================================================= */
+
+        @media (max-width: 380px) {
+
+            .hero {
+                min-height: 570px;
             }
+
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+
+            .hero-description {
+                font-size: 13px;
+            }
+
         }
+
     </style>
+
 </head>
 
+
 <body>
-<header>
-    <div class="container">
-        <h1>🟠 好運琥珀</h1>
-        <p>從琥珀開始，認識自然留下的時間與故事。</p>
-        <a class="back" href="index.html">← 回到好運研究所</a>
+
+
+<!-- =========================================================
+     Hero
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-content">
+
+            <p class="hero-kicker">
+                GOOD LUCK AMBER
+            </p>
+
+            <h1>
+                好運琥珀
+            </h1>
+
+            <p class="hero-subtitle">
+                留住時間，也留住一份好運。
+            </p>
+
+            <p class="hero-description">
+                從自然形成的琥珀原礦，
+                到承載祝福與象徵意義的琥珀作品，
+                在每一塊琥珀裡，看見自然留下的時間與故事。
+            </p>
+
+            <a
+                class="back-button hero-back"
+                href="index.html"
+            >
+                ← 回到好運研究所
+            </a>
+
+        </div>
+
     </div>
-</header>
+
+</section>
+
+
+<!-- =========================================================
+     Main
+========================================================= -->
 
 <main>
+
     <div class="container">
+
+
+        <!-- =====================================================
+             固定介紹
+        ====================================================== -->
+
         <section class="intro">
-            <h2>🟠 好運琥珀</h2>
+
+            <h2>
+                🟠 好運琥珀
+            </h2>
 
             <p>
                 琥珀，是大自然留下來的一段時間。
@@ -531,37 +954,96 @@
                 好運琥珀，希望從琥珀本身出發，
                 分享不同琥珀的特色、故事與我們對它的觀察。
             </p>
+
         </section>
+
 
         <hr class="section-divider">
 
+
+        <!-- =====================================================
+             收藏標題
+        ====================================================== -->
+
         <section class="gallery-title">
-            <h2>✨ 琥珀收藏</h2>
-            <p>每一塊琥珀，都有自己的樣子與故事。</p>
+
+            <p class="eyebrow">
+                AMBER COLLECTION
+            </p>
+
+            <h2>
+                ✨ 琥珀收藏
+            </h2>
+
+            <p>
+                每一塊琥珀，都有自己的樣子與故事。
+            </p>
+
         </section>
 
-        <section id="amberGallery" class="amber-gallery">
-            <div class="loading">正在整理好運琥珀……</div>
+
+        <!-- =====================================================
+             動態琥珀
+        ====================================================== -->
+
+        <section
+            id="amberGallery"
+            class="amber-gallery"
+        >
+
+            <div class="loading">
+                正在整理好運琥珀……
+            </div>
+
         </section>
+
+
+        <!-- =====================================================
+             底部回首頁
+        ====================================================== -->
+
+        <div class="bottom-home">
+
+            <a
+                class="back-button"
+                href="index.html"
+            >
+                ← 回到好運研究所
+            </a>
+
+            <div class="page-ending">
+                好運琥珀 · GOOD LUCK AMBER
+            </div>
+
+        </div>
+
+
     </div>
+
 </main>
 
+
 <script>
-/* =========================
+
+
+/* =========================================================
    GitHub API
-========================= */
+========================================================= */
 
 const API_URL =
     "https://api.github.com/repos/loustalk/goodluck-research/contents/content/articles?ref=main";
 
+
 const RAW_BASE =
     "https://raw.githubusercontent.com/loustalk/goodluck-research/main/content/articles/";
 
-/* =========================
+
+/* =========================================================
    Front Matter
-========================= */
+========================================================= */
 
 function parseFrontMatter(text) {
+
     const result = {
         title: "",
         date: "",
@@ -569,236 +1051,532 @@ function parseFrontMatter(text) {
         body: text
     };
 
+
     if (!text.startsWith("---")) {
         return result;
     }
 
-    const end = text.indexOf("\n---", 3);
+
+    const end =
+        text.indexOf("\n---", 3);
+
 
     if (end === -1) {
         return result;
     }
 
-    const frontMatter = text.substring(3, end).trim();
-    result.body = text.substring(end + 4).trim();
 
-    frontMatter.split("\n").forEach(line => {
-        const colon = line.indexOf(":");
+    const frontMatter =
+        text
+            .substring(3, end)
+            .trim();
 
-        if (colon === -1) {
-            return;
-        }
 
-        const key = line.substring(0, colon).trim();
-        let value = line.substring(colon + 1).trim();
+    result.body =
+        text
+            .substring(end + 4)
+            .trim();
 
-        value = value.replace(/^[\"']|[\"']$/g, "");
 
-        if (key === "title") {
-            result.title = value;
-        }
+    frontMatter
+        .split("\n")
+        .forEach(line => {
 
-        if (key === "date") {
-            result.date = value;
-        }
+            const colon =
+                line.indexOf(":");
 
-        if (key === "category") {
-            result.category = value;
-        }
-    });
+
+            if (colon === -1) {
+                return;
+            }
+
+
+            const key =
+                line
+                    .substring(0, colon)
+                    .trim();
+
+
+            let value =
+                line
+                    .substring(colon + 1)
+                    .trim();
+
+
+            value =
+                value.replace(
+                    /^[\"']|[\"']$/g,
+                    ""
+                );
+
+
+            if (key === "title") {
+                result.title = value;
+            }
+
+
+            if (key === "date") {
+                result.date = value;
+            }
+
+
+            if (key === "category") {
+                result.category = value;
+            }
+
+        });
+
 
     return result;
+
 }
 
-/* =========================
+
+/* =========================================================
    HTML Escape
-========================= */
+========================================================= */
 
 function escapeHtml(text) {
-    return text
+
+    return String(text || "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
 }
 
-/* =========================
+
+/* =========================================================
    取得圖片
-========================= */
+========================================================= */
 
 function extractImage(markdown) {
-    const match = markdown.match(
-        /<img\s+[^>]*src="([^"]+)"[^>]*>/i
-    );
+
+    const match =
+        markdown.match(
+            /<img\s+[^>]*src="([^"]+)"[^>]*>/i
+        );
+
 
     if (!match) {
         return "";
     }
 
+
     return match[1];
+
 }
 
-/* =========================
+
+/* =========================================================
    取得圖片 ALT
-========================= */
+========================================================= */
 
 function extractImageAlt(markdown) {
-    const match = markdown.match(
-        /<img\s+[^>]*alt="([^"]*)"[^>]*>/i
-    );
+
+    const match =
+        markdown.match(
+            /<img\s+[^>]*alt="([^"]*)"[^>]*>/i
+        );
+
 
     if (!match) {
         return "";
     }
 
+
     return match[1];
+
 }
 
-/* =========================
+
+/* =========================================================
    取得說明文字
-========================= */
+========================================================= */
 
 function createDescription(markdown) {
+
     return markdown
-        .replace(/<img\s+[^>]*>/gi, "")
-        .replace(/[#*_]/g, "")
-        .replace(/\n+/g, " ")
+
+        /* 移除 HTML 圖片 */
+        .replace(
+            /<img\s+[^>]*>/gi,
+            ""
+        )
+
+        /* 移除其他 HTML 標籤 */
+        .replace(
+            /<[^>]+>/g,
+            ""
+        )
+
+        /* 移除 Markdown 標記 */
+        .replace(
+            /[#*_>`~]/g,
+            ""
+        )
+
+        /* 換行整理 */
+        .replace(
+            /\n+/g,
+            " "
+        )
+
+        .replace(
+            /\s+/g,
+            " "
+        )
+
         .trim();
+
 }
 
-/* =========================
+
+/* =========================================================
    載入琥珀
-========================= */
+========================================================= */
 
 async function loadAmber() {
-    const gallery = document.getElementById("amberGallery");
+
+    const gallery =
+        document.getElementById(
+            "amberGallery"
+        );
+
 
     try {
-        const response = await fetch(API_URL);
+
+        /* -----------------------------------------------------
+           讀取 GitHub 文章列表
+        ----------------------------------------------------- */
+
+        const response =
+            await fetch(
+                API_URL +
+                "&t=" +
+                Date.now(),
+                {
+                    cache: "no-store"
+                }
+            );
+
 
         if (!response.ok) {
-            throw new Error("GitHub API 讀取失敗");
+
+            throw new Error(
+                "GitHub API 讀取失敗"
+            );
+
         }
 
-        const files = await response.json();
 
-        const markdownFiles = files.filter(file =>
-            file.name.toLowerCase().endsWith(".md")
-        );
+        const files =
+            await response.json();
+
+
+        /* -----------------------------------------------------
+           只抓 Markdown
+        ----------------------------------------------------- */
+
+        const markdownFiles =
+            files.filter(file =>
+                file.name
+                    .toLowerCase()
+                    .endsWith(".md")
+            );
+
 
         const articles = [];
 
-        for (const file of markdownFiles) {
+
+        /* -----------------------------------------------------
+           逐篇讀取
+        ----------------------------------------------------- */
+
+        for (
+            const file of markdownFiles
+        ) {
+
             try {
+
                 const rawUrl =
-                    RAW_BASE + encodeURIComponent(file.name);
+                    RAW_BASE +
+                    encodeURIComponent(
+                        file.name
+                    ) +
+                    "?t=" +
+                    Date.now();
 
-                const articleResponse = await fetch(rawUrl);
 
-                if (!articleResponse.ok) {
+                const articleResponse =
+                    await fetch(
+                        rawUrl,
+                        {
+                            cache: "no-store"
+                        }
+                    );
+
+
+                if (
+                    !articleResponse.ok
+                ) {
+
                     continue;
+
                 }
 
-                const text = await articleResponse.text();
-                const article = parseFrontMatter(text);
 
-                if (article.category !== "amber") {
+                const text =
+                    await articleResponse.text();
+
+
+                const article =
+                    parseFrontMatter(
+                        text
+                    );
+
+
+                /* ---------------------------------------------
+                   只抓 category: amber
+                --------------------------------------------- */
+
+                if (
+                    article.category !==
+                    "amber"
+                ) {
+
                     continue;
+
                 }
 
-                article.filename = file.name;
-                article.image = extractImage(article.body);
-                article.imageAlt = extractImageAlt(article.body);
-                article.description = createDescription(article.body);
 
-                articles.push(article);
-            } catch (error) {
+                article.filename =
+                    file.name;
+
+
+                article.image =
+                    extractImage(
+                        article.body
+                    );
+
+
+                article.imageAlt =
+                    extractImageAlt(
+                        article.body
+                    );
+
+
+                article.description =
+                    createDescription(
+                        article.body
+                    );
+
+
+                articles.push(
+                    article
+                );
+
+            }
+
+
+            catch (error) {
+
                 console.warn(
                     "琥珀文章讀取失敗：",
                     file.name,
                     error
                 );
+
             }
+
         }
 
-        /* 最新發布排前面 */
+
+        /* =====================================================
+           最新發布排前面
+        ====================================================== */
 
         articles.sort(
-            (a, b) => new Date(b.date) - new Date(a.date)
+            (a, b) => {
+
+                const dateA =
+                    new Date(
+                        a.date || 0
+                    );
+
+                const dateB =
+                    new Date(
+                        b.date || 0
+                    );
+
+                return dateB - dateA;
+
+            }
         );
 
-        /* 沒有資料 */
 
-        if (articles.length === 0) {
+        /* =====================================================
+           沒有資料
+        ====================================================== */
+
+        if (
+            articles.length === 0
+        ) {
+
             gallery.innerHTML = `
+
                 <div class="empty">
+
                     目前還沒有琥珀資料。
+
                 </div>
+
             `;
+
             return;
+
         }
 
-        /* 建立畫廊 */
 
-        gallery.innerHTML = articles
-            .map(article => {
-                const image = article.image
-                    ? `
-                        <div class="amber-image">
-                            <img
-                                src="${escapeHtml(article.image)}"
-                                alt="${escapeHtml(
-                                    article.imageAlt ||
-                                    article.title ||
-                                    "好運琥珀"
-                                )}"
+        /* =====================================================
+           建立畫廊
+        ====================================================== */
+
+        gallery.innerHTML =
+
+            articles
+                .map(article => {
+
+
+                    /* -----------------------------------------
+                       圖片
+                    ----------------------------------------- */
+
+                    const image =
+                        article.image
+
+                        ? `
+
+                            <div
+                                class="amber-image"
                             >
-                        </div>
-                    `
-                    : "";
 
-                const description = article.description
-                    ? `
-                        <div class="amber-description">
-                            ${escapeHtml(article.description)}
-                        </div>
-                    `
-                    : "";
+                                <img
+                                    src="${escapeHtml(
+                                        article.image
+                                    )}"
+                                    alt="${escapeHtml(
+                                        article.imageAlt ||
+                                        article.title ||
+                                        "好運琥珀"
+                                    )}"
+                                    loading="lazy"
+                                >
 
-                return `
-                    <article class="amber-card">
-                        ${image}
+                            </div>
 
-                        <div class="amber-content">
-                            <h3>
+                        `
+
+                        : "";
+
+
+                    /* -----------------------------------------
+                       說明
+                    ----------------------------------------- */
+
+                    const description =
+                        article.description
+
+                        ? `
+
+                            <div
+                                class="amber-description"
+                            >
+
                                 ${escapeHtml(
-                                    article.title || "未命名琥珀"
+                                    article.description
                                 )}
-                            </h3>
 
-                            ${description}
-                        </div>
-                    </article>
-                `;
-            })
-            .join("");
-    } catch (error) {
-        console.error(error);
+                            </div>
+
+                        `
+
+                        : "";
+
+
+                    /* -----------------------------------------
+                       卡片
+                    ----------------------------------------- */
+
+                    return `
+
+                        <article
+                            class="amber-card"
+                        >
+
+                            ${image}
+
+                            <div
+                                class="amber-content"
+                            >
+
+                                <h3>
+                                    ${escapeHtml(
+                                        article.title ||
+                                        "未命名琥珀"
+                                    )}
+                                </h3>
+
+                                ${description}
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                })
+                .join("");
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "好運琥珀載入錯誤：",
+            error
+        );
+
 
         gallery.innerHTML = `
+
             <div class="error">
-                琥珀資料載入失敗，請稍後再試。
+
+                琥珀資料載入失敗，
+                請稍後再試。
+
             </div>
+
         `;
+
     }
+
 }
 
-/* =========================
+
+/* =========================================================
    啟動
-========================= */
+========================================================= */
 
 loadAmber();
+
+
 </script>
+
+
 </body>
+
 </html>
