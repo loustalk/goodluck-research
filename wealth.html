@@ -100,32 +100,79 @@
            ========================= */
 
         .hero {
+            position: relative;
             min-height: 650px;
             padding: 90px 24px 100px;
 
             display: flex;
             align-items: center;
 
+            background-image: url("uploads/wealth2.png");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+
+            overflow: hidden;
+        }
+
+        /*
+         * 電腦版左側奶油白白霧
+         * 這次刻意加重，讓文字區更乾淨。
+         */
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
             background:
-                radial-gradient(circle at 80% 20%, rgba(189, 138, 107, 0.20), transparent 28%),
-                radial-gradient(circle at 20% 80%, rgba(168, 110, 83, 0.08), transparent 30%),
-                #f3e6dc;
+                linear-gradient(
+                    90deg,
+                    rgba(255, 250, 246, 0.97) 0%,
+                    rgba(255, 250, 246, 0.94) 16%,
+                    rgba(255, 250, 246, 0.88) 28%,
+                    rgba(255, 250, 246, 0.72) 40%,
+                    rgba(255, 250, 246, 0.48) 50%,
+                    rgba(255, 250, 246, 0.20) 61%,
+                    rgba(255, 250, 246, 0) 74%
+                );
+
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /*
+         * 手機版專用圖片
+         * 電腦版隱藏，手機版讓圖片完整呈現。
+         */
+        .hero-mobile-image {
+            display: none;
         }
 
         .hero-inner {
+            position: relative;
+            z-index: 2;
+
             max-width: 1180px;
             width: 100%;
             margin: auto;
 
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 70px;
-            align-items: center;
+            display: block;
+        }
+
+        .hero-text {
+            max-width: 650px;
         }
 
         .eyebrow {
             display: inline-block;
             margin-bottom: 18px;
+
+            padding: 7px 16px;
+
+            border-radius: 999px;
+
+            background: rgba(255, 250, 246, 0.88);
+            border: 1px solid rgba(168, 110, 83, 0.30);
 
             font-size: 13px;
             letter-spacing: 3px;
@@ -138,6 +185,10 @@
             line-height: 1.2;
             color: #76513f;
             margin-bottom: 22px;
+
+            text-shadow:
+                0 1px 0 rgba(255, 250, 246, 0.9),
+                0 2px 8px rgba(255, 250, 246, 0.35);
         }
 
         .hero-text h2 {
@@ -146,63 +197,20 @@
             font-weight: 600;
             color: #8c6c5b;
             margin-bottom: 25px;
+
+            text-shadow:
+                0 1px 0 rgba(255, 250, 246, 0.95),
+                0 2px 8px rgba(255, 250, 246, 0.30);
         }
 
         .hero-text p {
             max-width: 680px;
             color: #765746;
             font-size: 17px;
-        }
 
-        .hero-card {
-            min-height: 390px;
-            border-radius: 30px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background:
-                radial-gradient(circle at center, rgba(189, 138, 107, 0.18), transparent 48%),
-                #f8eee6;
-
-            border: 1px solid #e6cbb9;
-            box-shadow: 0 18px 45px rgba(118, 81, 63, 0.08);
-        }
-
-        .hero-symbol {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .circle {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 28px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-            background: #fffaf6;
-            border: 1px solid #e6cbb9;
-
-            font-size: 72px;
-
-            box-shadow:
-                0 0 0 15px rgba(255, 255, 255, 0.28),
-                0 15px 35px rgba(118, 81, 63, 0.08);
-        }
-
-        .hero-symbol h3 {
-            font-size: 25px;
-            color: #76513f;
-            margin-bottom: 8px;
-        }
-
-        .hero-symbol p {
-            color: #8c6c5b;
+            text-shadow:
+                0 1px 0 rgba(255, 250, 246, 0.95),
+                0 1px 7px rgba(255, 250, 246, 0.25);
         }
 
         /* =========================
@@ -554,15 +562,6 @@
                 font-size: 13px;
             }
 
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: 45px;
-            }
-
-            .hero-card {
-                min-height: 320px;
-            }
-
             .number-content {
                 grid-template-columns: 1fr;
             }
@@ -575,6 +574,12 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* =========================
+           手機版 Hero
+           圖片完整顯示在上方
+           文字放在下方
+           ========================= */
 
         @media (max-width: 600px) {
 
@@ -590,7 +595,92 @@
             }
 
             .hero {
-                padding: 65px 20px 75px;
+                min-height: 0;
+
+                display: block;
+
+                padding: 0;
+
+                background:
+                    #f3e6dc;
+
+                overflow: hidden;
+            }
+
+            /*
+             * 手機版關閉電腦白霧
+             */
+            .hero::before {
+                display: none;
+            }
+
+            /*
+             * 手機版直接顯示完整 Hero 圖片
+             */
+            .hero-mobile-image {
+                display: block;
+
+                width: 100%;
+                height: auto;
+
+                max-width: 100%;
+
+                object-fit: contain;
+                object-position: center top;
+
+                margin: 0;
+                padding: 0;
+
+                vertical-align: top;
+            }
+
+            .hero-inner {
+                display: block;
+
+                width: 100%;
+                max-width: none;
+
+                padding: 48px 20px 62px;
+
+                margin: 0;
+            }
+
+            .hero-text {
+                max-width: none;
+            }
+
+            .eyebrow {
+                margin-bottom: 15px;
+
+                font-size: 11px;
+                letter-spacing: 2.5px;
+
+                padding: 6px 13px;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+                line-height: 1.25;
+
+                margin-bottom: 18px;
+
+                text-shadow: none;
+            }
+
+            .hero-text h2 {
+                font-size: 22px;
+                line-height: 1.6;
+
+                margin-bottom: 22px;
+
+                text-shadow: none;
+            }
+
+            .hero-text p {
+                font-size: 16px;
+                line-height: 1.9;
+
+                text-shadow: none;
             }
 
             section {
@@ -647,6 +737,16 @@
 
 <section class="hero">
 
+    <!--
+        手機版 Hero 圖片
+        電腦版隱藏
+    -->
+    <img
+        class="hero-mobile-image"
+        src="uploads/wealth2.png"
+        alt="好運研究所財運分析"
+    >
+
     <div class="hero-inner">
 
         <div class="hero-text">
@@ -669,25 +769,6 @@
                 在人手一機的時代裡，手機門號所蘊含的數字能量，
                 也成為我們值得研究的一個方向。
             </p>
-
-        </div>
-
-
-        <div class="hero-card">
-
-            <div class="hero-symbol">
-
-                <div class="circle">
-                    🔢
-                </div>
-
-                <h3>研究你的數字能量</h3>
-
-                <p>
-                    從天地人三種運勢，看見自己的方向
-                </p>
-
-            </div>
 
         </div>
 
