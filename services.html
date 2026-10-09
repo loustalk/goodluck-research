@@ -4,22 +4,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f2eb">
 <title>服務方案｜好運研究所</title>
 <meta name="description" content="好運研究所｜小盧老師的占卜、風水、數字財運與好運生活服務方案。">
 
 <style>
 :root {
-  --bg: #f5ede5;
-  --paper: #fffaf5;
-  --paper-warm: #f8f0e7;
-  --text: #76513f;
-  --muted: #8c7161;
-  --gold: #a86e53;
-  --gold-dark: #8f5b43;
-  --line: #e6cdbb;
-  --amber: #c49a55;
-  --shadow: 0 8px 24px rgba(91, 62, 43, .055);
-  --shadow-hover: 0 14px 32px rgba(91, 62, 43, .11);
+  --ink: #302f2b;
+  --ink-soft: #56534c;
+  --muted: #77736b;
+  --paper: #f7f5ef;
+  --paper-card: #fffdf8;
+  --line: #d9d5ca;
+  --red: #a9473d;
+  --shadow: 0 8px 26px rgba(44, 41, 35, .07);
+  --shadow-hover: 0 14px 34px rgba(44, 41, 35, .13);
 }
 
 * {
@@ -30,13 +29,16 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
   font-family: "Noto Sans TC", "Microsoft JhengHei",
-               "PingFang TC", Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+    "PingFang TC", Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(180, 174, 158, .08), transparent 40%),
+    var(--paper);
   line-height: 1.8;
 }
 
@@ -55,15 +57,16 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 250, 245, .96);
+  background: rgba(249, 247, 241, .94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(12px);
 }
 
 .nav {
   max-width: 1180px;
+  min-height: 76px;
   margin: auto;
-  padding: 15px 24px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -72,7 +75,7 @@ header {
 
 .logo {
   flex-shrink: 0;
-  color: var(--gold);
+  color: var(--ink);
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -81,9 +84,9 @@ header {
 
 .logo span {
   display: block;
-  margin-top: 2px;
+  margin-top: 3px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 400;
   letter-spacing: 3px;
 }
@@ -91,6 +94,8 @@ header {
 .nav-links {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 22px;
   font-size: 14px;
 }
@@ -100,62 +105,125 @@ header {
 }
 
 .nav-links a:hover {
-  color: var(--gold);
+  color: var(--red);
 }
 
-/* 頁首 */
+/* 水墨 HERO */
 
 .hero {
-  padding: 88px 24px 72px;
-  text-align: center;
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #efede5;
+  background-image: url("uploads/services2.png");
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #d7d2c7;
+}
+
+.hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
   background:
-    radial-gradient(
-      ellipse at 50% 5%,
-      rgba(189, 138, 107, .19),
-      transparent 52%
-    ),
-    var(--bg);
+    linear-gradient(
+      90deg,
+      rgba(248, 246, 239, .97) 0%,
+      rgba(248, 246, 239, .90) 29%,
+      rgba(248, 246, 239, .64) 45%,
+      rgba(248, 246, 239, .08) 76%,
+      transparent 100%
+    );
 }
 
 .hero-inner {
-  max-width: 820px;
+  width: 100%;
+  max-width: 1180px;
   margin: auto;
+  padding: 66px 24px 70px;
 }
 
 .eyebrow {
   display: inline-block;
-  margin-bottom: 14px;
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 700;
+  margin-bottom: 17px;
+  color: #777167;
+  font-size: 11px;
+  font-weight: 600;
   letter-spacing: 4px;
 }
 
 .hero h1 {
-  margin-bottom: 18px;
-  font-size: clamp(34px, 5vw, 48px);
-  font-weight: 700;
+  margin-bottom: 12px;
+  color: #292823;
+  font-family: "Noto Serif TC", "Songti TC",
+    "PMingLiU", serif;
+  font-size: clamp(42px, 5.5vw, 66px);
+  font-weight: 800;
   letter-spacing: 5px;
+  line-height: 1.25;
+}
+
+.hero h1::after {
+  display: inline-block;
+  width: 5px;
+  height: 31px;
+  margin-left: 12px;
+  background: var(--red);
+  content: "";
+  vertical-align: 8px;
 }
 
 .hero h2 {
   margin-bottom: 18px;
-  color: #80614e;
-  font-size: clamp(19px, 2.5vw, 24px);
+  color: #4d4a43;
+  font-family: "Noto Serif TC", "Songti TC",
+    "PMingLiU", serif;
+  font-size: clamp(19px, 2.5vw, 25px);
   font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .hero p {
-  max-width: 650px;
-  margin: auto;
-  color: var(--muted);
+  max-width: 500px;
+  color: #666159;
   font-size: 15px;
+  line-height: 2;
+}
+
+.hero-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 25px;
+  padding: 11px 23px;
+  border: 1px solid #49463f;
+  border-radius: 3px;
+  background: #35342f;
+  color: #fffdf7;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.hero-action:hover {
+  transform: translateY(-2px);
+  background: #504d45;
+}
+
+.hero-action span {
+  font-size: 19px;
+  line-height: 1;
 }
 
 /* 服務主區 */
 
 .services {
-  padding: 14px 24px 90px;
+  padding: 70px 24px 86px;
 }
 
 .section-inner {
@@ -170,16 +238,19 @@ header {
 
 .section-title small {
   display: block;
-  margin-bottom: 7px;
-  color: var(--gold);
-  font-size: 11px;
-  letter-spacing: 4px;
+  margin-bottom: 8px;
+  color: #777167;
+  font-size: 10px;
+  letter-spacing: 5px;
 }
 
 .section-title h2 {
+  color: var(--ink);
+  font-family: "Noto Serif TC", "Songti TC",
+    "PMingLiU", serif;
   font-size: 30px;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-weight: 700;
+  letter-spacing: 3px;
 }
 
 .section-title p {
@@ -188,36 +259,39 @@ header {
   font-size: 14px;
 }
 
-/* 分類 */
+/* 分類標題 */
 
 .service-group {
-  margin-bottom: 46px;
+  margin-bottom: 48px;
 }
 
 .group-title {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   margin-bottom: 20px;
-  padding-bottom: 13px;
-  border-bottom: 1px solid rgba(168, 110, 83, .23);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
 }
 
 .group-title .icon {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 43px;
+  height: 43px;
   flex-shrink: 0;
   place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255, 250, 245, .8);
-  font-size: 21px;
+  border: 1px solid #d8d3c7;
+  border-radius: 50%;
+  background: #f4f1e9;
+  font-size: 20px;
 }
 
 .group-title h3 {
+  color: var(--ink);
+  font-family: "Noto Serif TC", "Songti TC",
+    "PMingLiU", serif;
   font-size: 21px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 
@@ -232,95 +306,145 @@ header {
 .service-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
-
-/* 命理・占卜：桌機三欄 */
 
 .service-group.fortune .service-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/* 服務卡片 */
+
 .service-card {
   position: relative;
   display: flex;
   min-width: 0;
-  min-height: 188px;
+  min-height: 230px;
   flex-direction: column;
   align-items: flex-start;
-  padding: 26px 27px 23px;
+  padding: 25px 24px 22px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--paper);
+  border: 1px solid #ddd8cd;
+  border-radius: 7px;
+  background: var(--paper-card);
   box-shadow: var(--shadow);
   transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    border-color .25s ease;
+    transform .23s ease,
+    box-shadow .23s ease,
+    border-color .23s ease;
 }
 
 .service-card::before {
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px;
+  width: 3px;
   height: 100%;
-  background: #d4b397;
+  background: #77736b;
   content: "";
-  opacity: .85;
+  opacity: .8;
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
-  border-color: #d2ad91;
+  transform: translateY(-3px);
+  border-color: #bdb6a8;
   box-shadow: var(--shadow-hover);
 }
 
-.service-card:focus-visible {
-  outline: 3px solid rgba(168, 110, 83, .45);
+.service-card:focus-visible,
+.hero-action:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid rgba(169, 71, 61, .45);
   outline-offset: 3px;
+}
+
+/* 右上角服務圖片 */
+
+.service-image {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 0;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 圖片上方漸層柔化，讓小圖自然融入宣紙底 */
+
+.service-card::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 130px;
+  background: radial-gradient(
+    ellipse at 65% 35%,
+    rgba(255, 253, 248, 0) 0%,
+    rgba(255, 253, 248, .08) 45%,
+    rgba(255, 253, 248, .8) 100%
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.service-tag,
+.service-name,
+.service-price,
+.service-note,
+.service-bottom {
+  position: relative;
+  z-index: 1;
 }
 
 .service-tag {
   display: inline-flex;
   align-items: center;
+  max-width: calc(100% - 104px);
+  min-height: 26px;
   margin-bottom: 12px;
-  padding: 4px 10px;
-  border: 1px solid #ead8c9;
-  border-radius: 999px;
-  background: #fff7ef;
-  color: var(--gold-dark);
+  padding: 3px 10px;
+  border: 1px solid #ded9cf;
+  border-radius: 2px;
+  background: #f6f3ec;
+  color: #615d54;
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: .5px;
 }
 
 .service-name {
+  max-width: 100%;
   margin-bottom: 10px;
-  color: var(--text);
-  font-size: 20px;
-  font-weight: 650;
+  padding-right: 64px;
+  color: var(--ink);
+  font-size: 19px;
+  font-weight: 700;
   line-height: 1.55;
-  letter-spacing: .3px;
+  letter-spacing: .2px;
 }
 
 .service-price {
-  color: var(--gold);
-  font-size: 24px;
-  font-weight: 700;
+  max-width: 100%;
+  color: #444139;
+  font-size: 23px;
+  font-weight: 750;
   line-height: 1.5;
   font-variant-numeric: tabular-nums;
 }
 
 .service-price small {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
 }
 
 .service-note {
-  margin-top: 9px;
-  color: var(--muted);
+  max-width: 100%;
+  margin-top: 8px;
+  color: #77736b;
   font-size: 13px;
   line-height: 1.8;
 }
@@ -330,12 +454,12 @@ header {
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 18px;
 }
 
-.service-bottom span {
+.service-bottom > span:first-child {
   color: var(--muted);
   font-size: 12px;
 }
@@ -344,9 +468,9 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--gold);
-  font-size: 13px;
-  font-weight: 600;
+  color: #48453e;
+  font-size: 12px;
+  font-weight: 650;
   white-space: nowrap;
 }
 
@@ -355,110 +479,104 @@ header {
   transition: transform .2s ease;
 }
 
-a.service-card:hover .card-arrow::after {
+.service-card:hover .card-arrow::after {
   transform: translateX(4px);
 }
 
 /* 免費體驗 */
 
 .service-card.featured {
-  border-color: #c8a078;
-  background:
-    radial-gradient(
-      ellipse at 100% 0%,
-      rgba(196, 154, 85, .15),
-      transparent 58%
-    ),
-    #fffaf2;
+  border-color: #c7bca7;
+  background: linear-gradient(145deg, #f3f0e7, #fffdf8 70%);
 }
 
 .service-card.featured::before {
-  background: var(--amber);
+  background: var(--red);
 }
 
 .service-card.featured .service-tag {
-  border-color: #e8d3a9;
-  background: #f8eed8;
-  color: #896b37;
+  border-color: #d8c5bc;
+  background: #f8efeb;
+  color: #934b41;
 }
 
 .service-card.featured .service-price {
-  color: #9a7437;
+  color: #98483e;
 }
 
-/* 不同分類的細微色彩差異 */
+/* 風水、問事、生活、教學分類 */
 
 .service-group.fengshui .service-card {
-  background: linear-gradient(145deg, #f7f2e9, #fffaf5);
-  border-color: #e2d6c5;
+  background: linear-gradient(145deg, #f1f0e9, #fffdf8);
 }
 
 .service-group.fengshui .service-card::before {
-  background: #b7a58a;
-}
-
-.service-group.fengshui .group-title .icon {
-  border-color: #e2d6c5;
+  background: #777d70;
 }
 
 .service-group.faith .service-card {
-  background: linear-gradient(145deg, #fbf0e8, #fffaf5);
-  border-color: #e8d0bf;
+  background: linear-gradient(145deg, #f5eee9, #fffdf8);
 }
 
 .service-group.faith .service-card::before {
-  background: #c89472;
+  background: #9d675d;
 }
 
 .service-group.lifestyle .service-card {
-  background: linear-gradient(145deg, #fbf3e4, #fffaf5);
-  border-color: #ead9b9;
+  background: linear-gradient(145deg, #f7f0e5, #fffdf8);
 }
 
 .service-group.lifestyle .service-card::before {
-  background: #c5a15d;
+  background: #b28b4f;
 }
 
 .service-group.learning .service-card {
-  background: linear-gradient(145deg, #f5eee8, #fffaf5);
-  border-color: #e3d2c4;
+  background: linear-gradient(145deg, #eeefeb, #fffdf8);
 }
 
 .service-group.learning .service-card::before {
-  background: #b99b88;
+  background: #6c7773;
 }
 
 .service-card.single-card {
-  min-height: 174px;
+  min-height: 215px;
+}
+
+/* 單張服務卡在大螢幕不拉得太寬 */
+
+.service-group.fengshui .service-card,
+.service-group.faith .service-card,
+.service-group.lifestyle .service-card,
+.service-group.learning .service-card {
+  max-width: 740px;
 }
 
 /* 預約區 */
 
 .cta {
   max-width: 1120px;
-  margin: 0 auto 90px;
-  padding: 52px 28px;
-  border: 1px solid var(--line);
-  border-radius: 22px;
+  margin: 0 auto 80px;
+  padding: 48px 28px;
+  border: 1px solid #d9d5ca;
+  border-radius: 7px;
   background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      rgba(189, 138, 107, .17),
-      transparent 65%
-    ),
-    #f9f0e8;
+    linear-gradient(rgba(247, 245, 239, .93), rgba(247, 245, 239, .93)),
+    url("uploads/services2.png") center 58% / cover;
   text-align: center;
 }
 
 .cta h2 {
-  margin-bottom: 12px;
-  font-size: 27px;
-  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-family: "Noto Serif TC", "Songti TC",
+    "PMingLiU", serif;
+  font-size: 26px;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 
 .cta p {
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   color: var(--muted);
   font-size: 14px;
 }
@@ -472,18 +590,15 @@ a.service-card:hover .card-arrow::after {
 
 .btn {
   display: inline-flex;
-  min-height: 46px;
+  min-height: 45px;
   align-items: center;
   justify-content: center;
-  padding: 11px 25px;
-  border: 1px solid transparent;
-  border-radius: 999px;
+  padding: 10px 25px;
+  border: 1px solid #77736b;
+  border-radius: 3px;
   font-size: 14px;
   font-weight: 600;
-  transition:
-    transform .2s ease,
-    background .2s ease,
-    box-shadow .2s ease;
+  transition: background .2s ease, transform .2s ease;
 }
 
 .btn:hover {
@@ -491,31 +606,30 @@ a.service-card:hover .card-arrow::after {
 }
 
 .btn-primary {
-  background: var(--gold);
-  color: white;
-  box-shadow: 0 5px 14px rgba(168, 110, 83, .18);
+  border-color: #373630;
+  background: #373630;
+  color: #fffdf7;
 }
 
 .btn-primary:hover {
-  background: var(--gold-dark);
+  background: #504d45;
 }
 
 .btn-outline {
-  border-color: #c8a68f;
-  background: rgba(255, 250, 245, .65);
-  color: var(--gold-dark);
+  background: rgba(255, 253, 248, .7);
+  color: #48453e;
 }
 
 .btn-outline:hover {
-  background: #fffaf5;
+  background: #fffdf8;
 }
 
 /* 頁尾 */
 
 footer {
-  padding: 32px 24px;
+  padding: 30px 24px;
   border-top: 1px solid var(--line);
-  background: var(--paper);
+  background: #f1efe8;
   color: var(--muted);
   font-size: 12px;
   text-align: center;
@@ -524,17 +638,16 @@ footer {
 footer strong {
   display: block;
   margin-bottom: 3px;
-  color: var(--gold);
+  color: var(--ink);
   font-size: 16px;
   letter-spacing: 2px;
 }
 
 /* 平板 */
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .nav {
-    padding: 14px 18px;
-    gap: 14px;
+    gap: 15px;
   }
 
   .nav-links {
@@ -543,53 +656,36 @@ footer strong {
   }
 
   .hero {
-    padding: 70px 20px 55px;
+    min-height: 390px;
   }
 
-  .services {
-    padding: 12px 18px 65px;
+  .hero-inner {
+    padding: 58px 24px;
   }
 
-  .section-title {
-    margin-bottom: 36px;
-  }
-
-  .section-title h2 {
-    font-size: 27px;
-  }
-
-  .service-grid,
   .service-group.fortune .service-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .service-card {
-    min-height: 0;
-    padding: 24px 23px 21px;
-  }
-
-  .service-card.single-card {
-    min-height: 0;
+  .service-image {
+    width: 88px;
+    height: 88px;
   }
 
   .service-name {
-    font-size: 19px;
-  }
-
-  .service-price {
-    font-size: 23px;
-  }
-
-  .cta {
-    margin: 0 18px 65px;
-    padding: 42px 22px;
+    padding-right: 42px;
   }
 }
 
 /* 手機 */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  .nav {
+    min-height: 64px;
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
   .logo {
     font-size: 18px;
     letter-spacing: 1px;
@@ -600,72 +696,248 @@ footer strong {
     letter-spacing: 2px;
   }
 
+  .nav-links {
+    gap: 0;
+  }
+
   .nav-links a:not(:last-child) {
     display: none;
   }
 
+  .nav-links a:last-child {
+    padding: 7px 10px;
+    border: 1px solid #d8d3c7;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
   .hero {
-    padding: 58px 20px 45px;
+    min-height: 400px;
+    align-items: center;
+    background-position: 62% center;
   }
 
-  .hero h1 {
-    letter-spacing: 3px;
+  .hero::before {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(248, 246, 239, .95) 0%,
+        rgba(248, 246, 239, .88) 57%,
+        rgba(248, 246, 239, .48) 100%
+      );
   }
 
-  .hero p {
-    font-size: 14px;
-    text-align: left;
+  .hero-inner {
+    padding: 48px 22px;
   }
 
   .eyebrow {
+    margin-bottom: 14px;
+    font-size: 9px;
     letter-spacing: 2px;
+  }
+
+  .hero h1 {
+    margin-bottom: 12px;
+    font-size: clamp(37px, 10vw, 48px);
+    letter-spacing: 3px;
+  }
+
+  .hero h1::after {
+    width: 4px;
+    height: 23px;
+    margin-left: 7px;
+    vertical-align: 5px;
+  }
+
+  .hero h2 {
+    max-width: 340px;
+    margin-bottom: 14px;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .hero p {
+    max-width: 360px;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .hero-action {
+    margin-top: 20px;
+    padding: 10px 17px;
+    font-size: 13px;
+  }
+
+  .services {
+    padding: 46px 16px 54px;
+  }
+
+  .section-title {
+    margin-bottom: 34px;
+  }
+
+  .section-title small {
+    letter-spacing: 3px;
+  }
+
+  .section-title h2 {
+    font-size: 25px;
+    letter-spacing: 2px;
+  }
+
+  .section-title p {
+    font-size: 13px;
+  }
+
+  .service-group {
+    margin-bottom: 37px;
   }
 
   .group-title {
     gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 11px;
   }
 
   .group-title .icon {
     width: 38px;
     height: 38px;
-    border-radius: 12px;
+    font-size: 18px;
   }
 
   .group-title h3 {
     font-size: 19px;
   }
 
-  .service-card {
-    border-radius: 16px;
-    padding: 22px 20px 20px;
+  .group-title p {
+    font-size: 11px;
+  }
+
+  .service-grid,
+  .service-group.fortune .service-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .service-card,
+  .service-card.single-card {
+    min-height: 190px;
+    padding: 21px 18px 18px;
+    border-radius: 5px;
+  }
+
+  .service-image {
+    top: 13px;
+    right: 12px;
+    width: 78px;
+    height: 78px;
+  }
+
+  .service-card::after {
+    width: 110px;
+    height: 105px;
+  }
+
+  .service-tag {
+    max-width: calc(100% - 78px);
+    margin-bottom: 10px;
+    padding: 3px 8px;
+    font-size: 10px;
   }
 
   .service-name {
-    font-size: 18px;
+    max-width: calc(100% - 24px);
+    margin-bottom: 8px;
+    padding-right: 30px;
+    font-size: 17px;
+    line-height: 1.55;
   }
 
   .service-price {
-    font-size: 22px;
+    font-size: 21px;
+  }
+
+  .service-price small {
+    font-size: 11px;
   }
 
   .service-note {
-    font-size: 13px;
+    max-width: 100%;
+    margin-top: 7px;
+    font-size: 12px;
+  }
+
+  .service-bottom {
+    padding-top: 13px;
+  }
+
+  .service-bottom > span:first-child,
+  .card-arrow {
+    font-size: 11px;
+  }
+
+  .service-group.fengshui .service-card,
+  .service-group.faith .service-card,
+  .service-group.lifestyle .service-card,
+  .service-group.learning .service-card {
+    max-width: none;
+  }
+
+  .cta {
+    margin: 0 16px 55px;
+    padding: 35px 20px;
   }
 
   .cta h2 {
-    font-size: 23px;
+    font-size: 22px;
+  }
+
+  .cta p {
+    font-size: 13px;
   }
 
   .btn-row {
     flex-direction: column;
+    gap: 10px;
   }
 
   .btn {
     width: 100%;
   }
+
+  footer {
+    padding: 26px 18px;
+  }
 }
 
-/* 尊重使用者的減少動態設定 */
+/* 小螢幕微調 */
+
+@media (max-width: 360px) {
+  .hero {
+    min-height: 420px;
+  }
+
+  .hero h1 {
+    font-size: 35px;
+  }
+
+  .service-image {
+    width: 68px;
+    height: 68px;
+  }
+
+  .service-name {
+    padding-right: 18px;
+    font-size: 16px;
+  }
+
+  .service-price {
+    font-size: 19px;
+  }
+}
+
+/* 尊重減少動態設定 */
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -703,6 +975,8 @@ footer strong {
 
 <main>
 
+  <!-- 水墨 HERO：背景與文字分開，方便電腦及手機調整 -->
+
   <section class="hero">
     <div class="hero-inner">
       <span class="eyebrow">GOOD LUCK RESEARCH · SERVICES</span>
@@ -713,10 +987,13 @@ footer strong {
         這裡整理目前提供的服務與收費方式，
         讓你先了解，再決定想從哪個方向開始。
       </p>
+      <a class="hero-action" href="#service-menu">
+        探索服務方案 <span>↓</span>
+      </a>
     </div>
   </section>
 
-  <section class="services">
+  <section class="services" id="service-menu">
     <div class="section-inner">
 
       <div class="section-title">
@@ -739,6 +1016,11 @@ footer strong {
         <div class="service-grid">
 
           <article class="service-card featured">
+            <img class="service-image"
+                 src="uploads/number.png"
+                 alt=""
+                 aria-hidden="true"
+                 loading="lazy">
             <span class="service-tag">免費體驗</span>
             <h4 class="service-name">手機數字財運分析</h4>
             <div class="service-price">免費體驗</div>
@@ -752,6 +1034,11 @@ footer strong {
           </article>
 
           <article class="service-card">
+            <img class="service-image"
+                 src="uploads/choose.png"
+                 alt=""
+                 aria-hidden="true"
+                 loading="lazy">
             <span class="service-tag">數字分析</span>
             <h4 class="service-name">手機數字號碼選號／更改</h4>
             <div class="service-price">$3,600 <small>／每支號碼</small></div>
@@ -765,6 +1052,11 @@ footer strong {
           </article>
 
           <article class="service-card">
+            <img class="service-image"
+                 src="uploads/fortune3.png"
+                 alt=""
+                 aria-hidden="true"
+                 loading="lazy">
             <span class="service-tag">觀音神諭卡</span>
             <h4 class="service-name">觀音神諭卡占卜</h4>
             <div class="service-price">$1,200 <small>／每大題</small></div>
@@ -791,6 +1083,11 @@ footer strong {
 
         <div class="service-grid">
           <article class="service-card single-card">
+            <img class="service-image"
+                 src="uploads/fengshui2.png"
+                 alt=""
+                 aria-hidden="true"
+                 loading="lazy">
             <span class="service-tag">居家空間</span>
             <h4 class="service-name">居家風水格局擺放分析</h4>
             <div class="service-price">$2,000 <small>／每戶</small></div>
@@ -818,6 +1115,11 @@ footer strong {
 
         <div class="service-grid">
           <article class="service-card single-card">
+            <img class="service-image"
+                 src="uploads/temple.png"
+                 alt=""
+                 aria-hidden="true"
+                 loading="lazy">
             <span class="service-tag">個案諮詢</span>
             <h4 class="service-name">廟宇擲筊問事</h4>
             <div class="service-price">依案件情況報價</div>
@@ -845,6 +1147,11 @@ footer strong {
 
         <div class="service-grid">
           <a href="amber.html" class="service-card single-card">
+            <img class="service-image"
+                 src="uploads/amberbowl.png"
+                 alt=""
+                 aria-hidden="true"
+                 loading="lazy">
             <span class="service-tag">琥珀藝品</span>
             <h4 class="service-name">琥珀藝品</h4>
             <div class="service-price">查看作品與介紹</div>
@@ -872,6 +1179,11 @@ footer strong {
 
         <div class="service-grid">
           <article class="service-card single-card">
+            <img class="service-image"
+                 src="uploads/class.png"
+                 alt=""
+                 aria-hidden="true"
+                 loading="lazy">
             <span class="service-tag">活動與課程</span>
             <h4 class="service-name">分享會／課程邀約</h4>
             <div class="service-price">依場地需求報價</div>
@@ -888,6 +1200,8 @@ footer strong {
 
     </div>
   </section>
+
+  <!-- 聯絡／預約 -->
 
   <section class="cta">
     <h2>想了解哪一項服務？</h2>
