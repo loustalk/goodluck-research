@@ -23,7 +23,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          PAGE_ID="1162786317464622"
+          PAGE_ID="116278631764622"
           OUTPUT="data/facebook-latest.json"
           RESPONSE_FILE="/tmp/facebook-response.json"
 
@@ -33,7 +33,7 @@ jobs:
           fi
 
           echo "開始取得 Facebook 專頁最新貼文..."
-          echo "查詢專頁 ID：${PAGE_ID}"
+          echo "專頁 ID：${PAGE_ID}"
 
           if ! HTTP_STATUS=$(curl \
             --http1.1 \
@@ -51,7 +51,7 @@ jobs:
             --data-urlencode "fields=id,message,created_time,permalink_url" \
             --data-urlencode "limit=3" \
             --data-urlencode "access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}" \
-            "https://graph.facebook.com/v26.0/${PAGE_ID}/feed"); then
+            "https://graph.facebook.com/v26.0/${PAGE_ID}/posts"); then
             echo "錯誤：連線失敗，或 curl 無法完成請求。"
             exit 1
           fi
@@ -59,7 +59,7 @@ jobs:
           echo "Facebook API HTTP 狀態碼：${HTTP_STATUS}"
 
           if [ "$HTTP_STATUS" != "200" ]; then
-            echo "Facebook API 請求失敗："
+            echo "Facebook API 請求失敗，錯誤內容如下："
 
             if jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
               jq 'if .error then .error else . end' "$RESPONSE_FILE"
