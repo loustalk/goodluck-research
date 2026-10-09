@@ -33,8 +33,8 @@ jobs:
           fi
 
           echo "開始取得 Facebook 專頁最新貼文..."
+          echo "查詢專頁 ID：${PAGE_ID}"
 
-          # 明確指定專頁 ID，保留原本的重試與逾時設定
           if ! HTTP_STATUS=$(curl \
             --http1.1 \
             --silent \
@@ -51,17 +51,15 @@ jobs:
             --data-urlencode "fields=id,message,created_time,permalink_url" \
             --data-urlencode "limit=3" \
             --data-urlencode "access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}" \
-            "https://graph.facebook.com/v26.0/${PAGE_ID}/posts"); then
+            "https://graph.facebook.com/v26.0/${PAGE_ID}/feed"); then
             echo "錯誤：連線失敗，或 curl 無法完成請求。"
-            echo "請檢查網路連線及 GitHub Actions 日誌。"
             exit 1
           fi
 
           echo "Facebook API HTTP 狀態碼：${HTTP_STATUS}"
 
-          # HTTP 非 200 時，顯示 API 錯誤內容，不輸出 Token
           if [ "$HTTP_STATUS" != "200" ]; then
-            echo "Facebook API 請求失敗，回應內容如下："
+            echo "Facebook API 請求失敗："
 
             if jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
               jq 'if .error then .error else . end' "$RESPONSE_FILE"
@@ -72,7 +70,6 @@ jobs:
             exit 1
           fi
 
-          # 確認 Facebook API 回傳有效貼文資料
           if ! jq -e '.data and (.data | type == "array")' \
             "$RESPONSE_FILE" >/dev/null; then
             echo "錯誤：Facebook API 回傳格式不正確。"
@@ -80,7 +77,6 @@ jobs:
             exit 1
           fi
 
-          # 先產生暫存檔，驗證成功後才更新正式資料
           jq --arg page_id "$PAGE_ID" '
             {
               page: {
