@@ -235,6 +235,12 @@ header {
   gap: 18px;
 }
 
+/* 命理・占卜：桌機三欄 */
+
+.service-group.fortune .service-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .service-card {
   position: relative;
   display: flex;
@@ -291,7 +297,6 @@ header {
 
 .service-name {
   margin-bottom: 10px;
-  padding-right: 0;
   color: var(--text);
   font-size: 20px;
   font-weight: 650;
@@ -354,7 +359,7 @@ a.service-card:hover .card-arrow::after {
   transform: translateX(4px);
 }
 
-/* 免費體驗：突出但不刺眼 */
+/* 免費體驗 */
 
 .service-card.featured {
   border-color: #c8a078;
@@ -422,8 +427,6 @@ a.service-card:hover .card-arrow::after {
 .service-group.learning .service-card::before {
   background: #b99b88;
 }
-
-/* 單張卡片也維持自然寬度 */
 
 .service-card.single-card {
   min-height: 174px;
@@ -555,7 +558,8 @@ footer strong {
     font-size: 27px;
   }
 
-  .service-grid {
+  .service-grid,
+  .service-group.fortune .service-grid {
     grid-template-columns: 1fr;
     gap: 14px;
   }
@@ -723,7 +727,7 @@ footer strong {
 
       <!-- 命理・占卜 -->
 
-      <section class="service-group">
+      <section class="service-group fortune">
         <div class="group-title">
           <span class="icon" aria-hidden="true">🔮</span>
           <div>
