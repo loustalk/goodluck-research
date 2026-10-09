@@ -25,34 +25,58 @@ jobs:
 
           PAGE_ID="1162786317464622"
           OUTPUT="data/facebook-latest.json"
+          RESPONSE_FILE="/tmp/facebook-response.json"
 
           if [ -z "${FACEBOOK_PAGE_ACCESS_TOKEN:-}" ]; then
             echo "錯誤：未設定 FACEBOOK_PAGE_ACCESS_TOKEN"
             exit 1
           fi
 
-          # 連線失敗時重試，並設定逾時
-          RESPONSE=$(curl --http1.1 --silent --show-error --fail-with-body \
+          echo "開始取得 Facebook 專頁最新貼文..."
+
+          # 明確指定專頁 ID，保留原本的重試與逾時設定
+          if ! HTTP_STATUS=$(curl \
+            --http1.1 \
+            --silent \
+            --show-error \
             --connect-timeout 15 \
             --max-time 45 \
             --retry 5 \
             --retry-all-errors \
             --retry-delay 2 \
             --retry-max-time 180 \
+            --output "$RESPONSE_FILE" \
+            --write-out '%{http_code}' \
             --get \
             --data-urlencode "fields=id,message,created_time,permalink_url" \
             --data-urlencode "limit=3" \
             --data-urlencode "access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}" \
-            "https://graph.facebook.com/v26.0/me/posts")
+            "https://graph.facebook.com/v26.0/${PAGE_ID}/posts"); then
+            echo "錯誤：連線失敗，或 curl 無法完成請求。"
+            echo "請檢查網路連線及 GitHub Actions 日誌。"
+            exit 1
+          fi
 
-          printf '%s\n' "$RESPONSE" > /tmp/facebook-response.json
+          echo "Facebook API HTTP 狀態碼：${HTTP_STATUS}"
 
-          # 確認 Facebook API 回傳有效資料
+          # HTTP 非 200 時，顯示 API 錯誤內容，不輸出 Token
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "Facebook API 請求失敗，回應內容如下："
+
+            if jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
+              jq 'if .error then .error else . end' "$RESPONSE_FILE"
+            else
+              cat "$RESPONSE_FILE"
+            fi
+
+            exit 1
+          fi
+
+          # 確認 Facebook API 回傳有效貼文資料
           if ! jq -e '.data and (.data | type == "array")' \
-            /tmp/facebook-response.json > /dev/null; then
-            echo "Facebook API 回傳錯誤或資料格式不正確："
-            jq 'if .error then .error else . end' \
-              /tmp/facebook-response.json
+            "$RESPONSE_FILE" >/dev/null; then
+            echo "錯誤：Facebook API 回傳格式不正確。"
+            jq 'if .error then .error else . end' "$RESPONSE_FILE"
             exit 1
           fi
 
@@ -60,6 +84,7 @@ jobs:
           jq --arg page_id "$PAGE_ID" '
             {
               page: {
+                id: $page_id,
                 name: "觀音之光神諭卡占卜工作室"
               },
               posts: [
@@ -72,10 +97,10 @@ jobs:
                 }
               ]
             }
-          ' /tmp/facebook-response.json > /tmp/facebook-latest.json
+          ' "$RESPONSE_FILE" > /tmp/facebook-latest.json
 
           jq -e '.posts and (.posts | type == "array")' \
-            /tmp/facebook-latest.json > /dev/null
+            /tmp/facebook-latest.json >/dev/null
 
           mkdir -p data
           cp /tmp/facebook-latest.json "$OUTPUT"
@@ -96,5 +121,6 @@ jobs:
             echo "沒有新的 Facebook 貼文資料需要更新"
           else
             git commit -m "更新 Facebook 最新貼文"
+            git pull --rebase origin main
             git push
           fi
