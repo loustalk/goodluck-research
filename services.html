@@ -1,815 +1,908 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>服務方案｜好運研究所</title>
-<meta name="description" content="好運研究所｜小盧老師服務方案">
+<meta name="description" content="好運研究所｜小盧老師的占卜、風水、數字財運與好運生活服務方案。">
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0
+:root {
+  --bg: #f5ede5;
+  --paper: #fffaf5;
+  --paper-warm: #f8f0e7;
+  --text: #76513f;
+  --muted: #8c7161;
+  --gold: #a86e53;
+  --gold-dark: #8f5b43;
+  --line: #e6cdbb;
+  --amber: #c49a55;
+  --shadow: 0 8px 24px rgba(91, 62, 43, .055);
+  --shadow-hover: 0 14px 32px rgba(91, 62, 43, .11);
 }
 
-html{
-    scroll-behavior:smooth
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",Arial,sans-serif;
-    background:#f3e6dc;
-    color:#76513f;
-    line-height:1.8
+html {
+  scroll-behavior: smooth;
 }
 
-a{
-    text-decoration:none;
-    color:inherit
+body {
+  font-family: "Noto Sans TC", "Microsoft JhengHei",
+               "PingFang TC", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
 }
 
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(255,250,246,.96);
-    border-bottom:1px solid #e6cbb9;
-    backdrop-filter:blur(10px)
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.nav{
-    max-width:1180px;
-    margin:auto;
-    padding:16px 24px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px
+button, a {
+  -webkit-tap-highlight-color: transparent;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:700;
-    letter-spacing:2px;
-    color:#a86e53;
-    white-space:nowrap
+/* 導覽列 */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 250, 245, .96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
 }
 
-.logo span{
-    display:block;
-    font-size:11px;
-    font-weight:400;
-    letter-spacing:3px;
-    color:#8c6c5b;
-    margin-top:-5px
+.nav {
+  max-width: 1180px;
+  margin: auto;
+  padding: 15px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.nav-links{
-    display:flex;
-    gap:22px;
-    align-items:center;
-    font-size:14px
+.logo {
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.35;
 }
 
-.nav-links a{
-    color:#76513f;
-    transition:.25s
+.logo span {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
 }
 
-.nav-links a:hover{
-    color:#a86e53
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 14px;
 }
 
-
-/* =========================
-   Hero
-   ========================= */
-
-.hero{
-    padding:100px 24px 80px;
-    text-align:center;
-    background:
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(189,138,107,.18),
-            transparent 30%
-        ),
-        #f3e6dc
+.nav-links a {
+  transition: color .2s ease;
 }
 
-.hero-inner{
-    max-width:900px;
-    margin:auto
+.nav-links a:hover {
+  color: var(--gold);
 }
 
-.eyebrow{
-    display:inline-block;
-    margin-bottom:16px;
-    color:#a86e53;
-    font-size:12px;
-    letter-spacing:4px;
-    font-weight:700
+/* 頁首 */
+
+.hero {
+  padding: 88px 24px 72px;
+  text-align: center;
+  background:
+    radial-gradient(
+      ellipse at 50% 5%,
+      rgba(189, 138, 107, .19),
+      transparent 52%
+    ),
+    var(--bg);
 }
 
-.hero h1{
-    font-size:48px;
-    letter-spacing:5px;
-    color:#76513f;
-    margin-bottom:18px
+.hero-inner {
+  max-width: 820px;
+  margin: auto;
 }
 
-.hero h2{
-    font-size:25px;
-    font-weight:500;
-    color:#765746;
-    margin-bottom:18px
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
 }
 
-.hero p{
-    max-width:650px;
-    margin:auto;
-    color:#8c6c5b;
-    font-size:16px
+.hero h1 {
+  margin-bottom: 18px;
+  font-size: clamp(34px, 5vw, 48px);
+  font-weight: 700;
+  letter-spacing: 5px;
 }
 
-
-/* =========================
-   Services
-   ========================= */
-
-.services{
-    padding:20px 24px 100px
+.hero h2 {
+  margin-bottom: 18px;
+  color: #80614e;
+  font-size: clamp(19px, 2.5vw, 24px);
+  font-weight: 500;
 }
 
-.section-inner{
-    max-width:1120px;
-    margin:auto
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 15px;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:42px
+/* 服務主區 */
+
+.services {
+  padding: 14px 24px 90px;
 }
 
-.section-title small{
-    display:block;
-    color:#a86e53;
-    font-size:12px;
-    letter-spacing:3px;
-    margin-bottom:6px
+.section-inner {
+  max-width: 1120px;
+  margin: auto;
 }
 
-.section-title h2{
-    color:#76513f;
-    font-size:31px;
-    letter-spacing:2px
+.section-title {
+  margin-bottom: 48px;
+  text-align: center;
 }
 
-.service-group{
-    margin-bottom:48px
+.section-title small {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 4px;
 }
 
-.group-title{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:20px;
-    color:#76513f
+.section-title h2 {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 
-.group-title .icon{
-    font-size:25px
+.section-title p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
 }
 
-.group-title h3{
-    font-size:21px;
-    font-weight:600
+/* 分類 */
+
+.service-group {
+  margin-bottom: 46px;
 }
 
-.service-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px
+.group-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(168, 110, 83, .23);
 }
 
-.service-card{
-    position:relative;
-    background:#fffaf6;
-    border:1px solid #e6cbb9;
-    border-radius:18px;
-    padding:28px 30px;
-    box-shadow:0 8px 25px rgba(118,81,63,.05);
-    transition:.25s;
-    overflow:hidden
+.group-title .icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 250, 245, .8);
+  font-size: 21px;
 }
 
-.service-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 30px rgba(118,81,63,.10)
+.group-title h3 {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-
-/* =========================
-   各分類不同色彩
-   ========================= */
-
-/* 命理・占卜：淡玫瑰茶金 */
-.service-group:nth-of-type(2) .service-card{
-    background:linear-gradient(
-        145deg,
-        #f8eee7,
-        #fffaf6
-    );
-    border-color:#e8cdbb
+.group-title p {
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 12px;
 }
 
-.service-group:nth-of-type(2) .service-card:hover{
-    box-shadow:0 12px 30px rgba(168,110,83,.12)
+/* 服務格子 */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
-
-/* 居家・風水：淡暖米色 */
-.service-group:nth-of-type(3) .service-card{
-    background:linear-gradient(
-        145deg,
-        #f3eee7,
-        #fffaf6
-    );
-    border-color:#e3d5c7
+.service-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 188px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 26px 27px 23px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
 }
 
-.service-group:nth-of-type(3) .service-card:hover{
-    box-shadow:0 12px 30px rgba(136,113,90,.12)
+.service-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #d4b397;
+  content: "";
+  opacity: .85;
 }
 
-
-/* 信仰・問事：淡暖橘 */
-.service-group:nth-of-type(4) .service-card{
-    background:linear-gradient(
-        145deg,
-        #f9eee6,
-        #fffaf6
-    );
-    border-color:#e8cbb8
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: #d2ad91;
+  box-shadow: var(--shadow-hover);
 }
 
-.service-group:nth-of-type(4) .service-card:hover{
-    box-shadow:0 12px 30px rgba(168,110,83,.12)
+.service-card:focus-visible {
+  outline: 3px solid rgba(168, 110, 83, .45);
+  outline-offset: 3px;
 }
 
-
-/* 好運生活：淡琥珀金 */
-.service-group:nth-of-type(5) .service-card{
-    background:linear-gradient(
-        145deg,
-        #fbf2e4,
-        #fffaf6
-    );
-    border-color:#ead7b7
+.service-tag {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border: 1px solid #ead8c9;
+  border-radius: 999px;
+  background: #fff7ef;
+  color: var(--gold-dark);
+  font-size: 11px;
+  letter-spacing: 1px;
 }
 
-.service-group:nth-of-type(5) .service-card:hover{
-    box-shadow:0 12px 30px rgba(161,122,67,.13)
+.service-name {
+  margin-bottom: 10px;
+  padding-right: 0;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 650;
+  line-height: 1.55;
+  letter-spacing: .3px;
 }
 
-
-/* 分享・教學：淡暖灰 */
-.service-group:nth-of-type(6) .service-card{
-    background:linear-gradient(
-        145deg,
-        #f7eee7,
-        #fffaf6
-    );
-    border-color:#e7d1c2
+.service-price {
+  color: var(--gold);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
 }
 
-.service-group:nth-of-type(6) .service-card:hover{
-    box-shadow:0 12px 30px rgba(152,112,91,.12)
+.service-price small {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
 }
 
-
-/* =========================
-   免費體驗
-   ========================= */
-
-.service-card.featured{
-    border-color:#bd8a6b;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(189,138,107,.20),
-            transparent 65%
-        ),
-        #fffaf6
+.service-note {
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
 }
 
-.service-card.featured:before{
-    content:"免費體驗";
-    position:absolute;
-    top:16px;
-    right:18px;
-    padding:4px 10px;
-    border-radius:20px;
-    background:#a86e53;
-    color:#fff;
-    font-size:11px;
-    letter-spacing:1px
+.service-bottom {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
 }
 
-.service-name{
-    font-size:21px;
-    font-weight:700;
-    color:#76513f;
-    padding-right:75px;
-    margin-bottom:10px
+.service-bottom span {
+  color: var(--muted);
+  font-size: 12px;
 }
 
-.service-price{
-    font-size:23px;
-    font-weight:700;
-    color:#a86e53
+.card-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-.service-note{
-    margin-top:8px;
-    color:#8c6c5b;
-    font-size:14px
+.card-arrow::after {
+  content: "→";
+  transition: transform .2s ease;
 }
 
-.single-card{
-    max-width:550px
+a.service-card:hover .card-arrow::after {
+  transform: translateX(4px);
 }
 
+/* 免費體驗：突出但不刺眼 */
 
-/* =========================
-   CTA
-   ========================= */
-
-.cta{
-    margin:20px auto 100px;
-    max-width:1120px;
-    padding:55px 30px;
-    text-align:center;
-    border-radius:24px;
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(189,138,107,.18),
-            transparent 45%
-        ),
-        #f8eee6;
-    border:1px solid #e6cbb9
+.service-card.featured {
+  border-color: #c8a078;
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(196, 154, 85, .15),
+      transparent 58%
+    ),
+    #fffaf2;
 }
 
-.cta h2{
-    color:#76513f;
-    font-size:28px;
-    margin-bottom:12px
+.service-card.featured::before {
+  background: var(--amber);
 }
 
-.cta p{
-    color:#8c6c5b;
-    margin-bottom:25px
+.service-card.featured .service-tag {
+  border-color: #e8d3a9;
+  background: #f8eed8;
+  color: #896b37;
 }
 
-.btn{
-    display:inline-block;
-    padding:12px 26px;
-    border-radius:999px;
-    font-size:14px;
-    transition:.25s
+.service-card.featured .service-price {
+  color: #9a7437;
 }
 
-.btn-primary{
-    background:#a86e53;
-    color:white
+/* 不同分類的細微色彩差異 */
+
+.service-group.fengshui .service-card {
+  background: linear-gradient(145deg, #f7f2e9, #fffaf5);
+  border-color: #e2d6c5;
 }
 
-.btn-primary:hover{
-    background:#8f5b43;
-    transform:translateY(-2px)
+.service-group.fengshui .service-card::before {
+  background: #b7a58a;
 }
 
-.btn-outline{
-    border:1px solid #bd8a6b;
-    color:#a86e53;
-    margin-left:8px
+.service-group.fengshui .group-title .icon {
+  border-color: #e2d6c5;
 }
 
-.btn-outline:hover{
-    background:#f3e6dc
+.service-group.faith .service-card {
+  background: linear-gradient(145deg, #fbf0e8, #fffaf5);
+  border-color: #e8d0bf;
 }
 
-
-/* =========================
-   Footer
-   ========================= */
-
-footer{
-    padding:35px 24px;
-    text-align:center;
-    color:#8c6c5b;
-    font-size:13px;
-    border-top:1px solid #e6cbb9;
-    background:#fffaf6
+.service-group.faith .service-card::before {
+  background: #c89472;
 }
 
-footer strong{
-    display:block;
-    color:#a86e53;
-    font-size:16px;
-    letter-spacing:2px;
-    margin-bottom:4px
+.service-group.lifestyle .service-card {
+  background: linear-gradient(145deg, #fbf3e4, #fffaf5);
+  border-color: #ead9b9;
 }
 
-
-/* =========================
-   平板／手機
-   ========================= */
-
-@media(max-width:760px){
-
-    .nav{
-        padding:14px 18px
-    }
-
-    .nav-links{
-        gap:12px;
-        font-size:13px
-    }
-
-    .hero{
-        padding:75px 20px 60px
-    }
-
-    .hero h1{
-        font-size:38px;
-        letter-spacing:3px
-    }
-
-    .hero h2{
-        font-size:21px
-    }
-
-    .services{
-        padding:10px 18px 70px
-    }
-
-    .service-grid{
-        grid-template-columns:1fr
-    }
-
-    .section-title h2{
-        font-size:27px
-    }
-
-    .service-card{
-        padding:25px 22px
-    }
-
-    .single-card{
-        max-width:none
-    }
-
-    .cta{
-        margin:0 18px 70px;
-        padding:45px 22px
-    }
-
-    .btn{
-        display:block;
-        width:100%;
-        margin:8px 0 0
-    }
+.service-group.lifestyle .service-card::before {
+  background: #c5a15d;
 }
 
-@media(max-width:480px){
-
-    .logo{
-        font-size:18px
-    }
-
-    .logo span{
-        font-size:9px
-    }
-
-    .nav-links a:not(:last-child){
-        display:none
-    }
-
-    .hero h1{
-        font-size:34px
-    }
-
-    .service-name{
-        font-size:19px
-    }
-
-    .service-price{
-        font-size:21px
-    }
+.service-group.learning .service-card {
+  background: linear-gradient(145deg, #f5eee8, #fffaf5);
+  border-color: #e3d2c4;
 }
 
+.service-group.learning .service-card::before {
+  background: #b99b88;
+}
+
+/* 單張卡片也維持自然寬度 */
+
+.service-card.single-card {
+  min-height: 174px;
+}
+
+/* 預約區 */
+
+.cta {
+  max-width: 1120px;
+  margin: 0 auto 90px;
+  padding: 52px 28px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(189, 138, 107, .17),
+      transparent 65%
+    ),
+    #f9f0e8;
+  text-align: center;
+}
+
+.cta h2 {
+  margin-bottom: 12px;
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.cta p {
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 25px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: white;
+  box-shadow: 0 5px 14px rgba(168, 110, 83, .18);
+}
+
+.btn-primary:hover {
+  background: var(--gold-dark);
+}
+
+.btn-outline {
+  border-color: #c8a68f;
+  background: rgba(255, 250, 245, .65);
+  color: var(--gold-dark);
+}
+
+.btn-outline:hover {
+  background: #fffaf5;
+}
+
+/* 頁尾 */
+
+footer {
+  padding: 32px 24px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+footer strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--gold);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+/* 平板 */
+
+@media (max-width: 760px) {
+  .nav {
+    padding: 14px 18px;
+    gap: 14px;
+  }
+
+  .nav-links {
+    gap: 13px;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 70px 20px 55px;
+  }
+
+  .services {
+    padding: 12px 18px 65px;
+  }
+
+  .section-title {
+    margin-bottom: 36px;
+  }
+
+  .section-title h2 {
+    font-size: 27px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .service-card {
+    min-height: 0;
+    padding: 24px 23px 21px;
+  }
+
+  .service-card.single-card {
+    min-height: 0;
+  }
+
+  .service-name {
+    font-size: 19px;
+  }
+
+  .service-price {
+    font-size: 23px;
+  }
+
+  .cta {
+    margin: 0 18px 65px;
+    padding: 42px 22px;
+  }
+}
+
+/* 手機 */
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  .logo span {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .nav-links a:not(:last-child) {
+    display: none;
+  }
+
+  .hero {
+    padding: 58px 20px 45px;
+  }
+
+  .hero h1 {
+    letter-spacing: 3px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .eyebrow {
+    letter-spacing: 2px;
+  }
+
+  .group-title {
+    gap: 10px;
+  }
+
+  .group-title .icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  .group-title h3 {
+    font-size: 19px;
+  }
+
+  .service-card {
+    border-radius: 16px;
+    padding: 22px 20px 20px;
+  }
+
+  .service-name {
+    font-size: 18px;
+  }
+
+  .service-price {
+    font-size: 22px;
+  }
+
+  .service-note {
+    font-size: 13px;
+  }
+
+  .cta h2 {
+    font-size: 23px;
+  }
+
+  .btn-row {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* 尊重使用者的減少動態設定 */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
 </style>
 </head>
 
-
 <body>
 
-
 <header>
+  <nav class="nav">
+    <a href="index.html" class="logo">
+      好運研究所
+      <span>GOOD LUCK RESEARCH</span>
+    </a>
 
-<nav class="nav">
-
-<a href="index.html" class="logo">
-    好運研究所
-    <span>GOOD LUCK RESEARCH</span>
-</a>
-
-<div class="nav-links">
-
-<a href="index.html">首頁</a>
-<a href="fortune.html">占卜研究室</a>
-<a href="fengshui.html">風水研究室</a>
-<a href="amber.html">好運琥珀</a>
-<a href="booking.html">聯絡／預約</a>
-
-</div>
-
-</nav>
-
+    <div class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="fortune.html">占卜研究室</a>
+      <a href="fengshui.html">風水研究室</a>
+      <a href="amber.html">好運琥珀</a>
+      <a href="booking.html">聯絡／預約</a>
+    </div>
+  </nav>
 </header>
 
-
-<!-- =========================
-     Hero
-     ========================= -->
-
-<section class="hero">
-
-<div class="hero-inner">
-
-<span class="eyebrow">
-    GOOD LUCK RESEARCH · SERVICES
-</span>
-
-<h1>服務方案</h1>
-
-<h2>
-    找到適合你的方式，慢慢走進好運研究所。
-</h2>
-
-<p>
-    每個人的問題不同，適合的研究方式也不同。
-    這裡整理目前提供的服務，讓你可以先了解內容與收費方式，
-    再決定想從哪一個方向開始。
-</p>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     服務項目
-     ========================= -->
-
-<section class="services">
-
-<div class="section-inner">
-
-<div class="section-title">
-
-<small>SERVICE MENU</small>
-
-<h2>目前服務項目</h2>
-
-</div>
-
-
-<!-- 命理・占卜 -->
-
-<div class="service-group">
-
-<div class="group-title">
-    <span class="icon">🔮</span>
-    <h3>命理・占卜</h3>
-</div>
-
-<div class="service-grid">
-
-<article class="service-card featured">
-
-<h4 class="service-name">
-    手機數字財運分析
-</h4>
-
-<div class="service-price">
-    免費體驗
-</div>
-
-<p class="service-note">
-    從手機數字開始，認識自己的財運方向。
-</p>
-
-</article>
-
-
-<article class="service-card">
-
-<h4 class="service-name">
-    手機數字號碼選號／更改
-</h4>
-
-<div class="service-price">
-    $3,600／每支號碼
-</div>
-
-</article>
-
-
-<article class="service-card">
-
-<h4 class="service-name">
-    觀音神諭卡占卜
-</h4>
-
-<div class="service-price">
-    $1,200／每大題
-</div>
-
-<p class="service-note">
-    不限時間
-</p>
-
-</article>
-
-</div>
-
-</div>
-
-
-<!-- 居家・風水 -->
-
-<div class="service-group">
-
-<div class="group-title">
-    <span class="icon">🏠</span>
-    <h3>居家・風水</h3>
-</div>
-
-<div class="service-grid">
-
-<article class="service-card single-card">
-
-<h4 class="service-name">
-    居家風水格局擺放分析
-</h4>
-
-<div class="service-price">
-    $2,000／每戶
-</div>
-
-</article>
-
-</div>
-
-</div>
-
-
-<!-- 信仰・問事 -->
-
-<div class="service-group">
-
-<div class="group-title">
-    <span class="icon">🙏</span>
-    <h3>信仰・問事</h3>
-</div>
-
-<div class="service-grid">
-
-<article class="service-card single-card">
-
-<h4 class="service-name">
-    廟宇擲筊問事
-</h4>
-
-<div class="service-price">
-    視案件情況報價
-</div>
-
-</article>
-
-</div>
-
-</div>
-
-
-<!-- 好運生活 -->
-
-<div class="service-group">
-
-<div class="group-title">
-    <span class="icon">🟠</span>
-    <h3>好運生活</h3>
-</div>
-
-<div class="service-grid">
-
-<a href="amber.html" class="service-card single-card">
-
-<h4 class="service-name">
-    琥珀藝品
-</h4>
-
-<div class="service-price">
-    詳見「好運琥珀」
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-
-<!-- 分享・教學 -->
-
-<div class="service-group">
-
-<div class="group-title">
-    <span class="icon">🎤</span>
-    <h3>分享・教學</h3>
-</div>
-
-<div class="service-grid">
-
-<article class="service-card single-card">
-
-<h4 class="service-name">
-    分享會／課程邀約
-</h4>
-
-<div class="service-price">
-    視場地需求報價
-</div>
-
-</article>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     CTA
-     ========================= -->
-
-<section class="cta">
-
-<h2>
-    想了解哪一項服務？
-</h2>
-
-<p>
-    歡迎先了解服務內容，再與小盧老師聯絡。
-</p>
-
-<a href="booking.html" class="btn btn-primary">
-    聯絡／預約
-</a>
-
-<a href="index.html" class="btn btn-outline">
-    回到好運研究所
-</a>
-
-</section>
-
-
-<!-- =========================
-     Footer
-     ========================= -->
+<main>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">GOOD LUCK RESEARCH · SERVICES</span>
+      <h1>服務方案</h1>
+      <h2>找到適合你的方式，慢慢走進好運研究所。</h2>
+      <p>
+        每個人的問題不同，適合的研究方式也不同。
+        這裡整理目前提供的服務與收費方式，
+        讓你先了解，再決定想從哪個方向開始。
+      </p>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="section-inner">
+
+      <div class="section-title">
+        <small>SERVICE MENU</small>
+        <h2>目前服務項目</h2>
+        <p>先了解服務內容，再選擇適合自己的方向。</p>
+      </div>
+
+      <!-- 命理・占卜 -->
+
+      <section class="service-group">
+        <div class="group-title">
+          <span class="icon" aria-hidden="true">🔮</span>
+          <div>
+            <h3>命理・占卜</h3>
+            <p>從數字與占卜，探索問題與選擇。</p>
+          </div>
+        </div>
+
+        <div class="service-grid">
+
+          <article class="service-card featured">
+            <span class="service-tag">免費體驗</span>
+            <h4 class="service-name">手機數字財運分析</h4>
+            <div class="service-price">免費體驗</div>
+            <p class="service-note">
+              從手機數字開始，認識自己的財運方向。
+            </p>
+            <div class="service-bottom">
+              <span>了解自己的數字</span>
+              <a class="card-arrow" href="booking.html">聯絡了解</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <span class="service-tag">數字分析</span>
+            <h4 class="service-name">手機數字號碼選號／更改</h4>
+            <div class="service-price">$3,600 <small>／每支號碼</small></div>
+            <p class="service-note">
+              針對手機號碼選擇與更改需求，進一步了解服務方式。
+            </p>
+            <div class="service-bottom">
+              <span>正式服務</span>
+              <a class="card-arrow" href="booking.html">聯絡了解</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <span class="service-tag">觀音神諭卡</span>
+            <h4 class="service-name">觀音神諭卡占卜</h4>
+            <div class="service-price">$1,200 <small>／每大題</small></div>
+            <p class="service-note">不限時間。</p>
+            <div class="service-bottom">
+              <span>預約占卜</span>
+              <a class="card-arrow" href="booking.html">聯絡預約</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 居家・風水 -->
+
+      <section class="service-group fengshui">
+        <div class="group-title">
+          <span class="icon" aria-hidden="true">🏠</span>
+          <div>
+            <h3>居家・風水</h3>
+            <p>從生活空間與格局，了解環境配置。</p>
+          </div>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card single-card">
+            <span class="service-tag">居家空間</span>
+            <h4 class="service-name">居家風水格局擺放分析</h4>
+            <div class="service-price">$2,000 <small>／每戶</small></div>
+            <p class="service-note">
+              針對居家格局與擺放需求進行分析。
+            </p>
+            <div class="service-bottom">
+              <span>了解服務方式</span>
+              <a class="card-arrow" href="booking.html">聯絡了解</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 信仰・問事 -->
+
+      <section class="service-group faith">
+        <div class="group-title">
+          <span class="icon" aria-hidden="true">🙏</span>
+          <div>
+            <h3>信仰・問事</h3>
+            <p>依照個別問題，了解問事方式。</p>
+          </div>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card single-card">
+            <span class="service-tag">個案諮詢</span>
+            <h4 class="service-name">廟宇擲筊問事</h4>
+            <div class="service-price">依案件情況報價</div>
+            <p class="service-note">
+              依實際問題與案件情況，先聯絡了解安排方式。
+            </p>
+            <div class="service-bottom">
+              <span>個別確認</span>
+              <a class="card-arrow" href="booking.html">聯絡了解</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 好運生活 -->
+
+      <section class="service-group lifestyle">
+        <div class="group-title">
+          <span class="icon" aria-hidden="true">🟠</span>
+          <div>
+            <h3>好運生活</h3>
+            <p>探索琥珀與日常生活中的美好。</p>
+          </div>
+        </div>
+
+        <div class="service-grid">
+          <a href="amber.html" class="service-card single-card">
+            <span class="service-tag">琥珀藝品</span>
+            <h4 class="service-name">琥珀藝品</h4>
+            <div class="service-price">查看作品與介紹</div>
+            <p class="service-note">
+              前往好運琥珀頁面，了解琥珀藝品。
+            </p>
+            <div class="service-bottom">
+              <span>好運琥珀</span>
+              <span class="card-arrow">前往了解</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 分享・教學 -->
+
+      <section class="service-group learning">
+        <div class="group-title">
+          <span class="icon" aria-hidden="true">🎤</span>
+          <div>
+            <h3>分享・教學</h3>
+            <p>分享經驗，交流不同的觀點。</p>
+          </div>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card single-card">
+            <span class="service-tag">活動與課程</span>
+            <h4 class="service-name">分享會／課程邀約</h4>
+            <div class="service-price">依場地需求報價</div>
+            <p class="service-note">
+              歡迎先聯絡說明活動形式與場地需求。
+            </p>
+            <div class="service-bottom">
+              <span>邀約洽詢</span>
+              <a class="card-arrow" href="booking.html">聯絡了解</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>想了解哪一項服務？</h2>
+    <p>歡迎先了解服務內容，再與小盧老師聯絡。</p>
+    <div class="btn-row">
+      <a href="booking.html" class="btn btn-primary">聯絡／預約</a>
+      <a href="index.html" class="btn btn-outline">回到好運研究所</a>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-
-<strong>
-    好運研究所
-</strong>
-
-GOOD LUCK RESEARCH
-
-<div style="margin-top:18px;">
+  <strong>好運研究所</strong>
+  GOOD LUCK RESEARCH
+  <div style="margin-top:14px;">
     © 2026 好運研究所｜小盧老師
-</div>
-
+  </div>
 </footer>
-
 
 </body>
 </html>
