@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>好運研究所｜占卜・風水・財運・生活好運</title>
-
     <meta name="description" content="好運研究所｜由小盧老師主持，分享占卜、風水、財運分析，以及故事、Podcast、YouTube與生活裡關於好運的觀察。">
 
     <style>
         * { box-sizing:border-box; margin:0; padding:0; }
 
-        html {
-            scroll-behavior:smooth;
-        }
+        html { scroll-behavior:smooth; }
 
         body {
             font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",Arial,sans-serif;
@@ -22,10 +18,7 @@
             line-height:1.8;
         }
 
-        a {
-            text-decoration:none;
-            color:inherit;
-        }
+        a { text-decoration:none; color:inherit; }
 
         header {
             position:sticky;
@@ -70,43 +63,29 @@
             font-size:14px;
         }
 
-        .nav-links a {
-            color:#5d554c;
-            transition:.25s;
-        }
+        .nav-links a { color:#5d554c; transition:.25s; }
+        .nav-links a:hover { color:#a66f32; }
 
-        .nav-links a:hover {
-            color:#a66f32;
-        }
-
-        /* =========================
-           桌機 Hero
-           ========================= */
-
+        /* 桌機 Hero */
         .hero {
             position:relative;
             min-height:680px;
             padding:90px 24px 100px;
             display:flex;
             align-items:center;
-
             background-image:url('uploads/hero-oriental-main.png');
             background-size:cover;
             background-position:center center;
             background-repeat:no-repeat;
-
             overflow:hidden;
         }
 
-        .hero-mobile-image {
-            display:none;
-        }
+        .hero-mobile-image { display:none; }
 
         .hero::before {
             content:"";
             position:absolute;
             inset:0;
-
             background:linear-gradient(
                 90deg,
                 rgba(255,250,246,.78) 0%,
@@ -114,18 +93,15 @@
                 rgba(255,250,246,.18) 62%,
                 rgba(255,250,246,.02) 100%
             );
-
             pointer-events:none;
         }
 
         .hero-inner {
             position:relative;
             z-index:1;
-
             max-width:1180px;
             width:100%;
             margin:auto;
-
             display:grid;
             grid-template-columns:1.15fr .85fr;
             gap:70px;
@@ -144,44 +120,26 @@
         }
 
         .hero h1 {
-            font-family:
-                "DFNewChuan-B5",
-                "DFNewChuanHK-W5",
-                "華康新篆體",
-                "Noto Serif TC",
-                "PMingLiU",
-                serif;
-
+            font-family:"DFNewChuan-B5","DFNewChuanHK-W5","華康新篆體","Noto Serif TC","PMingLiU",serif;
             font-size:clamp(58px,7.2vw,88px);
             font-weight:normal;
             line-height:1.12;
             letter-spacing:6px;
-
             color:#68482d;
             -webkit-text-stroke:1.1px #68482d;
             paint-order:stroke fill;
-
             margin-bottom:18px;
         }
 
         .hero h2 {
-            font-family:
-                "DFLiShuW5-B5",
-                "DFLiShuHK-W5",
-                "華康隸書體",
-                "Noto Serif TC",
-                "PMingLiU",
-                serif;
-
+            font-family:"DFLiShuW5-B5","DFLiShuHK-W5","華康隸書體","Noto Serif TC","PMingLiU",serif;
             font-size:clamp(25px,3vw,34px);
             font-weight:normal;
             line-height:1.55;
             letter-spacing:3px;
-
             color:#51473e;
             -webkit-text-stroke:.75px #51473e;
             paint-order:stroke fill;
-
             margin-bottom:25px;
         }
 
@@ -207,10 +165,7 @@
             transition:.25s;
         }
 
-        .btn-primary {
-            background:#87613b;
-            color:white;
-        }
+        .btn-primary { background:#87613b; color:white; }
 
         .btn-primary:hover {
             background:#68482d;
@@ -223,17 +178,9 @@
             background:rgba(255,255,255,.45);
         }
 
-        .btn-outline:hover {
-            background:white;
-        }
-
-        .hero-card {
-            display:none;
-        }
-
-        .hero-symbol {
-            text-align:center;
-        }
+        .btn-outline:hover { background:white; }
+        .hero-card { display:none; }
+        .hero-symbol { text-align:center; }
 
         .hero-symbol .circle {
             width:190px;
@@ -260,19 +207,13 @@
             color:#97836d;
         }
 
-        /* =========================
-           Facebook
-           ========================= */
-
+        /* Facebook */
         .facebook-section {
             background:#f0ebe2;
             padding:70px 24px;
         }
 
-        .section-inner {
-            max-width:1080px;
-            margin:auto;
-        }
+        .section-inner { max-width:1080px; margin:auto; }
 
         .section-title {
             text-align:center;
@@ -345,15 +286,9 @@
             font-size:14px;
         }
 
-        .facebook-button {
-            margin-top:24px;
-            text-align:center;
-        }
+        .facebook-button { margin-top:24px; text-align:center; }
 
-        /* =========================
-           研究室
-           ========================= */
-
+        /* 研究室 */
         .rooms {
             padding:100px 24px;
             background:#faf8f3;
@@ -413,10 +348,7 @@
             font-size:20px;
         }
 
-        /* =========================
-           關於
-           ========================= */
-
+        /* 關於 */
         .about {
             padding:100px 24px;
             background:#eee7dc;
@@ -467,10 +399,7 @@
             margin-bottom:15px;
         }
 
-        /* =========================
-           內容
-           ========================= */
-
+        /* 內容 */
         .content-section {
             padding:100px 24px;
             background:#faf8f3;
@@ -509,13 +438,8 @@
             font-size:45px;
         }
 
-        .content-body {
-            padding:24px;
-        }
-
-        .content-body small {
-            color:#a47b4d;
-        }
+        .content-body { padding:24px; }
+        .content-body small { color:#a47b4d; }
 
         .content-body h3 {
             margin:7px 0 10px;
@@ -528,10 +452,7 @@
             font-size:14px;
         }
 
-        /* =========================
-           未來
-           ========================= */
-
+        /* 未來 */
         .future {
             padding:90px 24px;
             background:#4d4034;
@@ -572,10 +493,7 @@
             font-size:14px;
         }
 
-        /* =========================
-           聯絡
-           ========================= */
-
+        /* 聯絡 */
         .contact {
             padding:105px 24px;
             background:#f5f0e8;
@@ -609,10 +527,7 @@
             margin-bottom:28px;
         }
 
-        /* =========================
-           Footer
-           ========================= */
-
+        /* Footer */
         footer {
             padding:35px 24px;
             background:#342b24;
@@ -628,103 +543,62 @@
             margin-bottom:5px;
         }
 
-        /* =====================================================
-           平板／手機
-           這次從 850px 就開始完整 Hero 圖片模式
-           ===================================================== */
-
+        /* 平板／手機 */
         @media (max-width:850px) {
+            .nav { padding:13px 18px; }
+            .nav-links { display:none; }
 
-            .nav {
-                padding:13px 18px;
-            }
-
-            .nav-links {
-                display:none;
-            }
-
-            /* 手機 Hero：不再使用 background-cover */
             .hero {
                 min-height:0;
                 padding:0;
                 display:block;
-
                 background-image:none;
                 background-color:#faf8f3;
-
                 overflow:hidden;
             }
 
-            /* 顯示完整 Hero 圖，不裁切 */
             .hero-mobile-image {
                 display:block;
                 width:100%;
                 height:auto;
                 margin:0;
                 padding:0;
-
                 object-fit:contain;
                 object-position:center top;
             }
 
-            /* 手機不需要桌機的白色漸層 */
-            .hero::before {
-                display:none;
-            }
+            .hero::before { display:none; }
 
-            /* 文字改到圖片下面 */
             .hero-inner {
                 width:100%;
                 max-width:none;
-
                 display:block;
-
                 padding:55px 20px 65px;
             }
 
-            .hero-text {
-                width:100%;
-            }
+            .hero-text { width:100%; }
 
-            /* 手機不強制使用特殊字體
-               保留原本桌機設定，但讓手機走系統相容字體 */
             .hero h1 {
-                font-family:
-                    "Noto Sans TC",
-                    "Microsoft JhengHei",
-                    "PingFang TC",
-                    Arial,
-                    sans-serif;
-
+                font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",Arial,sans-serif;
                 font-size:52px;
                 font-weight:700;
                 line-height:1.2;
                 letter-spacing:2px;
-
                 color:#68482d;
                 -webkit-text-stroke:0;
                 paint-order:normal;
-
                 margin-bottom:18px;
             }
 
             .hero h2 {
-                font-family:
-                    "Noto Sans TC",
-                    "Microsoft JhengHei",
-                    "PingFang TC",
-                    Arial,
-                    sans-serif;
-
+                font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",Arial,sans-serif;
                 font-size:25px;
                 font-weight:600;
                 line-height:1.65;
                 letter-spacing:1px;
-
                 color:#51473e;
                 -webkit-text-stroke:0;
                 paint-order:normal;
-
                 margin-bottom:25px;
             }
 
@@ -750,9 +624,7 @@
                 font-size:16px;
             }
 
-            .hero-card {
-                display:none;
-            }
+            .hero-card { display:none; }
 
             .room-grid,
             .content-grid {
@@ -764,32 +636,16 @@
                 gap:35px;
             }
 
-            .about-image {
-                aspect-ratio:3/2;
-            }
-
-            .about-image img {
-                min-height:0;
-            }
-
-            .section-title h2 {
-                font-size:27px;
-            }
+            .about-image { aspect-ratio:3/2; }
+            .about-image img { min-height:0; }
+            .section-title h2 { font-size:27px; }
         }
 
-        /* =========================
-           更窄手機
-           ========================= */
-
+        /* 更窄手機 */
         @media (max-width:480px) {
+            .logo { font-size:19px; }
 
-            .logo {
-                font-size:19px;
-            }
-
-            .hero-inner {
-                padding:45px 20px 55px;
-            }
+            .hero-inner { padding:45px 20px 55px; }
 
             .hero h1 {
                 font-size:48px;
@@ -807,9 +663,7 @@
                 line-height:2;
             }
 
-            .facebook-box {
-                padding:0;
-            }
+            .facebook-box { padding:0; }
 
             .contact-box {
                 min-height:260px;
@@ -898,9 +752,7 @@
         </div>
     </section>
 
-
     <section class="rooms" id="rooms">
-
         <div class="section-inner">
 
             <div class="section-title">
@@ -968,9 +820,7 @@
         </div>
     </section>
 
-
     <section class="about" id="about">
-
         <div class="about-inner">
 
             <div class="about-image">
@@ -1008,13 +858,9 @@
 
                 <div class="about-slogan">
                     <p>
-                        <strong>
-                            好運研究所研究的不只是運氣，
-                        </strong>
+                        <strong>好運研究所研究的不只是運氣，</strong>
                         <br>
-                        <strong>
-                            更希望陪你找到原因，看見更多可能。
-                        </strong>
+                        <strong>更希望陪你找到原因，看見更多可能。</strong>
                     </p>
 
                     <h3>
@@ -1026,9 +872,7 @@
         </div>
     </section>
 
-
     <section class="content-section" id="content">
-
         <div class="section-inner">
 
             <div class="section-title">
@@ -1039,7 +883,6 @@
             <div class="content-grid">
 
                 <a href="story.html" class="content-card content-link">
-
                     <div class="content-image">
                         <img
                             src="uploads/story.png"
@@ -1053,12 +896,9 @@
                         <h3>接受真相，才是成長變好的動力</h3>
                         <p>從一張占卜桌上的故事，慢慢看見人、選擇與人生。</p>
                     </div>
-
                 </a>
 
-
                 <a href="podcast.html" class="content-card content-link">
-
                     <div class="content-image">
                         <img
                             src="uploads/podcast.png"
@@ -1072,12 +912,9 @@
                         <h3>好運研究所 Podcast</h3>
                         <p>把故事說給你聽，在占卜、諮詢與人生裡，一起想想更多可能。</p>
                     </div>
-
                 </a>
 
-
                 <a href="youtube.html" class="content-card content-link">
-
                     <div class="content-image">
                         <img
                             src="uploads/youtube.png"
@@ -1091,16 +928,13 @@
                         <h3>好運研究所 YouTube</h3>
                         <p>用影片聊占卜、風水、人生與那些值得研究的好運問題。</p>
                     </div>
-
                 </a>
 
             </div>
         </div>
     </section>
 
-
     <section class="facebook-section" id="facebook">
-
         <div class="section-inner">
 
             <div class="section-title">
@@ -1111,13 +945,8 @@
             <div class="facebook-box">
 
                 <div>
-                    <strong>
-                        觀音之光神諭卡占卜工作室
-                    </strong>
-
-                    <p>
-                        最新貼文會直接顯示在這裡。
-                    </p>
+                    <strong>觀音之光神諭卡占卜工作室</strong>
+                    <p>最新貼文會直接顯示在這裡。</p>
                 </div>
 
                 <div
@@ -1145,9 +974,7 @@
         </div>
     </section>
 
-
     <section class="contact" id="contact">
-
         <div class="section-inner">
 
             <div class="section-title">
@@ -1156,7 +983,6 @@
             </div>
 
             <div class="contact-box">
-
                 <p>
                     如果你有問題、想了解服務，或只是想聊聊最近的人生，歡迎來找小盧老師。
                 </p>
@@ -1164,19 +990,20 @@
                 <a href="booking.html" class="btn btn-primary">
                     聯絡／預約
                 </a>
-
             </div>
         </div>
     </section>
 
-
     <footer>
 
-        <strong>
-            好運研究所
-        </strong>
+        <strong>好運研究所</strong>
 
         GOOD LUCK RESEARCH
+
+        <div style="margin-top:18px; line-height:2;">
+            <div>地址：台北市士林區承德路四段188號3樓188C室</div>
+            <div>交通：捷運劍潭站步行6分鐘抵達</div>
+        </div>
 
         <div style="margin-top:18px;">
             © 2026 好運研究所｜小盧老師
@@ -1184,14 +1011,12 @@
 
     </footer>
 
-
     <script>
     (function () {
 
         const container = document.getElementById("facebook-posts");
 
         if (!container) return;
-
 
         function loadSDK() {
 
@@ -1216,7 +1041,6 @@
 
                 if (old) return;
 
-
                 const script = document.createElement("script");
 
                 script.id = "facebook-jssdk";
@@ -1227,17 +1051,14 @@
                 script.src =
                     "https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v26.0";
 
-
                 script.onerror = function () {
                     reject(new Error("Facebook SDK 載入失敗"));
                 };
-
 
                 document.head.appendChild(script);
 
             });
         }
-
 
         fetch("data/facebook-latest.json", {
             cache:"no-store"
@@ -1262,7 +1083,6 @@
 
             const seen = new Set();
 
-
             const posts = sourcePosts
 
                 .filter(function (post) {
@@ -1271,16 +1091,13 @@
                         return false;
                     }
 
-
                     const key =
                         post.id ||
                         post.permalink_url;
 
-
                     if (seen.has(key)) {
                         return false;
                     }
-
 
                     seen.add(key);
 
@@ -1290,9 +1107,7 @@
 
                 .slice(0,3);
 
-
             container.innerHTML = "";
-
 
             if (!posts.length) {
 
@@ -1302,7 +1117,6 @@
                 return null;
             }
 
-
             posts.forEach(function (post) {
 
                 const wrapper =
@@ -1311,21 +1125,14 @@
                 wrapper.className =
                     "facebook-post-embed";
 
-                wrapper.style.width =
-                    "100%";
-
-                wrapper.style.maxWidth =
-                    "560px";
-
-                wrapper.style.margin =
-                    "0 auto";
-
+                wrapper.style.width = "100%";
+                wrapper.style.maxWidth = "560px";
+                wrapper.style.margin = "0 auto";
 
                 const embed =
                     document.createElement("div");
 
-                embed.className =
-                    "fb-post";
+                embed.className = "fb-post";
 
                 embed.setAttribute(
                     "data-href",
@@ -1343,18 +1150,14 @@
                     "true"
                 );
 
-
                 wrapper.appendChild(embed);
-
                 container.appendChild(wrapper);
 
             });
 
-
             return loadSDK();
 
         })
-
 
         .then(function () {
 
@@ -1370,7 +1173,6 @@
             }
 
         })
-
 
         .catch(function (error) {
 
