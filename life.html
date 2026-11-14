@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -9,23 +8,14 @@
     <meta name="description" content="別急著問神明，先學會把問題問清楚！小盧老師線上課程，從認識筊象到學會問對問題。11月25日晚上19:30線上場。">
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             margin: 0;
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Noto Sans TC",
-                "Microsoft JhengHei",
-                "PingFang TC",
-                sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC",
+                "Microsoft JhengHei", "PingFang TC", sans-serif;
             background: #f3e6dc;
             color: #76513f;
             line-height: 1.9;
@@ -86,18 +76,12 @@
             font-size: 14px;
         }
 
-        .header-link:hover {
-            color: #bd8a6b;
-        }
+        .header-link:hover { color: #bd8a6b; }
 
         /* Hero Poster */
         .hero {
             padding: 40px 0 65px;
-            background: linear-gradient(
-                180deg,
-                #fffaf6 0%,
-                #f3e6dc 100%
-            );
+            background: linear-gradient(180deg, #fffaf6 0%, #f3e6dc 100%);
         }
 
         .hero-image {
@@ -135,9 +119,7 @@
         }
 
         /* Intro */
-        .intro {
-            padding: 75px 0;
-        }
+        .intro { padding: 75px 0; }
 
         .intro-box {
             max-width: 880px;
@@ -192,9 +174,7 @@
         }
 
         /* Story Images */
-        .story-image-section {
-            padding: 25px 0 65px;
-        }
+        .story-image-section { padding: 25px 0 65px; }
 
         .story-image {
             max-width: 900px;
@@ -248,9 +228,7 @@
             font-weight: 700;
         }
 
-        .course-content {
-            flex: 1;
-        }
+        .course-content { flex: 1; }
 
         .course-content h3 {
             margin: 0 0 12px;
@@ -360,6 +338,88 @@
             font-weight: 700;
         }
 
+        /* Registration */
+        .registration {
+            padding: 75px 0;
+            background: linear-gradient(180deg, #f8eee6 0%, #fffaf6 100%);
+        }
+
+        .registration-card {
+            max-width: 850px;
+            margin: auto;
+            padding: 42px;
+            display: grid;
+            grid-template-columns: 1fr 230px;
+            align-items: center;
+            gap: 35px;
+            background: #fffaf6;
+            border: 1px solid #e6cbb9;
+            border-radius: 22px;
+            box-shadow: 0 10px 35px rgba(118, 81, 63, 0.09);
+        }
+
+        .registration-content { text-align: left; }
+
+        .registration-content h2 {
+            margin: 0 0 12px;
+            color: #a86e53;
+            font-size: 28px;
+        }
+
+        .registration-content p {
+            margin: 0 0 22px;
+            color: #765746;
+            font-size: 16px;
+        }
+
+        .registration-button {
+            display: inline-block;
+            padding: 13px 32px;
+            background: #a86e53;
+            border: 2px solid #a86e53;
+            border-radius: 30px;
+            color: #fffaf6;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .registration-button:hover {
+            background: #8e5b45;
+            border-color: #8e5b45;
+            transform: translateY(-2px);
+        }
+
+        .registration-url {
+            display: block;
+            margin-top: 12px;
+            color: #a17a43;
+            font-size: 13px;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        .registration-qr {
+            text-align: center;
+        }
+
+        .registration-qr img {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto;
+            padding: 8px;
+            background: #fff;
+            border: 1px solid #e6cbb9;
+            border-radius: 10px;
+        }
+
+        .registration-qr p {
+            margin: 10px 0 0;
+            color: #8c6c5b;
+            font-size: 13px;
+        }
+
         /* Footer */
         footer {
             padding: 35px 20px;
@@ -383,59 +443,46 @@
                 padding: 32px 25px;
             }
 
-            .course-item {
-                padding: 24px 20px;
+            .course-item { padding: 24px 20px; }
+
+            .course-content h3 { font-size: 20px; }
+
+            .registration-card {
+                grid-template-columns: 1fr;
+                padding: 30px 22px;
+                gap: 28px;
             }
 
-            .course-content h3 {
-                font-size: 20px;
-            }
+            .registration-content { text-align: center; }
         }
 
         /* Mobile */
         @media (max-width: 600px) {
-            header {
-                padding: 16px 12px;
-            }
+            header { padding: 16px 12px; }
 
-            .logo {
-                font-size: 18px;
-            }
+            .logo { font-size: 18px; }
 
-            .header-link {
-                font-size: 12px;
-            }
+            .header-link { font-size: 12px; }
 
-            .hero {
-                padding: 20px 0 40px;
-            }
+            .hero { padding: 20px 0 40px; }
 
-            .hero-image {
-                border-radius: 12px;
-            }
+            .hero-image { border-radius: 12px; }
 
             .intro,
             .courses,
             .features,
-            .event-info {
+            .event-info,
+            .registration {
                 padding: 55px 0;
             }
 
-            .section-heading {
-                margin-bottom: 28px;
-            }
+            .section-heading { margin-bottom: 28px; }
 
-            .section-heading h2 {
-                font-size: 25px;
-            }
+            .section-heading h2 { font-size: 25px; }
 
-            .intro-lead {
-                font-size: 21px;
-            }
+            .intro-lead { font-size: 21px; }
 
-            .question-list li {
-                font-size: 14px;
-            }
+            .question-list li { font-size: 14px; }
 
             .story-image-section,
             .second-image-section {
@@ -459,32 +506,25 @@
                 font-size: 17px;
             }
 
-            .course-content h3 {
-                font-size: 18px;
-            }
+            .course-content h3 { font-size: 18px; }
 
-            .course-content li {
-                font-size: 14px;
-            }
+            .course-content li { font-size: 14px; }
 
-            .feature-lead {
-                font-size: 21px;
-            }
+            .feature-lead { font-size: 21px; }
 
-            .feature-box p {
-                font-size: 14px;
-            }
+            .feature-box p { font-size: 14px; }
 
-            .event-card {
-                padding: 28px 18px;
-            }
+            .event-card { padding: 28px 18px; }
 
-            .event-card h2 {
-                font-size: 25px;
-            }
+            .event-card h2 { font-size: 25px; }
 
-            .event-date {
-                font-size: 20px;
+            .event-date { font-size: 20px; }
+
+            .registration-content h2 { font-size: 23px; }
+
+            .registration-qr img {
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
@@ -686,6 +726,56 @@
                     11／25（三）晚上 19:30
                 </div>
                 <span class="event-online">線上場</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 報名方式 -->
+    <section class="registration" id="registration">
+        <div class="container">
+            <div class="section-heading">
+                <small>REGISTRATION</small>
+                <h2>立即報名</h2>
+            </div>
+
+            <div class="registration-card">
+                <div class="registration-content">
+                    <h2>別急著問神明，先學會擲筊問問題</h2>
+
+                    <p>
+                        想參加線上課程嗎？點擊下方按鈕前往 ACCUPASS 活動頁，
+                        查看活動資訊並完成報名。
+                    </p>
+
+                    <a
+                        class="registration-button"
+                        href="https://reurl.cc/k9RlVd"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >前往 ACCUPASS 報名</a>
+
+                    <a
+                        class="registration-url"
+                        href="https://reurl.cc/k9RlVd"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >https://reurl.cc/k9RlVd</a>
+                </div>
+
+                <div class="registration-qr">
+                    <a
+                        href="https://reurl.cc/k9RlVd"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="開啟 ACCUPASS 活動報名頁"
+                    >
+                        <img
+                            src="uploads/qrcode20261125線上活動.png"
+                            alt="ACCUPASS 活動報名 QR Code"
+                        >
+                    </a>
+                    <p>手機掃描 QR Code 報名</p>
+                </div>
             </div>
         </div>
     </section>
